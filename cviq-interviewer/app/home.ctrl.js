@@ -106,6 +106,16 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
         console.log('$scope.notification', $scope.notification);
 
     });
+    
+    socket.on('messageToRecruiter', function (data) {
+        console.log('messageToRecruiter', data);
+        $scope.notification.push(data.message.notificationMsg);
+        $scope.$apply();
+
+        console.log('$scope.notification', $scope.notification);
+
+    });
+
 
     /*=============================End: Interview notification through socket ================================*/
 

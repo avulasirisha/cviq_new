@@ -65,7 +65,7 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
         $scope.data[index] = data == undefined ? "0" : data;
     }
     /*============================= End: Update interviewer Availability ================================*/
-
+    
     ///*============================= Start: Get candidate availability ================================*/
     //
     //$scope.data = ['0', '1', '0', '0', '0','0', '0', '0', '0', '0','0', '0', '0', '0', '0','0', '0', '0', '0', '0','0', '0', '0', '0'];
@@ -124,7 +124,7 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
             },
             data:{
                 interviewerID:$scope.QualitativeScoreData.interviewerID,
-                interviewDate: $scope.selectedDateInterview,
+                interviewDate:new Date( $scope.selectedDateInterview ).toISOString(),
                 interviewStartTime: $scope.selectedInterviewTime,
                 timeOffset: +330
             }
