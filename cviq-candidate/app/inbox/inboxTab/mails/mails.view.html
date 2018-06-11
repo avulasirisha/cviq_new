@@ -1,0 +1,52 @@
+<!--<section class="alertsMails commonBackground">-->
+    <!--<div class="company-Details">-->
+        <!--<h3>Company<span class="pull-right">25 May, 2016</span></h3>-->
+        <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>-->
+        <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>-->
+
+    <!--<form name="replyForm" class="replyForm">-->
+        <!--<textarea placeholder="Click here to reply"></textarea>-->
+        <!--<div class="attach-file">-->
+            <!--<input type="submit" value="Send">-->
+            <!--<input type="file" style="display: none;">-->
+            <!--<span>Attach a file</span>-->
+        <!--</div>-->
+    <!--</form>-->
+    <!--</div>-->
+    <!--<ul class="listAlerts">-->
+        <!--<li class="clearfix">-->
+            <!--<div class="col-lg-3 company-name">Company</div>-->
+            <!--<div class="col-lg-7">Lorem Ipsum is simply dummy text of the printing</div>-->
+            <!--<div class="col-lg-2 dated">April 25,2016</div>-->
+        <!--</li>-->
+
+        <!--<li class="clearfix">-->
+            <!--<div class="col-lg-3 company-name">Company</div>-->
+            <!--<div class="col-lg-7">Lorem Ipsum is simply dummy text of the printing</div>-->
+            <!--<div class="col-lg-2 dated">April 25,2016</div>-->
+        <!--</li>-->
+
+        <!--<li class="clearfix">-->
+            <!--<div class="col-lg-3 company-name">Company</div>-->
+            <!--<div class="col-lg-7">Lorem Ipsum is simply dummy text of the printing</div>-->
+            <!--<div class="col-lg-2 dated">April 25,2016</div>-->
+        <!--</li>-->
+
+        <!--<li class="clearfix">-->
+            <!--<div class="col-lg-3 company-name">Company</div>-->
+            <!--<div class="col-lg-7">Lorem Ipsum is simply dummy text of the printing</div>-->
+            <!--<div class="col-lg-2 dated">April 25,2016</div>-->
+        <!--</li>-->
+    <!--</ul>-->
+<!--</section>-->
+
+<section class="alertsMails commonBackground">
+    <h6 style="margin: 10px 0; font-size: 15px;" class="text-center" ng-if="allRecruiterMessages.length == 0">No Data Found.</h6>
+    <ul class="listAlerts">
+        <li class="clearfix" ng-repeat="mess in allRecruiterMessages" ng-click="getConversation(mess._id)">
+            <div class="col-lg-3 company-name">{{mess.recruiterName}}</div>
+            <div class="col-lg-6 messTitle"><strong>Sub: {{mess.messageTitle}}</strong><br />{{mess.messageDetail[0].message}}</div>
+            <div class="col-lg-3 text-right dated">{{mess.messageDetail[0].addedAt | date: 'MMMM dd, yyyy'}}</div>
+        </li>
+    </ul>
+</section>

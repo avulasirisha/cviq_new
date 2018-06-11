@@ -1,0 +1,330 @@
+<section class="commonBackground interview-details">
+    <div class="candidate-desc">
+        <div class="col-lg-12 headingSpan">
+
+        </div>
+        <ul ng-if="candidateQualScore" class="clearfix">
+            <div class="progress-wrapper text-center">
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center pad circledivshadows" >
+                    <div class="circledivborders">
+                        <div class="circlecontentposition">
+                            <div class="progress2 ng-cloak" >{{ candidateQualitative.candidateQualitativeScore }}</div>
+                            <round-progress
+                                    max="maxQualitative.totalQualitativeScore"
+                                    current="candidateQualitative.candidateQualitativeScore"
+                                    color="#02699d"
+                                    bgcolor="#eaeaea"
+                                    radius="75"
+                                    stroke="8"
+                                    semi="false"
+                                    rounded="false"
+                                    clockwise="true"
+                                    responsive="true"
+                                    duration="800"
+                                    animation="easeInOutQuart"
+                                    animation-delay="0"
+                                    on-render="showPreciseCurrent">
+                            </round-progress>
+                        </div>
+                        <p class="progressbartext" >Qualitative Score</p>
+
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Candidate Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar"
+                                     isteven-omni-bar
+                                     current-value="candidateQualitative.candidateQualitativeScore"
+                                     max-value="maxQualitative.totalQualitativeScore"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{candidateQualitative.candidateQualitativeScore}}
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Max Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar" isteven-omni-bar
+                                     current-value="maxQualitative.totalQualitativeScore"
+                                     max-value="maxQualitative.totalQualitativeScore"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{maxQualitative.totalQualitativeScore}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center pad circledivshadows"  >
+                    <div class="circledivborders circledivborders3" >
+                        <div class="circlecontentposition">
+                            <div class="progress2 ng-cloak" >{{ candidateQualitative.candidateBackgroundPoints  }}</div>
+                            <round-progress
+                                    max="maxQualitative.totalBackgroundPoints"
+                                    current="candidateQualitative.candidateBackgroundPoints "
+                                    color="#02699d"
+                                    bgcolor="#eaeaea"
+                                    radius="75"
+                                    stroke="8"
+                                    semi="false"
+                                    rounded="false"
+                                    clockwise="true"
+                                    responsive="true"
+                                    duration="800"
+                                    animation="easeInOutQuart"
+                                    animation-delay="0"
+                                    on-render="showPreciseCurrent">
+                            </round-progress>
+                        </div>
+                        <p class="progressbartext" >SME & Background</p>
+
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Candidate Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar"
+                                     isteven-omni-bar
+                                     current-value="candidateQualitative.candidateBackgroundPoints "
+                                     max-value="maxQualitative.totalBackgroundPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{candidateQualitative.candidateBackgroundPoints }}
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Max Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar" isteven-omni-bar
+                                     current-value="maxQualitative.totalBackgroundPoints"
+                                     max-value="maxQualitative.totalBackgroundPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{maxQualitative.totalBackgroundPoints}}
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 text-center pad circledivshadows circledivshadows3" >
+                    <div class="circledivborders2">
+                        <div class="circlecontentposition" >
+                            <div class="progress2 ng-cloak" ng-style="getStyle()">{{ candidateQualitative.candidateCommunicationPoints }}</div>
+                            <round-progress
+                                    max="maxQualitative.totalCommunicationPoints"
+                                    current="candidateQualitative.candidateCommunicationPoints"
+                                    color="#02699d"
+                                    bgcolor="#eaeaea"
+                                    radius="75"
+                                    stroke="8"
+                                    semi="false"
+                                    rounded="false"
+                                    clockwise="true"
+                                    responsive="true"
+                                    duration="800"
+                                    animation="easeInOutQuart"
+                                    animation-delay="0"
+                                    on-render="showPreciseCurrent">
+                            </round-progress>
+                        </div>
+                        <p class="progressbartext" >Communication</p>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Candidate Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar"
+                                     isteven-omni-bar
+                                     current-value="candidateQualitative.candidateCommunicationPoints"
+                                     max-value="maxQualitative.totalCommunicationPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{candidateQualitative.candidateCommunicationPoints}}
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Max Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar" isteven-omni-bar
+                                     current-value="maxQualitative.totalCommunicationPoints"
+                                     max-value="maxQualitative.totalCommunicationPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{maxQualitative.totalCommunicationPoints}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-lg-offset-2 col-md-offset-2 col-sm-6 col-xs-6 text-center pad circledivshadows2 circledivshadows4" >
+                    <div class="circledivborders circledivborders3 ">
+                        <div class="circlecontentposition">
+                            <div class="progress2 ng-cloak" ng-style="getStyle()">{{ candidateQualitative.candidateSocialSkillPoints }}</div>
+                            <round-progress
+                                    max="maxQualitative.totalSocialSkillPoints"
+                                    current="candidateQualitative.candidateSocialSkillPoints"
+                                    color="#02699d"
+                                    bgcolor="#eaeaea"
+                                    radius="75"
+                                    stroke="8"
+                                    semi="false"
+                                    rounded="false"
+                                    clockwise="true"
+                                    responsive="true"
+                                    duration="800"
+                                    animation="easeInOutQuart"
+                                    animation-delay="0"
+                                    on-render="showPreciseCurrent">
+                            </round-progress>
+                        </div>
+                        <p class="progressbartext" >Social Skills & Situational Empathy</p>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Candidate Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar"
+                                     isteven-omni-bar
+                                     current-value="candidateQualitative.candidateSocialSkillPoints"
+                                     max-value="maxQualitative.totalSocialSkillPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{candidateQualitative.candidateSocialSkillPoints}}
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Max Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar" isteven-omni-bar
+                                     current-value="maxQualitative.totalSocialSkillPoints"
+                                     max-value="maxQualitative.totalSocialSkillPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{maxQualitative.totalSocialSkillPoints}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-lg-offset-0 col-md-4 col-md-offset-0  col-sm-6 col-sm-offset-3 col-xs-6 col-xs-offset-3 text-center pad circledivshadows4" >
+                    <div class="circledivborders2 circledivborders3 ">
+                        <div class="circlecontentposition">
+                            <div class="progress2 ng-cloak" ng-style="getStyle()">{{ candidateQualitative.candidateLeadershipPoints }}</div>
+                            <round-progress
+                                    max="maxQualitative.totalLeadershipPoints"
+                                    current="candidateQualitative.candidateLeadershipPoints"
+                                    color="#02699d"
+                                    bgcolor="#eaeaea"
+                                    radius="75"
+                                    stroke="8"
+                                    semi="false"
+                                    rounded="false"
+                                    clockwise="true"
+                                    responsive="true"
+                                    duration="800"
+                                    animation="easeInOutQuart"
+                                    animation-delay="0"
+                                    on-render="showPreciseCurrent">
+                            </round-progress>
+                        </div>
+                        <p class="progressbartext" >Leadership and Management</p>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12  pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Candidate Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar"
+                                     isteven-omni-bar
+                                     current-value="candidateQualitative.candidateLeadershipPoints"
+                                     max-value="maxQualitative.totalLeadershipPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{candidateQualitative.candidateLeadershipPoints}}
+                                </div>
+                            </div>
+                        </div>
+                        <div  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad" >
+                            <div  class="col-lg-5 col-md-6 col-sm-5 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 pad scoretext " >
+                                <p  >Max Score</p>
+                            </div>
+                            <div  class="col-lg-7 col-md-6 col-sm-7 col-xs-10 col-xs-offset-1 col-sm-offset-0 col-md-offset-0 col-lg-offset-0 progressLineardemoBasicUsage" >
+                                <div class="linearProgressbar" isteven-omni-bar
+                                     current-value="maxQualitative.totalLeadershipPoints"
+                                     max-value="maxQualitative.totalLeadershipPoints"
+                                     current-style="loadingCurrent1"
+                                     container-style="loadingBarStyle1">{{maxQualitative.totalLeadershipPoints}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ul>
+        <div ng-if="!candidateScore" style="min-height: 280px;" class="clearfix">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!membershipTaken&&!alreadyAlertSent">
+                <div class="text-center">
+                    <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextRight ">
+                        <button type="submit" class="sbmt-btn text-center" style="padding: 10px 5px" ng-click="sendAlert()">SEND ALERT FOR SCORES</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextLeft">
+                        <button type="submit"  class="sbmt-btn text-center" style="padding: 10px 5px"  ng-click="payForCandidate()">PAY FOR <span style="text-transform: uppercase;color: #fff;">{{profile.firstName}}</span> </button>
+                        <p>(this will allow you to pay for {{profile.firstName}} {{profile.lastName}})</p>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="membershipTaken&&!alreadyAlertSent">
+                <div class="text-center">
+                    <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextRight ">
+                        <button type="submit" class="sbmt-btn text-center" style="padding: 10px 5px"  ng-click="sendAlert()">SEND ALERT FOR SCORES</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextLeft">
+                        <button type="submit"  class="sbmt-btn text-center" style="padding: 10px 5px;background-color: rgba(79, 95, 114, 0.62);" disabled>PAY FOR <span style="text-transform: uppercase;color: #fff;">{{profile.firstName}}</span> </button>
+                        <p>(this will allow you to pay for {{profile.firstName}} {{profile.lastName}})</p>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="membershipTaken&&alreadyAlertSent">
+                <div class="text-center">
+                    <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextRight ">
+                        <button type="submit" class="sbmt-btn text-center" style="padding: 10px 5px;background-color: rgba(79, 95, 114, 0.62);" disabled>SEND ALERT FOR SCORES</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextLeft">
+                        <button type="submit"  class="sbmt-btn text-center" style="padding: 10px 5px;background-color: rgba(79, 95, 114, 0.62);" disabled>PAY FOR <span style="text-transform: uppercase;color: #fff;">{{profile.firstName}}</span> </button>
+                        <p>(this will allow you to pay for {{profile.firstName}} {{profile.lastName}})</p>
+                    </div>
+                </div>
+            </div>
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!membershipTaken&&alreadyAlertSent">
+                <div class="text-center">
+                    <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Want to pay for {{profile.firstName}} {{profile.lastName}}.<br><br></h4>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" >
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextRight ">
+                        <button type="submit" title="Alert already sent." class="sbmt-btn text-center" style="padding: 10px 5px;background-color: rgba(79, 95, 114, 0.62);" disabled>SEND ALERT FOR SCORES</button>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 aggregatedTextLeft">
+                        <button type="submit"  class="sbmt-btn text-center" style="padding: 10px 5px" ng-click="payForCandidate()">PAY FOR <span style="text-transform: uppercase;color: #fff;">{{profile.firstName}}</span> </button>
+                        <p>(this will allow you to pay for {{profile.firstName}} {{profile.lastName}})</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
