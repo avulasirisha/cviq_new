@@ -1,6 +1,6 @@
 /*=============== Candidate Section Css Rules ======================*/
 
-.ProfileFormElements .main-dropdown button{ margin: 0 0 10px; border-radius: 3px; border: solid 1px #dedede; padding: 25px 10px 10px 10px; font-size: 13px; width: 100%; color: #4f5f72; letter-spacing: 1px; background: #fff url("../images/arrow-below.png") no-repeat 97%; }
+.notificationCounter {position: absolute;font-style: normal;right: -15px;padding: 2px 0 0 0;top: -10px;display: inline;background: #ff0000;border-radius: 50%;color: #fff;font-size: 11px;width: 18px;height: 18px;text-align: center;}.ProfileFormElements .main-dropdown button{ margin: 0 0 10px; border-radius: 3px; border: solid 1px #dedede; padding: 25px 10px 10px 10px; font-size: 13px; width: 100%; color: #4f5f72; letter-spacing: 1px; background: #fff url("../images/arrow-below.png") no-repeat 97%; }
 .ProfileFormElements .main-dropdown label{ z-index: 9;}
 .ProfileFormElements .main-dropdown button span{ font-weight: normal; color: #4f5f72; font-size: 12px; font-family: 'Graphik-Regular';  opacity: 0.9;   }
 .ProfileFormElements .main-dropdown .bs-searchbox input{ padding: 0 10px;}

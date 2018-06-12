@@ -34,8 +34,9 @@
             </div>
             <div class="menu-sec">
 
-                <img class="bell" ng-src="{{notification.length > 0 ? 'images/notify_red.png' : 'images/notify.png'}}" onclick="$('.notification').toggleClass('displayDropDown');" />
-                <div class="notification" ng-if="notification.length > 0">
+                <img class="bell" ng-init="imgSRC='images/notify.png'; imgSRC1='images/notify_red.png'" ng-click="imgSRC1='images/notify.png';" ng-src="{{notification.length > 0 ? imgSRC1 : imgSRC}}" onclick="$('.notification').toggleClass('displayDropDown');" />
+                    <i class="notificationCounter" ng-if="imgSRC1=='images/notify_red.png' && notification.length > 0">{{notification.length}}</i>
+               <div class="notification" ng-if="notification.length > 0">
                     <ul>
                         <li ng-repeat="n in notification track by $index">{{n}}</li>
                     </ul>
