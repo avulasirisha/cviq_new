@@ -54,7 +54,7 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
         .success(function(response){
             console.log("profile details",response.data);
             $scope.profile =  response.data;
-
+            $scope.membership = response.data.membershipTaken;
             $rootScope.loading=false;
             $timeout(function(){
                 $('.selectpicker').selectpicker('refresh');

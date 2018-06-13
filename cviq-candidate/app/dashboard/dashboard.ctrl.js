@@ -21,9 +21,6 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
         })
 
         $scope.variable = $state.params.variable;
-
-        console.log('$scope.userData', $scope.userData);
-
         $scope.pstatus = [
             {
                 desc:'Actively Looking',
@@ -39,7 +36,7 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
             }
         ]
 
-        $scope.profileStatus = $scope.userData.profileStatus;
+        $scope.profileStatus = $scope.userData.status;
 
         $('#upload-resume').click(function () {
             $('#resume').click();

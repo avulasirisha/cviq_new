@@ -7,6 +7,34 @@ angular.module('Cviq').controller('createNewJobCtrl', ['$scope','$rootScope','ng
         }
 
 
+
+          $http({
+             method:'GET',
+             url: CONSTANT.apiUrl +'/api/recruiter/checkStatus',
+             headers:{
+                authorization: $cookieStore.get('AccessToken')
+             }
+             }).success(function (response) {
+             console.log("response success",response.data);
+                if( response.data != 'success' ){
+                       bootbox.alert( response.data );  
+                       $state.go('home.upgradePackage');
+                }
+
+             })
+             .error(function (response) {
+                console.log("response error",response);
+                 bootbox.alert( response.message );  
+                 $state.go('home.upgradePackage');
+
+             })
+
+
+
+
+
+
+
         $('body, html').animate({
             scrollTop: 0
         }, 10);

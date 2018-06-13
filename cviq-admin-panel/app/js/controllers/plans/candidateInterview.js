@@ -36,7 +36,7 @@ App.controller('CandidateInterviewController', function ($scope, $http, $route, 
 
         })
         .error(function(response){
-            bootbox.alert(response.message);
+            bootbox.alert(response.error);
             if(response.statusCode == 401){
                 $cookieStore.remove('obj');
                 $cookieStore.remove('email');

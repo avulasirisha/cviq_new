@@ -122,7 +122,7 @@
                     <div class="borderAsLine"></div>
                 </div>
                 <section class="inboxMenu" style="position: relative">
-                    <div class="text-center"><button class="btn createNewJobBtn" id="createNewJob" ui-sref="home.createNewJob"  ng-click="var = 'JOBS'" ng-class="{'selected': var == 'JOBS'}">CREATE NEW JOB &nbsp<i class="fa fa-plus" aria-hidden="true"></i></button></div>
+                    <div class="text-center"  ng-if="membership" ><button class="btn createNewJobBtn" id="createNewJob" ui-sref="home.createNewJob"  ng-click="var = 'JOBS'" ng-class="{'selected': var == 'JOBS'}">CREATE NEW JOB &nbsp<i class="fa fa-plus" aria-hidden="true"></i></button></div>
                     <ul class="inboxMenu-inner">
                         <li ng-click="variable='RECENT'" ng-class="{'act': variable == 'RECENT'}"><a ui-sref="home.dashboard.recentlyPostedJobs">Recently Posted Jobs</a></li>
                         <li ng-click="variable='SCHEDULED'" ng-class="{'act': variable == 'SCHEDULED'}"><a ui-sref="home.dashboard.scheduledJobs">Scheduled Jobs </a></li>
