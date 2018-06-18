@@ -170,6 +170,26 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
 
                  //console.log('event', event);
 
+
+                    var Archive_data = {
+                        'interview_id' : $scope.interviewData._id,
+                        'session_id' :sessionId
+                    }
+                    $http({
+                        method:'POST',
+                        url: CONSTANT.apiUrl + '/api/interviewer/InterviewArchive',
+                        headers:{
+                            authorization: $cookieStore.get('AccessToken')
+                        },
+                        data:Archive_data
+                    })
+                        .success(function(response){
+                            console.log('Interview Archive',response);
+                        })
+                        .error(function(response){
+                            console.log(response);
+                        })
+
                  //$http({
                  //    method:'POST',
                  //    url: CONSTANT.apiUrl+'/api/common/saveArchiveId',
