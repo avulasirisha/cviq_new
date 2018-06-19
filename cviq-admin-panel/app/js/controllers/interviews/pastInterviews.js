@@ -106,8 +106,8 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
 
 
                     d.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
-                    d.interviewerEmail = column.interviewerID._id;
-                    d.interviewerId = column.interviewerID.email;
+                    d.interviewerEmail = column.interviewerID.email;
+                    d.interviewerId = column.interviewerID._id;
                     d.interviewerName = column.interviewerID.firstName + ' ' + column.interviewerID.lastName;
                     d.interviewerPhoneNo = column.interviewerID.countryCode + '-' + column.interviewerID.phoneNo;
 
