@@ -38,20 +38,21 @@ App.controller('CandidateActiveController', function ($rootScope,$scope, $http, 
 
     $http({
         method: 'GET',
-        url: MY_CONSTANT.url_cviq + '/api/admin/getCandidatePromoList',
+        url: MY_CONSTANT.url_cviq + '/api/admin/getPromoList',
         headers:{
             'authorization':$cookieStore.get("obj").accessToken,
             'Content-type': 'application/x-www-form-urlencoded'
-        }
+        },
+        params:{ 'type':'CANDIDATE','isactive':true  }
     })
         .success(function(data){
             $scope.showloader=false;
-            console.log("Promo list",data.data.activeCodeList);
+            console.log("Promo list",data.data.CodeList);
             $rootScope.loading = false;
             $scope.mainId = data.data._id;
 
             var dataArray = [];
-            var List = data.data.activeCodeList;
+            var List = data.data.CodeList;
 
             List.forEach(function (column) {
                 var d = {};

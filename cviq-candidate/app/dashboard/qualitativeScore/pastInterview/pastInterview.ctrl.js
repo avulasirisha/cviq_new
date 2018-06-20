@@ -28,13 +28,19 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
                 console.log('Past Interview Success', response);
 
                 $scope.numberOFInterviews = response.data.totalCount;
-
+               
                 if(response.data.interviewList.length >= 1){
 
+                    angular.forEach( response.data.interviewList , function (value, key) {
+                          response.data.interviewList[key].interviewStartDate =  new Date( response.data.interviewList[key].interviewStartDate );
+                    });
                     $scope.interviewLIsts = response.data.interviewList;
                     console.log('$scope.interviewLIsts', $scope.interviewLIsts);
-                    $scope.numberOFInterviews = response.data.totalCount;
+                    
+                    
 
+                    $scope.numberOFInterviews = response.data.totalCount;
+                  
 
                     $scope.filteredData = [],
                         $scope.currentPage = data,

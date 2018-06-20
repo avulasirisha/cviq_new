@@ -21,7 +21,7 @@ App.controller('CandidateInterviewController', function ($scope, $http, $route, 
 
     $http({
         method: 'GET',
-        url: MY_CONSTANT.url_cviq + '/api/admin/getAppConstants',
+        url: MY_CONSTANT.url_cviq + '/api/admin/getInterviewCharge',
         headers:{
             'Content-type': 'application/x-www-form-urlencoded'
         }
@@ -68,7 +68,7 @@ App.controller('CandidateInterviewController', function ($scope, $http, $route, 
 
         $http({
             method: 'POST',
-            url: MY_CONSTANT.url_cviq + '/api/admin/manageAppConstants',
+            url: MY_CONSTANT.url_cviq + '/api/admin/ManageInterviewCharge',
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,
                 'Content-type': 'application/x-www-form-urlencoded'

@@ -163,7 +163,7 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
                     {
                         "amount":
                         {
-                            "total": 1, //$scope.interviewAmount,
+                            "total": $scope.interviewAmount,
                             "currency": "USD"
                         },
                         "description": "This is the payment transaction description."
