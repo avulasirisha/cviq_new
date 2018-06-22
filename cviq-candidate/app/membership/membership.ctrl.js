@@ -176,7 +176,8 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
                 //$state.go('home.dashboard.qualitativeScore.pastInterview',{},{ reload:true });
 
                 var buyMembershipData = {
-                    paymentID: response.id
+                    paymentID: response.id,
+                    amount : $scope.interviewAmount
                 };
 
                 if($scope.appliedPromoCode != undefined){

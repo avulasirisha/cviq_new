@@ -208,7 +208,8 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
 
                     var promodata = {
                         "membershipPlanID": $scope.package._id,
-                        "paymentID": response.id
+                        "paymentID": response.id ,
+                        "amount":  payment
                     }
                     
                     if( $scope.promoApplied){
@@ -415,6 +416,7 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
                     bootbox.alert("Promo Applied Successfully");
                 })
                 .error(function (response) {
+                    bootbox.alert( response.message);
                     console.log('Apply Promo Code Error', response);
                 })
         

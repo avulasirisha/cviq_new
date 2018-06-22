@@ -208,7 +208,7 @@ angular.module('Cviq').controller('candidateGateway', ['$scope','$rootScope','ng
                             $rootScope.loading = false;
                             console.log(response);
                             
-                           bootbox.alert("Payment successful");
+                            bootbox.alert("Payment successful");
                             $state.go("home.dashboard.recentlyPostedJobs", {}, {reload: true});
 
 

@@ -167,7 +167,7 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
         console.log('$scope.emittedData', $scope.emittedData.aggregatedScoreResponse.length);
 
 
-    //$scope.labels = ["0","Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4"];
+   // $scope.labels = ["0","Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4"];
     $scope.labels = [];
     $scope.series = ['Aggregated Score'];
 
@@ -176,10 +176,12 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
         ];
 
         $scope.aggregatedScore = [];
-        
+         var ag = 1;
         angular.forEach($scope.emittedData.aggregatedScoreResponse, function (cords) {
-            $scope.aggregatedScore.push(cords.aggregateScore);
-            $scope.labels.push(moment(cords.interviewDate).format('Do MMM, YYYY'));
+            $scope.aggregatedScore.push(cords);
+             $scope.labels.push( "I"+ag);
+             ag  =ag+1
+            //$scope.labels.push(moment(cords.interviewDate).format('Do MMM, YYYY'));
         });
 
         console.log('$scope.labels', $scope.labels);
@@ -277,7 +279,8 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
                 $timeout(function () {
                     bootbox.alert(response.message);
                 },0);
-                $state.reload();
+                $scope.userData.linkedInProfileLink = linkedinUrl.url;
+               // $state.reload();
 
             })
             .error(function(response){
