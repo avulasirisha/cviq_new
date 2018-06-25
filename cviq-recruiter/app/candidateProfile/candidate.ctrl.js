@@ -12,6 +12,7 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
 
     $scope.data = {};
     $scope.data.candidateID = candArray[1];
+     $scope.labels =[];
 
 
     var state =  candArray[0].split('/');
@@ -83,13 +84,21 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
                 $scope.data = [
                     []
                 ];
-
+                
+                var ag = 1;
+                console.log( "step1");
+                angular.forEach(response.data.candidateAggregatedScoreArr , function (cords) {
+                   $scope.labels.push( "I"+ag);
+                   ag  =ag+1
+                  //$scope.labels.push(moment(cords.interviewDate).format('Do MMM, YYYY'));
+                });
+                $scope.newLabels = $scope.labels.reverse();
+                $scope.labels = [];
                 var count = 0;
                 $scope.graphArray =  $scope.graphArray.reverse();
                 console.log('newCoordinates',  $scope.graphArray);
 
                 for(var i=0; i<= $scope.graphArray.length; i++ ){
-
                     ++count;
                     if(count <=  $scope.graphArray.length && count <= 4){
                         $scope.data[0].push( $scope.graphArray[i]);
@@ -100,6 +109,19 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
                         break;
                     }
                 }
+           var count1 =0;    
+            for(var j=0; j<=$scope.newLabels.length; j++ ){
+
+              ++count1;
+              if(count1 <= $scope.newLabels.length && count1 <= 4){
+                  $scope.labels.push($scope.newLabels[j]);
+              } else {
+                  $scope.labels.reverse();
+                  console.log('ELSE PART');
+                  $scope.labels.unshift(0);
+                  break;
+              }
+        }
 
                 console.log('$scope.data', $scope.data);
 
@@ -167,12 +189,13 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
     };
 
 
-    $scope.labels = ["0","Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4"];
+   // $scope.labels = ["0","Attempt 1", "Attempt 2", "Attempt 3", "Attempt 4"];
     $scope.series = ['Aggregated Score'];
     $scope.onClick = function (points, evt) {
         console.log(points, evt);
     };
 
+      
     // // Simulate async data update
     $timeout(function () {
 
