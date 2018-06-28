@@ -9,6 +9,9 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
             start:0,
             limit:10
         }
+        $scope.ratings = {};
+        
+        $scope.reviewdata ={}; 
         console.log('page number', data);
 
         if(data && data > 1) {
@@ -40,6 +43,12 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
                     
 
                     $scope.numberOFInterviews = response.data.totalCount;
+                  
+                      $scope.ratings = [{
+                          current: 1,
+                          max: 5
+                      }];
+
                   
 
                     $scope.filteredData = [],
@@ -142,6 +151,12 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
         
     }
 
+   
+    $scope.rateToCandidate;
+    $scope.getSelectedRating = function (rating) {
+        console.log(rating);
+        $scope.rateToCandidate = rating;
+    }
         //$scope.openPdf = function() {
         //    console.log('OPEN');
         //    pdfMake.createPdf(docDefinition).open();
@@ -151,6 +166,70 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
         //    console.log('DOWNLOAD');
         //    pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
         //};
-
+  $scope.submit_reviews =function( id ){
+     
+     if(  id.description != '' ){      
+       var data  = {
+          'description': id.description,
+          'rating' : id.ratings,
+          'interviewerID':id.interviewerID._id ,
+          'interviewID':   id._id
+       } ;
+        $http({
+            method: 'POST',
+            url: CONSTANT.apiUrl + '/api/candidate/submitCandidateRating',
+            headers: {
+                authorization: $cookieStore.get('AccessToken')
+            },
+            data:data
+        })
+        .success(function(response){
+            console.log('Past Interview Success', response);
+        }).error(function(response){
+                
+        });
+     
+     }
+  }
 
 }]);
+
+angular.module('Cviq').directive('starRating', function () {
+    return {
+        restrict: 'A',
+        template: '<ul class="rating1">' +
+        '<li ng-repeat="star in stars" ng-class="star" ng-click="toggle($index)">' +
+        '\u2605' +
+        '</li>' +
+        '</ul>',
+        scope: {
+            ratingValue: '=',
+            max: '=',
+            onRatingSelected: '&'
+        },
+        link: function (scope, elem, attrs) {
+
+            var updateStars = function () {
+                scope.stars = [];
+                for (var i = 0; i < scope.max; i++) {
+                    scope.stars.push({
+                        filled: i+1 < scope.ratingValue
+                    });
+                }
+            };
+
+            scope.toggle = function (index) {
+                scope.ratingValue = index + 2;
+                scope.onRatingSelected({
+                    rating: index + 1
+                });
+            };
+
+            scope.$watch('ratingValue', function (oldVal, newVal) {
+                if (newVal) {
+                    updateStars();
+                }
+            });
+        }
+    }
+});

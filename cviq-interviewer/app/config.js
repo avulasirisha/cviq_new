@@ -73,6 +73,22 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var: 'RATING'
             }
         })
+        .state('home.inbox',{
+            url:'/inbox',
+            templateUrl:'app/inbox/inbox.html',
+            controller:'inboxCtrl',
+            params:{
+                var:'INBOX'
+            }
+        })
+        .state('home.inboxMessages',{
+            url:'/inboxMessages/:id',
+            templateUrl:'app/inbox/inbox_messages/inboxMessages.html',
+            controller:'inboxMessagesCtrl',
+            params:{
+                var:'INBOX'
+            }
+        })
         .state('home.skypeInterview',{
             url:'/skypeInterview',
             templateUrl:'app/skypeInterview/skypeInterview.view.html',

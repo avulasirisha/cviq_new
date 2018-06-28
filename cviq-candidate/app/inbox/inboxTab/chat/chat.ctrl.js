@@ -42,9 +42,20 @@ angular.module('Cviq').controller('chatCtrl', ['$scope','$rootScope','ngDialog',
         console.log($scope.message);
 
         var messageData = new FormData;
+                                                               
+        if( $scope.allConversationalMessages.interviewerID != undefined ){      
+            messageData.append('interviewerID', $scope.allConversationalMessages.interviewerID._id);
+            var A_URL  =  CONSTANT.apiUrl + '/api/candidate/messageToInterviewer';
+            messageData.append('_id', $scope.allConversationalMessages._id);
+        }else{
+        
+            messageData.append('recruiterID', $scope.allConversationalMessages.recruiterID._id);
+            var A_URL  =  CONSTANT.apiUrl + '/api/candidate/messageToRecruiter';
+            messageData.append('inboxID', $scope.allConversationalMessages._id);
+        }
 
-        messageData.append('inboxID', $scope.allConversationalMessages._id);
-        messageData.append('recruiterID', $scope.allConversationalMessages.recruiterID._id);
+
+
 
         if($scope.message != undefined){
             messageData.append('message', $scope.message);
@@ -60,7 +71,7 @@ angular.module('Cviq').controller('chatCtrl', ['$scope','$rootScope','ngDialog',
 
         $http({
             method: 'POST',
-            url: CONSTANT.apiUrl + '/api/candidate/messageToRecruiter',
+            url: A_URL,
             headers: {
                 authorization: $cookieStore.get('AccessToken'),
                 'Content-type': undefined
@@ -78,6 +89,8 @@ angular.module('Cviq').controller('chatCtrl', ['$scope','$rootScope','ngDialog',
             })
     }
 
+
+    
     /*=============================End: Send Message to recruiter ================================*/
     
     $scope.changeAttach = function () {

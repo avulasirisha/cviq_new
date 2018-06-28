@@ -71,14 +71,38 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
     $scope.toggle = function(){
         $('.menu-sec').slideToggle();
     }
+    
+    $scope.call_notification = function(){
+        $('.notification').toggleClass('displayDropDown');
+        $http({
+            method:'GET',
+            url: CONSTANT.apiUrl + '/api/common/NotificationTimer',
+            params:{ userType:'INTERVIEWER' },
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            }
+        })
+        .success(function(response){
+                console.log(response);
+        })
+        .error(function(response){
+                console.log(response);
+        })
+    }
+
+
 
 
     /*=============================Start: Get Interviewer Profile Function ================================*/
 
     $scope.userCompleteData = $cookieStore.get('UserDetails');
     
-    $scope.goToNewRequest = function () {
-        $state.go('home.interview.new',{}, {reload: true});
+    $scope.goToNewRequest = function ( t ) {
+        if( t == 9 ){
+            $state.go('home.inbox',{}, {reload: true});
+        }else{
+            $state.go('home.interview.new',{}, {reload: true});
+        }
     }
 
     /*=============================End: Get Interviewer Profile Function ================================*/
@@ -100,7 +124,7 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
 
     socket.on('newRequestToInterviewer', function (data) {
         console.log('newRequestToInterviewer', data);
-        $scope.notification.push(data.message.notificationMsg);
+        $scope.notification.push(data.message);
         $scope.$apply();
 
         console.log('$scope.notification', $scope.notification);
@@ -109,14 +133,45 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
     
     socket.on('messageToRecruiter', function (data) {
         console.log('messageToRecruiter', data);
-        $scope.notification.push(data.message.notificationMsg);
+        $scope.notification.push(data.message);
         $scope.$apply();
 
         console.log('$scope.notification', $scope.notification);
 
     });
+   
+    socket.on('messageToInterviewer', function (data) {
+        console.log('messageToInterviewer', data);
+        $scope.notification.push(data.message);
+        $scope.$apply();
 
-
+    });
+    
+      $http({
+            method:'GET',
+            url: CONSTANT.apiUrl + '/api/common/getnewNotifications',
+            params:{ userType:'INTERVIEWER'},
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            }
+        })
+        .success(function(response){
+            console.log( response.data );
+            var Data = response.data;
+            if( Data.length > 0 ){
+                    for( i in Data ){
+                        console.log( Data[i]);
+                        $scope.notification.push({
+                            message: Data[i].notificationMsg,
+                            notificationType: Data[i].notificationType
+                        });     
+                    }  
+                    $scope.$apply(); 
+            }
+        })
+        .error(function(response){
+                console.log(response);
+        })
     /*=============================End: Interview notification through socket ================================*/
 
 }]);

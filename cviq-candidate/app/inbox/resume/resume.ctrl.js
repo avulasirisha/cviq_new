@@ -6,6 +6,11 @@ angular.module('Cviq').controller('resumeCtrl', ['$scope','$rootScope','ngDialog
     }
 
     $scope.userData = JSON.parse(localStorage.getItem('UserDetails'));
+    
+    if( $scope.userData.membershipTaken == false ){
+            bootbox.alert("Please buy membership to update your resume");
+            $state.go('home.membership');
+    }
 
     /*=============================Start: Get Matched Jobs ================================*/
 

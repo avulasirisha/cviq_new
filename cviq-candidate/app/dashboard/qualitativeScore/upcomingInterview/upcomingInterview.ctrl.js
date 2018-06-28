@@ -97,6 +97,90 @@ angular.module('Cviq').controller('upcomingInterviewCtrl', ['$scope','$rootScope
             })
 
     }
+    
+    $scope.start_chat = function () {
+        $scope.message = {};
+        $("#message").modal();
+    };
+
+    $('#messagefile').change(function () {
+        $scope.attached = true;
+        $scope.attachmentName = $('#messagefile')[0].files[0].name;
+        console.log("hello",$('#messagefile')[0].files[0].name);
+        $scope.$apply();
+    });
+
+    
+    $scope.sendMessage = function () {
+        // $rootScope.loading = true;
+        $scope.message.attachment = $('#messagefile')[0].files[0];
+
+        $scope.messageModalError = false;
+        $scope.messageModalTitleError = false;
+
+        if($scope.message.messageTitle == undefined || $scope.message.messageTitle.length < 2){
+            // $rootScope.loading = false;
+            $scope.messageModalTitleError = true;
+        }
+        if( ($scope.message.message == undefined || $scope.message.message.length < 2)&& $scope.message.attachment == undefined ){
+            $scope.messageModalError = true;
+            // $rootScope.loading = false;
+        }
+        if(!($scope.message.messageTitle == undefined || $scope.message.messageTitle.length < 2) && !( ($scope.message.message == undefined || $scope.message.message.length < 2)&& $scope.message.attachment == undefined )){
+
+           $rootScope.loading = true;
+
+            
+            $scope.message._id = '';
+            $scope.message.interviewerId = $scope.upcomingInterviewDetails.interviewerID._id;
+
+            console.log("file is ",$scope.message,$scope.loading);
+
+            var data = new FormData();
+
+            data.append("_id", '');
+            data.append("interviewerID", $scope.upcomingInterviewDetails.interviewerID._id );
+            data.append("message", $scope.message.message);
+            data.append("messageTitle", $scope.message.messageTitle);
+            if($scope.message.attachment != undefined)
+                data.append("attachment",$scope.message.attachment);
+
+
+            $http({
+                method:'POST',
+                url:CONSTANT.apiUrl + '/api/candidate/messageToInterviewer',
+                headers:{
+                    'authorization': $cookieStore.get('AccessToken'),
+                    'Content-type': undefined
+                },
+                data : data
+
+            })
+                .success(function(response){
+                    $rootScope.loading = false;
+
+                    console.log("success",response);
+                    bootbox.alert("Message Sent Successfully");
+                    $("#message").modal("hide");
+                    $('#messagefile').val(undefined);
+                    $scope.attachmentName = '';
+
+                })
+                .error(function(response){
+                    $rootScope.loading = false;
+                    console.log(response);
+                    bootbox.alert(response.message);
+                    $("#message").modal("hide");
+                    $('#messagefile').val(undefined);
+                    $scope.attachmentName = '';
+
+                    if(response.statusCode == 401){
+                        $scope.confirmLogOut();
+                    }
+                });
+        }
+        
+    };
 
     /*=============================End: start interviews ================================*/
 

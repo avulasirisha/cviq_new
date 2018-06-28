@@ -30,7 +30,7 @@
             </div>
             <div class="menu-sec">
                  <span class="notificationOuter">
-                    <img class="bell" ng-init="imgSRC='images/notify.png'; imgSRC1='images/notify_red.png'" ng-click="imgSRC1='images/notify.png';" ng-src="{{notification.length > 0 ? imgSRC1 : imgSRC}}" onclick="$('.notification').toggleClass('displayDropDown');" />
+                    <img class="bell" ng-init="imgSRC='images/notify.png'; imgSRC1='images/notify_red.png'" ng-click="imgSRC1='images/notify.png';call_notification()" ng-src="{{notification.length > 0 ? imgSRC1 : imgSRC}}" />
                      <i class="notificationCounter" ng-if="imgSRC1=='images/notify_red.png' && notification.length > 0">{{notification.length}}</i>
                 </span>
                 <div class="notification" ng-if="notification.length > 0">

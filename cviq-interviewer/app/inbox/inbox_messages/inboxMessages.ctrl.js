@@ -1,4 +1,4 @@
-angular.module('Cviq').controller('inboxMessagesCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','$state','$cookieStore','$timeout','$window','$location', function($scope, $rootScope, ngDialog, $http, CONSTANT, $state, $cookieStore, $timeout, $window,$location){
+angular.module('Cviq').controller('inboxMessagesCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window','$location', function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window,$location){
 
     if($cookieStore.get('AccessToken') == undefined){
         $scope.confirmLogOut();
@@ -10,23 +10,6 @@ angular.module('Cviq').controller('inboxMessagesCtrl', ['$scope','$rootScope','n
     $scope.textareaError = false;
 
     $rootScope.loading = true;
-
-    // $scope.selection = function (id) {
-    //     if(id==1){
-    //         if($scope.inbox == false){
-    //             $scope.inbox = true;
-    //             $('#inboxbutton1').toggleClass('inbox-button inbox-button-selected');
-    //             $('#inboxbutton2').toggleClass('inbox-button inbox-button-selected');
-    //         }
-    //     }
-    //     else{
-    //         if( $scope.inbox == true){
-    //             $scope.inbox = false;
-    //             $('#inboxbutton2').toggleClass('inbox-button inbox-button-selected');
-    //             $('#inboxbutton1').toggleClass('inbox-button inbox-button-selected');
-    //         }
-    //     }
-    // }
 
    $scope.data = {};
 
@@ -40,7 +23,7 @@ angular.module('Cviq').controller('inboxMessagesCtrl', ['$scope','$rootScope','n
 
     $http({
         method: 'GET',
-        url: CONSTANT.apiUrl + '/api/recruiter/getAllMessages',
+        url: CONSTANT.apiUrl + '/api/interviewer/getAllMessages',
         headers:{
             'authorization': $cookieStore.get("AccessToken")
         },
@@ -99,7 +82,7 @@ angular.module('Cviq').controller('inboxMessagesCtrl', ['$scope','$rootScope','n
 
             $http({
                 method:'POST',
-                url:CONSTANT.apiUrl + '/api/recruiter/messageToCandidate',
+                url:CONSTANT.apiUrl + '/api/interviewer/messageToCandidate',
                 headers:{
                     'authorization': $cookieStore.get('AccessToken'),
                     'Content-type': undefined
@@ -119,7 +102,7 @@ angular.module('Cviq').controller('inboxMessagesCtrl', ['$scope','$rootScope','n
 
                     $http({
                         method: 'GET',
-                        url: CONSTANT.apiUrl + '/api/recruiter/getAllMessages',
+                        url: CONSTANT.apiUrl + '/api/interviewer/getAllMessages',
                         headers:{
                             'authorization': $cookieStore.get("AccessToken")
                         },

@@ -12,6 +12,10 @@
                 <span class="pull-left att" style="width: 100%" ng-if="all.attachment != ''"><a href="{{all.attachment}}" download>{{all.attachmentName}}</a></span>
                 <span class="date">{{all.addedAt | date: 'MMMM dd, yyyy'}}</span>
             </p>
+               <p class="candidateMessageToRecruiter clearfix" ng-if="all.messageTo == 'INTERVIEWER'">{{all.message}}
+                <span class="pull-left att" style="width: 100%" ng-if="all.attachment != ''"><a href="{{all.attachment}}" download>{{all.attachmentName}}</a></span>
+                <span class="date">{{all.addedAt | date: 'MMMM dd, yyyy'}}</span>
+            </p>
         </div>
 
         <form name="replyForm" ng-submit="replyForm.$valid&&sendMessage()" class="replyForm" novalidate>

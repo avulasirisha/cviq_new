@@ -46,6 +46,19 @@ angular.module('Cviq').controller('matchedJobsCtrl', ['$scope','$rootScope','ngD
             })
 
     }
+    
+
+    $scope.jobDetails = function(response){
+        var member = JSON.parse( localStorage.getItem("UserDetails") )['membershipTaken'] ;
+        console.log( "member + " + member );
+        if( member == true ){
+            $cookieStore.put('JobID', response);
+            $state.go('home.inbox.jobDetails');
+        }else{
+                bootbox.alert('please take membership to see all details');
+        }
+    }
+
 
 
     /*=============================End: Get candidate matched Jobs ================================*/

@@ -137,6 +137,24 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
     //    $scope.$apply();
     //
     //});
+    $scope.call_notification = function(){
+        $('.notification').toggleClass('displayDropDown');
+        $http({
+            method:'GET',
+            url: CONSTANT.apiUrl + '/api/common/NotificationTimer',
+            params:{ userType:'CANDIDATE' },
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            }
+        })
+        .success(function(response){
+                console.log(response);
+        })
+        .error(function(response){
+                console.log(response);
+        })
+    }
+
 
     socket.on('onInterviewAcceptDecline', function (data) {
         console.log('onInterviewAcceptDecline', data);
@@ -170,5 +188,30 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
 
     /*=============================End: Interview notification through socket ================================*/
 
+        $http({
+            method:'GET',
+            url: CONSTANT.apiUrl + '/api/common/getnewNotifications',
+            params:{ userType:'CANDIDATE' },
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            }
+        })
+        .success(function(response){
+            console.log( response.data );
+            var Data = response.data;
+            if( Data.length > 0 ){
+                    for( i in Data ){
+                        console.log( Data[i]);
+                        $scope.notification.push({
+                            message: Data[i].notificationMsg,
+                            notificationType: Data[i].notificationType
+                        });     
+                    }  
+                    $scope.$apply(); 
+            }
+        })
+        .error(function(response){
+                console.log(response);
+        })
 
-}]);
+}]);    

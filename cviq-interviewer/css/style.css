@@ -1097,7 +1097,33 @@ input.designation{ background: none; border: none; text-align: center; font-size
     font-size: 12px;
     margin-top: 6px;
 }
+/** gopi **/
+.inboxMessageDescription textarea {
+    border: 1px solid #dedede;
+    padding: 10px 10px 5px;
+    border-radius: 3px;
+    width: 100%;
+    font-size: 14px;
+    min-height: 110px;
+}
 
+.attachlabel {
+    cursor: pointer;
+    float: right;
+    font-size: 14px;
+    font-weight: normal;
+    margin-top: 5px;
+}
+.inboxThreadButton {
+    border-radius: 3px;
+    background-color: #0297cf;
+    color: #fff;
+    display: inline-block;
+    text-align: center;
+    padding: 2px 15px;
+    font-size: 15px;
+    border: none;
+}
 
 /*======================== Custom rating css rules =======================*/
 .rate-candidate-interview{

@@ -7,7 +7,7 @@ angular.module('Cviq').controller('jobDetailsCtrl', ['$scope','$rootScope','ngDi
     /*=============================Start: Get complete job details ================================*/
 
     $scope.selJobID = $cookieStore.get('JobID');
-
+    
     $scope.selectedJobID ={
         jobID:$scope.selJobID
     }
@@ -98,14 +98,15 @@ angular.module('Cviq').controller('jobDetailsCtrl', ['$scope','$rootScope','ngDi
     /*=============================End: Get Recently Searched Jobs ================================*/
 
 
-    $scope.jobDetails = function(response){
-        $cookieStore.put('JobID', response);
-        $timeout(function(){
-            $state.reload('home.inbox.jobDetails');
-        }, 0);
-        $rootScope.scrollToTop();
+    $scope.jobDetails = function(response){     
+        $cookieStore.put('JobID', response);     
 
-        $state.go('home.inbox.jobDetails');
+            $timeout(function(){
+                $state.reload('home.inbox.jobDetails');
+            }, 0);
+            $rootScope.scrollToTop();
+    
+            $state.go('home.inbox.jobDetails');
     }
 
 

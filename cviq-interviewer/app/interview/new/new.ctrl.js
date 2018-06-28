@@ -82,7 +82,11 @@ angular.module('Cviq').controller('newCtrl', ['$scope','$rootScope','$cookieStor
             })
     }
 
-    $scope.declineInterview = function (data) {
+    $scope.declineInterview = function () {
+    
+        if( ($scope.message.message == undefined || $scope.message.message.length < 2)&& $scope.message.attachment == undefined ){
+            $scope.messageModalError = true;
+        }else{
 
         $http({
             method: 'PUT',
@@ -91,25 +95,33 @@ angular.module('Cviq').controller('newCtrl', ['$scope','$rootScope','$cookieStor
                 authorization: $cookieStore.get('AccessToken')
             },
             data:{
-                "interviewID": data,
-                "interviewerResponse": false
+                "interviewID": $scope.message.interviewID,
+                "interviewerResponse": false ,
+                "feedback": $scope.message.message
             }
-        })
-            .success(function(response){
-                console.log('Success', response);
-                bootbox.alert("Interview request has been rejected.");
-                $state.reload('home.interview.new');
-
-            })
-            .error(function(response){
+            }).success(function(response){
+                    console.log('Success', response);
+                    bootbox.alert("Interview request has been rejected.");
+                    $state.reload('home.interview.new');
+    
+            }).error(function(response){
                 console.log(response);
                 bootbox.alert(response.message);
                 if(response.statusCode == 401){
                     $rootScope.sessionExpired();
                 }
-            })
+            })  
+        }
     }
 
     /*=============================End: accept or decline interview ================================*/
+    
+    $scope.messageCandidate = function ( data ) {
+        $scope.message = {};
+        $scope.message.interviewID = data;
+        $("#message").modal();
+    };
+    
+   
 
 }]);

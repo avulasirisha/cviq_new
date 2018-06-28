@@ -107,6 +107,11 @@
                                         <span ng-show="predicate == 'status' && reverse" class="fa fa-caret-up"></span>
                                     </div>
                                 </th>
+                                <th style="min-width:160px">
+                                    <div style="text-align:center;" >
+                                       Video charts
+                                    </div>
+                                </th>
 
                             </tr>
                             </thead>
@@ -155,6 +160,16 @@
                                     <span ng-hide="ratingByCandidate">No Rating </span>
                                 </td>
                                 <td style="text-align: center">{{data.status}}</td>
+                                <td style="text-align: center">
+                                        <span ng-show="data.video_url">
+                                            <a ng-href="{{data.video_url}}" target="_blank" >Video chat</a>
+                                        </span>
+                                        <br>
+                                        <span ng-show="data.status=='COMPLETED' ">
+                                            <input type="button" ng-click="viewChat(data.id,'downlaod')" value="Text Chat" >
+                                        </span>
+                                            
+                                </td>
 
                             </tr>
                             </tbody>

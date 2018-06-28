@@ -19,9 +19,9 @@ angular.module('Cviq').controller('searchJobsCtrl', ['$scope','$rootScope','ngDi
 
     /*=============================Start: Complete job Details ================================*/
 
-    $scope.jobDetails = function(response){
+    $scope.jobDetails = function(response){      
         $cookieStore.put('JobID', response);
-        $state.go('home.inbox.jobDetails');
+        $state.go('home.inbox.jobDetails'); 
     }
 
     /*=============================End: Complete job Details ================================*/

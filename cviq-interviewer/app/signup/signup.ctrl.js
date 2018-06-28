@@ -83,7 +83,6 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                         bootbox.alert('Passcode has been sent to you.');
                     }
                     $scope.otp = response.data.OTP;
-                    $scope.register.otp = response.data.OTP;
                 })
                 .error(function (response) {
                     console.log("error", response);

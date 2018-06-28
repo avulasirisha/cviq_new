@@ -54,12 +54,12 @@
             <div class="menu-sec">
                 <!--<img class="bell" ng-init="notification.length > 0 ? imgSrc = 'images/notify_red.png' : imgSrc = 'images/notify.png'" ng-src="{{imgSrc}}" onclick="$('.notification').toggleClass('displayDropDown');" />-->
                 <span class="notificationOuter">
-                    <img class="bell" ng-init="imgSRC='images/notify.png'; imgSRC1='images/notify_red.png'" ng-click="imgSRC1='images/notify.png'" ng-src="{{notification.length > 0 ? imgSRC1 : imgSRC}}" onclick="$('.notification').toggleClass('displayDropDown');" />
+                    <img class="bell" ng-init="imgSRC='images/notify.png'; imgSRC1='images/notify_red.png'" ng-click="imgSRC1='images/notify.png';call_notification()" ng-src="{{notification.length > 0 ? imgSRC1 : imgSRC}}"  />
                     <i class="notificationCounter" ng-if="imgSRC1=='images/notify_red.png' && notification.length > 0">{{notification.length}}</i>
                 </span>
                 <div class="notification" ng-if="notification.length > 0">
                     <ul>
-                        <li ng-repeat="n in notification track by $index">{{n}}.<span ng-click="goToNewRequest()">Click to view details</span></li>
+                        <li ng-repeat="n in notification track by $index">{{n.notificationMsg}}.<span ng-click="goToNewRequest(n.notificationType)">Click to view details</span></li>
                     </ul>
                 </div>
                 <div class="user-name">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" ng-src="{{userCompleteData.profilePicURL.original}}" alt="" />
@@ -74,6 +74,7 @@
                     <li ng-click="var = 'GET PAID'" ng-class="{'selected': var == 'GET PAID'}"><a ui-sref="home.payment">GET PAID</a></li>
                     <li ng-click="var = 'MANAGE INTERVIEWS'" ng-class="{'selected': var == 'MANAGE INTERVIEWS'}"><a ui-sref="home.interview.past">MANAGE INTERVIEWS</a></li>
                     <li ng-click="var = 'RATING'" ng-class="{'selected': var == 'RATING'}"><a ui-sref="home.rating">RATING</a></li>
+                    <li ng-click="var = 'INBOX'" ng-class="{'selected': var == 'INBOX'}"><a ui-sref="home.inbox">INBOX</a></li>
                     <li ng-click="var = 'QUESTION BANK'" ng-class="{'selected': var == 'QUESTION BANK'}"><a ui-sref="home.questions">QUESTION BANK</a></li>
                     <!--<li class="user-name inDropDown">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" src="images/placeholder.png" alt="" />-->
                         <!--<ul class="registered-user-menu">-->
