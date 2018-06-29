@@ -152,10 +152,10 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
     }
 
    
-    $scope.rateToCandidate;
-    $scope.getSelectedRating = function (rating) {
+    $scope.rateToCandidate={};
+    $scope.getSelectedRating = function (rating,id) {
         console.log(rating);
-        $scope.rateToCandidate = rating;
+        $scope.rateToCandidate[id] = rating;
     }
         //$scope.openPdf = function() {
         //    console.log('OPEN');
@@ -171,7 +171,7 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
      if(  id.description != '' ){      
        var data  = {
           'description': id.description,
-          'rating' : id.ratings,
+          'rating' : $scope.rateToCandidate[id],
           'interviewerID':id.interviewerID._id ,
           'interviewID':   id._id
        } ;
@@ -185,8 +185,10 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
         })
         .success(function(response){
             console.log('Past Interview Success', response);
+            bootbox.alert('successfully given feedback');
+            $state.reload('home.dashboard.qualitativeScore.pastInterview');
         }).error(function(response){
-                
+            bootbox.alert(response.message);
         });
      
      }

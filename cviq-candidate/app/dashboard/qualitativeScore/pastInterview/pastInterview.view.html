@@ -14,11 +14,11 @@
             </a>
         </li>
     </ul>
-    <div ng-if="!i.interviewerID.ratingByCandidate && i.status == 5">
+    <div ng-if="!i.ratingByCandidate && i.status == 5">
             <textarea  ng-model="i.description"></textarea>
             <div class="rate-candidate-interview text-center">
             <span ng-repeat="rating in ratings">Rate Candidate
-                <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+                <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating,i)"></div>
             </span>
             </div>
             <input type="submit"  ng-click="submit_reviews(i)">

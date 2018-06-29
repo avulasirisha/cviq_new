@@ -163,6 +163,7 @@ angular.module('Cviq').controller('upcomingInterviewCtrl', ['$scope','$rootScope
                     bootbox.alert("Message Sent Successfully");
                     $("#message").modal("hide");
                     $('#messagefile').val(undefined);
+                    $state.reload("home.inbox.inboxTab.mails");
                     $scope.attachmentName = '';
 
                 })

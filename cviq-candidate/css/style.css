@@ -1174,6 +1174,28 @@ input.designation{ background: none; border: none; text-align: center; font-size
     width: 110px; }
 .filter button{ border-radius: 0 4px 4px 0; background-color: #0297cf; color: #fff; border: none; font-size: 12px; height: 24px; }
 .filter select { float: left; border: none; background: #fff; margin-right: 10px; height: 24px; font-size: 12px; color: #8b8b8b; }
+
+
+/*gopi added */
+
+.rating1 li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+}
+.rating1 {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+.rating1 .filled {
+    color: #000;
+}
+
 /*=============================== End : Filters Job Data ======================*/
 
 .expDrop{ position: relative; float: left; }
