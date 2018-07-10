@@ -1,4 +1,4 @@
-App.controller('DashboardController', ['$scope', '$timeout', '$http', 'uiGmapLogger', '$cookies', '$cookieStore', 'MY_CONSTANT', '$state','responseCode', 'uiGmapGoogleMapApi','MapLatLong','cfpLoadingBar'
+    App.controller('DashboardController', ['$scope', '$timeout', '$http', 'uiGmapLogger', '$cookies', '$cookieStore', 'MY_CONSTANT', '$state','responseCode', 'uiGmapGoogleMapApi','MapLatLong','cfpLoadingBar'
     , function ($scope, $timeout, $http, $log, $cookies, $cookieStore, MY_CONSTANT, $state, responseCode,GoogleMapApi,MapLatLong,cfpLoadingBar) {
 
 

@@ -1,4 +1,4 @@
-angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window', function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window){
+angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window','$location' , function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window, $location){
 
     $scope.var1 = $state.params.var1;
 
@@ -210,7 +210,6 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
 
 
     /*=============================Start: Searching Jobs Via Cookie ================================*/
-
     if(sessionStorage.getItem('SearchedParameter') !== null){
 
         $scope.paramersForSearched = JSON.parse(sessionStorage.getItem('SearchedParameter'));
@@ -312,15 +311,16 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
     /*=============================End: Searching Jobs Via Cookie ================================*/
 
     /*=============================Start: Searching Jobs ================================*/
-
+  
+     
     $scope.searching = function(response){
         $scope.appliedJobArray = [];
         $state.go('home.inbox.searchJobs');
         console.log(response);
+          if(typeof(Storage) !== 'undefined'){
+              sessionStorage.setItem('SearchedParameter', JSON.stringify(response));
+          }
 
-        if(typeof(Storage) !== 'undefined'){
-            sessionStorage.setItem('SearchedParameter', JSON.stringify(response));
-        }
 
         $scope.year = new Date().getFullYear();
         $scope.date = new Date().getDate();
@@ -333,7 +333,7 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
         if($scope.date <= 9){
             $scope.date ='0'+ $scope.date;
         }
-
+      
         $scope.fullDate = $scope.year+'-'+$scope.month+'-'+$scope.date;
 
         if(response.functionalArea == null || response.functionalArea == undefined){
@@ -366,13 +366,13 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
             }
 
         }
-
+   
         $scope.searchParam = {
             industry:response.industry.industryName,
             functionalArea:response.functionalArea.functionalAreaName,
             minExperience:$scope.minExperience,
             maxExperience:$scope.maxExperience,
-            keywords:$scope.keywords,
+            keywords: response.keywords,
             country:response.curCountry.countryName,
             state:response.curState.stateName,
             minSalary:response.salary,
@@ -406,7 +406,8 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
                 console.log(response);
             })
     }
-
+    
+     
     /*=============================End: Searching Jobs ================================*/
 
     ///*=============================Start: Custom Factory Function ================================*/

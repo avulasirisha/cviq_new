@@ -59,6 +59,10 @@
       {
         "text": "Candidate Interview Rate",
         "sref": "app.candidateInterview"
+      },
+      {
+        "text": "Candidate Memberships",
+        "sref": "app.candidateMembership"
       }
     ]
   },
@@ -253,6 +257,11 @@
         ]
       }
     ]
+  },
+   {
+    "text": "Payments",
+    "sref": "app.payments",
+    "icon": "fa fa-money"
   },
   {
     "text": "Question Bank",

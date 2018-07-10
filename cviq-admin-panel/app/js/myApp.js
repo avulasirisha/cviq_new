@@ -369,6 +369,18 @@ myApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'Rout
                 title: 'Update Recruiter Faq Data',
                 templateUrl: helper.basepath('faq/recruiterFaq.html'),
                 resolve: helper.resolveFor('datatables', 'datatables-pugins','ngDialog','parsley','ngTable','ngTableExport','whirl')
+            }) 
+            .state('app.payments', {
+                url: '/payments',
+                title: 'Update Recruiter Faq Data',
+                templateUrl: helper.basepath('payments/payments.html'),
+                resolve: helper.resolveFor('datatables', 'datatables-pugins','ngDialog','parsley','ngTable','ngTableExport','whirl')
+            })
+             .state('app.candidateMembership', {     
+                url: '/candidateMembership',
+                title: 'Update Recruiter Faq Data',
+                templateUrl: helper.basepath('plans/candidateMembership.html'),
+                resolve: helper.resolveFor('datatables', 'datatables-pugins','ngDialog','parsley','ngTable','ngTableExport','whirl')
             })
         
         $httpProvider.defaults.transformRequest = function(data){

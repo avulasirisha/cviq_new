@@ -169,14 +169,13 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
     
     
      $scope.pastInterview = function (data) {
-
+       
         $scope.paginationData = {
             start:0,
             limit:10,
             from:'INTERVIEWER',
             cid:  $scope.candidateDetails._id
         }
-        $scope.ratings = {};
         
         $scope.reviewdata ={}; 
         console.log('page number', data);
@@ -195,6 +194,7 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
             params: $scope.paginationData
         })
             .success(function(response){
+            
                 console.log('Past Interview Success', response);
 
                 $scope.numberOFInterviews = response.data.totalCount;
@@ -216,11 +216,11 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
                     $scope.$watch('currentPage + numPerPage', function() {
                         $scope.filteredData = $scope.interviewLIsts.slice(0, 10);
                     });
-                }
+                }  
             })
             .error(function(response){
                 console.log(response);
-            })
+            })   
     }
 
 

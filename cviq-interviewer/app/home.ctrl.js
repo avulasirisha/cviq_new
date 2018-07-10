@@ -162,7 +162,7 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
                     for( i in Data ){
                         console.log( Data[i]);
                         $scope.notification.push({
-                            message: Data[i].notificationMsg,
+                            notificationMsg: Data[i].notificationMsg,
                             notificationType: Data[i].notificationType
                         });     
                     }  

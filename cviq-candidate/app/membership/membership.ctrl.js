@@ -104,12 +104,15 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
 
     $http({
         method:'GET',
-        url: CONSTANT.apiUrl+'/api/candidate/getInterviewCharges'
+        url: CONSTANT.apiUrl+'/api/candidate/CandidateMembership' ,
+        headers: {
+            authorization: $cookieStore.get('AccessToken')
+        },
     })
         .success(function (response) {
             console.log('Interview Charges Success', response);
-            $scope.interviewChargesData = response.data;
-            $scope.interviewAmount = response.data.candidateInterviewCharges;
+            $scope.Membershipdata = response.data;
+            $scope.interviewAmount = response.data.planRate;
         })
         .error(function (response) {      
             console.log('Error', response);      
@@ -177,7 +180,8 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
 
                 var buyMembershipData = {
                     paymentID: response.id,
-                    amount : $scope.interviewAmount
+                    amount : $scope.interviewAmount,
+                    planType:$scope.Membershipdata.planType
                 };
 
                 if($scope.appliedPromoCode != undefined){

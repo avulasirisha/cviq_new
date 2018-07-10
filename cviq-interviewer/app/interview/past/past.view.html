@@ -14,7 +14,11 @@
                                                     <li class="place">{{inter.candidateID.currentState+', '+inter.candidateID.currentCountry}}</li>
                                                     <li class="experience">{{inter.candidateID.totalExperience}}{{inter.candidateID.totalExperience > 1 ? ' Yrs' : ' Yr'}}</li>
                                                 </ul>
+                                        <div ng-if="inter.ratingByCandidate">
+                                            Response : {{inter.candidateFeedback}}
+                                        </div>
                                     </div>
+                                   
                         </div>
                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pull-right text-right status-rating">
                             <label>Status :<span class="status-complete" ng-if="inter.status == 5" style="cursor: auto">Completed</span>

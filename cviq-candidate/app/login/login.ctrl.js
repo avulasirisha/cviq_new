@@ -29,8 +29,10 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
         })
             .success(function (response) {
                 console.log("success", response);
-                $cookieStore.put('loggedIn',true);
-                $cookieStore.put('AccessToken', response.data.accessToken);
+             //   $cookieStore.put('loggedIn',true, { "path": "/" } );
+                document.cookie = "loggedIn=true; path=/site";
+                document.cookie = "CandidateOpt="+response.data.accessToken+"; path=/site";
+               $cookieStore.put('AccessToken', response.data.accessToken,  { "path": "/" } );
                 localStorage.setItem('UserDetails',JSON.stringify(response.data));
                 //$cookieStore.put('UserDetails', response.data);
                 $scope.loading = false;
@@ -98,7 +100,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
         })
                 .success(function(response){
                     console.log("Successin", response);
-                    $cookieStore.put('loggedIn',true);
+                    $cookieStore.put('loggedIn',true, { path: "" });
                     $cookieStore.put('AccessToken', response.data.accessToken);
                     localStorage.setItem('UserDetails',JSON.stringify(response.data));
                     //$cookieStore.put('UserDetails', response.data);
