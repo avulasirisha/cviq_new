@@ -30,8 +30,11 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
             .success(function (response) {
                 console.log("success", response);
              //   $cookieStore.put('loggedIn',true, { "path": "/" } );
-                document.cookie = "loggedIn=true; path=/site";
-                document.cookie = "CandidateOpt="+response.data.accessToken+"; path=/site";
+                var now = new Date();
+                now.setTime(now.getTime() + ( 60 * 60 * 1000));
+
+                document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/site";
+                document.cookie = "CandidateOpt="+response.data.accessToken+";expires=" + now.toUTCString() + "; path=/site";
                $cookieStore.put('AccessToken', response.data.accessToken,  { "path": "/" } );
                 localStorage.setItem('UserDetails',JSON.stringify(response.data));
                 //$cookieStore.put('UserDetails', response.data);

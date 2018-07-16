@@ -3,8 +3,13 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
     if($cookieStore.get('AccessToken') == undefined){
         $scope.confirmLogOut();
     }
-
-
+      $scope.Showdetails = true;
+    var uSER_dETAILS =  $cookieStore.get('UserDetails');
+    if(uSER_dETAILS.membershipTaken == false){
+            $scope.Showdetails = false;
+    }
+    
+    
     $scope.alt_url = "../images/candidate.png";
 
 

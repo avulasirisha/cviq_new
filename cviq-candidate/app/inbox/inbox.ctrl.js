@@ -4,8 +4,14 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
 
     if($cookieStore.get('AccessToken') == undefined){
         $state.go('home.login');
-    }
+    }                      
 
+    var loggedInVar = $cookieStore.get('loggedIn');
+    if(loggedInVar == undefined || loggedInVar == false){
+          $cookieStore.remove('AccessToken'); 
+          $state.go('home.login');
+    }
+    
     $timeout(function(){
         $('.selectpicker').selectpicker();
     },0);
@@ -523,5 +529,41 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
     }
 
     /*=============================End: Apply for job ================================*/
+    
+    
+    $scope.submit_newsletter = function(){
+    
+     var eMail = document.getElementById("newsLetterId").value;
+     if( eMail == "" ){
+            bootbox.alert("Please Enter Email"); 
+            return false;
+     }else{
+     
+        $http({
+            method: 'POST',
+            url: CONSTANT.apiUrl + '/api/common/insertNewsLetters',
+            headers: {
+                authorization: $cookieStore.get('AccessToken')
+            },
+            data: {
+                "userType": 'CANDIDATE',
+                "email":eMail 
+            }
+        })
+            .success(function(response){
+                console.log(response);
+                bootbox.alert(response.message);
+                $timeout(function(){
+                    $state.reload();
+                },0);
+            })
+            .error(function(response){
+                console.log(response);
+                bootbox.alert(response.message);
+
+            })
+    }
+    } 
+    
 
 }]);

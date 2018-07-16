@@ -288,7 +288,7 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
             },
             data: {
                 "promoName": promocodeData.promoName,
-                "amount": $scope.interviewChargesData.candidateInterviewCharges
+                "amount": $scope.interviewAmount
             }
         })
             .success(function (response) {

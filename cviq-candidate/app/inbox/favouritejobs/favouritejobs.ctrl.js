@@ -1,4 +1,4 @@
-angular.module('Cviq').controller('matchedJobsCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window', function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window){
+angular.module('Cviq').controller('favouritejobs', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window', function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window){
 
     /*=============================Start: Get candidate matched Jobs ================================*/
     var D_data = JSON.parse(localStorage.getItem('UserDetails'));
@@ -18,7 +18,7 @@ angular.module('Cviq').controller('matchedJobsCtrl', ['$scope','$rootScope','ngD
 
         $http({
             method: 'GET',
-            url: CONSTANT.apiUrl + '/api/candidate/candidateMatchedJobs',
+            url: CONSTANT.apiUrl + '/api/candidate/candidatefavouritejobs',
             headers: {
                 authorization: $cookieStore.get('AccessToken')
             },
@@ -59,42 +59,6 @@ angular.module('Cviq').controller('matchedJobsCtrl', ['$scope','$rootScope','ngD
                 bootbox.alert('please take membership to see all details');
         }
     }
-
-    $scope.saveDetials = function(){
-        var Recommend = $scope.Recommended;
-        console.log( "re :"+ Recommend);
-        if( Recommend != undefined ){
-            
-        $http({
-            method: 'GET',
-            url: CONSTANT.apiUrl + '/api/candidate/SaveSearchAgent',
-            headers: {
-                authorization: $cookieStore.get('AccessToken')
-            },
-            params: { 'agent': Recommend }
-        })
-            .success(function(response){
-                D_data.searchAgent = Recommend;
-                localStorage.setItem('UserDetails',JSON.stringify( D_data ));
-                $state.reload();
-            })
-            .error(function(response){                
-                console.log(response);
-             
-                
-                if(response.statusCode == 401){
-                    $rootScope.sessionExpired();
-                }
-              
-
-            })
- 
-        }else{
-                bootbox.alert('please Enter Details');
-        }
-    }
-
-
     /*=============================End: Get candidate matched Jobs ================================*/
 
 }]);

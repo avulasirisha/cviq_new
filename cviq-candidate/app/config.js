@@ -236,6 +236,15 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var1:'SUGGESTED JOBS'
             }
         })
+        .state('home.inbox.favouritejobs',{
+            url:'/favouritejobs',
+            templateUrl:'app/inbox/favouritejobs/favouritejobs.view.html',
+            controller:'favouritejobs',
+            params:{
+                var:'JOBS',
+                var1:'FAVOURITE JOBS'
+            }
+        })
         .state('home.inbox.searchJobs',{
             url:'/searchJobs',
             templateUrl:'app/inbox/searchJobs/searchJobs.view.html',

@@ -238,6 +238,11 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
 
                             else{
                                 // bootbox.alert("Payment Failure. Please Try Again. <br> Thank You");
+                              var UserDetails = $cookieStore.get('UserDetails');
+                              UserDetails.membershipPlanType = $scope.package.planType;
+                              UserDetails.membershipTaken =true;
+                              $cookieStore.put('UserDetails',UserDetails);
+                               
                                bootbox.alert("Membership taken successfully");
                                 $state.go("home.dashboard.recentlyPostedJobs", {}, {reload: true});
                             }

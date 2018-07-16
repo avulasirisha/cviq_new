@@ -575,6 +575,7 @@
             <div style="margin-top: 10px;" class="col-md-6 col-lg-6 col-sm-12 col-xs-12">
                 <div class="candidatesHeading ">
                     <span style="padding: 15px 15px">Candidates List</span>
+                    <span style="float:right;padding: 0px 10px"  ng-show="Showdetails==false"  > Please Take Membership To See All Details <span>
                 </div>
                 <div >
                     <ul >
@@ -587,9 +588,10 @@
                                     <img class=" candidateImage" ng-src="{{candidate.profilePicURL.original}}"  >
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7 pad " style="color: #8b8b8b;padding: 0 10px">
-                                   <a ui-sref="home.candidate.aggregated({id:'+{{candidate._id}}+'})" target="_blank">
+                                   <a ng-show="Showdetails==true" ui-sref="home.candidate.aggregated({id:'+{{candidate._id}}+'})" target="_blank">
                                        <p class="candidateDiv2span" style="word-break: break-all;">{{candidate.firstName}} {{candidate.lastName}} - {{candidate.profileTitle}}</p>
                                    </a>
+                                    <p  ng-show="Showdetails==false" class="candidateDiv2span" style="word-break: break-all;">{{candidate.firstName}} {{candidate.lastName}} - {{candidate.profileTitle}}</p>
                                     <p style="font-size: 11px;">
                                         <!--Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum-->
                                     </p>
@@ -608,7 +610,7 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-12 col-md-3 col-lg-3 pad" style="padding-right: 25px">
                                     <p class="text-right" style="color: #4f5f72"><span style="font-size: 10px">Aggregated Score </span><b> {{candidate.aggregatedScore}}</b></p>
-                                    <p class="text-right" style="color: #4f5f72"> <a class="text-right candidateViewDetails" ui-sref="home.candidate.aggregated({id:'+{{candidate._id}}+'})" target="_blank" >View Details</a></p>
+                                    <p class="text-right" style="color: #4f5f72"> <a class="text-right candidateViewDetails" ng-show="Showdetails==true" ui-sref="home.candidate.aggregated({id:'+{{candidate._id}}+'})" target="_blank" >View Details</a></p>
 
                                 </div>
                             </div>

@@ -3,6 +3,11 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
         if($cookieStore.get('AccessToken') == undefined){
             $state.go('home.login');
         }
+         var loggedInVar = $cookieStore.get('loggedIn');
+      if(loggedInVar == undefined || loggedInVar == false){
+            $cookieStore.remove('AccessToken'); 
+            $state.go('home.login');
+      }
 
         $http({
             method: 'POST',

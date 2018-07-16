@@ -3,8 +3,14 @@
     <div class="container">
         <div class="col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 clearfix membership-bar pad">
             <h2>BUY MEMBERSHIP</h2>
-            <p>To get Qualitative score you need to buy membership of $ {{Membershipdata.planRate}}</p>
-            <p ng-if="Membershipdata.planType=='Premium'">{{ Membershipdata.planDescription }} : Plan duration = {{ Membershipdata.planDuration }} </p>                                                                                {}
+            <div ng-if="Membershipdata.planType=='Premium'">
+              <p> {{ Membershipdata.planDescription }} </p>
+              <p>  Plan duration : {{ Membershipdata.planDuration }} Months </p>
+              <p>  Amount :  ${{Membershipdata.planRate}} </p>
+            </div>
+            <div ng-if="Membershipdata.planType=='Basic'">
+             <p>To get Qualitative score you need to buy membership of $ {{Membershipdata.planRate}}</p>
+             <p> Plan duration = {{ Membershipdata.planDuration }} </p>  
         </div>
         <div class="main-section col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 clearfix payment-container">
             <div class="row">

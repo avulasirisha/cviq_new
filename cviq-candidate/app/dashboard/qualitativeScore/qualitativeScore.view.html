@@ -1,16 +1,16 @@
-<section class="score-container" ng-show="QualitativeScoreData.membershipTaken == true && QualitativeScoreData.interviewScheduled == false">
+<section class="score-container" ng-show="QualitativeScoreData.interviewshiptaken == true && QualitativeScoreData.interviewScheduled == false">
     <div class="score-container-inner">
     <h4>Now you have a <span>Membership</span>, You can go for an Interview</h4>
     <h4>Schedule your interview and get your<br />Qualitative Score</h4>
     <!--<button style="float: none;" class="col-lg-3 sbmt-btn">PROCEED</button>-->
     </div>
 </section>
-<section class="score-container" ng-show="QualitativeScoreData.membershipTaken == true && QualitativeScoreData.interviewScheduled == true">
+<section class="score-container" ng-show="QualitativeScoreData.interviewshiptaken == true && QualitativeScoreData.interviewScheduled == true">
     <div class="score-container-inner">
         <h4>Now your <span>Interview</span> has been scheduled.</h4>
     </div>
 </section>
-<section class="score-container qualitative-score" ng-show="QualitativeScoreData.membershipTaken == false && QualitativeScoreData.candidateQualitativeScore == 0">
+<section class="score-container qualitative-score" ng-show="QualitativeScoreData.interviewshiptaken == false && QualitativeScoreData.candidateQualitativeScore == 0">
     <h3>Benefits of Qualitative Score</h3>
     <div class="qualitative-score-inner col-lg-12 col-md-12 col-sm-12 col-xs-12">
         <ul>
@@ -44,7 +44,7 @@
 <div class="fullWidth" ng-show="interview_found == true"  style="text-align:center">
     Interviewer Found. Interviewer Avaialability dates : {{ interview_dataes }}
 </div>
-<div class="fullWidth" ng-show="QualitativeScoreData.membershipTaken == true && QualitativeScoreData.interviewScheduled == false">
+<div class="fullWidth" ng-show="QualitativeScoreData.interviewshiptaken == true && QualitativeScoreData.interviewScheduled == false">
 <div class="scores-obtained">
     <h3>INTERVIEW DETAIL</h3>
     <div class="borderAsLine"></div>

@@ -7,6 +7,16 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
     if($cookieStore.get('AccessToken') == undefined){
         $scope.confirmLogOut();
     }
+    console.log( $cookieStore.get('UserDetails') );
+
+    $scope.Memberships =$cookieStore.get('UserDetails');
+    
+    if( $scope.Memberships.membershipTaken == false ){
+           $state.go( "home.upgradePackage" ) ; 
+            $timeout(function () {
+                $state.reload();
+            }, 500);
+    }
 
     var candArray =  $location.absUrl().split('+');
 

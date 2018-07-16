@@ -285,6 +285,7 @@
                         <li><a ng-click="var1='SUGGESTED JOBS'" ng-class="{'active': var1 == 'SUGGESTED JOBS'}" ui-sref="home.inbox.suggestedJobs">Suggested Jobs</a><span>{{countForJobs.suggestedJobCount}}</span></li>
                         <li><a ng-click="var1='VIEWED PROFILE'" ng-class="{'active': var1 == 'VIEWED PROFILE'}" ui-sref="home.inbox.viewedProfile">Who Viewed My Profile</a><span>{{countForJobs.profileVisitedCount}}</span></li>
                         <li><a ng-click="var1='APPLIED JOBS'" ng-class="{'active': var1 == 'APPLIED JOBS'}" ui-sref="home.inbox.appliedJobs">Applied Jobs</a><span>{{countForJobs.appliedJobCount}}</span></li>
+                        <li><a ng-click="var1='FAVOURITE JOBS'" ng-class="{'active': var1 == 'FAVOURITE JOBS'}" ui-sref="home.inbox.favouritejobs">Favourite Jobs</a><span>{{countForJobs.favouritejobs}}</span></li>
                     </ul>
                     <h5>My Profile</h5>
                     <ul>
@@ -315,8 +316,8 @@
                         <img src="images/email.png" alt="email" />
                         <p>For Our Free Newsletters</p>
                         <form id="newsLetterForm" class="clearfix">
-                            <input type="text">
-                            <div class="text-center"><button style="float: none;" type="submit" class="col-lg-12 col-md-3 col-sm-3 col-xs-12 sbmt-btn">SUBMIT</button></div>
+                            <input type="email" placeholder="Enter Your Email" id="newsLetterId">
+                            <div class="text-center"><button style="float: none;"  ng-click="submit_newsletter()" type="submit" class="col-lg-12 col-md-3 col-sm-3 col-xs-12 sbmt-btn">SUBMIT</button></div>
                         </form>
                     </div>
                 </div>

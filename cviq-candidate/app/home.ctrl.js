@@ -39,6 +39,8 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
                 $cookieStore.put('loggedIn', false);
                 $cookieStore.remove('loggedIn');
                 $cookieStore.remove('AccessToken');
+                document.cookie = "loggedIn=false;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "CandidateOpt=;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
                 //$cookieStore.remove('UserDetails');
                 localStorage.removeItem('UserDetails');
                 sessionStorage.removeItem('SearchedParameter');
@@ -53,6 +55,8 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
                 $cookieStore.put('loggedIn', false);
                 $cookieStore.remove('loggedIn');
                 $cookieStore.remove('AccessToken');
+                document.cookie = "loggedIn=false;expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "CandidateOpt=;expires=Thu, 01 Jan 1970 00:00:01 GMT;";
                 //$cookieStore.remove('UserDetails');
                 localStorage.removeItem('UserDetails');
                 sessionStorage.removeItem('SearchedParameter');

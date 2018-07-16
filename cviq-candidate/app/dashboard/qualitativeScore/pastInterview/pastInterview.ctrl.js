@@ -92,11 +92,11 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
                     angular.forEach(allChatMesssages, function (value) {
 
                         if(value.messageTo == 'INTERVIEWER'){
-                            textData1 = {text: 'Interviewer', style: 'title'};
+                            textData1 = {text: 'Candidate', style: 'title'};
                             textData2 = {text: value.message, style: 'myStyle'};
                             contentArray.push(textData1, textData2);
                         } else {
-                            textData1 = {text: 'Candidate', style: ['title', 'anotherStyle']};
+                            textData1 = {text: 'Interviewer', style: ['title', 'anotherStyle']};
                             textData2 = {text: value.message, style: ['myStyle', 'anotherStyle']};
                             contentArray.push(textData1, textData2);
                         }
