@@ -68,6 +68,14 @@ textarea {
   outline : 0px !important;
 }
 
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  text-decoration : none;
+}
+
 /* Header Menu Section */
 
 header {
@@ -83,7 +91,7 @@ header:after {
   position          : absolute;
   top               : 0px;
   left              : -70px;
-  width             : 450px;
+  width             : 530px;
   height            : 80px;
   background        : #0084bf;
   -ms-transform     : skew(-40deg, 0deg);
@@ -104,6 +112,23 @@ header .logo a {
   text-shadow : 1px 1px 3px #303030;
   font-family : 'Conv_MASQUE__';
   font-size   : 40px;
+}
+
+header .logo a span {
+  display     : inline-block;
+  position    : relative;
+  margin-left : -10px;
+  font-family : 'Roboto',
+                sans-serif;
+  font-style  : italic;
+  font-weight : 900;
+}
+
+header .logo a span::after {
+  content   : "360";
+  position  : absolute;
+  left      : 1px;
+  font-size : 41px;
 }
 
 header .menu {
@@ -166,6 +191,23 @@ header .menu {
 .navbar-nav > li > a {
   padding   : 12px 16px !important;
   font-size : 16px;
+}
+
+.navbar-nav li:last-child {
+  position : absolute;
+  top      : -6px;
+  right    : -75px;
+  padding  : 0px;
+}
+
+.navbar-nav li:last-child a:focus,
+.navbar-nav li:last-child a:hover {
+  color      : #0084bf;
+  background : none !important;
+}
+
+.navbar-nav li:last-child i {
+  font-size : 30px;
 }
 
 .nav > li > a:focus,
@@ -273,47 +315,73 @@ header .menu {
 .banner .form-field input {
   width         : 100%;
   height        : 40px;
-  border        : 0px;
   border-radius : 18px;
   background    : #fff;
+}
+
+.banner .form-field .validation {
+  z-index       : 99;
+  position      : absolute;
+  bottom        : -29px;
+  left          : 4px;
+  padding       : 10px;
+  color         : red;
+  border-radius : 50px;
+  text-align    : center;
+  font-size     : 14px;
+}
+
+.input-group .validation {
+  z-index       : 99;
+  position      : absolute;
+  bottom        : -29px;
+  left          : 4px;
+  padding       : 10px;
+  color         : red;
+  border-radius : 50px;
+  text-align    : center;
+  font-size     : 14px;
 }
 
 .banner .form-field select {
   position      : relative;
   width         : 100%;
+  width         : 90%;
   height        : 40px;
+  float         : right;
   padding-left  : 5px;
   border        : 0px;
   border-radius : 50px;
   background    : #fff;
-  float: right;
-  width: 90%;
 }
-.form-group.selectconr{
-  border-radius: 50px;
+
+.form-group.selectconr {
+  border-radius : 50px;
 }
+
 .form-group.selectconr::after {
-    background: #fff;
-    position: absolute;
-    height: 40px;
-    width: 230px;
-    left: 0;
-    bottom: 0;
-    content: "";
-    border-radius:50px;
-    z-index: -1;
+  z-index       : -1;
+  content       : "";
+  position      : absolute;
+  bottom        : 0;
+  left          : 0;
+  width         : 230px;
+  height        : 40px;
+  border-radius : 50px;
+  background    : #fff;
 }
+
 .form-group.selectconr span {
   z-index       : 99;
   display       : block;
   width         : 4px;
   height        : 4px;
+  float         : left;
+  margin-top    : 18px;
+  margin-left   : 15px;
   border-radius : 50%;
   background    : #0084bf;
   font-size     : 0px;
-  float: left;
-  margin-top: 18px;
-  margin-left: 15px;
 }
 
 .form-group.selectconr span::before {
@@ -612,11 +680,20 @@ header .menu {
   color     : #fff;
   font-size : 24px;
 }
+
 .right-resume .cont-resume-block .add-logo {
   display     : block;
   color       : #fff;
   font-family : 'Conv_MASQUE__';
   font-size   : 40px;
+}
+
+.right-resume .cont-resume-block .add-logo span {
+  display     : inline-block;
+  font-family : 'Roboto',
+                sans-serif;
+  font-style  : italic;
+  font-weight : 900;
 }
 
 .right-resume .cont-resume-block p::after {
@@ -765,7 +842,7 @@ header .menu {
 
 .inner-sub-block {
   margin-bottom : 20px;
-  padding       : 25px 15px;
+  padding       : 30px 15px;
   border        : 1px solid #e3e4e4;
   background    : #fff;
 }
@@ -775,7 +852,9 @@ header .menu {
 }
 
 .panel {
+  border     : 0px;
   background : none;
+  box-shadow : none;
 }
 
 .inner-sub-block .inner-mid h4 {
@@ -818,6 +897,11 @@ header .menu {
   border-radius : 18px;
   background    : #0084bf;
   font-size     : 16px;
+}
+
+.inner-sub-block .inner-right .applied {
+  padding    : 6px 10px;
+  background : #429a65;
 }
 
 .inner-sub-block .inner-right a:hover {
@@ -896,7 +980,7 @@ header .menu {
 }
 
 .recent-resumes {
-  padding-top   : 10px;
+  padding-top   : 30px;
   padding-right : 0px;
 }
 
@@ -960,13 +1044,14 @@ header .menu {
 }
 
 .recent-resumes ul li span {
-  width       : 170px;
-  float       : right;
-  padding-top : 10px;
+  width : 170px;
+  float : right;
 }
 
 .recent-resumes ul li img {
-  width : 25%;
+  width         : 50px;
+  height        : 50px;
+  border-radius : 50%;
 }
 
 .recent-resumes ul li .sub-content {
@@ -1302,6 +1387,7 @@ header .menu {
   height        : 40px;
   margin-top    : 20px;
   border        : 0px;
+  border        : 1px solid red;
   border-radius : 18px !important;
 }
 
@@ -1478,6 +1564,23 @@ footer .footer-bg-block img {
   width   : 100%;
 }
 
+.panel-heading {
+  display : none;
+}
+
+.dashbord-btn {
+  position   : absolute;
+  top        : -46px;
+  right      : 60px;
+  border     : 0px;
+  background : none;
+}
+
+.dashbord-btn a i {
+  color     : #fff;
+  font-size : 30px;
+}
+
 /* Responsive Section */
 
 @media
@@ -1547,8 +1650,8 @@ footer .footer-bg-block img {
   }
 
   .panel {
-    border     : 0px;
-    box-shadow : none !important;
+    border     : 0px !important;
+    box-shadow : 0px !important;
   }
 
   .recent-resumes ul li span {
@@ -1561,16 +1664,16 @@ footer .footer-bg-block img {
   .recent-resumes {
     padding-top : 20px;
   }
+
+  header::after {
+    width : 400px;
+  }
 }
 
 @media
   (max-width : 1198px) {
   .footer-blocks {
     margin-left : -500px;
-  }
-
-  header::after {
-    width : 360px;
   }
 }
 
@@ -1594,14 +1697,14 @@ footer .footer-bg-block img {
   }
 
   header::after {
-    width : 300px;
+    width : 320px;
   }
 }
 
 @media
   (max-width : 1024px) {
   header::after {
-    left : -160px;
+    left : -80px;
   }
 
   .app-left-block img {
@@ -1639,6 +1742,21 @@ footer .footer-bg-block img {
   .top-hiring .left-hiring .owl-item {
     height : 229px;
   }
+
+  .footer-bg-block {
+    display : none;
+  }
+
+  .footer-blocks {
+    position    : inherit;
+    left        : inherit;
+    margin-top  : 30px;
+    margin-left : inherit;
+  }
+
+  footer {
+    background : #151618;
+  }
 }
 
 @media
@@ -1663,7 +1781,15 @@ footer .footer-bg-block img {
   }
 
   header::after {
-    width : 360px;
+    width : 300px;
+  }
+
+  header .logo a {
+    font-size : 30px;
+  }
+
+  header .logo a span::after {
+    font-size : 30px;
   }
 
   .banner .forms {
@@ -1741,19 +1867,17 @@ footer .footer-bg-block img {
     font-size : 30px;
   }
 
-  .footer-bg-block {
+  .banner .form-field select {
+    width : 100%;
+    float : inherit;
+  }
+
+  .form-group.selectconr span {
     display : none;
   }
 
-  .footer-blocks {
-    position    : inherit;
-    left        : inherit;
-    margin-top  : 30px;
-    margin-left : inherit;
-  }
-
-  footer {
-    background : #151618;
+  .form-group.selectconr::after {
+    display : none;
   }
 }
 
@@ -1833,7 +1957,7 @@ footer .footer-bg-block img {
   }
 
   header {
-    line-height : inherit;
+    line-height : 50px;
   }
 
   header .logo {
@@ -1863,7 +1987,7 @@ footer .footer-bg-block img {
   }
 
   .navbar-toggle {
-    margin     : -50px 0 0 !important;
+    margin     : -45px 0 0 !important;
     background : #fff !important;
   }
 
@@ -1882,50 +2006,6 @@ footer .footer-bg-block img {
 
   .container {
     width : 98%;
-  }
-
-  header {
-    line-height : inherit;
-  }
-
-  header .logo {
-    padding-top : 0px;
-  }
-
-  header .logo a {
-    padding-top    : 0px;
-    padding-bottom : 5px;
-  }
-
-  .navbar-toggle {
-    margin     : -50px 0 0 !important;
-    background : #fff !important;
-  }
-
-  .navbar-toggle .icon-bar {
-    background : #0084bf !important;
-  }
-
-  .navbar {
-    min-height : inherit;
-  }
-
-  header .menu {
-    padding-top    : 0px;
-    padding-bottom : 0px;
-  }
-
-  .nav > li > a {
-    color : #fff;
-  }
-
-  .banner .forms {
-    bottom : 75%;
-  }
-
-  .blocks .sub-block {
-    display    : inline-block;
-    text-align : center;
   }
 
   .trnd-jobs .left-contnt h4 span {
@@ -2025,6 +2105,9 @@ footer .footer-bg-block img {
 
   .btn.btn-search {
     width : 100%;
+  }
+  .banner .form-field .validation{
+    top:-30px;
   }
 }
 

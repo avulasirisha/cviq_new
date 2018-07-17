@@ -274,6 +274,22 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
             });
        }
     }
+    $scope.SubscribeNewsletter = function(data ){
+    
+            $http({
+                method: 'POST',
+                url: CONSTANT_apiUrl + '/api/common/insertNewsLetters',
+                headers: {
+                    authorization: OptimizeVlaue('CandidateOpt')
+                },
+                data: {
+                    "userType": 'CANDIDATE',
+                    "email"  :data
+                }
+            }).then(function(response, error){
+                document.getElementById("subscribepanel").innerHTML = "";
+            });
+    }
     
 }]);
 
