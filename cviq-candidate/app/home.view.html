@@ -12,7 +12,7 @@
 <header class="clearfix header unauth-header" ng-hide="$state.includes('home.homeScreen')" ng-switch-default>
     <div class="container">
         <div class="clearfix">
-            <img class="logUnauth" ng-click="var='SIGN IN'" ui-sref="home.homeScreen.search" src="images/logo.png" alt="" />
+            <a href="/" > <img class="logUnauth" ng-click="var='SIGN IN'" ui-sref="home.homeScreen.search" src="images/logo.png" alt="" /> </a>
             <ul class="unauth-menu">
                 <li ng-click="var='SIGN UP'" ng-class="{'active': var == 'SIGN UP'}"><a ui-sref="home.signup">SIGN UP</a></li>
                 <li ng-click="var='SIGN IN'" ng-class="{'active': var == 'SIGN IN'}"><a ui-sref="home.login">SIGN IN</a></li>
@@ -22,7 +22,7 @@
 </header>
 <header class="clearfix header auth-header" ng-switch-when="true">
     <div class="container">
-                <img ng-click="var = 'HOME'" class="loggedLogo" ui-sref="home.dashboard.aggregatedScore" src="images/logo.png" alt="" />
+                 <a href="/" > <img ng-click="var = 'HOME'" class="loggedLogo" ui-sref="home.dashboard.aggregatedScore" src="images/logo.png" alt="" /></a>
             <div ng-click="toggle()" class="burger-menu">
                 <span></span>
                 <span></span>

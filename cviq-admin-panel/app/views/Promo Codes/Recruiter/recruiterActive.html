@@ -74,6 +74,7 @@
                                         <span ng-show="predicate == 'maxUser' && reverse" class="fa fa-caret-up"></span>
                                     </div>
                                 </th>
+                                <th style="min-width:100px">Members Used</th>
                                 <th style="min-width:150px">
                                     <div style="text-align:center;" ng-click="sort('howManyTimes')">
                                         Limit per User
@@ -128,6 +129,7 @@
                                 <td class="text-center" style="text-transform: capitalize">{{data.description}}</td>
                                 <td class="text-center" style="">{{data.maxUser}}</td>
                                 <td class="text-center" style=" ">{{data.howManyTimes}}</td>
+                                <td class="text-center" style=" ">{{data.membersUsed}}</td>
                                 <td class="text-center" >{{data.createdAt}}</td>
                                 <td class="text-center" >{{data.startTime}}</td>
                                 <td class="text-center" >{{data.endTime}}</td>

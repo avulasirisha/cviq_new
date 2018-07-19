@@ -1,5 +1,8 @@
 angular.module('Cviq').constant('CONSTANT',{
-    apiUrl: 'http://localhost:8000'
+    apiUrl: 'http://localhost:8000',
+    linkedClienid: '77t8dsm7xpnm33',
+    linkClineSecret:'Hc43cDPfSGSjjvOD'
+    
 });
 
 angular.module('Cviq')

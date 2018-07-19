@@ -64,6 +64,7 @@ App.controller('RecruiterActiveController', function ($rootScope,$scope, $http, 
                 d.maxUser = column.maxUser;
                 d.promoName = column.promoName;
                 d.promoType = column.promoType;
+                d.membersUsed = column.membersUsed;
                 d.value = column.value;
 
                 d.createdAt = moment(column.createdAt).format('MMM Do YYYY, h:mm a');//date

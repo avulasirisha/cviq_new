@@ -64,6 +64,7 @@ App.controller('CandidateActiveController', function ($rootScope,$scope, $http, 
                 d.maxUser = column.maxUser;
                 d.promoName = column.promoName;
                 d.promoType = column.promoType;
+                d.membersUsed= column.membersUsed;
                 d.value = column.value;
 
                 d.createdAt = moment(column.createdAt).format('MMM Do YYYY, h:mm a');//date
@@ -266,6 +267,7 @@ App.controller('CandidateActiveController', function ($rootScope,$scope, $http, 
         $scope.updatedata.value = data.value;
         $scope.updatedata.endTime = data.endTime1;
         $scope.updatedata.startTime = data.startTime1;
+        
 
         console.log('data.startTime', data.startTime1);
 

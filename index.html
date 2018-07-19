@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="icon" href="images/favicon-new.png" type="image/x-icon">
+
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <title>CVIQ</title>
 
@@ -16,7 +18,7 @@
   <link href="css/owl.carousel.min.css" rel="stylesheet">
   <link href="css/animate.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+     <script src="js/angular.1.6.9.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -46,7 +48,7 @@
   <header>
     <div class="container">
       <div class="row">
-        <div class="col-md-3 col-sm-3 logo"><a href="#">CVIQ</a></div>
+        <div class="col-md-3 col-sm-3 logo"><a href="#">CVIQ <span>360</span></a></div>
         <div class="col-md-9 col-sm-9 menu">
           <div id="navbar">
             <nav class="navbar  navbar-static-top" role="navigation">
@@ -65,8 +67,8 @@
               <div class="collapse navbar-collapse" id="navbar-collapse-1">
                 <ul class="nav navbar-nav">
                   <li><a href="#">Home</a></li>
-                  <li><a href="/cviq-candidate/#/home/">Jobseekers</a></li>
-                  <li><a href="/cviq-recruiter/#/home/">Employers</a></li>
+                  <li><a href="/cviq-candidate/#/home/home/homeScreen/search">Jobseekers</a></li>
+                  <li><a href="/cviq-recruiter/#/home/home/homeScreen/search">Employers</a></li>
                   <li><a href="#">Features</a></li>
                   <li><a href="#!#tab1">Jobs</a></li>
                   <li><a href="#">Contact</a></li>
@@ -643,16 +645,16 @@
       <div class="row">
         <div class="total-list">
           <div class="col-md-3 col-sm-3 col-xs-12 total-left-one">
-            <h2>{{ JobCount }} +</h2>
+            <h2>{{ AllCounts.JobCount }} +</h2>
             <p>Jobs Available</p>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12 total-left-two">
-            <h2>{{MemberCount}} +</h2>
+            <h2>{{ AllCounts.MemberCount}} +</h2>
             <p>Members</p>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12 total-left-three">
-            <h2>1325 +</h2>
-            <p>Resumes</p>
+            <h2> {{ AllCounts.RecruiterCount }} +</h2>
+            <p>Recruiters</p>
           </div>
           <div class="col-md-3 col-sm-3 col-xs-12 total-left-four">
             <h2>2944 +</h2>

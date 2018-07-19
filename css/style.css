@@ -315,6 +315,7 @@ header .menu {
 .banner .form-field input {
   width         : 100%;
   height        : 40px;
+  border        : 1px solid red;
   border-radius : 18px;
   background    : #fff;
 }

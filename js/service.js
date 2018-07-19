@@ -66,8 +66,8 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
   $scope.FullTime = {};
   $scope.PartTIme = {};
   $scope.jobCategories = {};
-  $scope.JobCount = 20; 
-  $scope.MemberCount = 25;
+  $scope.AllCounts = {}; 
+
        // $scope.AllCounts={};
         /* Trending Jobs */
         var opt = {};
@@ -75,21 +75,21 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
              opt['headers'] = { authorization: OptimizeVlaue('CandidateOpt')  };
         }   
         $http.get(CONSTANT_apiUrl+"/api/candidate/getJobs?type=trendingJobs",  opt)
-        .then(function(response, error) {
-            if( error ){
-            console.log( response );
-            }else{
+        .then(function(response) {
                 $scope.TrandingJobs =response.data;
+         },function( error ){
+            console.log( error );
+            if( error.data.error == "Unauthorized" ){
+                document.cookie = 'CandidateOpt=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                document.cookie = 'loggedIn=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+                location.reload();
             }
         });
 
        
         /* RecentJobs*/
         $http.get( CONSTANT_apiUrl+"/api/candidate/getJobs?type=recentJobs",opt)
-        .then(function(response, error) {
-            if( error ){
-                console.log( response );
-            }else{
+        .then(function(response) {
                 $scope.RecentJobs =response.data.data;  
               for( i in $scope.RecentJobs ){ 
                   if( $scope.RecentJobs[i].jobType == "Permanent"){
@@ -97,10 +97,11 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
                   }else{
                     $scope.PartTIme[i] =  $scope.RecentJobs[i];
                   }
-              }
-              
-                  console.log( $scope.FullTime );
-           }       
+              }       
+        },function( error ){
+            if( error.data.error == "Unauthorized" ){
+                document.cookie = 'CandidateOpt=;expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            }
         });
             
              
@@ -108,34 +109,21 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
         
         /* RecentJobs*/
         $http.get(CONSTANT_apiUrl+"/api/common/getJobCategories")
-        .then(function(response, error) {
-            if( error ){
-                console.log( response );
-            }else{
-                $scope.jobCategories =response.data.data;  
-           }       
+        .then(function(response) {
+                $scope.jobCategories =response.data.data;         
         });
     
      $http.get(CONSTANT_apiUrl+"/api/common/NewCandidates")
-        .then(function(response, error) {
-            if( error ){
-                console.log( response );
-            }else{
+        .then(function(response) {
                 $scope.NewCandidates =response.data.data;  
-                console.log( $scope.NewCandidates );
-           }       
+                console.log( $scope.NewCandidates );       
         });
     
        $http.get( CONSTANT_apiUrl+"/api/common/getAllCounts")
-        .then(function(response, error) {
-            if( error ){
-                console.log( "error "+ response );
-            }else{
-                $scope.JobCount =response.data.data["jobs"];  
-                console.log( "jobs:" +$scope.JobCount );
-                $scope.MemberCount =response.data.data["members"]; 
-
-           }       
+        .then(function(response) {
+                $scope.AllCounts.JobCount =response.data.data["jobs"];  
+                $scope.AllCounts.MemberCount =response.data.data["members"]; 
+                $scope.AllCounts.RecruiterCount =response.data.data["recruiters"];       
         });
         
           

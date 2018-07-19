@@ -186,6 +186,34 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
     /*============================= End: Custom Dropdown Plugin ================================*/
 
 
+    
+    $scope.findFunctionalArea = function(response){
+            $scope.selectedIndustryID = response._id;
+
+            $scope.funct = {
+                industryID:$scope.selectedIndustryID
+            }
+
+            $http({
+                method:'GET',
+                url: CONSTANT.apiUrl +'/api/common/getFunctionalAreaList',
+                params:$scope.funct
+            })
+                .success(function(response){
+                    console.log(response);
+                    $scope.functionalAreaRefinedList = response.data;
+                    $timeout(function(){
+                        $('.selectpicker').selectpicker('refresh');
+                    },0);
+                })
+                .error(function(response){
+                    if(response.statusCode == 401){
+                        $scope.confirmLogOut();
+                    }
+                    console.log(response);
+                })
+        }
+
 
     /*============================= Start: Get Selected Industry ID ================================*/
 
@@ -196,6 +224,8 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
            console.log(value._id);
             $cookieStore.put('SelIndustryID', value._id);
         });
+        
+      //  $scope.findFunctionalArea( indID[0] ) ;
     }
 
     //$scope.underGrad = function (response) {
@@ -594,3 +624,4 @@ angular.module('Cviq').directive('validFile',function(){
 });
 
 /*=============================End: Validation for input type file: resume ================================*/
+
