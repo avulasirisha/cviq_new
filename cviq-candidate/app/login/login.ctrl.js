@@ -32,9 +32,16 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
              //   $cookieStore.put('loggedIn',true, { "path": "/" } );
                 var now = new Date();
                 now.setTime(now.getTime() + ( 60 * 60 * 1000));
-
-                document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/site";
-                document.cookie = "CandidateOpt="+response.data.accessToken+";expires=" + now.toUTCString() + "; path=/site";
+                if( window.location.hostname == "localhost"  ){
+                
+                    document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/site";
+                    document.cookie = "CandidateOpt="+response.data.accessToken+";expires=" + now.toUTCString() + "; path=/site";
+                }else{
+                
+                    document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/";
+                    document.cookie = "CandidateOpt="+response.data.accessToken+";expires=" + now.toUTCString() + "; path=/";
+                }
+            
                $cookieStore.put('AccessToken', response.data.accessToken,  { "path": "/" } );
                 localStorage.setItem('UserDetails',JSON.stringify(response.data));
                 //$cookieStore.put('UserDetails', response.data);

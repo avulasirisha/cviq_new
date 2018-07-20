@@ -114,7 +114,7 @@
               <div class="form-field">
                 <div class="form-group col-md-5 col-sm-5 col-xs-12">
                   <input type="text" class="form-control" id="Keyword" name="keywords" placeholder="Keyword e.g. (Job Title, Description, Tags)" ng-model="searchData.keywords" required>
-                  <span class="validation" ng-show="searchForm.keywords.$invalid "> keyword is required</span>
+                  <span class="validation" ng-show="searchForm.keywords.$invalid && searchForm.keywords.$touched "> keyword is required</span>
                 </div>
                 <div class="form-group selectconr col-md-3 col-sm-3 col-xs-12">
                   <span>1</span>

@@ -1,5 +1,10 @@
+ if( window.location.hostname == "localhost"  ){
+    api_url = 'http://localhost:8000' ;
+ }else{
+    api_url = 'http://34.207.125.7:3005' ;
+ }
 angular.module('Cviq').constant('CONSTANT',{
-    apiUrl: 'http://localhost:8000',
+    apiUrl: api_url,
     linkedClienid: '77t8dsm7xpnm33',
     linkClineSecret:'Hc43cDPfSGSjjvOD'
     

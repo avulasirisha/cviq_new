@@ -1,6 +1,12 @@
+if( window.location.hostname == "localhost"  ){
+        api_url = 'http://localhost:8000' ;
+}else{
+        api_url = 'http://34.207.125.7:3005' ;
+}
+
 angular.module('Cviq').constant('CONSTANT',{
     //apiUrl: 'http://52.24.206.96:3001'
-    apiUrl: 'http://localhost:8000'
+    apiUrl:api_url
 });
 
 angular.module('Cviq').config(['ChartJsProvider', function (ChartJsProvider) {
@@ -173,6 +179,11 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
             url : '/jobDetails/:id',
             templateUrl : 'app/jobDetails/jobDetails.html',
             controller : 'jobDetailsCtrl'
+        })
+         .state('home.appliedCandidates',{
+            url : '/appliedCandidates/:id',
+            templateUrl : 'app/appliedCandidates/appliedCandidates.html',
+            controller : 'appliedCandidatescntrl'
         })
         .state('home.createNewJob',{
             url:'/createNewJob',
