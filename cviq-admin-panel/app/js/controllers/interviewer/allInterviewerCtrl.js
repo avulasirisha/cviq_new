@@ -343,6 +343,31 @@ App.controller('allInterviewerController', function ($scope, $http, $cookies,$st
     };
 
 
+    $scope.Interviewer_Reviews = function( did ){    
+        $http({
+            method: 'GET',
+            url: MY_CONSTANT.url_cviq + '/api/common/GetInterviewerRatings',
+            headers:{
+                'Content-type': 'application/x-www-form-urlencoded'
+            },
+            params: { "InterviewerId": did }
+        })
+            .success(function(response){
+              $scope.Ratings = response.data;
+              ngDialog.open({
+                  template: 'Interviewer_Ratings',
+                  className: 'ngdialog-theme-default custom-width-900',
+                  showClose: false,
+                  scope: $scope
+              });      
+            
+            })
+            .error( function( response){
+                
+            })
+    }
+            
+
     $('#certi1').click(function () {
         console.log("hello");
         $('#certi1').attr('download','myname');

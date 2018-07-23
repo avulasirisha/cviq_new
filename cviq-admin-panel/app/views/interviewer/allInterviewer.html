@@ -117,6 +117,14 @@
                                     <b>Approved</b> - <span ng-show="data.isVerified">Yes</span><span ng-hide="data.isVerified">No</span> <br>
                                     <b>Blocked</b> - <span ng-show="data.isBlocked">Yes</span><span ng-hide="data.isBlocked">No</span>
                                 </td>
+                                    <td>
+                                    <div  class="flexDisplay">
+                                        <a style="margin: 0px 2px;" class="btn btn-sm btn-default1" title="View Candidates" ng-click="Interviewer_Reviews(data.Id)"><!--style="background-color:#666666"-->
+                                            <i class="fa fa-users unblock-icon"></i>
+                                        </a>
+                                    </div>
+
+                                </td>
                             </tr>
                             </tbody>
                             <tfoot ng-show="tFootFlag">
@@ -197,6 +205,52 @@
             </div>
         </div>
     </script>
+    <!--- 
+    ***************** Interviewer Ratings ***********************8
+    --->
+    <script type="text/ng-template" id="Interviewer_Ratings">
+        <div class="ngdialog-message">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default" ng-class="{'whirl duo' : showloader }">
+                        <div style="clear:both"></div>
+                        <div class="panel-body">
+                            <div class="table-responsive" ng-switch="(list | filter:search).length">
+                                <div ng-switch-when="0" class="noSearch"><span>No candidate found</span></div>
+                                <table  class="table table-hover" ng-switch-default>
+                                    <thead>
+                                    <tr>
+                                        <th style="min-width:70px">
+                                            <div style="text-align:center;">
+                                                Sr. No.
+                                            </div>
+                                        </th>
+                                        <th>Profile Image</th>
+                                        <th>Name</th>
+                                        <th>Review Description</th>
+                                        <th>Rating (*/5)</th>        
+                                    </tr>
+                                    </thead>
+                                    <tbody ng-show="tBodyFlag">
+                                    <tr ng-repeat="data in Ratings">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <img ng-src="{{data.candidateID.profilePicURL.original || 'app/img/noimg.png'}}" class="tableImage">
+                                        </td>
+                                        <td>{{data.candidateID.firstName}} {{data.candidateID.lastName}}</td>
+                                        <td>{{data.candidateFeedback}} </td>
+                                        <td>{{data.candidateRating}}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script> 
+    
     <!-- **************************************************************************
     ******************* Modal to display msg **************************************
     *******************************************************************************-->

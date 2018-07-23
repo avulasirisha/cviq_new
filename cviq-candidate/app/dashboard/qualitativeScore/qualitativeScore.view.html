@@ -38,12 +38,10 @@
     </div>
 </section>
 <!--<div class="fullWidth" ng-show="QualitativeScoreData.membershipTaken == true && QualitativeScoreData.interviewScheduled == false">-->
-<div class="fullWidth" ng-show="interview_found == false" style="text-align:center">
-    Interviewer not found. Please check after sometime.
+<div class="fullWidth"  style="text-align:center">
+   {{ interview_found_details.interview_text }}
 </div>
-<div class="fullWidth" ng-show="interview_found == true"  style="text-align:center">
-    Interviewer Found. Interviewer Avaialability dates : {{ interview_dataes }}
-</div>
+
 <div class="fullWidth" ng-show="QualitativeScoreData.interviewshiptaken == true && QualitativeScoreData.interviewScheduled == false">
 <div class="scores-obtained">
     <h3>INTERVIEW DETAIL</h3>

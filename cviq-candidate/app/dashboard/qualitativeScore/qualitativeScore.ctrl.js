@@ -10,7 +10,7 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
     var timeZoneOffset = d.getTimezoneOffset();
 
     var interData;
-    $scope.interview_found = true;
+    $scope.interview_found_details = {};
     $scope.interview_dataes="";
 
     $http({
@@ -26,19 +26,32 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
         .success(function(response){
             console.log('QualitativeScoreData', response);
             $scope.QualitativeScoreData = response.data;
-            if( response.data.interviewerID == '' ){
-                $scope.interview_found = false;
-            }
+            
             interData = response.data.availabilityData;
             for( i in interData ){
                 for( j in interData[i].availabilityTime ){
                     if( interData[i].availabilityTime[j] == 1 ){
                         console.log( "interviedate : "+ interData[i].availabilityDate );
                         var d = moment(new Date( interData[i].availabilityDate )).format('MMMM DD, YYYY');
-                        $scope.interview_dataes += d + " " ;
+                        $scope.interview_dataes += d + "  " ;
                         break;
                     }
                 }    
+            }
+            if( response.data.interviewerID == '' ){
+                $scope.interview_found_details.interview_found = false;
+                if(  response.data.interviewshiptaken == false ){
+                   $scope.interview_found_details.interview_text = "Please Buy Interview Fees To Get Qualitative Score"; 
+                }else{
+                    $scope.interview_found_details.interview_text = "Interviewer Not Found. We Are Checking For Right Person. Please Try Later"; 
+                }      
+            }else{
+                $scope.interview_found_details.interview_found = true;
+                if(  $scope.interview_dataes == "" ){
+                    $scope.interview_found_details.interview_text = "Interviewer Found. Interviewer Not given Interview Dates. Please Try Later";
+                }else{
+                    $scope.interview_found_details.interview_text = "Interviewer Found. Interview Dates: "+ $scope.interview_dataes;
+                }
             }
             aaj = moment(new Date()).format('YYYY-MM-DD');
             aaj = new Date(aaj).toISOString();

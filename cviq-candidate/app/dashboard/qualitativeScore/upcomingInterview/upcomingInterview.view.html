@@ -31,6 +31,7 @@
         <div class="upcoming-interview-left col-lg-8 col-md-7 col-sm-12 col-xs-12">
             <h4>Details of Interviewer</h4>
             <label>Status</label><span class="stat" ng-show="upcomingInterviewDetails.status == 4">Confirm</span><span class="stat" ng-show="upcomingInterviewDetails.status == 2">On going</span><span class="stat" ng-show="upcomingInterviewDetails.status == 1">Pending</span>
+            <br><label><b>Name : </b></label><span  >{{ upcomingInterviewDetails.interviewerID.firstName }} {{ upcomingInterviewDetails.interviewerID.lastName }}</span>
             <ul>
                 <li><span>Experience</span><br />{{upcomingInterviewDetails.interviewerID.totalExperience}} Yrs</li>
                 <li><span>Skills</span><br /><span style="color: #000" ng-repeat="s in interviewerSkills track by $index">{{s}}{{$last ? '' : ($index==interviewerSkills.length-1) ? ', and ' : ',&nbsp;'}}</span></li>
