@@ -35,7 +35,7 @@
                 </span>
                 <div class="notification" ng-if="notification.length > 0">
                     <ul>
-                        <li ng-repeat="n in notification track by $index">{{n.message}}<span ng-if="n.notificationType == 3" ng-click="goToUpcomingInterview()">Click to view details</span><span ng-if="n.notificationType == 5" ng-click="goToAggregaredScore()">Click to view details</span><span ng-if="n.notificationType == 6" ng-click="goToRecruiterMessage()">Click to view details</span></li>
+                        <li ng-repeat="n in notification track by $index">{{n.message}}<span ng-if="n.notificationType == 3" ng-click="goToUpcomingInterview($index)">Click to view details</span><span ng-if="n.notificationType == 5" ng-click="goToAggregaredScore($index)">Click to view details</span><span ng-if="n.notificationType == 6" ng-click="goToRecruiterMessage($index)">Click to view details</span></li>
                     </ul>
                 </div>
                 <div class="user-name">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" ng-src="{{userData.profilePicURL.original}}" alt="" />

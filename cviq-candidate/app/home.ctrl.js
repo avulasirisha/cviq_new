@@ -108,16 +108,25 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
 
     /*=============================End: Custom Factory Function ================================*/
 
-    $scope.goToUpcomingInterview = function () {
-        $state.go('home.dashboard.qualitativeScore.upcomingInterview',{}, {reload: true});
+    $scope.goToUpcomingInterview = function ( id ) {
+      //  $state.go('home.dashboard.qualitativeScore.upcomingInterview',{}, {reload: true});
+        delete $scope.notification[id] ;
+        $('.notification').toggleClass('displayDropDown');
+        $state.go('home.dashboard.qualitativeScore.upcomingInterview');
+        
     }
 
-    $scope.goToAggregaredScore = function () {
-        $state.go('home.dashboard.qualitativeScore.pastInterview',{}, {reload: true});
+    $scope.goToAggregaredScore = function (id ) {
+        delete $scope.notification[id] ;
+        $('.notification').toggleClass('displayDropDown');
+        $state.go('home.dashboard.qualitativeScore.pastInterview');
     }
 
-    $scope.goToRecruiterMessage = function () {
-        $state.go('home.inbox.inboxTab.mails',{}, {reload: true});
+    $scope.goToRecruiterMessage = function ( id ) {
+        delete $scope.notification[id] ;       
+        $('.notification').toggleClass('displayDropDown');
+      //  $state.go('home.inbox.inboxTab.mails',{}, {reload: true});
+       $state.go('home.inbox.inboxTab.mails');
     }
 
     /*=============================Start: Interview notification through socket ================================*/

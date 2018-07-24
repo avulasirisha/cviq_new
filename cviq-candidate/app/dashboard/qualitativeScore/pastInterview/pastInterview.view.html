@@ -17,7 +17,7 @@
     <div ng-if="!i.ratingByCandidate && i.status == 5">
             <textarea  ng-model="i.description"></textarea>
             <div class="rate-candidate-interview text-center">
-            <span ng-repeat="rating in ratings">Rate Candidate
+            <span ng-repeat="rating in ratings">Rate Interviewer
                 <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating,i)"></div>
             </span>
             </div>
