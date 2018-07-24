@@ -2,7 +2,15 @@ var app = angular.module('myApp', ['ngRoute','ngCookies']);
 
 app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location', '$anchorScroll', function($scope, $http, $cookieStore ,$location,$anchorScroll ) {
    
-   var CONSTANT_apiUrl = "http://localhost:8000";
+if( window.location.hostname == "localhost"  ){
+    var CONSTANT_apiUrl = "http://localhost:8000";
+    var CVIQ_URL  = "http://localhost/site" ;
+}else{
+    var CONSTANT_apiUrl = "http://34.207.125.7:3005";
+    var CVIQ_URL  = "" ;
+}
+    
+
     var loggedInVar = $cookieStore.get('loggedIn');
  //   console.log( loggedInVar );
     function OptimizeVlaue(cname) {
@@ -39,7 +47,7 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
       { "link": "#" ,"name": "Download link 3" },
       { "link": "#" ,"name": "Download link 4" }
     ]; 
-    var CVIQ_URL  = "http://localhost/site" ;
+
     $scope.goto_url = function( arg1, arg2 ){
         console.log( arg1 + " + " + arg2 );
         if( arg2 == 2 ){
