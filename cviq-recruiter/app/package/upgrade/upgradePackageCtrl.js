@@ -13,7 +13,7 @@ angular.module('Cviq').controller('upgradePackageCtrl', ['$scope','$rootScope','
 
 
     $scope.userPackage= ($cookieStore.get('UserDetails')).membershipPlanType;
-
+    $scope.membership = ($cookieStore.get('UserDetails')).membershipTaken;
     $scope.myClass='';
 
 
@@ -21,6 +21,9 @@ angular.module('Cviq').controller('upgradePackageCtrl', ['$scope','$rootScope','
     $scope.package = function(id){
         console.log("selected package ",id);
         $cookieStore.put("package",id);
+        if( $scope.membership == true ){
+            bootbox.alert("Note: You Have Already Taken "+$scope.userPackage+" Membership.");
+        }
          console.log( $cookieStore.get("package"));
     
         // $state.go('home.redirectUrl');
@@ -54,23 +57,7 @@ angular.module('Cviq').controller('upgradePackageCtrl', ['$scope','$rootScope','
             else{
                 $scope.myClass='packages3'
             }
-            
-            // console.log(typeof($scope.plans));
-            //
-            // var i = 0;
-            // var x;
-            // while($scope.plans[i]){
-            //     var descriptionArray = $scope.plans[i].planDescription.split(",");
-            //     console.log(descriptionArray);
-            //     $scope.plans[i].descriptionArray = descriptionArray;
-            //     // for(var j=0; j<descriptionArray.length; j++){
-            //     //     $scope.plans[i].j = descriptionArray[j];
-            //     // }
-            //
-            //     i++;
-            // }
-            // console.log("new",$scope.plans);
-    
+        
             $rootScope.loading = false;
     
         })

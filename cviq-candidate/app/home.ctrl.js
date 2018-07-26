@@ -113,20 +113,35 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
         delete $scope.notification[id] ;
         $('.notification').toggleClass('displayDropDown');
         $state.go('home.dashboard.qualitativeScore.upcomingInterview');
-        
+        window.scrollTo(0, 500);
     }
 
     $scope.goToAggregaredScore = function (id ) {
         delete $scope.notification[id] ;
         $('.notification').toggleClass('displayDropDown');
         $state.go('home.dashboard.qualitativeScore.pastInterview');
+        window.scrollTo(0, 500);
     }
 
     $scope.goToRecruiterMessage = function ( id ) {
+        console.log( $scope.notification[id] ) ;
+        console.log(   $scope.notification[id]['message'] );
+        console.log(  typeof $scope.notification[id].message ) ;
+        var noti_msg = $scope.notification[id]['message'] ;
+        if( /new message/i.test( noti_msg ) ){
+            for( i in $scope.notification ){
+                var noti_msg = $scope.notification[i]['message'];
+                if( /new message/i.test(noti_msg  ) ){
+                    delete $scope.notification[i]; 
+                }
+             }
+        }
+
         delete $scope.notification[id] ;       
         $('.notification').toggleClass('displayDropDown');
       //  $state.go('home.inbox.inboxTab.mails',{}, {reload: true});
        $state.go('home.inbox.inboxTab.mails');
+       window.scrollTo(0, 10);
     }
 
     /*=============================Start: Interview notification through socket ================================*/

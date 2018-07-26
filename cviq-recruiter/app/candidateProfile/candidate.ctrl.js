@@ -11,6 +11,12 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
 
     $scope.Memberships =$cookieStore.get('UserDetails');
     
+     $scope.CANDIDATE_STATUS = {
+        0:'Not Looking',      
+        1:'Actively Looking',
+        2:'Looking For Freelance Work'
+    };
+    
     if( $scope.Memberships.membershipTaken == false ){
            $state.go( "home.upgradePackage" ) ; 
             $timeout(function () {

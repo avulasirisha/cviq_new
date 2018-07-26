@@ -4,6 +4,21 @@ angular.module('Cviq').controller('searchJobsCtrl', ['$scope','$rootScope','ngDi
         $state.go('home.login');
     }
 
+       $scope.pstatus = [
+            {
+                desc:'Actively Looking',
+                val: 1
+            },
+            {
+                desc:'Not Looking',
+                val: 0
+            },
+            {
+                desc:'Looking For Freelance Work',
+                val: 2
+            }
+        ]
+
     $timeout(function(){
         $('.selectpicker').selectpicker();
     },0);

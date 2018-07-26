@@ -363,7 +363,7 @@ App.controller('allInterviewerController', function ($scope, $http, $cookies,$st
             
             })
             .error( function( response){
-                
+                alert('No Reviews Found');  
             })
     }
             

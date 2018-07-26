@@ -107,21 +107,33 @@ angular.module('Cviq').controller('qualitativeCtrl', ['$scope','$rootScope','$co
         $rootScope.loading = true;
         $http({
             method:'GET',
-            url:CONSTANT.apiUrl + '/api/candidate/getInterviewCharges',
+            url:CONSTANT.apiUrl + '/api/recruiter/getInterviewCharges',
+            headers:{
+                'authorization': $cookieStore.get('AccessToken'),
+            },
+            params: { "Id" : $scope.data.candidateID }  
         })
             .success(function (response) {
+                if( response.data.CandidateBlock== false ){
+                if( response.data.planType == "Premium" ){
+                    bootbox.alert("Candidate Not Taken Membership. Your Paying For Membership & Interview Charges");
+                }
 
-                $state.go("home.candidateGateway", {"candidate":  $scope.data.candidateID, "Payment": response.data.candidateInterviewCharges});
+                $state.go("home.candidateGateway", {"candidate":  $scope.data.candidateID, "Payment": response.data.planRate});
+                }else{
+                    bootbox.alert("Candidate was Blocked By Admin. Please Contact Admin For More Details");
+                }
                 
                 $('.alertButton').prop('disabled', false);
                 $rootScope.loading = false;
                 console.log("response",response.data);
             })
             .error(function (response) {
+                $rootScope.loading = false;
                 $('.alertButton').prop('disabled', false);
                 console.log("error",response);
-                bootbox.alert(response.message);
-                $rootScope.loading = false;
+                bootbox.alert(response.data.message);
+
                 if(response.statusCode == 401){
                     $scope.confirmLogOut();
                 }

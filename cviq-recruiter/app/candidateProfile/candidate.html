@@ -101,16 +101,22 @@
                                 </div>
 
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center pad circledivshadows3" >
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center pad circledivshadows3" >
                                 <div class="circledivborders">
                                     <span style="color: #4f5f72;font-weight: 600">Experience</span>
                                     <p style="color: #4f5f72;">{{profile.totalExperience}}</p>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center pad circledivshadows4" >
-                                <div class="circledivborders2 circledivborders3 ">
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center pad circledivshadows4" >
+                                <div class="circledivborders circledivborders3 ">
                                     <span style="color: #4f5f72;font-weight: 600">Loation</span>
                                     <p style="color: #4f5f72;">{{profile.currentCountry}}</p>
+                                </div>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center pad circledivshadows5" >
+                                <div class="circledivborders2 circledivborders3 ">
+                                    <span style="color: #4f5f72;font-weight: 600">Status</span>
+                                    <p style="color: #4f5f72;">{{ CANDIDATE_STATUS[profile.status] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -148,19 +154,25 @@
                                     <p style="color: #4f5f72;">{{profile.countryCode}} - {{profile.phoneNo}}</p>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center pad circledivshadows3" >
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center pad circledivshadows3" >
                                 <div class="circledivborders">
                                     <span style="color: #4f5f72;font-weight: 600">Experience</span>
                                     <p style="color: #4f5f72;">{{profile.totalExperience}}</p>
                                 </div>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 text-center pad circledivshadows4" >
-                                <div class="circledivborders2 circledivborders3 ">
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center pad circledivshadows4" >
+                                <div class="circledivborders circledivborders3 ">
                                     <span style="color: #4f5f72;font-weight: 600">Loation</span>
                                     <p style="color: #4f5f72;">{{profile.currentCountry}}</p>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-lg-2 col-md-2 col-sm-6 col-xs-6 text-center pad circledivshadows5" >
+                                <div class="circledivborders2 circledivborders3 ">
+                                    <span style="color: #4f5f72;font-weight: 600">Status</span>
+                                    <p style="color: #4f5f72;">{{ CANDIDATE_STATUS[profile.status] }}</p>
+                                </div>
+                            </div>
+                        </div>  
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 div2 text-center">
                             <button class=" text-center searchjob-btn linkedin-btn " ng-click="resumefunc()" ><span class="viewresume"></span>Download Resume</button>
                         </div>

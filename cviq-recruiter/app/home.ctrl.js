@@ -124,6 +124,25 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
 
     }
 
+      $scope.call_notification = function(){
+        $('.notification').toggleClass('displayDropDown');
+        $http({
+            method:'GET',
+            url: CONSTANT.apiUrl + '/api/common/NotificationTimer',
+            params:{ userType:'RECRUITER' },
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            }
+        })
+        .success(function(response){
+                console.log(response);
+        })
+        .error(function(response){
+                console.log(response);
+        })
+    }
+
+
     //======================socket================//
 
         $scope.notification = [];
@@ -145,7 +164,28 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
 
     });
 
-
+        $http({
+            method:'GET',
+            url: CONSTANT.apiUrl + '/api/common/getnewNotifications',
+            params:{ userType:'RECRUITER' },
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            }
+        })
+        .success(function(response){
+            console.log( response.data );
+            var Data = response.data;
+            if( Data.length > 0 ){
+                    for( i in Data ){
+                        console.log( Data[i]);
+                        $scope.notification.push(Data[i].notificationMsg);     
+                    }  
+                    $scope.$apply(); 
+            }
+        })
+        .error(function(response){
+                console.log(response);
+        })
 
 
 }]);

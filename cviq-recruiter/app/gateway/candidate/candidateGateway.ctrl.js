@@ -200,7 +200,8 @@ angular.module('Cviq').controller('candidateGateway', ['$scope','$rootScope','ng
                         },
                         data:{
                             "candidateID": $scope.candidateId,
-                            "paymentID": response.id
+                            "paymentID": response.id,
+                             "amount" :$scope.packageSelected
                         }
 
                     })

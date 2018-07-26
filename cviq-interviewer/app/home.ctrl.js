@@ -97,11 +97,23 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
 
     $scope.userCompleteData = $cookieStore.get('UserDetails');
     
-    $scope.goToNewRequest = function ( t ) {
-        if( t == 9 ){
-            $state.go('home.inbox',{}, {reload: true});
+    $scope.goToNewRequest = function ( t, did ) {
+        var noti_msg = $scope.notification[did]['notificationMsg'];
+          if( /feedback/i.test( noti_msg ) ){
+            for( i in $scope.notification ){
+                var noti_msg = $scope.notification[i]['notificationMsg'];
+                if( /feedback/i.test(noti_msg  ) ){
+                    delete $scope.notification[i]; 
+                }
+             }
+            $state.go('home.inbox.past');                      
         }else{
-            $state.go('home.interview.new',{}, {reload: true});
+            delete $scope.notification[did];
+        }
+        if( t == 9 ){
+            $state.go('home.inbox');
+        }else{
+            $state.go('home.interview.new');
         }
     }
 

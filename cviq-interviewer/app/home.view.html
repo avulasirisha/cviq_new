@@ -59,7 +59,9 @@
                 </span>
                 <div class="notification" ng-if="notification.length > 0">
                     <ul>
-                        <li ng-repeat="n in notification track by $index">{{n.notificationMsg}}.<span ng-click="goToNewRequest(n.notificationType)">Click to view details</span></li>
+                        <li ng-repeat="n in notification track by $index">{{n.notificationMsg}}.
+                            <span ng-click="goToNewRequest(n.notificationType, $index)">Click to view details</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="user-name">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" ng-src="{{userCompleteData.profilePicURL.original}}" alt="" />
