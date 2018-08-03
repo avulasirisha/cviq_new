@@ -1061,7 +1061,7 @@ angular.module('Cviq').controller('completeYourProfileCtrl', ['$scope','$rootSco
                 $state.go('home.dashboard.aggregatedScore');
                 $rootScope.scrollToTop();
                 $timeout(function () {
-                    $state.reload();
+                    $state.go('home.dashboard.aggregatedScore');
                 },500);
 
             })

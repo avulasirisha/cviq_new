@@ -141,8 +141,9 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                 registerData.append("OTP", $scope.otp);
                 registerData.append("email", regData.email);
                 registerData.append("password", regData.password);
-                //registerData.append("currentCountry", regData.currentCountry.countryName);
-               // registerData.append("currentState", regData.currentState);
+                registerData.append("currentCountry", regData.currentCountry.countryName);
+                registerData.append("currentState", regData.currentState);
+                registerData.append("companyName", regData.companyName);
                // registerData.append("industryID", regData.industry._id);
                // registerData.append("functionalAreaID", $scope.selectedFunctionalAreaID);
                // registerData.append("totalExperience", $scope.totalExperience);
@@ -183,8 +184,8 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                 registerData.append("countryCode", regData.countryCode);
                 registerData.append("phoneNo", regData.mobileNumber);
                 registerData.append("email", regData.email);
-               // registerData.append("currentCountry", regData.currentCountry.countryName);
-                //registerData.append("currentState", regData.currentState);
+                registerData.append("currentCountry", regData.currentCountry.countryName);
+                registerData.append("currentState", regData.currentState);
                 //registerData.append("industryID", regData.industry._id);
                 //registerData.append("functionalAreaID", $scope.selectedFunctionalAreaID);
                 //registerData.append("totalExperience", $scope.totalExperience);
@@ -413,7 +414,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
     /*============================= Start: Call Get State Name and Country Code ================================*/
 
 
-  /*  $scope.getCountryID = function(response){
+   $scope.getCountryID = function(response){
         $scope.selectedCountryID = response._id;
         $scope.register.countryCode = response.countryCode;
 
@@ -436,7 +437,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
             .error(function(response){
                 console.log(response);
             })
-    }*/
+    }
 
     /*============================= End: Call Get State Name and Country Code ================================*/
 

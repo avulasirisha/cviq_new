@@ -60,7 +60,7 @@
                                 </div>
                             </div>
 
-                          <!--  <div class="ProfileFormElements clearfix form-elements">
+                           <div class="ProfileFormElements clearfix form-elements">
                                 <div class="dropdown custom-select-box main-dropdown">
                                     <label>CURRENT COUNTRY</label>
                                     <select name="country" ng-model="register.currentCountry" ng-change="getCountryID(register.currentCountry)" class="selectpicker" data-live-search="true" ng-options="country.countryName for country in countryLists" required>
@@ -70,8 +70,8 @@
                                         <div class="error-message err" ng-show="signupForm.country.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                     </div>
                                 </div>
-                            </div>-->
-                           <!-- <div class="ProfileFormElements clearfix form-elements">
+                            </div>
+                            <div class="ProfileFormElements clearfix form-elements">
                                 <div class="dropdown custom-select-box main-dropdown">
                                     <label>CURRENT STATE</label>
                                     <select name="states" id="current-state" ng-model="register.currentState" class="selectpicker" data-live-search="true" ng-options="state.stateName for state in stateRefinedList" required>
@@ -81,8 +81,14 @@
                                         <div class="error-message err" ng-show="signupForm.states.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                     </div>
                                 </div>
-                            </div>-->
-
+                            </div>
+                            <div class="form-elements ">
+                                    <label>CURRENT COMPANY</label>
+                                    <input type="text" class="fname" minlength="3" style="text-transform: capitalize" ng-keypress='FirsText($event)' maxlength="20" placeholder="Enter compnay Name" name="companyName" ng-model="register.companyName" required />
+                                    <div ng-show="signupForm.$submitted || signupForm.companyName.$touched">
+                                        <div class="error-message" ng-show="signupForm.companyName.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
+                                    </div>
+                                </div>
 
                             <div class="clearfix">
                                 <div class="form-elements one-third">
@@ -97,10 +103,8 @@
                                     <div class="ProfileFormElements clearfix form-elements">
                                         <div class="dropdown custom-select-box main-dropdown">
                                             <label>COUNTRY CODE</label>
-
-                                            <select name="code" ng-model="register.countryCode" class="selectpicker" data-live-search="true" ng-options="country.countryCode as (country.countryName +'('+country.countryCode+')') for country in countryLists" required>
-                                                <option value="" disabled hidden>Country Code</option>
-                                            </select>
+                                            <input class="areaCode" id="areaCode" type="text" minlength="2" maxlength="4" ng-keypress='isCodeKey($event)' name="code" placeholder="Enter Area Code" ng-model="register.countryCode" required>
+                                      
                                             <div ng-show="signupForm.$submitted || signupForm.code.$valid && signupForm.code.$invalid">
                                                 <div class="error-message err" ng-show="signupForm.code.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                             </div>
@@ -118,94 +122,6 @@
                                 </div>
 
                             </div>
-
-                            <!--<div class="form-elements">
-                                <div class="pass-outer">
-                                    <label>TOTAL EXPERIENCE</label>
-                                    &lt;!&ndash;<input type="text" id="experience" onclick="$('.experience-lists').toggleClass('showExperience');" ng-keypress='isNumberKey($event)' name="experience" ng-model="register.experience" placeholder="Enter Experience" required>&ndash;&gt;
-                                    <div id="experience" onclick="$('.experience-lists').toggleClass('showExperience');">
-                                        <span ng-if="place" class="divPlace">Select Experience</span>
-                                        <p class="exp"><span ng-bind="expYear"></span> <span ng-bind="expMonth"></span></p>
-                                    </div>
-                                    <div class="experience-lists clearfix">
-                                        <div class="lists-exp">
-                                            <h3>YEAR</h3>
-                                            <ul>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="1">1</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="2">2</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="3">3</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="4">4</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="5">5</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="6">6</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="7">7</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="8">8</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="9">9</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="10">10</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="11">11</li>
-                                                <li><input ng-click="calculateYear()" type="radio" ng-model="year" value="12">12</li>
-                                            </ul>
-                                        </div>
-                                        <div class="lists-exp month">
-                                            <h3>MONTH</h3>
-                                            <ul>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="0">0</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="1">1</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="2">2</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="3">3</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="4">4</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="5">5</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="6">6</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="7">7</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="8">8</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="9">9</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="10">10</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="11">11</li>
-                                                <li><input ng-click="calculateMonth()" type="radio" ng-model="month" value="12">12</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
-
-                            <!--<div class="form-elements keySkills">
-                                <div class="pass-outer">
-                                    <label>KEY SKILLS</label>
-                                    <input type="text" ng-focus="instruct()" id="keySkills" ng-keypress='FirsText($event)' name="keySkills" ng-model="register.keySkills" placeholder="Enter Key Skills" required>
-                                    <div class="instructions" ng-if="tips">
-                                        <ul>
-                                            <li>List your work related skills / competency area to provide a quick overview of your abilities.</li>
-                                            <li>Enter skills seperated by comma (,).</li>
-                                        </ul>
-                                    </div>
-                                    <div ng-show="signupForm.$submitted || signupForm.keySkills.$touched">
-                                        <div class="error-message" ng-show="signupForm.keySkills.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
-                                    </div>
-                                </div>
-                            </div>-->
-
-                           <!-- <div class="ProfileFormElements clearfix form-elements">
-                                <div class="dropdown custom-select-box main-dropdown">
-                                    <label>INDUSTRY</label>
-                                    <select name="industry" ng-model="register.industry" ng-change="findFunctionalArea(register.industry)" class="selectpicker" data-live-search="true" ng-options="industry.industryName for industry in industriesList" required>
-                                        <option value="" disabled hidden>Select Industry</option>
-                                    </select>
-                                    <div ng-show="signupForm.$submitted || signupForm.industry.$valid && signupForm.industry.$invalid">
-                                        <div class="error-message err" ng-show="signupForm.industry.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
-                                    </div>
-                                </div>
-                            </div>-->
-
-                            <!--<div class="ProfileFormElements clearfix form-elements">
-                                <div class="dropdown custom-select-box main-dropdown">
-                                    <label>FUNCTION</label>
-                                    <select name="function" id="functional-area" ng-model="register.function" class="selectpicker" data-live-search="true" ng-options="functions.functionalAreaName for functions in functionalAreaRefinedList" required>
-                                        <option value="" disabled hidden>Select Function</option>
-                                    </select>
-                                    <div ng-show="signupForm.$submitted || signupForm.function.$valid && signupForm.function.$invalid">
-                                        <div class="error-message err" ng-show="signupForm.function.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
-                                    </div>
-                                </div>
-                            </div>-->
 
                             <div class="form-elements">
                                 <div class="pass-outer">

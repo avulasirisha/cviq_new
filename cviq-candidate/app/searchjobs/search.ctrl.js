@@ -1,6 +1,11 @@
-angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window','$location' , function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window, $location){
+angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog','$http','CONSTANT','characterService','$state','$cookieStore','$timeout','$window','$location' , function($scope, $rootScope, ngDialog, $http, CONSTANT, characterService, $state, $cookieStore, $timeout, $window, $location){
 
     $scope.var1 = $state.params.var1;
+    $scope.SearchComplete =false;   
+    
+    $scope.candidateSearch = false; 
+    $scope.filters ={};
+
 
     if($cookieStore.get('AccessToken') == undefined){
         $state.go('home.login');
@@ -17,6 +22,15 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
     },0);
 
     /*=============================Start: Get all jobs count ================================*/
+        $scope.slideIndustrylist = [];
+        $scope.slideCompanylist = []; 
+        $scope.slideFunctionlist = [];
+        $scope.slideWorkexperience=[];
+        $scope.slideCountrylist = [];
+        $scope.slideStatelist = [];
+        $scope.slideQuantitative = [];
+          
+
 
     $http({
         method:'GET',
@@ -318,18 +332,18 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
 
     /*=============================End: Searching Jobs Via Cookie ================================*/
 
+
     /*=============================Start: Searching Jobs ================================*/
-  
-     
+ 
     $scope.searching = function(response){
         $scope.appliedJobArray = [];
-        $state.go('home.inbox.searchJobs');
+        $state.go('home.search.searchJobs');
         console.log(response);
           if(typeof(Storage) !== 'undefined'){
               sessionStorage.setItem('SearchedParameter', JSON.stringify(response));
           }
 
-
+        console.log( "serchingfrom subm" );
         $scope.year = new Date().getFullYear();
         $scope.date = new Date().getDate();
         $scope.month = new Date().getMonth()+1;
@@ -344,21 +358,24 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
       
         $scope.fullDate = $scope.year+'-'+$scope.month+'-'+$scope.date;
 
-        if(response.functionalArea == null || response.functionalArea == undefined){
+        if( response.functionalArea == null || response.functionalArea == undefined ){
             response.functionalArea = {};
         }
 
         if(response.curCountry == null || response.curCountry == undefined){
             response.curCountry = {};
         }
-
+        
+        if(response.searchAgent == null || response.searchAgent == undefined){
+            response.searchAgent = null;
+        }
+        
         if(response.curState == null || response.curState == undefined){
             response.curState = {};
         }
-
+        
         if(response.experience != undefined || response.experience == '')
         {
-
             if(response.experience.contains('-')){
                 console.log('yes');
                 $scope.experience = response.experience.split('-');
@@ -372,7 +389,6 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
                 $scope.minExperience = $scope.experience;
                 $scope.maxExperience = 50;
             }
-
         }
    
         $scope.searchParam = {
@@ -389,7 +405,8 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
             certification:response.certifications,
             zipCode:response.zipcode,
             searchDate:$scope.fullDate,
-            searchCriteria:1
+            searchCriteria:1,
+            searchAgent:response.searchAgent
         }
 
 
@@ -405,8 +422,10 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
                 console.log(response);
                 $scope.numberOFJobs = response.data.length;
                 $scope.searchJobResult = response.data;
+                $scope.doFilters();
+                $scope.candidateSearch = true;
                 $timeout(function () {
-                    $state.reload('home.inbox.searchJobs');
+                    $state.reload('home.search.searchJobs');
                 },100);
 
             })
@@ -414,7 +433,38 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
                 console.log(response);
             })
     }
-    
+    function onlyUnique(value, index, self) { 
+        return self.indexOf(value) === index;
+    }  
+    $scope.doFilters = function(){
+        $scope.slideIndustrylist = [];
+        $scope.slideCompanylist = []; 
+        $scope.slideFunctionlist = [];
+        $scope.slideWorkexperience=[];
+        $scope.slideCountrylist = [];
+        $scope.slideStatelist = [];
+        $scope.slideQuantitative = [];
+          
+       if( $scope.searchJobResult.length > 0 ){
+       console.log(  $scope.searchJobResult );     
+            for( i in $scope.searchJobResult ){
+                $scope.slideIndustrylist.push( $scope.searchJobResult[i].industry ) ;
+                $scope.slideFunctionlist.push( $scope.searchJobResult[i].functionalArea ) ;
+                $scope.slideCompanylist.push( $scope.searchJobResult[i].companyName ) ; 
+                $scope.slideWorkexperience.push( $scope.searchJobResult[i].workExperience.min+"-"+ $scope.searchJobResult[i].workExperience.max ) ;           
+                $scope.slideQuantitative.push( $scope.searchJobResult[i].qualitativeScore.min ) ;
+            }     
+         $scope.slideIndustrylist=$scope.slideIndustrylist.filter( onlyUnique );  
+         $scope.slideCompanylist= $scope.slideCompanylist.filter( onlyUnique ); 
+         $scope.slideFunctionlist= $scope.slideFunctionlist.filter( onlyUnique ); 
+         $scope.slideWorkexperience = $scope.slideWorkexperience.filter( onlyUnique );
+         $scope.slideQuantitative =  $scope.slideQuantitative.filter( onlyUnique );
+       }
+      $scope.SearchComplete=true; 
+       $scope.filter = {};
+      $scope.filter.industry = true;
+      $scope.filter.company = true;
+    }
      
     /*=============================End: Searching Jobs ================================*/
 
@@ -567,5 +617,207 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
     }
     } 
     
+      $scope.MatchedFunctions = function() {
+
+        $scope.paginationData = {
+            start:0,
+            limit:20
+        }
+        $state.go('home.search.searchJobs');
+        $http({
+            method: 'GET',
+            url: CONSTANT.apiUrl + '/api/candidate/candidateMatchedJobs',
+            headers: {
+                authorization: $cookieStore.get('AccessToken')
+            },
+            params: $scope.paginationData
+        })
+            .success(function(response){
+                console.log('Success', response);
+                $scope.searchJobResult = response.data.jobList;
+                $scope.numberOFJobs = response.data.totalCount;
+                $scope.doFilters();
+                $timeout(function () {
+                    $state.reload('home.search.searchJobs');
+                },100);
+            })
+            .error(function(response){
+                console.log(response);
+                if(response.statusCode == 401){
+                    $rootScope.sessionExpired();
+                }
+            })
+
+    }
+
+    $scope.MatchedFunctions();
+    
+    
+    
+     $scope.applyFilter = function(response){
+     console.log( response );
+
+        if ( ($scope.filters.industry  ||  $scope.filters.experience   || $scope.filters.quantitative   
+            || $scope.filters.country ||  $scope.filters.company ) ){
+            
+            console.log("response",response);
+
+            $rootScope.loading = true;
+            if($(window).width() < 992)
+                $scope.toggleNavigation();
+
+            if(response != undefined ) {
+            
+                            $scope.data = {};
+               if(  $scope.candidateSearch  ){
+          
+                      if($scope.paramersForSearched.industry != null || $scope.paramersForSearched.industry != undefined){
+                          $scope.data.industry = $scope.paramersForSearched.industry.industryName;
+                      }
+                      if($scope.paramersForSearched.functionalArea != null || $scope.paramersForSearched.functionalArea != undefined){
+                          $scope.data.functionalArea = $scope.paramersForSearched.functionalArea.functionalAreaName;
+                      }
+                      if($scope.paramersForSearched.curCountry != null || $scope.paramersForSearched.curCountry != undefined){
+                          $scope.data.curCountry = $scope.paramersForSearched.curCountry.countryName;
+                      }
+                      if($scope.paramersForSearched.curState != null || $scope.paramersForSearched.curState != undefined){
+                          $scope.data.curState = $scope.paramersForSearched.curState.stateName;
+                      }
+                      if($scope.paramersForSearched.experience != undefined)
+                      {
+                          if($scope.paramersForSearched.experience.contains('-')){
+                              console.log('yes');
+                              $scope.experience = $scope.paramersForSearched.experience.split('-');
+                              $scope.data.minExperience = $scope.experience[0];
+                              $scope.data.maxExperience = $scope.experience[1];
+                          }
+                          else if($scope.paramersForSearched.experience.contains('>')){
+                              console.log('no');
+                              $scope.experience = $scope.paramersForSearched.experience.substring($scope.paramersForSearched.experience.indexOf('>') + 1);
+                              console.log($scope.experience);
+                              $scope.data.minExperience = $scope.experience;
+                              $scope.data.maxExperience = 50;
+                          }
+                      }
+                       if($scope.paramersForSearched.keywords != null || $scope.paramersForSearched.keywords != undefined){
+                                $scope.data.keywords = $scope.paramersForSearched.keywords;
+                        }
+              }else{
+                $scope.data.matchedjobs = true;
+              }
+
+
+
+              if (response.experience != undefined) {
+                    $scope.filter.experience = true;
+                    var e_min = [];
+                    var e_max = [];
+                    for( i in response.experience ){
+                       var realdata = i.split( "-" );
+                       e_min.push( realdata[0] ); 
+                       e_max.push( realdata[1] );    
+                    }                    
+                    $scope.data.maxExperience =  Math.max(e_max);
+                    $scope.data.minExperience =  Math.min(e_min);
+              }          
+              if (response.industry != "") {
+                  $scope.filter.industry = true;
+                  var idata ="";
+                  for( i in response.industry ){
+                     if( response.industry[i] == true ){
+                        idata +=  i +",";
+                     }
+                     console.log( i );
+                  }
+                  console.log( idata );
+                  if( idata.length > 1 ){
+                    $scope.data.industry = idata.substring(0, idata.length - 1);
+                  }
+              }
+             if (response.functionalarea != undefined) {
+                  $scope.filter.functionalarea = true;
+                  var fdata ="";
+                  for( i in response.functionalarea ){
+                      if( response.functionalarea[i] == true ){
+                         fdata +=  i +",";     
+                      }  
+                  }
+                  if( fdata.length > 1 ){
+                    $scope.data.functionalarea = fdata.substring(0, fdata.length - 1);
+                  }
+              } 
+              if (response.company != undefined) {
+                  $scope.filter.company = true;
+                   var cdata = "";
+                  for( i in response.company ){
+                     if( response.company[i] == true ){                  
+                        cdata +=  i +",";
+                     }
+                  }
+                    if( cdata.length > 1 ){
+                        $scope.data.company = cdata.substring(0, cdata.length - 1);
+                    }
+              }
+              
+              if (response.quantitative != undefined) {
+                  $scope.filter.quantitative = true;
+                  var qdata = "";
+                  for( i in response.quantitative ){
+                    if( response.quantitative[i] == true ){ 
+                        qdata +=  i +",";
+                    }
+                  }
+                  if( qdata.length > 1 ){
+                    $scope.data.quantitative = qdata.substring(0, qdata.length - 1);
+                  }
+              }
+              if (response.location != undefined) {
+                      $scope.filter.location = true;
+                      $scope.data.location = response.location;
+              }
+           
+                console.log("dat retrieved is",$scope.data);
+            }else
+            {
+                console.log("else")
+                $scope.data = {};
+            }
+
+            $http({
+                method:'GET',
+                url: CONSTANT.apiUrl + '/api/candidate/searchFilterJobs',
+                headers:{
+                    authorization: $cookieStore.get('AccessToken')
+                },
+                params:$scope.data
+            })
+                .success(function(response){
+                    console.log(response);
+                    $scope.candidatesList = response.data;
+
+                    $('body, html').animate({
+                        scrollTop: 800
+                    }, 1500);
+
+                $scope.numberOFJobs = response.data.length;
+                $scope.searchJobResult = response.data;
+                $scope.doFilters();
+                    $scope.show = true;
+                    $rootScope.loading = false;
+                })
+                .error(function(response){
+                    console.log(response);
+                    if(response.statusCode == 401){
+                        $scope.confirmLogOut();
+                        $rootScope.loading = false;
+                    }
+                    $rootScope.loading = false;
+                })
+
+        }
+
+
+
+    };
 
 }]);

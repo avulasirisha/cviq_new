@@ -132,6 +132,15 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var: 'COMPLETE PROFILE'
             }
         })
+        
+         .state('home.search',{
+            url:'/search',
+            templateUrl:'app/searchjobs/search.view.html',
+            controller:'searchCtrl',
+            params:{
+                var: 'COMPLETE PROFILE'
+            }
+        })
         .state('home.payment',{
             url:'/payment',
             templateUrl:'app/payment/payment.view.html',
@@ -217,9 +226,9 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
             templateUrl:'app/inbox/inbox.view.html',
             controller:'inboxCtrl'
         })
-        .state('home.inbox.appliedJobs',{
+        .state('home.search.appliedJobs',{
             url:'/appliedJobs',
-            templateUrl:'app/inbox/appliedJobs/appliedJobs.view.html',
+            templateUrl:'app/searchjobs/appliedJobs/appliedJobs.view.html',
             controller:'appliedJobsCtrl',
             params:{
                 var:'JOBS',
@@ -244,27 +253,27 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var1:'SUGGESTED JOBS'
             }
         })
-        .state('home.inbox.favouritejobs',{
+        .state('home.search.favouritejobs',{
             url:'/favouritejobs',
-            templateUrl:'app/inbox/favouritejobs/favouritejobs.view.html',
+            templateUrl:'app/searchjobs/favouritejobs/favouritejobs.view.html',
             controller:'favouritejobs',
             params:{
                 var:'JOBS',
                 var1:'FAVOURITE JOBS'
             }
         })
-        .state('home.inbox.searchJobs',{
+        .state('home.search.searchJobs',{
             url:'/searchJobs',
-            templateUrl:'app/inbox/searchJobs/searchJobs.view.html',
+            templateUrl:'app/searchjobs/searchJobs/searchJobs.view.html',
             controller:'searchJobsCtrl',
             params:{
                 var:'JOBS',
                 var1:'SEARCH JOBS'
             }
         })
-        .state('home.inbox.viewedProfile',{
+        .state('home.search.viewedProfile',{
             url:'/viewedProfile',
-            templateUrl:'app/inbox/viewedProfile/viewedProfile.view.html',
+            templateUrl:'app/searchjobs/viewedProfile/viewedProfile.view.html',
             controller:'viewedProfileCtrl',
             params:{
                 var:'JOBS',
@@ -380,14 +389,14 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var1: 'RESUME'
             }
         })
-        .state('home.inbox.jobDetails',{
+        .state('home.search.jobDetails',{
             url:'/jobDetails',
-            templateUrl:'app/inbox/jobDetails/jobDetails.view.html',
+            templateUrl:'app/searchjobs/jobDetails/jobDetails.view.html',
             controller:'jobDetailsCtrl'
         })
-        .state('home.inbox.recruiterDetails',{
+        .state('home.search.recruiterDetails',{
             url:'/recruiterDetails',
-            templateUrl:'app/inbox/recruiterDetails/recruiterDetails.view.html',
+            templateUrl:'app/searchjobs/recruiterDetails/recruiterDetails.view.html',
             controller:'recruiterDetailsCtrl',
             params:{
                 var:'JOBS',
