@@ -53,6 +53,13 @@
                                 </div>
 
 
+                                 <div class="form-elements ">
+                                    <label>JOB Skills</label>
+                                    <input type="text"  minlength="3" placeholder="Enter Job skills" name="jobskill" ng-model="job.jobskill" required />
+                                    <div ng-show="NewJob.$submitted || NewJob.jobskill.$touched">
+                                        <div class="error-message" ng-show="NewJob.jobskill.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
+                                    </div>
+                                </div>
                                 <div class="createJobHeadings">
                                     <span class="text-left " >Job Type <br/> </span>
                                 </div>
@@ -70,8 +77,7 @@
                                         <div class="error-message" ng-show="NewJob.jType.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                     </div>
                                 </div>
-
-
+                                
 
                                 <div class="createJobHeadings">
                                     <span class="text-left " >Can you Commute <br/> </span>

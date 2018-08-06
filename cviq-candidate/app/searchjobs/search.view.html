@@ -14,12 +14,13 @@
                     <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-5 col-xs-12">
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>KEYWORDS</label>
-                            <input class="search-input" ng-keypress='FirsText($event)' name="keywords" type="text" ng-model="search.keywords" placeholder="Enter Keywords" required>
+                            <input class="search-input" id="NewKeywordSearch"  name="keywords" type="text" ng-model="search.keywords" placeholder="Enter Keywords" required>
                         </div>
                         <div ng-show="searchJob.$submitted || searchJob.keywords.$valid && searchJob.keywords.$invalid">
                                 <div class="error-message" ng-show="searchJob.keywords.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                         </div>
                     </div> 
+                      
                       <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>COUNTRY</label>
@@ -98,7 +99,7 @@
     <section class="search-section col-lg-12 col-md-12 col-sm-12 col-xs-12"  ng-show="SearchComplete">
         <div class="container">
             <div class="row clearfix">         
-                    <div class="filter col-md-3 col-lg-3 col-sm-12 col-xs-12">
+                    <div class="filter col-md-3 col-lg-3 col-sm-12 col-xs-12" style="width:19%" >
 
                 <div class="filterHeading">
 
@@ -150,15 +151,14 @@
                     </div>
 
                     <button class=" text-center filtersearchjob-btn1 " ng-click="applyFilter(filters)">Apply Filter</button>
-
+                    <ul>
+                        <li><a ng-click="var1='VIEWED PROFILE'" ng-class="{'active': var1 == 'VIEWED PROFILE'}" ui-sref="home.search.viewedProfile">Who Viewed My Profile</a><span>{{countForJobs.profileVisitedCount}}</span></li>
+                        <li><a ng-click="var1='APPLIED JOBS'" ng-class="{'active': var1 == 'APPLIED JOBS'}" ui-sref="home.search.appliedJobs">Applied Jobs</a><span>{{countForJobs.appliedJobCount}}</span></li>
+                        <li><a ng-click="var1='FAVOURITE JOBS'" ng-class="{'active': var1 == 'FAVOURITE JOBS'}" ui-sref="home.search.favouritejobs">Favourite Jobs</a><span>{{countForJobs.favouritejobs}}</span></li>
+                    </ul>
                 </div>
             </div>            
             
-                <div ng-click="toggleNavigation()" class="left-navigation-menu">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
                 <div class="information-section-middle">
                     <div ui-view=""></div>
                 </div>
@@ -177,3 +177,13 @@
     </section>
 </section>
 
+<script>
+var options = {
+  url: function(phrase) {
+    return "http://localhost:8000/api/candidate/JobAutocomplete?keyword=" + phrase ;
+  },
+  listLocation:"data"
+};
+
+$("#NewKeywordSearch").easyAutocomplete(options);
+</script>

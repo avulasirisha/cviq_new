@@ -743,7 +743,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                       }  
                   }
                   if( fdata.length > 1 ){
-                    $scope.data.functionalarea = fdata.substring(0, fdata.length - 1);
+                    $scope.data.functionalArea = fdata.substring(0, fdata.length - 1);
                   }
               } 
               if (response.company != undefined) {
@@ -821,3 +821,4 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
     };
 
 }]);
+
