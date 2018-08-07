@@ -447,16 +447,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
       $scope.filter.company = true;
     }
      
-    /*=============================End: Searching Jobs ================================*/
-    
-var options = {
-  url: function(phrase) {
-  return CONSTANT.apiUrl + "/api/candidate/JobAutocomplete?keyword=" + phrase ;
-  },
-  listLocation:"data"
-};
-
-$("#NewKeywordSearch").easyAutocomplete(options);
+    /*=============================End: Searching Jobs ================================ */
 
     ///*=============================Start: Custom Factory Function ================================*/
     //

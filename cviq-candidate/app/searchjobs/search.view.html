@@ -177,3 +177,15 @@
     </section>
 </section>
 
+<script>
+   
+var options = {
+  url: function(phrase) {
+  return  api_url + "/api/candidate/JobAutocomplete?keyword=" + phrase ;
+  },
+  listLocation:"data"
+};
+
+$("#NewKeywordSearch").easyAutocomplete(options);
+
+</script>

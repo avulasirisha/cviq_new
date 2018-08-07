@@ -9,7 +9,6 @@ angular.module('Cviq').constant('CONSTANT',{
     linkClineSecret:'Hc43cDPfSGSjjvOD'
     
 });
-
 angular.module('Cviq')
     // Optional configuration
     .config(['ChartJsProvider', function (ChartJsProvider) {
