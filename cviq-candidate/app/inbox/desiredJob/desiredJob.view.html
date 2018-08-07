@@ -30,8 +30,8 @@
                 <input name="salary" ng-model="desiredJobData.salary" ng-keypress='isNumberKey($event)' maxlength="10" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp" type="text" ng-readonly="read" required>
             </p>
             <p style="padding-top: 20px; padding-bottom: 10px; border-top: solid 1px #d9d9d9;">
-                <button type="button" ng-click="cancelDetails()" class="sbmt-btn col-lg-2 col-md-2 col-sm-2 col-xs-4 pull-left" style="margin: 0; padding: 5px">Cancel</button>
-                <button type="submit" class="sbmt-btn col-lg-2 col-md-2 col-sm-2 col-xs-4 pull-right" style="margin: 0; padding: 5px" ng-disabled="saveBtn">Save</button>
+                <button type="button" ng-click="cancelDetails()" class="sbmt-btn col-lg-2 col-md-2 col-sm-2 col-xs-4 pull-left" style="margin: 0; padding: 5px"  ng-hide="read" >Cancel</button>
+                <button type="submit" class="sbmt-btn col-lg-2 col-md-2 col-sm-2 col-xs-4 pull-right" style="margin: 0; padding: 5px" ng-disabled="saveBtn" ng-hide="read" >Save</button>
             </p>
         </div>
     </section>

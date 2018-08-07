@@ -31,25 +31,6 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
         $scope.slideQuantitative = [];
           
 
-
-    $http({
-        method:'GET',
-        url: CONSTANT.apiUrl +'/api/candidate/getAllCountValues',
-        headers:{
-            authorization: $cookieStore.get('AccessToken')
-        }
-    })
-        .success(function(response){
-            console.log('Success Count', response);
-            $scope.countForJobs = response.data;
-        })
-        .error(function(response){
-            console.log('Error Count', response);
-            if(response.statusCode == 401){
-                $rootScope.sessionExpired();
-            }
-        })
-
     /*=============================End: Get all jobs count ================================*/
 
 
@@ -467,6 +448,15 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
     }
      
     /*=============================End: Searching Jobs ================================*/
+    
+var options = {
+  url: function(phrase) {
+  return CONSTANT.apiUrl + "/api/candidate/JobAutocomplete?keyword=" + phrase ;
+  },
+  listLocation:"data"
+};
+
+$("#NewKeywordSearch").easyAutocomplete(options);
 
     ///*=============================Start: Custom Factory Function ================================*/
     //
