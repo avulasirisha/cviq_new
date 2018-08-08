@@ -24,7 +24,7 @@ angular.module('Cviq')
     }]);
 
 angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
-    $urlRouterProvider.otherwise('/home/homeScreen/search');
+    $urlRouterProvider.otherwise('/home/login');
 
     $stateProvider
         .state('home',{

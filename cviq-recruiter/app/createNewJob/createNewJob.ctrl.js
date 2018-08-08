@@ -251,6 +251,8 @@ angular.module('Cviq').controller('createNewJobCtrl', ['$scope','$rootScope','ng
             $scope.postNowData.jobTitle=$scope.job.jobTitle;
             $scope.postNowData.jobDescription=$scope.job.jobDescription;
             $scope.postNowData.jobskill=$scope.job.jobskill;
+            $scope.postNowData.address=$scope.job.address;
+            
             $scope.postNowData.aggregatedScore = {};
             $scope.postNowData.quantitativeScore = {};
             $scope.postNowData.qualitativeScore = {};

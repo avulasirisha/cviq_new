@@ -34,7 +34,7 @@
             <p><strong>Experience Required:</strong><br />Minimum {{jobData.workExperience.min}} Yrs</p>
             <p><strong>Functional Area:</strong><br />{{jobData.functionalArea}}</p>
             <p><strong>Job Type:</strong><br />{{jobData.jobType}}</p>
-
+            <p><strong>Job Skills:</strong><br />{{ jobData.keySkills }}</p>
         </div>
         <h5><strong>Recruiter Detail</strong></h5>
         <div class="candidate-edit-profile brief-job-details clearfix">
@@ -45,7 +45,7 @@
         </div>
     </div>
 </section>
-<div ng-include src="'app/inbox/recentlySearchJobs.html'"></div>
+<div ng-include src="'app/searchjobs/recentlySearchJobs.html'"></div>
 <!--<section class="commonBackground interview-details">-->
     <!--<div class="candidate-desc">-->
         <!--<h5>Similar Jobs</h5>-->
@@ -72,3 +72,4 @@
         <!--</ul>-->
     <!--</div>-->
 <!--</section>-->
+

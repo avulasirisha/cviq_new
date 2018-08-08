@@ -23,6 +23,7 @@ angular.module('Cviq').controller('jobDetailsCtrl', ['$scope','$rootScope','ngDi
         .success(function(response){
             console.log('job data auto', response);
             $scope.jobData = response.data;
+            $scope.jobData.keySkills = response.data.keySkills.toString();
         })
         .error(function(response){
             console.log(response);

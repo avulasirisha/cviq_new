@@ -183,7 +183,26 @@ var options = {
   url: function(phrase) {
   return  api_url + "/api/candidate/JobAutocomplete?keyword=" + phrase ;
   },
-  listLocation:"data"
+ // listLocation:"data",
+  categories: [
+        {   
+            listLocation: function(data) {
+                return data["data"]["jobTitle"];
+            },
+            header: "-- Title --"
+        }, 
+        {   
+            listLocation: function(data) {
+                return data["data"]["keyskill"];
+            },
+            header: "-- Keyskill --"
+        }
+    ],
+  list: {
+		match: {
+			enabled: true
+		}
+	}
 };
 
 $("#NewKeywordSearch").easyAutocomplete(options);

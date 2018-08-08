@@ -60,6 +60,9 @@
                                         <div class="error-message" ng-show="NewJob.jobskill.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                     </div>
                                 </div>
+                                <div>
+                                <p class="text-left-important" style="margin-bottom: 10px">Enter job skills with , seperated</p>                                  
+                                </div>
                                 <div class="createJobHeadings">
                                     <span class="text-left " >Job Type <br/> </span>
                                 </div>
@@ -180,6 +183,12 @@
                                     </div>
                                 </div>
                             </div>
+                             <div class="form-elements ">
+                                <label>Adress :</label>
+                                <input type="text"  minlength="3" placeholder="Enter address" name="address" ng-model="job.address"  />
+                            </div>
+                                
+                                
                             <div class="ProfileFormElements clearfix form-elements">
                                 <div class="dropdown custom-select-box main-dropdown">
                                     <label>INDUSTRY</label>
