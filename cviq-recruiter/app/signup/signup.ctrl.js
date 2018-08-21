@@ -68,7 +68,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                 url: CONSTANT.apiUrl + '/api/phoneVerification/generateOTP',
                 data: {
                     "email": regData.email,
-                    "countryCode": regData.countryCode.countryCode,
+                    "countryCode": regData.countryCode,
                     "phoneNo": regData.mobileNumber,
                     "duringRegister": true,
                     "verifyThroughPhone": $scope.phoneVerify,
@@ -90,6 +90,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                 })
                 .error(function (response) {
                     console.log("error", response);
+                    bootbox.alert(response.message );
                 });
 
             ngDialog.close();
@@ -245,7 +246,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
             url:CONSTANT.apiUrl + '/api/phoneVerification/resendOTP',
             data:{
                 "email": regData.email,
-                "countryCode": regData.areaCode,
+                "countryCode": regData.countryCode,
                 "phoneNo": regData.mobileNumber,
                 "duringRegister": true,
                 "verifyThroughPhone": $scope.phoneVerify,

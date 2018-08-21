@@ -101,6 +101,7 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
 
     $scope.interviewChargesData;
     $scope.interviewAmount;
+    $scope.actualAmount;
 
     $http({
         method:'GET',
@@ -113,6 +114,7 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
             console.log('Interview Charges Success', response);
             $scope.Membershipdata = response.data;
             $scope.interviewAmount = response.data.planRate;
+            $scope.actualAmount = response.data.planRate;
         })
         .error(function (response) {      
             console.log('Error', response);      
@@ -288,7 +290,7 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
             },
             data: {
                 "promoName": promocodeData.promoName,
-                "amount": $scope.interviewAmount
+                "amount": $scope.actualAmount
             }
         })
             .success(function (response) {

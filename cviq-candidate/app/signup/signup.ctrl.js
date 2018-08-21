@@ -227,6 +227,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                 })
                 .error(function (response) {
                     console.log("error", response);
+                    bootbox.alert(response.message);
                 });
 
             ngDialog.close();
