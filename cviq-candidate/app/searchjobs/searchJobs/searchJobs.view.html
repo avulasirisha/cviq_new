@@ -2,14 +2,14 @@
     <div class="candidate-desc">
         <div class="col-lg-12 headingSpan">
             <span><strong>{{numberOFJobs}}</strong> Jobs in {{searchParam.industry}} Industry</span>
-            <div class="filter pull-right">
-                <!--<span>Sort:</span>-->
+            <!-- <div class="filter pull-right">
+                <!--<span>Sort:</span>-
                 <select ng-model="dwm" ng-options="p for p in period">
                     <option value="" disabled hidden>Select</option>
                 </select>
                 <input type="text" placeholder="Search Date" id="datetimepicker" ng-model="dated" ng-change="getDate(dated)">
                 <button ng-click="searching()">GO</button>
-            </div>
+            </div> -->
         </div>
         <ul class="clearfix">
             <li class="col-lg-12 col-md-12 col-sm-12 col-xs-12 main-list" ng-repeat="res in searchJobResult">

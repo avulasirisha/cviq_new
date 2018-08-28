@@ -148,7 +148,6 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
             .error(function(response){
                 console.log('Chat Messages Error', response);
             })
-        
     }
 
    

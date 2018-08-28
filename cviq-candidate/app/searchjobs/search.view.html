@@ -20,26 +20,17 @@
                                 <div class="error-message" ng-show="searchJob.keywords.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                         </div>
                     </div> 
-                      
-                      <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    
+                   <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-5 col-xs-12">
                         <div class="custom-select-box main-dropdown advance-search">
-                            <label>COUNTRY</label>
-                            <select  name="curCountry" ng-model="search.curCountry" ng-change="selectedCount(search.curCountry)" class="selectpicker" data-live-search="true" ng-options="count.countryName for count in searchDropDownData.countryList" required>
-                                <option value="" disabled hidden>Select Country</option>
-                            </select>
+                            <label>LOCATION</label>
+                            <input class="search-input" id="LocationSearch"  name="location" type="text" ng-model="search.location" placeholder="Enter location" required>
                         </div>
-                        <div ng-show="searchJob.$submitted || searchJob.curCountry.$valid && searchJob.curCountry.$invalid">
-                                <div class="error-message" ng-show="searchJob.curCountry.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
+                        <div ng-show="searchJob.$submitted || searchJob.location.$valid && searchJob.location.$invalid">
+                                <div class="error-message" ng-show="searchJob.location.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                         </div>
                     </div>
-                  <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                        <div class="custom-select-box main-dropdown advance-search">
-                            <label>STATE</label>
-                            <select ng-init="search.curState=''" name="curState" ng-model="search.curState" ng-change="selStateID(search.curState)" class="selectpicker" data-live-search="true" ng-options="s.stateName for s in stateList">
-                                <option value="" disabled hidden>Select State</option>
-                            </select>
-                        </div>
-                  </div>
+                    <input  id="zipcode"  name="zipcode" type="hidden" ng-model="search.zipcode">
                     <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-3 col-xs-12">         
                         <input type="checkbox" name="Searchagent" value="checked" ng-model="search.searchAgent"  style="display:block !important"> <span style='color:white'> save this search </span> 
                     </div>
@@ -206,5 +197,26 @@ var options = {
 };
 
 $("#NewKeywordSearch").easyAutocomplete(options);
+
+
+var options = {
+  url: function(phrase) {
+  return  api_url + "/api/candidate/LocationAutocomplete?keyword=" + phrase ;
+  },
+  listLocation:"data",
+  getValue: "location",
+  list: {
+        onSelectItemEvent: function() {
+			var index = $("#LocationSearch").getSelectedItemData().zipCode;
+			$("#zipcode").val(index).trigger("change");
+		},
+		match: {
+			enabled: true
+		}
+	}
+};
+
+$("#LocationSearch").easyAutocomplete(options);
+
 
 </script>

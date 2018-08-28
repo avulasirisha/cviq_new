@@ -14,22 +14,11 @@
             </a>
         </li>
     </ul>
-    <div ng-if="!i.ratingByCandidate && i.status == 5">
-            <textarea  ng-model="i.description"></textarea>
-            <div class="rate-candidate-interview text-center">
-            <span ng-repeat="rating in ratings">Rate Interviewer
-                <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating,i)"></div>
-            </span>
-            </div>
-            <input type="submit"  ng-click="submit_reviews(i)">
-    </div>
+   
     <div id="collapse-{{$index}}" class="panel-collapse collapse collapseDetails">
         <div class="panel-body">
             <!--<h3>Profile Details</h3>-->
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 row">
-                <!--<span>About {{i.interviewerID.firstName + ' '+ i.interviewerID.lastName}}</span>-->
-                <!--<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>-->
-
                     <span>STATUS :</span>
                     <p ng-if="i.status == 6">Expired</p>
                     <p ng-if="i.status == 7">Rejected</p>
@@ -53,10 +42,20 @@
             <div class="score-data col-lg-2 col-sm-3 col-md-2 col-xs-12 pull-right" ng-if="i.status == 5">
                 <h4>SCORE<br /><span>{{i.totalQualitativeGiven}}</span></h4>
             </div>
+            
+             <div ng-if="!i.ratingByCandidate && i.status == 5">
+            <textarea  ng-model="i.description"></textarea>
+            <div class="rate-candidate-interview text-center">
+                <span ng-repeat="rating in ratings">Rate Interviewer
+                    <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating,i)"></div>
+                </span>
+            </div>
+            <input type="submit"  ng-click="submit_reviews(i)">
+    </div>
         </div>
     </div>
     </div>
-
+    
     <div class="pagination-container clearfix">
         <pagination ng-if="numberOFInterviews > 10"
                 ng-model="currentPage"

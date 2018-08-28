@@ -209,114 +209,10 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
     /*=============================End: Get Specialization ================================*/
 
 
-
-    /*=============================Start: Searching Jobs Via Cookie ================================*/
-    if(sessionStorage.getItem('SearchedParameter') !== null){
-
-        $scope.paramersForSearched = JSON.parse(sessionStorage.getItem('SearchedParameter'));
-
-        //$timeout(function(){
-        //    $scope.$apply();
-        //    $("#sel-industry").val($scope.paramersForSearched.industry.industryName);
-        //},1000);
-        //
-        //$timeout(function(){
-        //    $('.selectpicker').selectpicker('refresh');
-        //},2000);
-
-        $scope.year = new Date().getFullYear();
-        $scope.date = new Date().getDate();
-        $scope.month = new Date().getMonth()+1;
-
-        if($scope.month <= 9){
-            $scope.month ='0'+ $scope.month;
-        }
-
-        if($scope.date <= 9){
-            $scope.date ='0'+ $scope.date;
-        }
-
-        $scope.fullDate = $scope.year+'-'+$scope.month+'-'+$scope.date;
-        if($scope.paramersForSearched.industry == null || $scope.paramersForSearched.industry == undefined){
-            $scope.paramersForSearched.industry = {};
-        }
-        if($scope.paramersForSearched.functionalArea == null || $scope.paramersForSearched.functionalArea == undefined){
-            $scope.paramersForSearched.functionalArea = {};
-        }
-
-        if($scope.paramersForSearched.curCountry == null || $scope.paramersForSearched.curCountry == undefined){
-            $scope.paramersForSearched.curCountry = {};
-        }
-
-        if($scope.paramersForSearched.curState == null || $scope.paramersForSearched.curState == undefined){
-            $scope.paramersForSearched.curState = {};
-        }
-
-        if($scope.paramersForSearched.experience != undefined)
-        {
-
-            if($scope.paramersForSearched.experience.contains('-')){
-                console.log('yes');
-                $scope.experience = $scope.paramersForSearched.experience.split('-');
-                $scope.minExperience = $scope.experience[0];
-                $scope.maxExperience = $scope.experience[1];
-            }
-            else if($scope.paramersForSearched.experience.contains('>')){
-                console.log('no');
-                $scope.experience = $scope.paramersForSearched.experience.substring($scope.paramersForSearched.experience.indexOf('>') + 1);
-                console.log($scope.experience);
-                $scope.minExperience = $scope.experience;
-                $scope.maxExperience = 50;
-            }
-
-        }
-
-        $scope.searchParam = {
-            industry:$scope.paramersForSearched.industry.industryName,
-            functionalArea:$scope.paramersForSearched.functionalArea.functionalAreaName,
-            minExperience:$scope.minExperience,
-            maxExperience:$scope.maxExperience,
-            keywords:$scope.paramersForSearched.keywords,
-            country:$scope.paramersForSearched.curCountry.countryName,
-            state:$scope.paramersForSearched.curState.stateName,
-            minSalary:$scope.paramersForSearched.salary,
-            highestQualification:$scope.paramersForSearched.qual,
-            specialization:$scope.paramersForSearched.qual,
-            certification:$scope.paramersForSearched.certifications,
-            zipCode:$scope.paramersForSearched.zipcode,
-            searchDate:$scope.fullDate,
-            searchCriteria:1
-        }
-
-
-        $http({
-            method:'GET',
-            url: CONSTANT.apiUrl + '/api/candidate/searchJobs',
-            params: $scope.searchParam,
-            headers:{
-                authorization: $cookieStore.get('AccessToken')
-            }
-        })
-            .success(function(response){
-                console.log(response);
-                $scope.result = true;
-                $scope.numberOFJobs = response.data.length;
-                $scope.searchJobResult = response.data;
-
-            })
-            .error(function(response){
-                console.log(response);
-            })
-
-
-    }
-
-    /*=============================End: Searching Jobs Via Cookie ================================*/
-
-
     /*=============================Start: Searching Jobs ================================*/
  
     $scope.searching = function(response){
+        response.zipcode = document.getElementById("zipcode").value;
         $scope.appliedJobArray = [];
         $state.go('home.search.searchJobs');
         console.log(response);
@@ -343,8 +239,8 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
             response.functionalArea = {};
         }
 
-        if(response.curCountry == null || response.curCountry == undefined){
-            response.curCountry = {};
+        if(response.zipcode == null || response.zipcode == undefined){
+            response.zipcode = {};
         }
         
         if(response.searchAgent == null || response.searchAgent == undefined){
@@ -378,13 +274,11 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
             minExperience:$scope.minExperience,
             maxExperience:$scope.maxExperience,
             keywords: response.keywords,
-            country:response.curCountry.countryName,
-            state:response.curState.stateName,
             minSalary:response.salary,
             highestQualification:response.qual,
             specialization:response.qual,
             certification:response.certifications,
-            zipCode:response.zipcode,
+            zipcode:response.zipcode,
             searchDate:$scope.fullDate,
             searchCriteria:1,
             searchAgent:response.searchAgent
@@ -658,12 +552,10 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                       if($scope.paramersForSearched.functionalArea != null || $scope.paramersForSearched.functionalArea != undefined){
                           $scope.data.functionalArea = $scope.paramersForSearched.functionalArea.functionalAreaName;
                       }
-                      if($scope.paramersForSearched.curCountry != null || $scope.paramersForSearched.curCountry != undefined){
-                          $scope.data.curCountry = $scope.paramersForSearched.curCountry.countryName;
+                      if($scope.paramersForSearched.zipcode != null || $scope.paramersForSearched.zipcode != undefined){
+                          $scope.data.zipcode = $scope.paramersForSearched.zipcode;
                       }
-                      if($scope.paramersForSearched.curState != null || $scope.paramersForSearched.curState != undefined){
-                          $scope.data.curState = $scope.paramersForSearched.curState.stateName;
-                      }
+                    
                       if($scope.paramersForSearched.experience != undefined)
                       {
                           if($scope.paramersForSearched.experience.contains('-')){
