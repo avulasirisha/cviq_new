@@ -18,11 +18,13 @@
   <link href="css/owl.carousel.min.css" rel="stylesheet">
   <link href="css/animate.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
-     <script src="js/angular.1.6.9.js"></script>
+  <link href="css/easy-autocomplete.min.css" rel="stylesheet">
+    <script src="js/angular.1.6.9.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-cookies.js"></script>
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    
   <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -116,25 +118,11 @@
                   <input type="text" class="form-control" id="Keyword" name="keywords" placeholder="Keyword e.g. (Job Title, Description, Tags)" ng-model="searchData.keywords" required>
                   <span class="validation" ng-show="searchForm.keywords.$invalid && searchForm.keywords.$touched "> keyword is required</span>
                 </div>
-                <div class="form-group selectconr col-md-3 col-sm-3 col-xs-12">
-                  <span>1</span>
-                  <select class="selectpicker"  ng-model="searchData.state">
-                  <option>Select Location</option>
-                  <option>Ketchup</option>
-                  <option>Relish</option>
-                  </select>
-                </div>
-                <div class="form-group selectconr col-md-3 col-sm-3 col-xs-12">
-                  <span>1</span>
-                  <select class="selectpicker" ng-model="searchData.experience">
-                   <option>Experience</option>
-                  <option value="0-3">0 to 3</option>
-                  <option value="3-6">3 to 6</option>
-                  <option value="6-9">6 to 9</option>
-                  <option value="9-12">9 to 12</option>
-                  <option value="12-15">12 to 15</option>
-                  </select>
-                </div>     
+                <div class="form-group col-md-5 col-sm-5 col-xs-12">
+                  <input type="text" class="form-control" id="location" name="location" placeholder="Enter Your Location" ng-model="searchData.location" required>
+                  <span class="validation" ng-show="searchForm.location.$invalid && searchForm.location.$touched "> location is required</span>
+                </div> 
+                <input type="hidden" id="zipcode" name="zipcode" >    
                 <button type="submit" class="btn btn-search hvr-icon-wobble-horizontal col-md-1 col-sm-1 col-xs-12"><i class="fa fa-search"></i> Search</button>
               </div>
             </div>
@@ -445,7 +433,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-12 inner-right">
                   <i class="fa fa-heart-o" ng-hide="data.favouriteJob"  ng-click="setFavourite(data._id, $event)" ></i>
                   <i class="fa fa-heart" ng-show="data.favouriteJob"  ></i>
-                  <a href="#"   ng-show="showButtons && data.alreadyApplied==false"  ng-click="applyJob(data._id, 'recentjobs')" >APPLY <i class="fa fa-angle-right"></i></a>
+                  <a href="#"   ng-show="data.alreadyApplied==false"  ng-click="applyJob(data._id, 'recentjobs')" >APPLY <i class="fa fa-angle-right"></i></a>
                   <a href="#"   ng-show="showButtons && data.alreadyApplied==true" class="applied"  >APPLIED <i class="fa fa-check"></i></a>
                 </div>
                 <div class="clear-fix"></div>
@@ -779,7 +767,8 @@
     </div>
   </footer>
   </div>
-          <script src="js/service.js" ></script>
+
+<script src="js/service.js" ></script>
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js "></script>
   <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -787,6 +776,7 @@
   <script src="js/custom.js "></script>
   <script src="js/owl.carousel.min.js "></script>
   <script src="js/animate-plus.min.js "></script>
+      <script src="js/jquery.easy-autocomplete.min.js"></script>
   <script>
     jQuery(document).ready(function($) {
       var owl = $('.owl-carousel');
@@ -830,6 +820,53 @@
         }
       });
     });
+
+  var options = {
+    url: function(phrase) {
+    return  CONSTANT_apiUrl  + "/api/candidate/JobAutocomplete?keyword=" + phrase ;
+    },
+    categories: [
+          {   
+              listLocation: function(data) {
+                  return data["data"]["jobTitle"];
+              },
+              header: "-- Title --"
+          }, 
+          {   
+              listLocation: function(data) {
+                  return data["data"]["keyskill"];
+              },
+              header: "-- Keyskill --"
+          }
+      ],
+    list: {
+  		match: {
+  			enabled: true
+  		}
+  	}
+    };
+
+$("#Keyword").easyAutocomplete(options);
+
+
+var options = {
+  url: function(phrase) {
+  return  CONSTANT_apiUrl + "/api/candidate/LocationAutocomplete?keyword=" + phrase ;
+  },
+  listLocation:"data",
+  getValue: "location",
+  list: {
+        onSelectItemEvent: function() {
+			var index = $("#location").getSelectedItemData().zipCode;
+			$("#zipcode").val(index).trigger("change");
+		},
+		match: {
+			enabled: true
+		}
+	}
+};
+
+$("#location").easyAutocomplete(options);
 
   </script>
 </body>

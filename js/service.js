@@ -1,7 +1,3 @@
-var app = angular.module('myApp', ['ngRoute','ngCookies']);
-
-app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location', '$anchorScroll', function($scope, $http, $cookieStore ,$location,$anchorScroll ) {
-   
 if( window.location.hostname == "localhost"  ){
     var CONSTANT_apiUrl = "http://localhost:8000";
     var CVIQ_URL  = "http://localhost/site" ;
@@ -9,7 +5,8 @@ if( window.location.hostname == "localhost"  ){
     var CONSTANT_apiUrl = "http://34.207.125.7:3005";
     var CVIQ_URL  = "" ;
 }
-    
+var app = angular.module('myApp', ['ngRoute','ngCookies']);  
+app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location', '$anchorScroll', function($scope, $http, $cookieStore ,$location,$anchorScroll ) {    
 
     var loggedInVar = $cookieStore.get('loggedIn');
  //   console.log( loggedInVar );
@@ -144,12 +141,12 @@ if( window.location.hostname == "localhost"  ){
 
         if($scope.month <= 9){
             $scope.month ='0'+ $scope.month;
-        }
+        }                                    
 
         if($scope.date <= 9){
             $scope.date ='0'+ $scope.date;
         }
-      
+        response.zipcode = document.getElementById("zipcode").value;
         $scope.fullDate = $scope.year+'-'+$scope.month+'-'+$scope.date;
     
         if(response.experience != undefined || response.experience == '')
@@ -170,13 +167,13 @@ if( window.location.hostname == "localhost"  ){
             }
 
         }
-             
+        console.log( response );     
         $scope.searchParam = {
             minExperience:$scope.minExperience,
             maxExperience:$scope.maxExperience,
             keywords: response.keywords,
-            state:response.stateName,
-            searchDate:$scope.fullDate,
+            searchDate :$scope.fullDate,
+            zipcode :  response.zipcode,
             searchCriteria:1
         }     
         var options = { params : $scope.searchParam } ;
@@ -206,42 +203,46 @@ if( window.location.hostname == "localhost"  ){
    $scope.applyJob = function(data, _type ){
         console.log( data , _type );
         var d = new Date();
-        var timeZoneOffset = d.getTimezoneOffset();
-        $http({
-            method: 'POST',
-            url: CONSTANT_apiUrl + '/api/candidate/applyForJob',
-            headers: {
-                authorization: OptimizeVlaue('CandidateOpt')
-            },
-            data: {
-                "jobID": data._id ,
-                "timeOffset": timeZoneOffset
-            }
-        }).then(function(response, error){
-            if( error ){
-                console.log(response);
-            }else{
-                if( _type == 'searchedjobs' ){
-                    for( i in $scope.searchJobResult ){
-                        if( $scope.searchJobResult[i]._id == data._id ){
-                            $scope.searchJobResult[i].alreadyApplied == true;    
+        if( $scope.showButtons ){
+            var timeZoneOffset = d.getTimezoneOffset();
+            $http({
+                method: 'POST',
+                url: CONSTANT_apiUrl + '/api/candidate/applyForJob',
+                headers: {
+                    authorization: OptimizeVlaue('CandidateOpt')
+                },
+                data: {
+                    "jobID": data._id ,
+                    "timeOffset": timeZoneOffset
+                }
+            }).then(function(response, error){
+                if( error ){
+                    console.log(response);
+                }else{
+                    if( _type == 'searchedjobs' ){
+                        for( i in $scope.searchJobResult ){
+                            if( $scope.searchJobResult[i]._id == data._id ){
+                                $scope.searchJobResult[i].alreadyApplied == true;    
+                            }
                         }
-                    }
-                }else if( _type == 'recentjobs' ){
-                    for( i in $scope.RecentJobs ){
-                        if( $scope.searchJobResult[i]._id == data._id ){
-                            $scope.searchJobResult[i].alreadyApplied == true;    
+                    }else if( _type == 'recentjobs' ){
+                        for( i in $scope.RecentJobs ){
+                            if( $scope.searchJobResult[i]._id == data._id ){
+                                $scope.searchJobResult[i].alreadyApplied == true;    
+                            }
                         }
-                    }
-                }else if( _type == 'parttime' ){
-                    for( i in $scope.PartTIme ){
-                        if( $scope.searchJobResult[i]._id == data._id ){
-                            $scope.searchJobResult[i].alreadyApplied == true;    
+                    }else if( _type == 'parttime' ){
+                        for( i in $scope.PartTIme ){
+                            if( $scope.searchJobResult[i]._id == data._id ){
+                                $scope.searchJobResult[i].alreadyApplied == true;    
+                            }
                         }
-                    }
-                } 
-            }
-        });
+                    } 
+                }
+            });
+        }else{
+        $scope.goto_url( "cand", 2);
+        }
     }  
     
     

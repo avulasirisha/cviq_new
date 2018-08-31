@@ -5,7 +5,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
     
     $scope.candidateSearch = false; 
     $scope.filters ={};
-
+    $scope.keywords = '';
 
     if($cookieStore.get('AccessToken') == undefined){
         $state.go('home.login');
@@ -224,7 +224,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
         $scope.year = new Date().getFullYear();
         $scope.date = new Date().getDate();
         $scope.month = new Date().getMonth()+1;
-
+        $scope.keywords = response.keywords;
         if($scope.month <= 9){
             $scope.month ='0'+ $scope.month;
         }
@@ -491,6 +491,36 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
             })
     }
     } 
+    
+    $scope.submit_jobalerts = function(){
+         var eMail = document.getElementById("newsLetterId").value;
+         if( eMail == "" ){
+                bootbox.alert("Please Enter Email"); 
+                return false;
+         }else if( $scope.keywords == '' ){ 
+                bootbox.alert("Please Enter keywords"); 
+                return false;
+         }else{ 
+            $http({
+                method: 'POST',
+                url: CONSTANT.apiUrl + '/api/candidate/Jobalerts',
+                data: {
+                    "keywords": $scope.keywords,
+                    "email":eMail,
+                    "zipcode":document.getElementById("zipcode").value
+                }
+            })
+            .success(function(response){
+                    console.log(response);
+                    bootbox.alert(response.message);
+            }).error(function(response){
+                    console.log(response);
+                    bootbox.alert(response.message);
+    
+            })
+        }
+    }
+    
     
       $scope.MatchedFunctions = function() {
 

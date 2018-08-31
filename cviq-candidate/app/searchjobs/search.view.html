@@ -154,12 +154,12 @@
                     <div ui-view=""></div>
                 </div>
                 <div class="newsletter-section-right text-center">
-                    <div class="newsletter">
+                    <div class="newsletter" ng-show="candidateSearch">
                         <img src="images/email.png" alt="email" />
-                        <p>For Our Free Newsletters</p>
+                        <p><b> Create a Job Alert </b> <br>( based on this search ) </p>
                         <form id="newsLetterForm" class="clearfix">
                             <input type="email" placeholder="Enter Your Email" id="newsLetterId">
-                            <div class="text-center"><button style="float: none;"  ng-click="submit_newsletter()" type="submit" class="col-lg-12 col-md-3 col-sm-3 col-xs-12 sbmt-btn">SUBMIT</button></div>
+                            <div class="text-center"><button style="float: none;"  ng-click="submit_jobalerts()" type="submit" class="col-lg-12 col-md-3 col-sm-3 col-xs-12 sbmt-btn">SUBMIT</button></div>
                         </form>
                     </div>
                 </div>
