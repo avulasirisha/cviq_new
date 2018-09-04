@@ -395,6 +395,79 @@ App.controller('paymentInterviewsController', function ($scope, $http, $cookies,
         });
     };
     
+   /*----------------------------------------------------------
+   ------------- udpate payment -------------------------------------
+   -------------------------------------------------------------------*/
+   
+     $scope.updatePaymentdata = function (data) {
+        $scope.newdata = angular.copy(data);
+        console.log(" $scope.newdata",$scope.newdata);
+
+        ngDialog.open({
+            template: 'updatePayment',
+            scope: $scope,
+            closeByEscape:false,
+            closeByDocument:false
+        });
+    };
+    
+    $scope.updateConfirm = function (data) {
+        ngDialog.close();
+        console.log("interviewId",data.percentage);
+        console.log("paymentId",typeof (data.paymentId));
+
+        var percentageForm = new FormData();
+        percentageForm.append("payment", true );
+        percentageForm.append("interviewId",data.id);
+        percentageForm.append("paymentId",data.paymentId);
+        $http({
+            method:'POST',
+            url: MY_CONSTANT.url_cviq +'/api/admin/PaymentUpdate',
+            transformRequest: angular.identity,
+            headers:{
+                'authorization':$cookieStore.get("obj").accessToken,
+                'Content-type': undefined
+            },
+            data: percentageForm
+        })
+            .success(function(response){
+                $scope.addnewData = {};
+                console.log(response);
+                $scope.displaymsg = response.message;
+                // $scope.$apply();
+                ngDialog.open({
+                    template: 'display_msg_modalDialog',
+                    className: 'ngdialog-theme-default',
+                    showClose: false,
+                    scope: $scope
+                });
+            })
+            .error(function(response,error){
+                $scope.addnewData = {};
+                console.log(response);
+                console.log(error);
+                if(response.statusCode == 401){
+                    $scope.unAuthMsg = 'Someone other get LoggedIn';
+                    //   $scope.$apply();
+                    ngDialog.open({
+                        template: 'unauth_msg_modalDialog',
+                        className: 'ngdialog-theme-default',
+                        showClose: false,
+                        scope: $scope
+                    });
+                }
+                else{
+                    $scope.displaymsg = response.message;
+                    //  $scope.$apply();
+                    ngDialog.open({
+                        template: 'display_msg_modalDialog',
+                        className: 'ngdialog-theme-default',
+                        showClose: false,
+                        scope: $scope
+                    });
+                }
+            });
+    };
     
      $scope.viewChat = function (interviewId, status) {
         console.log( "interview id :"+ interviewId );

@@ -81,7 +81,6 @@
                                     </div>
                                 </th>
                                 <th style="min-width:180px">video duration</th>
-                                <th style="min-width:180px">payment id</th>
                                 <th style="min-width:160px">
                                     <div style="text-align:center;" ng-click="sort('status')">
                                        Status
@@ -131,10 +130,6 @@
                                     <span ng-show="data.interviewerFeedback.length==0"> No Feedback </span>
 
                                 </td>
-                                <td style="  text-align: center;"><span ng-show="data.candidateFeedback.length!=0">{{data.candidateFeedback}}</span>
-                                    <span ng-show="data.candidateFeedback.length==0"> No Feedback </span>
-                                </td>
-
                                 <td style="text-align: center">{{data.status}}</td>
                                 <td style="text-align: center">
                                         <span ng-show="data.video_url">
@@ -145,6 +140,11 @@
                                             <input type="button" ng-click="viewChat(data.id,'downlaod')" value="Text Chat" >
                                         </span>
                                             
+                                </td>
+                                <td>
+                                         <a class="btn btn-sm btn-default1" title="Share" ng-click="updatePaymentdata(data)"><!--style="background-color:#666666"-->
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
                                 </td>
 
                             </tr>
@@ -186,47 +186,38 @@
     <!-- END DATATABLE 2 -->
 
     <!-- **************************************************************************
-    ******************* Modal to get vehicle driver ***********************************
-    *******************************************************************************-->
-    <script type="text/ng-template" id="vehicleDriverDialog">
+    ******************* Modal to get vehicle driver ***********************************    -->
+    <script type="text/ng-template" id="updatePayment">
         <div class="ngdialog-message">
-            <h3>Interviewer Details</h3>
-
-            <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-12">
-                    <div class="panel panel-default">
-                        <div class="panel-body">
-                            <!--<vr></vr>-->
-                            <div class="row">
-
-                                <div class="col-sm-10 col-md-10 col-lg-10">
-                                    <div>
-                                        <label>
-                                            Interviewer Details :
-                                        </label>
-                                        <br>
-                                        <div class="flexDisplay">
-                                             <span>
-                                                <a target="_self" href="{{interviewerDetails.resumeURL}}" download="vehiclePic.png" title="vehicle Pic">
-                                                    <img ng-src="{{interviewerDetails.resumeURL}}" class="tableImage">
-                                                </a>
-                                            </span>
-                                            <span>
-                                                <b>Name</b> - {{interviewerDetails.name}} <br>
-                                                <b>Email</b> - {{interviewerDetails.email}}<br>
-                                                 <b>Linked In Id</b> - {{interviewerDetails.linkedInId}}<br>
-                                                 <b>Contact</b> - {{interviewerDetails.phoneNumber}}
-                                            </span>
+            <form  name="updatePayment" novalidate>
+                <section>
+                    <div class="candidate-profile-section clearfix">
+                        <div class="row" style="margin-top: 20px">
+                            <div class="search-wrapper">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form">
+                                    <div class="clearfix">
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-elements ">
+                                            <label>Payment Update</label>
+                                            <input type="text"   placeholder="Enter Payment Id" name="paymentId" ng-model="newdata.paymentId" required />
+                                            <div ng-show="updatePayment.$submitted || updatePayment.paymentId.$touched">
+                                                <div class="error-message" ng-show="updatePayment.paymentId.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad " style="text-align: center">
+                            <button style="width: 50%;" type="submit" class="btn btn-primary sbmt-btn" ng-click="updatePayment.$valid && updateConfirm(newdata)">UPDATE</button>
+                        </div>
                     </div>
-                </div>
-            </div>
+
+                </section>
+
+            </form>
         </div>
     </script>
+
     <!-- **************************************************************************
     ******************* Modal to display msg **************************************
     *******************************************************************************-->
