@@ -145,6 +145,10 @@
       {
         "text": "Upcoming",
         "sref": "app.upcomingInterviews"
+      },
+       {
+        "text": "Payments",
+        "sref": "app.paymentInterviews"
       }
     ]
   },
