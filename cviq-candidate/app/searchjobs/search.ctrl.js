@@ -444,7 +444,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 $scope.disLink = false;
                 bootbox.alert(response.message);
                 $timeout(function(){
-                    $state.reload();
+                    $state.go('home.search');
                 },0);
             })
             .error(function(response){

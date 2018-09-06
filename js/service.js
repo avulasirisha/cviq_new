@@ -200,8 +200,8 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
         });
     }
 
-   $scope.applyJob = function(data, _type ){
-        console.log( data , _type );
+   $scope.applyJob = function( did , _type ){
+        console.log( did , _type );
         var d = new Date();
         if( $scope.showButtons ){
             var timeZoneOffset = d.getTimezoneOffset();
@@ -212,7 +212,7 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
                     authorization: OptimizeVlaue('CandidateOpt')
                 },
                 data: {
-                    "jobID": data._id ,
+                    "jobID": did ,
                     "timeOffset": timeZoneOffset
                 }
             }).then(function(response, error){
@@ -221,19 +221,19 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
                 }else{
                     if( _type == 'searchedjobs' ){
                         for( i in $scope.searchJobResult ){
-                            if( $scope.searchJobResult[i]._id == data._id ){
+                            if( $scope.searchJobResult[i]._id == did ){
                                 $scope.searchJobResult[i].alreadyApplied == true;    
                             }
                         }
                     }else if( _type == 'recentjobs' ){
                         for( i in $scope.RecentJobs ){
-                            if( $scope.searchJobResult[i]._id == data._id ){
+                            if( $scope.searchJobResult[i]._id == did){
                                 $scope.searchJobResult[i].alreadyApplied == true;    
                             }
                         }
                     }else if( _type == 'parttime' ){
                         for( i in $scope.PartTIme ){
-                            if( $scope.searchJobResult[i]._id == data._id ){
+                            if( $scope.searchJobResult[i]._id == did ){
                                 $scope.searchJobResult[i].alreadyApplied == true;    
                             }
                         }

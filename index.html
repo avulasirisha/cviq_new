@@ -593,7 +593,7 @@
                 <div class="col-md-3 col-sm-3 col-xs-12 inner-right" >
                   <i class="fa fa-heart-o" ng-hide="data.favouriteJob"  ng-click="setFavourite(data._id, $event)" ></i>
                   <i class="fa fa-heart" ng-show="data.favouriteJob"  ></i>
-                    <a href="#"   ng-show="showButtons && data.alreadyApplied==false"  ng-click="applyJob( data, 'searchedjobs')" >APPLY <i class="fa fa-angle-right"></i></a>
+                    <a href="#"   ng-show="showButtons && data.alreadyApplied==false"  ng-click="applyJob( data._id, 'searchedjobs')" >APPLY <i class="fa fa-angle-right"></i></a>
                   <a href="#"   ng-show="showButtons && data.alreadyApplied==true" class="applied"  >APPLIED <i class="fa fa-check"></i></a>
                 </div>
                 <div class="clear-fix"></div>
