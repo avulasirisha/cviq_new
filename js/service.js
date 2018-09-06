@@ -30,7 +30,7 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
     }
     $scope.searchresults =false;
     $scope.NewCandidates ={};
-             
+    $scope.Apierror ;         
     $scope.features = [
       { "link": "#" ,"name": "Download link 1" },
       { "link": "#" ,"name": "Download link 2" },
@@ -199,6 +199,7 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
            }       
         });
     }
+             
 
    $scope.applyJob = function( did , _type ){
         console.log( did , _type );
@@ -215,10 +216,8 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
                     "jobID": did ,
                     "timeOffset": timeZoneOffset
                 }
-            }).then(function(response, error){
-                if( error ){
-                    console.log(response);
-                }else{
+            }).then(function(response){
+                
                     if( _type == 'searchedjobs' ){
                         for( i in $scope.searchJobResult ){
                             if( $scope.searchJobResult[i]._id == did ){
@@ -238,7 +237,10 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
                             }
                         }
                     } 
-                }
+            },function myError(response) {
+                    console.log( "main" ,response );
+                     $scope.Apierror = response.data.message;
+                     $("#popupModel").modal('show');
             });
         }else{
         $scope.goto_url( "cand", 2);
@@ -260,14 +262,14 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
                 data: {
                     "jobID": data
                 }
-            }).then(function(response, error){
-                if( error ){
-                    console.log(response);
-                }else{
+            }).then(function(response){
                     if( event.target.className ){
                         event.target.className = 'fa fa-heart';
                     }   
-                }
+            },function myError(response) {
+                    console.log( "main" ,response );
+                     $scope.Apierror = response.data.message;
+                     $("#popupModel").modal('show');
             });
        }
     }
