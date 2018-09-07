@@ -617,11 +617,12 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                     var e_max = [];
                     for( i in response.experience ){
                        var realdata = i.split( "-" );
-                       e_min.push( realdata[0] ); 
-                       e_max.push( realdata[1] );    
-                    }                    
-                    $scope.data.maxExperience =  Math.max(e_max);
-                    $scope.data.minExperience =  Math.min(e_min);
+                       e_min.push( parseInt( realdata[0] ) ); 
+                       e_max.push( parseInt( realdata[1] ) );    
+                    }     
+                
+                    $scope.data.maxExperience =  Math.max.apply(Math, e_max ) ;
+                    $scope.data.minExperience =  Math.min.apply(Math, e_min ) ;
               }          
               if (response.industry != "") {
                   $scope.filter.industry = true;

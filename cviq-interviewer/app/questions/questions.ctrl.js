@@ -208,8 +208,10 @@ angular.module('Cviq').controller('questionsCtrl', ['$scope','$rootScope','$cook
                 "question": questionData.ques,
                 "industryID": questionData.industry._id,
                 "functionalAreaID": questionData.funArea._id,
-                "questionType": questionData.qType
-            }
+                "questionType": questionData.qType,
+                "industry" :questionData.industry.industryName,
+                "functionalArea" : questionData.funArea.functionalAreaName
+            }           
         })
             .success(function(response){
                 console.log('Success', response);
