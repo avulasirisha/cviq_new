@@ -327,7 +327,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 $scope.slideFunctionlist.push( $scope.searchJobResult[i].functionalArea ) ;
                 $scope.slideCompanylist.push( $scope.searchJobResult[i].companyName ) ; 
                 $scope.slideWorkexperience.push( $scope.searchJobResult[i].workExperience.min+"-"+ $scope.searchJobResult[i].workExperience.max ) ;           
-                $scope.slideQuantitative.push( $scope.searchJobResult[i].qualitativeScore.min ) ;
+                $scope.slideQuantitative.push( $scope.searchJobResult[i].quantitativeScore.min ) ;
             }     
          $scope.slideIndustrylist=$scope.slideIndustrylist.filter( onlyUnique );  
          $scope.slideCompanylist= $scope.slideCompanylist.filter( onlyUnique ); 
