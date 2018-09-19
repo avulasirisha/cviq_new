@@ -608,6 +608,7 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
             })
                 .success(function(response){
                     console.log(response);
+                    $scope.noCandidate = false;
                     $scope.candidatesList = response.data;
 
                     console.log('$scope.candidatesList', $scope.candidatesList);
@@ -855,6 +856,7 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
             })
                 .success(function(response){
                     console.log(response);
+                   $scope.noCandidate = false; 
                     $scope.candidatesList = response.data;
 
                     $('body, html').animate({
