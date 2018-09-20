@@ -49,7 +49,7 @@
                                 <div class="clearfix">
                                     <div class="form-elements">
                                         <label>COMPANY NAME</label>
-                                        <input type="text" class="fname" name="company-{{$index}}" ng-keypress='isAlphaKey($event)' placeholder="Enter Company Name" ng-model="item.register.companyName" ng-required="item.register.from || item.register.description">
+                                        <input type="text" class="fname" maxlength="50" name="company-{{$index}}" ng-keypress='isAlphaKey($event)' placeholder="Enter Company Name" ng-model="item.register.companyName" ng-required="item.register.from || item.register.description">
                                         <div ng-if="item.register.description">
                                             <div class="error-message" ng-show="resumeForm['company-'+$index].$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                         </div>

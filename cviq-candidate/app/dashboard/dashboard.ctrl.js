@@ -8,6 +8,10 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
             $cookieStore.remove('AccessToken'); 
             $state.go('home.login');
       }
+      $scope.Gotomembership = function(){
+          $cookieStore.remove('revaluation'); 
+          $state.go('home.membership',{},{ reload: true });
+      }
 
         $http({
             method: 'POST',

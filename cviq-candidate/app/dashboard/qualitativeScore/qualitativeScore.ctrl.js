@@ -176,25 +176,9 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
 
     /*============================= End: Confirm interview date ================================*/
     
-    $scope.setMembershipTrue = function () {
-
-        $state.go('home.membership',{},{ reload: true });
-
-        //$http({
-        //    method:'PUT',
-        //    url: CONSTANT.apiUrl +'/api/candidate/setMembershipTrue',
-        //    headers:{
-        //        authorization: $cookieStore.get('AccessToken')
-        //    }
-        //})
-        //    .success(function(response){
-        //        console.log('Success', response);
-        //        $state.reload();
-        //    })
-        //    .error(function(response){
-        //        console.log('Error', response);
-        //    })
-
+    $scope.setMembershipTrue = function ( rev = false ) {
+            $cookieStore.put('revaluation', rev );
+            $state.go('home.membership',{},{ reload: true });
     }
 
     $scope.loadingCurrent1 = {

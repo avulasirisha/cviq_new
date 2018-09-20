@@ -2,7 +2,12 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
 
 
     /*============================= Start : get promo lists ===============================*/
-
+    var revaluation = $cookieStore.get('revaluation') ;
+    if( revaluation == undefined ){
+            revaluation = false;
+    }else{
+            revaluation = true;
+    }
     $http({
         method:'GET',
         url: CONSTANT.apiUrl+'/api/common/getPromoList',
@@ -183,7 +188,8 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
                 var buyMembershipData = {
                     paymentID: response.id,
                     amount : $scope.interviewAmount,
-                    planType:$scope.Membershipdata.planType
+                    planType:$scope.Membershipdata.planType,
+                    revaluation : revaluation
                 };
 
                 if($scope.appliedPromoCode != undefined){

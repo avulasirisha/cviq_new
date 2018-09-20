@@ -66,12 +66,12 @@ angular.module('Cviq').controller('questionsCtrl', ['$scope','$rootScope','$cook
     $scope.allQuestions = [];
 
     questions.getQuestions().then(function (response) {
-        console.log('questions.getQuestions', response);
+        console.log('questions.getQuestions', response);   
         allNonTechnicalQues = response.data.nonTechnicalQuestions;
         allTechnicalQues = response.data.technicalQuestions;
 
         $scope.allQuestions.push.apply($scope.allQuestions, allNonTechnicalQues);
-        $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);
+        $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);   
 
     }, function(error){
         console.log('questions.getQuestions error', error);
@@ -112,10 +112,12 @@ angular.module('Cviq').controller('questionsCtrl', ['$scope','$rootScope','$cook
         console.log('searchData', searchData);
 
 
-        var searchQuestionObj = {
-            industry: searchData.industry.industryName
+        var searchQuestionObj = {}
+        
+        if(searchData.industry != undefined){
+            searchQuestionObj.industry = searchData.industry.industryName
         }
-
+        
         if(searchData.functionalArea != undefined){
             searchQuestionObj.functionalArea = searchData.funArea.functionalAreaName
         }
