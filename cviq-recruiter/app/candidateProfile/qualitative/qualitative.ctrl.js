@@ -43,6 +43,7 @@ angular.module('Cviq').controller('qualitativeCtrl', ['$scope','$rootScope','$co
             $scope.maxQualitative.totalSocialSkillPoints = response.data.totalSocialSkillPoints;
 
             $scope.membershipTaken = response.data.membershipTaken;
+            $scope.interviewshiptaken = response.data.interviewshiptaken;
             $scope.alreadyAlertSent = response.data.alreadyAlertSent;
             
             $scope.candidateQualitative.candidateBackgroundPoints = response.data.candidateBackgroundPoints;

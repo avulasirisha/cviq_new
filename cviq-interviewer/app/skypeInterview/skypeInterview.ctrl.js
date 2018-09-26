@@ -393,18 +393,28 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
 
     var allNonTechnicalQues, allTechnicalQues;
     $scope.allQuestions = [];
+    
+    $http({
+        method:'GET',
+        url: CONSTANT.apiUrl + '/api/interviewer/recruiterquestions',
+        headers:{
+            authorization: $cookieStore.get('AccessToken'),
+        },
+        params:{ 'candidateID': $scope.interviewData.candidateID._id }
+    }).success(function(response){
+          console.log('questions.getQuestions success', response);
+          allNonTechnicalQues = response.data.nonTechnicalQuestions;
+          allTechnicalQues = response.data.technicalQuestions;
+          
+          $scope.allQuestions.push.apply($scope.allQuestions, allNonTechnicalQues);
+          $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);
+    }).error(function(response){
+            console.log(response);
+            if(response.statusCode == 401){
+                $rootScope.sessionExpired();
+            }
+    })
 
-    questions.getQuestions().then(function (response) {
-        console.log('questions.getQuestions success', response);
-        allNonTechnicalQues = response.data.nonTechnicalQuestions;
-        allTechnicalQues = response.data.technicalQuestions;
-
-        $scope.allQuestions.push.apply($scope.allQuestions, allNonTechnicalQues);
-        $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);
-
-    }, function(error){
-        console.log('questions.getQuestions error', error);
-    });
 
     /*=============================Start: filter technical/Non technical questions ================================*/
 
