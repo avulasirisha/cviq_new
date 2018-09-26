@@ -6,7 +6,7 @@ angular.module('Cviq').controller('appliedJobsCtrl', ['$scope','$rootScope','ngD
 
     /*=============================Start: Get candidate applied Jobs ================================*/
 
-
+$scope.numberOFJobs =0;
 
     $scope.pageFunction = function (data) {
 

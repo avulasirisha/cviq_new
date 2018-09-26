@@ -124,20 +124,7 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
     }
 
     $scope.goToRecruiterMessage = function ( id ) {
-        console.log( $scope.notification[id] ) ;
-        console.log(   $scope.notification[id]['message'] );
-        console.log(  typeof $scope.notification[id].message ) ;
-        var noti_msg = $scope.notification[id]['message'] ;
-        if( /new message/i.test( noti_msg ) ){
-            for( i in $scope.notification ){
-                var noti_msg = $scope.notification[i]['message'];
-                if( /new message/i.test(noti_msg  ) ){
-                    delete $scope.notification[i]; 
-                }
-             }
-        }
-
-        delete $scope.notification[id] ;       
+         
         $('.notification').toggleClass('displayDropDown');
       //  $state.go('home.inbox.inboxTab.mails',{}, {reload: true});
        $state.go('home.inbox.inboxTab.mails');
@@ -215,7 +202,7 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
     });
 
     /*=============================End: Interview notification through socket ================================*/
-
+        var msg_not = false;
         $http({
             method:'GET',
             url: CONSTANT.apiUrl + '/api/common/getnewNotifications',
@@ -230,11 +217,21 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
             if( Data.length > 0 ){
                     for( i in Data ){
                         console.log( Data[i]);
-                        $scope.notification.push({
-                            message: Data[i].notificationMsg,
-                            notificationType: Data[i].notificationType
-                        });     
+                        if( /new message/i.test( Data[i].notificationMsg ) ){
+                          msg_not = true;
+                        }else{
+                            $scope.notification.push({
+                                message: Data[i].notificationMsg,
+                                notificationType: Data[i].notificationType
+                            });    
+                        } 
                     }  
+                    if( msg_not == true ){
+                        $scope.notification.push({
+                            message: 'You have received new Messages',
+                            notificationType: 6
+                        });  
+                    }
                     $scope.$apply(); 
             }
         })

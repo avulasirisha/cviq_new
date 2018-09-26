@@ -84,7 +84,7 @@
                         <div id="direct-Payment" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form">
                             <div class="form-elements fifty-comb">
                                 <label>CUSTOMER NAME</label>
-                                <input minlength="3" maxlength="20" class="cap" ng-keypress='FirsText($event)' ng-model="pay.customerName" type="text" name="customerName" placeholder="Enter Customer Name" ng-required="req" />
+                                <input minlength="3" maxlength="20" class="cap" ng-keypress='FirsText($event)' ng-model="pay.customerName" type="text" name="customerName" placeholder="Enter Customer Name"  ng-required="req" />
                                 <div ng-show="paymentForm.$submitted || paymentForm.customerName.$touched">
                                     <div class="error-message" ng-show="paymentForm.customerName.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                     <div class="error-message" ng-show="paymentForm.customerName.$invalid&&paymentForm.customerName.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Name must be at least 3 characters long.</div>
@@ -92,7 +92,7 @@
                             </div>
                             <div class="form-elements">
                                 <label>A/C NUMBER</label>
-                                <input ng-keypress='isNumberKey($event)' name="accountNo" ng-model="pay.customerAccount" type="text" placeholder="Enter Account number" ng-required="req" />
+                                <input ng-keypress='isNumberKey($event)' name="accountNo" ng-model="pay.customerAccount" type="text" placeholder="Enter Account number" maxlength="20" ng-required="req" />
                                 <div ng-show="paymentForm.$submitted || paymentForm.accountNo.$touched">
                                     <div class="error-message" ng-show="paymentForm.accountNo.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
                                 </div>

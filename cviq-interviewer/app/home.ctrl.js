@@ -100,21 +100,22 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
     $scope.goToNewRequest = function ( t, did ) {
         var noti_msg = $scope.notification[did]['notificationMsg'];
           if( /feedback/i.test( noti_msg ) ){
-            for( i in $scope.notification ){
+            /*for( i in $scope.notification ){
                 var noti_msg = $scope.notification[i]['notificationMsg'];
                 if( /feedback/i.test(noti_msg  ) ){
                     delete $scope.notification[i]; 
                 }
-             }
-            $state.go('home.inbox.past');                      
+             } */
+            $state.go('home.interview.past');                      
         }else{
-            delete $scope.notification[did];
+          //  delete $scope.notification[did];
+              if( t == 9 ){
+                  $state.go('home.inbox');
+              }else{
+                  $state.go('home.interview.new');
+              }
         }
-        if( t == 9 ){
-            $state.go('home.inbox');
-        }else{
-            $state.go('home.interview.new');
-        }
+      
     }
 
     /*=============================End: Get Interviewer Profile Function ================================*/
@@ -158,7 +159,7 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
         $scope.$apply();
 
     });
-    
+      var feed_msg = false;
       $http({
             method:'GET',
             url: CONSTANT.apiUrl + '/api/common/getnewNotifications',
@@ -173,11 +174,21 @@ angular.module('Cviq').controller('homeCtrl', ['$scope','$rootScope','$cookieSto
             if( Data.length > 0 ){
                     for( i in Data ){
                         console.log( Data[i]);
-                        $scope.notification.push({
-                            notificationMsg: Data[i].notificationMsg,
-                            notificationType: Data[i].notificationType
-                        });     
+                        if( /feedback/i.test( Data[i].notificationMsg  ) ){
+                           feed_msg =true; 
+                        }else{
+                          $scope.notification.push({
+                              notificationMsg: Data[i].notificationMsg,
+                              notificationType: Data[i].notificationType
+                          }); 
+                        }    
                     }  
+                    if( feed_msg == true ){
+                        $scope.notification.push({
+                              notificationMsg: 'You have received new feedback',
+                              notificationType: 2
+                          }); 
+                    }
                     $scope.$apply(); 
             }
         })

@@ -10,7 +10,7 @@
                             <div class="clearfix">
                                 <div class="form-elements fifty-comb pull-left">
                                     <label>NAME</label>
-                                    <input type="text" class="fname cap" ng-keypress='FirsText($event)' minlength="3" placeholder="Enter Name" name="firstName" ng-model="register.Name" required>
+                                    <input type="text" class="fname cap" ng-keypress='FirsText($event)' minlength="3" maxlength="60" placeholder="Enter Name" name="firstName" ng-model="register.Name" required>
                                     <div ng-show="resumeForm.$submitted || resumeForm.firstName.$touched">
                                         <div class="error-message" ng-show="resumeForm.firstName.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Please enter your name.</div>
                                         <div class="error-message" ng-show="resumeForm.firstName.$invalid&&resumeForm.firstName.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Name must be at least 3 characters long.</div>
