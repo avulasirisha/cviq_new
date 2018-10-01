@@ -32,9 +32,7 @@
             <label class="row col-lg-4 col-md-4 col-sm-4 col-xs-12">Date of Birth</label>
             <input name="dob" id="dob" ng-model="profile.dob" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp datetimepicker" type="text" ng-readonly="read" required>
         </p>
-        <div ng-show="profileForm.$submitted" class="text-center">
-            <div class="error-message" ng-show="profileForm.dob.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
-        </div>
+       
         <p>
             <label class="row col-lg-4 col-md-4 col-sm-4 col-xs-12">Job Title</label>
             <input ng-model="profile.designation" ng-keypress='FirsText($event)' name="designation" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp" type="text" ng-readonly="read" required>
