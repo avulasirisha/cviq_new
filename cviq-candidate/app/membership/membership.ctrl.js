@@ -189,7 +189,8 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
                     paymentID: response.id,
                     amount : $scope.interviewAmount,
                     planType:$scope.Membershipdata.planType,
-                    revaluation : revaluation
+                    revaluation : revaluation,
+                    Pauth : btoa( $scope.accessTokenPayPal )
                 };
 
                 if($scope.appliedPromoCode != undefined){
