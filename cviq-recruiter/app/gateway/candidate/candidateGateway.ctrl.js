@@ -114,7 +114,7 @@ angular.module('Cviq').controller('candidateGateway', ['$scope','$rootScope','ng
  //===============START: paypal access token================================
 
         $scope.accessTokenPayPal ='';
-        var jsontobase = 'Basic '+btoa("AaBcki5_ADWtJPG12FeRRTvzxhHhHtqkaPRfafIuQG92KdeaIjQ0Kk5MnSUICT8QCMgNUqt2lYGTJnWW:EGrAEySjEc5WIm6dHvAbSVKlqPcrOYutEA2d_PiNbP1d3TMaeuagEGnEONP6ZOfkBh1q-TPHS7z6ZpOH");
+      var jsontobase = 'Basic '+btoa("AZhL8uhvKEfZEHfZuZM_Q_MOHM7MpRXl2nqdUUxBzw-fcCL-0SeKnF4C5d4Q3M4zF0epm70KvuTrjTI1:ECa8vDBSBWW23x9tjx6hzZyqt-B8SZosDu25t0vxSxCmJ9R35UReS3IR-thoQqVkcVNxar4KxZMZoE7r");
         console.log("jsontobase",jsontobase);
         $http({
             method: 'POST',
