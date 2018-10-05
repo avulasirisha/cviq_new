@@ -608,8 +608,18 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
             })
                 .success(function(response){
                     console.log(response);
-                    $scope.noCandidate = false;
+                    $scope.noCandidate = false;             
                     $scope.candidatesList = response.data;
+                     for( i in  $scope.candidatesList  ){
+                            if( $scope.candidatesList[i].rating != 0 ){
+                                var ratingarray  = [] ;
+                                 for( d=1; d <= $scope.candidatesList[i].rating ; d++ ){ 
+                                   ratingarray.push( d );
+                                 }  
+                                 $scope.candidatesList[i].ratingarray = ratingarray;
+                            }
+                    }
+                    
 
                     console.log('$scope.candidatesList', $scope.candidatesList);
 
