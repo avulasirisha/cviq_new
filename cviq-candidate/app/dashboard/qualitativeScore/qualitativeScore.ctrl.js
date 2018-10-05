@@ -41,9 +41,17 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
             if( response.data.interviewerID == '' ){
                 $scope.interview_found_details.interview_found = false;
                 if(  response.data.interviewshiptaken == false ){
-                   $scope.interview_found_details.interview_text = "Please Buy Interview Fees To Get Qualitative Score"; 
+                     if( response.data.access == false ){
+                        $scope.interview_found_details.interview_text = "Please try after 6 months later to attend new Interview for qualitative score";
+                    }else{
+                        $scope.interview_found_details.interview_text = "Please Buy Interview Fees To Get Qualitative Score"; 
+                    }
                 }else{
-                    $scope.interview_found_details.interview_text = "Interviewer Not Found. We Are Checking For Right Person. Please Try Later"; 
+                    if( response.data.access == false ){
+                        $scope.interview_found_details.interview_text = "Please try after 6 months later to attend new Interview for qualitative score";
+                    }else{
+                        $scope.interview_found_details.interview_text = "Interviewer Not Found. We Are Checking For Right Person. Please Try Later"; 
+                    }
                 }      
             }else{
                 $scope.interview_found_details.interview_found = true;
@@ -53,6 +61,7 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
                     $scope.interview_found_details.interview_text = "Interviewer Found. Interview Dates: "+ $scope.interview_dataes;
                 }
             }
+            
             aaj = moment(new Date()).format('YYYY-MM-DD');
             aaj = new Date(aaj).toISOString();
 

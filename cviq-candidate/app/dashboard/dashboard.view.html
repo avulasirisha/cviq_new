@@ -64,7 +64,7 @@
             <!--</div>-->
             <div class="memberShip" ng-class="{'afterInterview': emittedData.graphCoordinates.length > 0}">
                 <div class="text-right"><button class="sbmt-btn" ui-sref="home.membership" ng-if="userData.membershipTaken == false">BUY MEMBERSHIP</button>
-                <button class="sbmt-btn" ng-click="Gotomembership()" ng-if="userData.membershipTaken == true && userData.interviewshiptaken == false">BUY INTERVIEW FEES</button>
+                <button class="sbmt-btn" ng-click="Gotomembership()" ng-if="userData.membershipTaken == true && userData.interviewshiptaken == false && userData.access == true">BUY INTERVIEW FEES</button>
                 </div>
                 <section class="commonBackground interview-details">
                     <div class="candidate-desc clearfix">
