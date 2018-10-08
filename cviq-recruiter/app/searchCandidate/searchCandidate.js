@@ -51,26 +51,26 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
     $scope.sliderAggregated = {
         range: {
             min: 0,
-            max: 1580
+            max: 800
         },
         minValue: 0,
-        maxValue: 1580
+        maxValue: 800
     };
     $scope.sliderQuantitative = {
+        range: {
+            min: 0,
+            max: 500
+        },
+        minValue: 0,
+        maxValue: 500
+    };
+    $scope.sliderQualitative = {
         range: {
             min: 0,
             max: 1080
         },
         minValue: 0,
         maxValue: 1080
-    };
-    $scope.sliderQualitative = {
-        range: {
-            min: 0,
-            max: 580
-        },
-        minValue: 0,
-        maxValue: 580
     };
     $scope.sliderSalary = {
         range: {
@@ -93,9 +93,9 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
 
     $scope.highestQualification = [{name: 'UnderGraduate'}, {name: 'PostGraduate'}];
     $scope.salaryList = [{name: '$ 0 - $ 20000'},{name: '$ 20001 - $ 40000'},{name: '$ 40001 - $ 60000'},{name: '$ 60001 - $ 80000'},{name: '$ 80001 - $ 100000'},{name: '> $ 100000'}, ];
-    $scope.aggregatedList = [{name: '0 - 300'},{name: '301 - 600'},{name: '601 - 900'},{name: '901 - 1200'},{name: '1201 - 1580'}];
-    $scope.qualitativeList = [{name: '0 - 100'},{name: '101 - 200'},{name: '201 - 300'},{name: '301 - 400'},{name: '401 - 500'},{name: '501 - 580'}];
-    $scope.quantitativeList = [{name: '0 - 200'},{name: '201 - 400'},{name: '401 - 600'},{name: '601 - 800'},{name: '801 - 1080'}];
+    $scope.aggregatedList = [{name: '0 - 100'},{name: '101 - 300'},{name: '301 - 500'},{name: '501 - 700'},{name: '701 - 800'}];
+    $scope.quantitativeList  = [{name: '0 - 100'},{name: '101 - 200'},{name: '201 - 300'},{name: '301 - 400'},{name: '401 - 500'} ];
+    $scope.qualitativeList = [{name: '0 - 200'},{name: '201 - 400'},{name: '401 - 600'},{name: '601 - 800'},{name: '801 - 1080'}];
 
     
     $scope.show = false;
