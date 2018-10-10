@@ -55,7 +55,7 @@
                         <li>
                             <h5>SME & Background</h5>
                             <span>{{candidateDetails.totalBackgroundPoints}}</span>
-                            <input type="number" name="backGround" ng-model="score.backgroundPoints" limit-to="{{candidateDetails.totalBackgroundPoints.toString().length}}" ng-max="{{candidateDetails.totalBackgroundPoints}}" required>
+                            <input type="number" name="backGround" ng-model="score.backgroundPoints"  ng-max="{{candidateDetails.totalBackgroundPoints}}" ng-keypress='checKeys($event)'  required>
                             <div ng-show="scoringForm.$submitted || scoringForm.backGround.$touched">
                                 <div class="error-message err" ng-show="scoringForm.backGround.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Please enter background points.</div>
                                 <div class="error-message err" ng-show="scoringForm.backGround.$invalid&&scoringForm.backGround.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Points should not be greater than {{candidateDetails.totalBackgroundPoints}} .</div>
@@ -64,7 +64,7 @@
                         <li>
                             <h5>Communication</h5>
                             <span>{{candidateDetails.totalCommunicationPoints}}</span>
-                            <input type="number" name="communication" ng-model="score.communicationPoints" limit-to="{{candidateDetails.totalCommunicationPoints.toString().length}}" ng-max="{{candidateDetails.totalCommunicationPoints}}" required>
+                            <input type="number" name="communication" ng-model="score.communicationPoints" ng-keypress='checKeys($event)' ng-max="{{candidateDetails.totalCommunicationPoints}}" required>
                             <div ng-show="scoringForm.$submitted || scoringForm.communication.$touched">
                                 <div class="error-message err" ng-show="scoringForm.communication.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Please enter communication points.</div>
                                 <div class="error-message err" ng-show="scoringForm.communication.$invalid&&scoringForm.communication.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Points should not be greater than {{candidateDetails.totalCommunicationPoints}} .</div>
@@ -73,7 +73,7 @@
                         <li>
                             <h5>Social Skills & Situational Empathy</h5>
                             <span>{{candidateDetails.totalSocialSkillPoints}}</span>
-                            <input type="number" name="social" ng-model="score.socialPoints" limit-to="{{candidateDetails.totalSocialSkillPoints.toString().length}}" ng-max="{{candidateDetails.totalSocialSkillPoints}}" required>
+                            <input type="number" name="social" ng-model="score.socialPoints" ng-keypress='checKeys($event)' ng-max="{{candidateDetails.totalSocialSkillPoints}}" required>
                             <div ng-show="scoringForm.$submitted || scoringForm.social.$touched">
                                 <div class="error-message err" ng-show="scoringForm.social.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Please enter social skill points.</div>
                                 <div class="error-message err" ng-show="scoringForm.social.$invalid&&scoringForm.social.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Points should not be greater than {{candidateDetails.totalSocialSkillPoints}} .</div>
@@ -82,7 +82,7 @@
                         <li>
                             <h5>Leadership & Management</h5>
                             <span>{{candidateDetails.totalLeadershipPoints}}</span>
-                            <input type="number" name="leadership" ng-model="score.leadershipPoints" limit-to="{{candidateDetails.totalLeadershipPoints.toString().length}}" ng-max="{{candidateDetails.totalLeadershipPoints}}" required>
+                            <input type="number" name="leadership" ng-model="score.leadershipPoints" ng-keypress='checKeys($event)' ng-max="{{candidateDetails.totalLeadershipPoints}}" required>
                             <div ng-show="scoringForm.$submitted || scoringForm.leadership.$touched">
                                 <div class="error-message err" ng-show="scoringForm.leadership.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Please enter social skill points.</div>
                                 <div class="error-message err" ng-show="scoringForm.leadership.$invalid&&scoringForm.leadership.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Points should not be greater than {{candidateDetails.totalLeadershipPoints}} .</div>

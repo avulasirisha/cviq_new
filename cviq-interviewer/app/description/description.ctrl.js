@@ -89,6 +89,14 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
 
 
     /*=============================Start: reset and rate later functions ================================*/
+    
+    $scope.checKeys = function( even ){
+    var keys = even.target.value ;
+        if( keys.length > 2 ){
+                console.log( keys.length,  ((keys.length)-1) ) ;
+                even.target.value = parseInt(  keys.substr( 0, ((keys.length)-1) ) );
+        }                
+    }
 
     $scope.resetData = function () {
         $scope.score = {};
