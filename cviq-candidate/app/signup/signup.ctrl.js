@@ -485,7 +485,7 @@ angular.module('Cviq').controller('signupCtrl', ['$scope','$rootScope','ngDialog
                 lastName:$scope.linkedinData.lastName,
                 email:$scope.linkedinData.emailAddress
             }
-
+            bootbox.alert('successfully authorized. Please fill other required details');
             IN.User.logout(function () {
                 console.log("User logged out of LinkedIn");
             });

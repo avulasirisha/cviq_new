@@ -25,68 +25,7 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
 
     /*=============================End: Get Interviewer Profile Function ================================*/
 
-    //var apiKey = '45643282',
-    //    sessionId = '2_MX40NTY0MzI4Mn5-MTQ3MjEwMzU4ODYxN35EaStlVW14WjZwNmZwb3k5MlUyUTRpSTd-fg',
-    //    token = 'T1==cGFydG5lcl9pZD00NTY0MzI4MiZzaWc9NjFmMjJkOTU1N2JmOGZiZjcyZTViZGZhZjcyMTlmMzdiNTljNTgzZTpzZXNzaW9uX2lkPTJfTVg0ME5UWTBNekk0TW41LU1UUTNNakV3TXpVNE9EWXhOMzVFYVN0bFZXMTRXalp3Tm1ad2IzazVNbFV5VVRScFNUZC1mZyZjcmVhdGVfdGltZT0xNDcyMTAzNjE3Jm5vbmNlPTAuMzg2ODM4ODA3MDI1OTI0MyZyb2xlPXB1Ymxpc2hlciZleHBpcmVfdGltZT0xNDcyMTI1Nzcy';
-    //
-    //var SAMPLE_SERVER_BASE_URL = 'https://localhost:8000';
-    //
-    //
-    //
-    //$(document).ready(function() {
-    //    // Make an Ajax request to get the OpenTok API key, session ID, and token from the server
-    //    $.get(SAMPLE_SERVER_BASE_URL + '/session', function(res) {
-    //        apiKey = res.apiKey;
-    //        sessionId = res.sessionId;
-    //        token = res.token;
-    //
-    //        initializeSession();
-    //    });
-    //});
-    //
-    //function initializeSession() {
-    //    var session = OT.initSession(apiKey, sessionId);
-    //
-    //    // Subscribe to a newly created stream
-    //    session.on('streamCreated', function(event) {
-    //        session.subscribe(event.stream, 'subscriber', {
-    //            insertMode: 'append',
-    //            width: '100%',
-    //            height: '100%'
-    //        });
-    //    });
-    //
-    //    session.on('sessionDisconnected', function(event) {
-    //        console.log('You were disconnected from the session.', event.reason);
-    //    });
-    //
-    //    // Connect to the session
-    //    session.connect(token, function(error) {
-    //        // If the connection is successful, initialize a publisher and publish to the session
-    //        if (!error) {
-    //            var publisher = OT.initPublisher('publisher', {
-    //                insertMode: 'append',
-    //                width: '100%',
-    //                height: '100%'
-    //            });
-    //
-    //            session.publish(publisher);
-    //        } else {
-    //            console.log('There was an error connecting to the session: ', error.code, error.message);
-    //        }
-    //    });
-    //}
-    //
-    //OTSession.init(apiKey, sessionId, token, function(err, session) {
-    //    console.log('Error', err);
-    //    console.log(session);
-    //    $scope.sessionData = session;
-    //});
-    //$scope.streams = OTSession.streams;
-
-
-
-
+ 
     var token;
      var pub;
      var apiKey = $scope.interviewData.openTokApiKey;
@@ -286,28 +225,6 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
         session.disconnect(pub);
     };
 
-
-    //function signal(){
-    //
-    //    session.signal(
-    //        {
-    //            data:"hello"
-    //        },
-    //        function(error) {
-    //            if (error) {
-    //                console.log("signal error ("
-    //                    + error.code
-    //                    + "): " + error.message);
-    //            } else {
-    //                console.log("signal sent.");
-    //            }
-    //        }
-    //    );
-    //
-    //}
-    //
-    //signal();
-
     /*=============================Start: Socket.IO Implementation ================================*/
 
     // Socket Emits
@@ -326,18 +243,7 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
         });
     }
     //
-    // socket.on('cviq', function (data) {
-    //     console.log(data);
-    //
-    //     socket.emit('authentication',{
-    //         'userId':$scope.interviewData.interviewerID,
-    //         'accessToken':$cookieStore.get('AccessToken'),
-    //         'USER_TYPE':'INTERVIEWER',
-    //         'sendToId':$scope.interviewData.candidateID._id,
-    //         'interviewId':$scope.interviewData._id
-    //     });
-    //
-    // });
+
 
     $scope.candidateMessage = [];
 
@@ -392,7 +298,12 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
     /*=============================End: Socket.IO Implementation ================================*/
 
     var allNonTechnicalQues, allTechnicalQues;
-    $scope.allQuestions = [];
+    
+    var Recruiter_Technical,Recruiter_NonTechnical ,Interviewer_Technical,Interviewer_NonTechnical;
+    $scope.InterviewerQuestions = [];
+    $scope.RecruiterQuestions = [];
+    
+    
     
     $http({
         method:'GET',
@@ -403,11 +314,30 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
         params:{ 'candidateID': $scope.interviewData.candidateID._id }
     }).success(function(response){
           console.log('questions.getQuestions success', response);
-          allNonTechnicalQues = response.data.nonTechnicalQuestions;
-          allTechnicalQues = response.data.technicalQuestions;
+
+          var RecruiterQuestions = response.data["recruiter"][0];
+          var InterviewerQuestions = response.data["interviewer"][0];
           
-          $scope.allQuestions.push.apply($scope.allQuestions, allNonTechnicalQues);
-          $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);
+          if( RecruiterQuestions != null ){
+               Recruiter_Technical = RecruiterQuestions.technicalQuestions ;
+               Recruiter_NonTechnical = RecruiterQuestions.nonTechnicalQuestions ;
+              if( Object.keys( RecruiterQuestions ).length > 0 ){
+                  $scope.RecruiterQuestions.push.apply($scope.RecruiterQuestions, RecruiterQuestions.nonTechnicalQuestions );
+                  $scope.RecruiterQuestions.push.apply($scope.RecruiterQuestions , RecruiterQuestions.technicalQuestions);  
+              }       
+          }
+          if( InterviewerQuestions != null ){
+               Interviewer_Technical = InterviewerQuestions.technicalQuestions ;
+               Interviewer_NonTechnical = InterviewerQuestions.nonTechnicalQuestions ;
+              if( Object.keys( InterviewerQuestions ).length > 0  ){      
+                $scope.InterviewerQuestions.push.apply($scope.InterviewerQuestions, InterviewerQuestions.nonTechnicalQuestions );
+                $scope.InterviewerQuestions.push.apply($scope.InterviewerQuestions , InterviewerQuestions.technicalQuestions);  
+              }
+          }
+          
+          console.log( "recruiter ",  $scope.RecruiterQuestions);
+          console.log( "interviewr ", $scope.InterviewerQuestions);
+             
     }).error(function(response){
             console.log(response);
             if(response.statusCode == 401){
@@ -416,23 +346,44 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
     })
 
 
+    $scope.sendquestion = function( question, eve ){
+       if( eve.target.checked == true ){
+            $scope.message  = question;      
+       }else{
+            $scope.message  = '';
+       }
+    }
+
     /*=============================Start: filter technical/Non technical questions ================================*/
 
-    $scope.filterQuestions = function (val) {
-        console.log(val);
+    $scope.filterQuestions = function ( typ , val) {
+        if( typ == "inter"){
+            $scope.InterviewerQuestions = [];
+            if(val == 'Technical'){
+                $scope.InterviewerQuestions.push.apply($scope.InterviewerQuestions, Interviewer_Technical );
+            }
+            else if(val == 'Non-Technical'){
+                $scope.InterviewerQuestions.push.apply($scope.InterviewerQuestions, Interviewer_NonTechnical );
+            }
+            else{
+                $scope.InterviewerQuestions.push.apply($scope.InterviewerQuestions, Interviewer_NonTechnical );
+                $scope.InterviewerQuestions.push.apply($scope.InterviewerQuestions, Interviewer_Technical);
+            }
+        }else{
+            $scope.RecruiterQuestions = [];
+           if(val == 'Technical'){
+                $scope.RecruiterQuestions.push.apply($scope.RecruiterQuestions, Recruiter_Technical );
+            }
+            else if(val == 'Non-Technical'){
+                $scope.RecruiterQuestions.push.apply($scope.RecruiterQuestions, Recruiter_NonTechnical );
+            }
+            else{
+                $scope.RecruiterQuestions.push.apply($scope.RecruiterQuestions, Recruiter_NonTechnical );
+                $scope.RecruiterQuestions.push.apply($scope.RecruiterQuestions, Recruiter_Technical);
+            }   
+        }
 
-        $scope.allQuestions = [];
-
-        if(val == 'Technical'){
-            $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);
-        }
-        else if(val == 'Non-Technical'){
-            $scope.allQuestions.push.apply($scope.allQuestions, allNonTechnicalQues);
-        }
-        else{
-            $scope.allQuestions.push.apply($scope.allQuestions, allNonTechnicalQues);
-            $scope.allQuestions.push.apply($scope.allQuestions, allTechnicalQues);
-        }
+      
     }
 
     /*=============================End: filter technical/Non technical questions ================================*/

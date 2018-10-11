@@ -55,23 +55,7 @@
                             <!--<img src="assets/images/350.gif" alt="preloader" style="opacity:0.45;">-->
                         <!--</div>-->
                     </div>
-                    <!--<a href="javascript:void (0);"   class="btn btn-info" ng-click="disableVid()" ng-hide="showVid" style="padding: 10px 15px;margin-right:20px;border-radius: 50% !important;" id="DisableVideo">-->
-                        <!--<span class="fa fa-video-camera"></span>-->
-                    <!--</a>-->
-                    <!--<a href="javascript:void (0);"   class="btn btn-info" ng-click="enableVid()" ng-show="showVid"  style="padding: 10px 15px;margin-right:20px;border-radius: 50% !important;">-->
-                        <!--<span style="position: relative;"><span class="fa fa-video-camera" style="color: #fff;"></span><span class="disAud" style="color:#fff;font-size: 20px;">/</span></span>-->
-                        <!--&lt;!&ndash;<span class="fa fa-video-camera"></span>&ndash;&gt;-->
-                    <!--</a>-->
-                    <!--<a href="javascript:void(0);"   class="btn btn-info" ng-click="disconnected()" style="background: #e75445;border-color: #e75445;padding: 10px 17px;border-radius: 50% !important;"  id="disconnectBtn">-->
-                        <!--<span class="fa fa-pause"></span>-->
-                    <!--</a>-->
-                    <!--<a href="javascript:void (0);"   class="btn btn-info" ng-hide="showAud" ng-click="disableAud()" style="padding: 11px 17px;margin-left:20px;border-radius: 50% !important;" >-->
-                        <!--<span class="fa fa-microphone" style="font-size: 21px;"></span>-->
-                    <!--</a>-->
-                    <!--<a href="javascript:void (0);"   class="btn btn-info" ng-show="showAud" ng-click="enableAud()" style="padding: 11px 17px;margin-left:20px;border-radius: 50% !important;" >-->
-                        <!--<span style="position: relative;"><span class="fa fa-microphone" style="font-size: 21px;color: #fff;"></span><span class="disAud" style="color:#fff;font-size: 20px;">/</span></span>-->
-
-                    <!--</a>-->
+           
 
                     <ul class="video-controls">
                         <li ng-hide="showVid"><a href="javascript:void (0);" class="btn enable-video" ng-click="disableVid()" id="DisableVideo"></a></li>
@@ -92,9 +76,9 @@
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pad quesNChat">
                 <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 pull-left" style="padding-left: 0">
                     <div class="questionBank">
-                        <section class="search-section">
-                            <div class="quesHead"><span>Question Bank</span>
-                                <select class="pull-right" ng-init="interviewQues = 'All'" ng-model="interviewQues" ng-change="filterQuestions(interviewQues)">
+                        <section class="search-section" ng-if="RecruiterQuestions.length > 0">
+                            <div class="quesHead"><span>Recruiter Questions</span>
+                                <select class="pull-right" ng-init="interviewQues = 'All'" ng-model="interviewQues" ng-change="filterQuestions( 'rec',interviewQues)">
                                     <option value="All" selected>All</option>
                                     <option value="Technical">Technical</option>
                                     <option value="Non-Technical">Non-Technical</option>
@@ -103,7 +87,22 @@
                             <div class="search-result questionForInterview">
                                 <p ng-if="searchedQuestions.length == 0 && searchedQuestions.length == 0">No Questions Found.</p>
                                 <ul>
-                                    <li ng-repeat="q in allQuestions track by q"><input type="checkbox" style="display: block; margin-right: 10px; cursor: pointer">{{q}}</li>
+                                    <li ng-repeat="q in RecruiterQuestions track by q"><input type="checkbox" style="display: block; margin-right: 10px; cursor: pointer"  ng-click="sendquestion(q, $event)">{{q}}</li>
+                                </ul>
+                            </div>
+                        </section>
+                        <section class="search-section" ng-if="InterviewerQuestions.length > 0">
+                            <div class="quesHead"><span>Interviewer Questions</span>
+                                <select class="pull-right" ng-init="interviewQues = 'All'" ng-model="interviewQues" ng-change="filterQuestions( 'inter', interviewQues)">
+                                    <option value="All" selected>All</option>
+                                    <option value="Technical">Technical</option>
+                                    <option value="Non-Technical">Non-Technical</option>
+                                </select>
+                            </div>
+                            <div class="search-result questionForInterview">
+                                <p ng-if="searchedQuestions.length == 0 && searchedQuestions.length == 0">No Questions Found.</p>
+                                <ul>
+                                    <li ng-repeat="q in InterviewerQuestions track by q"><input type="checkbox" style="display: block; margin-right: 10px; cursor: pointer" ng-click="sendquestion(q, $event)">{{q}}</li>
                                 </ul>
                             </div>
                         </section>
@@ -120,7 +119,9 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form>      
+        
+        
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="row">
                 <div class="text-right">
