@@ -618,6 +618,7 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
                                  }  
                                  $scope.candidatesList[i].ratingarray = ratingarray;
                             }
+                            $scope.candidatesList[i].keySkills = $scope.candidatesList[i].keySkills.toString();
                     }
                     
 
@@ -822,31 +823,6 @@ angular.module('Cviq').controller('searchCandidateCtrl', ['$scope','$rootScope',
 
 
 
-                //$scope.keywords = response.keywords.split(',');
-                // $scope.year = new Date().getFullYear();
-                // $scope.date = new Date().getDate();
-                // $scope.month = new Date().getMonth()+1;
-                //
-                // if($scope.month < 9){
-                //     $scope.month ='0'+ $scope.month;
-                // }
-                //
-                // $scope.fullDate = $scope.year+'-'+$scope.month+'-'+$scope.date;
-                //
-
-
-                //
-                // $scope.searchParam = {
-                //     industry:response.industry.industryName,
-                //     functionalArea:response.functionalArea.functionalAreaName,
-                //     minExperience:$scope.minExperience,
-                //     maxExperience:$scope.maxExperience,
-                //     keywords:$scope.keywords,
-                //     searchDate:$scope.fullDate,
-                //     searchCriteria:1
-                //
-                //
-                // }
             }
 
 
