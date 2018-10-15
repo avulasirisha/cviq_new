@@ -113,36 +113,22 @@ angular.module('Cviq').controller('qualitativeCtrl', ['$scope','$rootScope','$co
                 'authorization': $cookieStore.get('AccessToken'),
             },
             params: { "Id" : $scope.data.candidateID }  
-        })
-            .success(function (response) {
-                if( response.data.CandidateBlock== false ){
-                if( response.data.planType == "Premium" ){
-                    bootbox.alert("Candidate Not Taken Membership. Your Paying For Membership & Interview Charges");
-                }
-
+        }).success(function (response) {
                 $state.go("home.candidateGateway", {"candidate":  $scope.data.candidateID, "Payment": response.data.planRate});
-                }else{
-                    bootbox.alert("Candidate was Blocked By Admin. Please Contact Admin For More Details");
-                }
-                
                 $('.alertButton').prop('disabled', false);
                 $rootScope.loading = false;
                 console.log("response",response.data);
-            })
-            .error(function (response) {
+        }).error(function (response) {
                 $rootScope.loading = false;
                 $('.alertButton').prop('disabled', false);
                 console.log("error",response);
-                bootbox.alert(response.data.message);
+                bootbox.alert(response.message);
 
                 if(response.statusCode == 401){
                     $scope.confirmLogOut();
                 }
 
-            });
-
-
-
+        });
     }
 
 

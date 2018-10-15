@@ -98,32 +98,30 @@ angular.module('Cviq').controller('aggragatedCtrl', ['$scope','$rootScope','$coo
         $rootScope.loading = true;
         $http({
             method:'GET',
-            url:CONSTANT.apiUrl + '/api/candidate/getInterviewCharges',
+            url:CONSTANT.apiUrl + '/api/recruiter/getInterviewCharges',
+            headers:{
+                'authorization': $cookieStore.get('AccessToken'),
+            },
+            params: { "Id" : $scope.data.candidateID }  
         })
             .success(function (response) {
-
-                $state.go("home.candidateGateway", {"candidate":  $scope.data.candidateID, "Payment": response.data.candidateInterviewCharges});
-
+                $state.go("home.candidateGateway", {"candidate":  $scope.data.candidateID, "Payment": response.data.planRate});
                 $('.alertButton').prop('disabled', false);
                 $rootScope.loading = false;
                 console.log("response",response.data);
             })
             .error(function (response) {
+                $rootScope.loading = false;
                 $('.alertButton').prop('disabled', false);
                 console.log("error",response);
                 bootbox.alert(response.message);
-                $rootScope.loading = false;
+
                 if(response.statusCode == 401){
                     $scope.confirmLogOut();
                 }
 
             });
-
-
-
     }
-
-
     
     
 }]);

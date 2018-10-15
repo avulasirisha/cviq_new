@@ -98,7 +98,7 @@
             <!--<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" > &nbsp<br>&nbsp<br>&nbsp<br> </div>-->
         </ul>
         <div ng-if="!candidateScore" style="min-height: 280px;" class="clearfix">
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!membershipTaken&&!alreadyAlertSent">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="candidateQualitativeScore == 0 &&!alreadyAlertSent">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
                 </div>
@@ -112,7 +112,7 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="membershipTaken&&!alreadyAlertSent&& candidateQualitativeScore == 0 ">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!alreadyAlertSent&& candidateQualitativeScore != 0 ">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
                 </div>
@@ -126,7 +126,7 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="membershipTaken&&alreadyAlertSent">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="alreadyAlertSent&&candidateQualitativeScore != 0 ">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
                 </div>
@@ -140,7 +140,7 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!membershipTaken&&alreadyAlertSent">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="candidateQualitativeScore == 0&&alreadyAlertSent">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Want to pay for {{profile.firstName}} {{profile.lastName}}.<br><br></h4>
                 </div>
