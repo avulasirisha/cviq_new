@@ -58,10 +58,14 @@ App.controller('paymentInterviewerController', function ($scope, $http, $cookies
         $scope.showloader = true;
         $http({
             method: 'GET',
-            url: MY_CONSTANT.url_cviq + '/api/admin/getPaymentPendingInterviewers',
+            url: MY_CONSTANT.url_cviq + '/api/admin/getInterviewerPayment',
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,
                 'Content-type': 'application/x-www-form-urlencoded'
+            },
+             params: {
+                start: skip,
+                limit: limit,
             }
         })
             .success(function(response){
@@ -83,9 +87,9 @@ App.controller('paymentInterviewerController', function ($scope, $http, $cookies
                 }
 
                 var dataArray = [];
-                var pendingList = response.data;
+                var pendingList = response.data.verifiedList;
 
-                pendingList.forEach(function (column) {
+                pendingList.forEach(function (column){
                     // console.log(Object.keys(column).length);   //to find key length in object
                     var d = {};
                     d.Id = column._id;
@@ -93,49 +97,24 @@ App.controller('paymentInterviewerController', function ($scope, $http, $cookies
                     d.phoneNumber = column.countryCode + column.phoneNo;
                     d.email = column.email;
                     // d.linkedInId = column.linkedInId;
-                    // d.profileReviewedByAdmin = column.profileReviewedByAdmin;
-                    // d.registrationDate = moment(column.registrationDate).format('MMM Do YYYY, h:mm a'); //date
-                    // d.isBlocked = column.isBlocked;
-                    // d.isVerified = column.isVerified;
                     d.profilePicURL = column.profilePicURL.original;
                     d.industry = column.industry;
                     d.functionalArea = column.functionalArea;
-                    // d.rating = column.rating;
-                    // d.title = column.title;
-                    // d.underGraduate = column.underGraduate;
-                    // d.postGraduate = column.postGraduate;
-
-
-                    // d.accomplishment = column.accomplishment;
-                    // d.certificationURL = column.certificationURL;
-                    // d.highSchool = column.highSchool;
-                    // d.lastLogin = column.lastLogin;
-                    // d.loginCountAfterVerified = column.loginCountAfterVerified;
-                    // d.numberOfPeopleRated = column.numberOfPeopleRated;
-                    // d.rating = column.rating;
-                    // d.totalRating = column.totalRating;
-                    // d.phoneVerified = column.phoneVerified;
-                    // d.updatedAt = column.updatedAt;
-                    // d.resumeURL = column.resumeURL;
-                    // d.certificationURL = column.certificationURL;
-                    // d.title = column.title;
-                    // if(column.paymentPercentagePerInterview){
-                    //     d.percentage = column.paymentPercentagePerInterview;
-                    // }
-                    // else{
-                    //     d.percentage = 0;
-                    // }
-
-
-
-                    // d.keywords =[];
-                    // d.softSkills = [];
-                    // d.technicalSkills = [];
-                    // d.keywords = column.keywords.join();
-                    // d.softSkills = column.softSkills.join();
-                    // d.technicalSkills = column.technicalSkills.join();
+                    d.totalInterviewes = 0;
+                    d.totalpaidInterviewes = 0;
+                    if( column.paymentSetup.length > 0 ){
+                        for(  v in column.paymentSetup ) {
+                             d.totalInterviewes = d.totalInterviewes+1;
+                             if( column.paymentSetup[v].payment == true ){
+                                    d.totalpaidInterviewes = d.totalpaidInterviewes+1;
+                             }    
+                        }
+                    }
+                 
+                   
                     dataArray.push(d);
                 });
+                console.log( dataArray );
                 $scope.list = dataArray;
 
                 console.log($scope.list);

@@ -89,10 +89,6 @@
       {
         "text": "Blocked",
         "sref": "app.blockedInterviewer"
-      },
-      {
-        "text": "Payments",
-        "sref": "app.PaymentInterviewer"
       }
     ]
   },

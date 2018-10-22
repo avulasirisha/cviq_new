@@ -108,8 +108,19 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
                     d.title = column.title;
                     d.underGraduate = column.underGraduate;
                     d.postGraduate = column.postGraduate;
-
-
+                    d.paymentSetup = column.paymentSetup;
+                    
+                    d.totalInterviewes = 0;
+                    d.totalpaidInterviewes = 0;
+                    if( column.payments.length > 0 ){
+                        for(  v in column.payments ) {
+                             d.totalInterviewes = d.totalInterviewes+1;
+                             if( column.payments[v].payment == true ){
+                                    d.totalpaidInterviewes = d.totalpaidInterviewes+1;
+                             }    
+                        }
+                    }
+                    d.totalpaymentpending = d.totalInterviewes- d.totalpaidInterviewes ;
                     d.accomplishment = column.accomplishment;
                     d.certificationURL = column.certificationURL;
                     d.highSchool = column.highSchool;
@@ -129,8 +140,6 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
                     else{
                         d.percentage = 0;
                     }
-
-
 
                     d.keywords =[];
                     d.softSkills = [];

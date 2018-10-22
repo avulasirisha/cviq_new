@@ -81,6 +81,9 @@
                                     </div>
                                 </th>
                                 <th style="min-width:100px;text-align: center">Skills</th>
+                                <th style="min-width:100px;text-align: center">Interviews</th>
+                                <th style="min-width:100px;text-align: center">Payments</th>
+                                <th style="min-width:100px;text-align: center">Payment types</th>
                                 <th style="min-width:100px;text-align: center">Documents</th>
                                 <th style="min-width:100px;text-align: center">Actions</th>
 
@@ -110,6 +113,24 @@
                                 </td>
                                 <td><b>Soft</b> - {{data.softSkills}} <br>
                                     <b>Technical</b> - {{data.technicalSkills}}
+                                </td>
+                                 <td> {{data.totalInterviewes }}</td> 
+                                <td><b>Paid </b> - {{data.totalpaidInterviewes }} <br>
+                                    <b>Payment pending</b> - {{data.totalpaymentpending}}
+                                </td>
+                                <td><b>Account :-</b><br>
+                                Ac No: {{data.paymentSetup.accountDetail.accountNumber }},<br>  
+                                Bank Name: {{data.paymentSetup.accountDetail.bankName }} <br>
+                                Address : {{data.paymentSetup.accountDetail.address }} <br>
+                                Name : {{data.paymentSetup.accountDetail.customerName }}  <br>
+                                 <br>
+                                    <b>Cheque :</b> <br> Mobile: {{data.paymentSetup.chequeDetail.mobileNumber }} 
+                                          Area No: {{data.paymentSetup.chequeDetail.areaCode }} <br>
+                                          Country: {{data.paymentSetup.chequeDetail.country }}  <br>
+                                          State: {{data.paymentSetup.chequeDetail.state }}  <br>
+                                          Address1 : {{data.paymentSetup.chequeDetail.addressTwo }} <br>
+                                          Address2 : {{data.paymentSetup.chequeDetail.addressOne }} <br>
+                                          Name: {{data.paymentSetup.chequeDetail.name }}  <br>
                                 </td>
 
                                 <td>
