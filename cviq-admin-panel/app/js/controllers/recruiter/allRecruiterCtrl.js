@@ -282,8 +282,8 @@ App.controller('allRecruiterController', function ($scope, $http, $cookies,$stat
                     e.isBlocked = column.isBlocked;
                     e.isVerified = column.isVerified;
                     e.profilePicURL = column.profilePicURL.original;
-
-
+                    e.membershipTaken = profile.membershipTaken ;
+                    e.registrationDate = profile.registrationDate
                     e.lastLogin = column.lastLogin;
                     e.numberOfPeopleRated = column.numberOfPeopleRated;
                     e.rating = column.rating;

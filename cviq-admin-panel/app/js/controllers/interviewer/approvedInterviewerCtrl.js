@@ -316,6 +316,17 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
                     e.title = column.title;
                     e.underGraduate = column.underGraduate;
                     e.postGraduate = column.postGraduate;
+                    e.totalInterviewes = 0;
+                    e.totalpaidInterviewes = 0;
+                    if( column.payments.length > 0 ){
+                        for(  v in column.payments ){
+                             e.totalInterviewes = e.totalInterviewes+1;
+                             if( column.payments[v].payment == true ){
+                                    e.totalpaidInterviewes = e.totalpaidInterviewes+1;
+                             }    
+                        }
+                    }
+                    e.totalpaymentpending = e.totalInterviewes- e.totalpaidInterviewes ;
                     if(column.paymentPercentagePerInterview){
                         e.percentage = column.paymentPercentagePerInterview;
                     }

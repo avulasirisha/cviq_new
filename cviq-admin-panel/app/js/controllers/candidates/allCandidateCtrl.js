@@ -329,6 +329,8 @@ App.controller('allCandidateController', function ($scope, $http, $cookies,$stat
                     else{
                         e.KeySkills = '-';
                     }
+                    e.membershipTaken = profile.membershipTaken ;
+                    e.registrationDate = profile.registrationDate
                     e.Country = profile.currentCountry;
                     e.State = profile.currentState;
                     e.Nationality = profile.nationality;
