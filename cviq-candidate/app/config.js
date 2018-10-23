@@ -2,7 +2,7 @@
     api_url = 'http://localhost:8000' ;
  }else{
     api_url = 'http://34.207.125.7:3005' ;
- }
+ }                        
 angular.module('Cviq').constant('CONSTANT',{
     apiUrl: api_url,
     linkedClienid: '77t8dsm7xpnm33',

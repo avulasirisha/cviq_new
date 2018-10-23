@@ -210,7 +210,8 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
                     var promodata = {
                         "membershipPlanID": $scope.package._id,
                         "paymentID": response.id ,
-                        "amount":  payment
+                        "amount":  payment,
+                        "Pauth" : btoa( $scope.accessTokenPayPal )
                     }
                     
                     if( $scope.promoApplied){

@@ -201,7 +201,8 @@ angular.module('Cviq').controller('candidateGateway', ['$scope','$rootScope','ng
                         data:{
                             "candidateID": $scope.candidateId,
                             "paymentID": response.id,
-                             "amount" :$scope.packageSelected
+                             "amount" :$scope.packageSelected,
+                             "Pauth" : btoa( $scope.accessTokenPayPal )
                         }
 
                     })
