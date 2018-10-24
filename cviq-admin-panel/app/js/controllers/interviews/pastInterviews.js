@@ -325,6 +325,7 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
 
                     e.interviewerFeedback = column.interviewerFeedback;
                     e.candidateFeedback = column.candidateFeedback;
+                    e.payment = column.payment ;
 
 
                     e.interviewStartDate = moment(column.interviewStartDate).format('MMM Do YYYY');//date
