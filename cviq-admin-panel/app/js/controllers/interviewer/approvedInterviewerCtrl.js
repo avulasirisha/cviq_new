@@ -109,7 +109,7 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
                     d.underGraduate = column.underGraduate;
                     d.postGraduate = column.postGraduate;
                     d.paymentSetup = column.paymentSetup;
-                    
+                     d.interviewCharge = column.interviewCharge;
                     d.totalInterviewes = 0;
                     d.totalpaidInterviewes = 0;
                     if( column.payments.length > 0 ){
@@ -314,6 +314,7 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
                     e.functionalArea = column.functionalArea;
                     e.rating = column.rating;
                     e.title = column.title;
+                    e.interviewCharge= column.interviewCharge;
                     e.underGraduate = column.underGraduate;
                     e.postGraduate = column.postGraduate;
                     e.totalInterviewes = 0;
@@ -427,7 +428,7 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
 
     $scope.updatePercentage = function (data) {
         $scope.newdata = angular.copy(data);
-        console.log(" $scope.newdata",$scope.newdata.percentage);
+        console.log(" $scope.newdata",$scope.newdata.interviewCharge);
 
         ngDialog.open({
             template: 'updateplan',
@@ -440,16 +441,16 @@ App.controller('approvedInterviewerController', function ($scope, $http, $cookie
     };
     $scope.updateConfirm = function (data) {
         ngDialog.close();
-        console.log("update",data.percentage);
-        console.log("percantage",typeof (data.percentage));
+        console.log("update",data.interviewCharge);
+        console.log("percantage",typeof (data.interviewCharge));
 
         var percentageForm = new FormData();
 
         percentageForm.append("interviewerID",data.Id);
-        percentageForm.append("percentage",data.percentage);
+        percentageForm.append("interviewCharge",data.interviewCharge);
         $http({
             method:'PUT',
-            url: MY_CONSTANT.url_cviq +'/api/admin/setInterviewerPercentage',
+            url: MY_CONSTANT.url_cviq +'/api/admin/updateInterviewerCharge',
             transformRequest: angular.identity,
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,

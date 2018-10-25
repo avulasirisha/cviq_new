@@ -74,7 +74,7 @@
                                 </th>
                                 <th style="min-width:140px">
                                     <div style="text-align:center;" ng-click="sort('percentage')">
-                                        Interview Share in %
+                                        Interview Charge
                                         <span style="opacity:0.5" ng-hide="predicate == 'percentage' && reverse || predicate == 'percentage' && !reverse" class="fa fa-sort"></span>
                                         <span ng-show="predicate == 'percentage' && !reverse" class="fa fa-caret-down"></span>
                                         <span ng-show="predicate == 'percentage' && reverse" class="fa fa-caret-up"></span>
@@ -109,7 +109,7 @@
                                     <b>PG</b> - {{data.postGraduate}}
                                 </td>
                                 <td style="text-align: center">
-                                    {{data.percentage}}
+                                    {{data.interviewCharge}}
                                 </td>
                                 <td><b>Soft</b> - {{data.softSkills}} <br>
                                     <b>Technical</b> - {{data.technicalSkills}}
@@ -248,11 +248,11 @@
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form">
                                     <div class="clearfix">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form-elements ">
-                                            <label>Interviewer Percentage</label>
-                                            <input type="number" limit-to="2" min="1" max="99"    placeholder="Enter Interviewer Percentage" name="percentage" ng-model="newdata.percentage" required />
-                                            <div ng-show="updatePlan.$submitted || updatePlan.percentage.$touched">
-                                                <div class="error-message" ng-show="updatePlan.percentage.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
-                                                <div class="error-message" ng-show="updatePlan.percentage.$invalid && updatePlan.percentage.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i>Invalid Interviewer Percentage</div>
+                                            <label>Interviewer Charges</label>
+                                            <input type="number" limit-to="2" min="1" max="99"    placeholder="Enter Interviewer Charge" name="interviewCharge" ng-model="newdata.interviewCharge" required />
+                                            <div ng-show="updatePlan.$submitted || updatePlan.interviewCharge.$touched">
+                                                <div class="error-message" ng-show="updatePlan.interviewCharge.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
+                                                <div class="error-message" ng-show="updatePlan.interviewCharge.$invalid && updatePlan.interviewCharge.$error.required!=true"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i>Invalid Interviewer Percentage</div>
                                             </div>
                                         </div>
                                     </div>

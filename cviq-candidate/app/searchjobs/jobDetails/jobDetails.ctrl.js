@@ -29,6 +29,12 @@ angular.module('Cviq').controller('jobDetailsCtrl', ['$scope','$rootScope','ngDi
             console.log(response);
             if(response.statusCode == 401){
                 $rootScope.sessionExpired();
+            }else if(response.statusCode == 400 ){
+               bootbox.alert(response.message);  
+                $timeout(function(){
+                        $state.go('home.search.searchJobs');
+                }, 0);
+
             }
         })
 
