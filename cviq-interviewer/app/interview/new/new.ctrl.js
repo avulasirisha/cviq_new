@@ -101,7 +101,8 @@ angular.module('Cviq').controller('newCtrl', ['$scope','$rootScope','$cookieStor
             }
             }).success(function(response){
                     console.log('Success', response);
-                    bootbox.alert("Interview request has been rejected.");
+                    bootbox.alert("Interview request has been rejected.");  
+                    $('.modal-backdrop').css( "display" ,"none" );
                     $state.reload('home.interview.new');
     
             }).error(function(response){
