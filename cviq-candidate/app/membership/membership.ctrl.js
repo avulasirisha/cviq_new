@@ -7,6 +7,7 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
             revaluation = false;
     }else{
             revaluation = true;
+            $scope.rev_ation = true;
     }
     $http({
         method:'GET',

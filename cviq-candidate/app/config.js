@@ -148,6 +148,14 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var: 'GET PAID'
             }
         })
+         .state('home.contactus',{
+            url:'/contactus',
+            templateUrl:'app/contactus/contactus.view.html',
+            controller:'contactusCtrl',
+            params:{
+                var: 'GET PAID'
+            }
+        })
         .state('home.redirect',{
             url:'/redirect',
             templateUrl:'app/redirect/redirectUrl.view.html',
