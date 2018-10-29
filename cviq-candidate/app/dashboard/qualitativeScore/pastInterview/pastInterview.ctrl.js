@@ -2,6 +2,7 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
 
 
     /*=============================Start: Get past interviews ================================*/
+        $scope.candidateDetails = JSON.parse(localStorage.getItem('UserDetails'));
 
     $scope.pastInterview = function (data) {
 
@@ -71,13 +72,13 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
 
     /*=============================End: Get past interviews ================================*/
 
-    $scope.viewChat = function (interviewId, status) {
+    $scope.viewChat = function (interview , status) {
 
         $http({
             method: 'GET',
             url: CONSTANT.apiUrl + '/api/common/getAllChatMessages',
             params:{
-                interviewID: interviewId
+                interviewID: interview._id
             }
         })
             .success(function(response){
@@ -136,7 +137,8 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
                         pdfMake.createPdf(docDefinition).open();
                     }
                     else{
-                        pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
+                        var date = interview.interviewDate.split("T")[0];
+                        pdfMake.createPdf(docDefinition).download( $scope.candidateDetails.firstName + "_"+date +'_Chat.pdf');
                     }
                 }
 

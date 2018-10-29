@@ -20,6 +20,7 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
     $scope.score = {};
 
     $scope.candidateDetails = JSON.parse(localStorage.getItem('CandidateDetails'));
+    
     console.log('$scope.candidateDetails', $scope.candidateDetails);
 
     if($scope.candidateDetails.candidateQualitativeScore > 1){
@@ -232,13 +233,13 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
     }
 
 
-     $scope.viewChat = function (interviewId, status) {
+     $scope.viewChat = function (interview, status) {
 
         $http({
             method: 'GET',
             url: CONSTANT.apiUrl + '/api/common/getAllChatMessages',
             params:{
-                interviewID: interviewId
+                interviewID: interview._id
             }
         })
             .success(function(response){
@@ -297,7 +298,8 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
                         pdfMake.createPdf(docDefinition).open();
                     }
                     else{
-                        pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
+                        var date = interview.interviewDate.split("T")[0];
+                        pdfMake.createPdf(docDefinition).download( $scope.candidateDetails.firstName + "_"+date+'_Chat.pdf');
                     }
                 }
 

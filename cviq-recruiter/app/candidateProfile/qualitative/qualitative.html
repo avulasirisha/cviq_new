@@ -365,8 +365,8 @@
                         <a href="{{i.video_url}}" download>Download Video</a>
                     </li>
                     <li>
-                        <a ng-click="viewChat(i._id, 0)"><img src="images/view-chat.png" alt="" /></a><br />
-                        <a ng-click="viewChat(i._id, 1)">Download Chat</a>
+                        <a ng-click="viewChat(i, 0)"><img src="images/view-chat.png" alt="" /></a><br />
+                        <a ng-click="viewChat(i, 1)">Download Chat</a>
                     </li>
                 </ul>
                 <div ng-if="i.status==7 && i.interviewerFeedback">

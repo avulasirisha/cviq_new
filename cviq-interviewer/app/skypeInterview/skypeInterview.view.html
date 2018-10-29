@@ -28,7 +28,7 @@
                 <div class="change-photo">
                     <img class="dp" ng-src="{{interviewData.candidateID.profilePicURL.original}}" alt="" />
                 </div>
-                <h5>{{interviewData.candidateID.firstName}}<img src="images/badge.png" alt="" /></h5>
+                <h5>{{interviewData.candidateID.firstName + ' '+interviewData.candidateID.lastName  }}<img src="images/badge.png" alt="" /></h5>
                 <p style="text-transform: capitalize">{{interviewData.candidateID.profileTitle}}</p>
                 <!--<input type="text" class="designation" placeholder="Enter Designation" ng-model="designation">-->
             </div>

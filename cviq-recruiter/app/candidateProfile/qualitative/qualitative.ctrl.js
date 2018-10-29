@@ -206,13 +206,13 @@ angular.module('Cviq').controller('qualitativeCtrl', ['$scope','$rootScope','$co
 
     /*=============================End: Get past interviews ================================*/
 
-    $scope.viewChat = function (interviewId, status) {
+    $scope.viewChat = function (interview, status) {
 
         $http({
             method: 'GET',
             url: CONSTANT.apiUrl + '/api/common/getAllChatMessages',
             params:{
-                interviewID: interviewId
+                interviewID: interview._id
             }
         })
             .success(function(response){
@@ -271,7 +271,8 @@ angular.module('Cviq').controller('qualitativeCtrl', ['$scope','$rootScope','$co
                         pdfMake.createPdf(docDefinition).open();
                     }
                     else{
-                        pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
+                        var date = interview.interviewDate.split("T")[0];
+                        pdfMake.createPdf(docDefinition).download( $scope.profile.firstName + "_"+date +'_Chat.pdf');
                     }
                 }
 
