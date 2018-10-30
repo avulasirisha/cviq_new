@@ -122,6 +122,8 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
             $scope.Membershipdata = response.data;
             $scope.interviewAmount = response.data.planRate;
             $scope.actualAmount = response.data.planRate;
+            response.data.revaluation = revaluation;
+            $cookieStore.put('membership_pay', JSON.stringify( response.data ) );
         })
         .error(function (response) {      
             console.log('Error', response);      
@@ -248,8 +250,8 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
                 "intent": "sale",
                 "redirect_urls":
                 {
-                    "return_url": "http://52.24.206.96/cviq-candidate-test/#/home/redirectUrl",
-                    "cancel_url": "http://52.24.206.96/cviq-candidate-test/#/home/membership"
+                    "return_url": "http://test.cviq360.com/cviq-candidate/#/home/redirectUrl",
+                    "cancel_url": "http://test.cviq360.com/cviq-candidate/#/home/membership"
                 },
                 "payer":
                 {
@@ -307,6 +309,11 @@ angular.module('Cviq').controller('membershipCtrl', ['$scope','$rootScope','$coo
                 $scope.disBtn = false;
                 $scope.appliedPromoCode = response.data;
                 $scope.interviewAmount = response.data.amount;
+                var cookiestore= JSON.parse( $cookieStore.get('membership_pay') );
+                cookiestore.planRate =response.data.amount; 
+                cookiestore.promoID =response.data.promoID;
+                console.log( cookiestore )  ;
+                $cookieStore.put('membership_pay', JSON.stringify( cookiestore) );           
             })
             .error(function (response) {
                 console.log('Apply Promo Code Error', response);

@@ -6,10 +6,10 @@
     }
 </style>
 <h3>
-    Pending Interviews
-    <small>Displaying list of Pending Interviews in the system</small>
+    Past Interviews
+    <small>Displaying list of Past Interviews in the system</small>
 </h3>
-<div ng-controller="pendingInterviewsController" class="container-fluid">
+<div ng-controller="pastInterviewsController" class="container-fluid">
     <!--<div id="driverLocationMap" style="height:400px;width:100%;"></div>-->
 
     <!-- START DATATABLE 2 -->
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="table-responsive" ng-switch="(list | filter:search).length">
-                        <div ng-switch-when="0" class="noSearch"><span>No Pending Interview found</span></div>
+                        <div ng-switch-when="0" class="noSearch"><span>No Past Interview found</span></div>
                         <table id="datatable2" class="table table-hover" ng-switch-default>
                             <thead>
                             <tr>
@@ -72,21 +72,44 @@
                                         <span ng-show="predicate == 'interviewStartDate' && reverse" class="fa fa-caret-up"></span>
                                     </div>
                                 </th>
-                            
+                                <th style="min-width:180px">
+                                    <div style="text-align:center;" ng-click="sort('totalQualitativeGiven')">
+                                        Scores
+                                        <span style="opacity:0.5" ng-hide="predicate == 'totalQualitativeGiven' && reverse || predicate == 'totalQualitativeGiven' && !reverse" class="fa fa-sort"></span>
+                                        <span ng-show="predicate == 'totalQualitativeGiven' && !reverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="predicate == 'totalQualitativeGiven' && reverse" class="fa fa-caret-up"></span>
+                                    </div>
+                                </th>
+                                <th style="min-width:180px">Interviewer Feedback</th>
+                                <th style="min-width:180px">Candidate Feedback</th>
+
+                                <th style="min-width:160px">
+                                    <div style="text-align:center;" ng-click="sort('interviewerRating')">
+                                        Interviewer Rating
+                                        <span style="opacity:0.5" ng-hide="predicate == 'interviewerRating' && reverse || predicate == 'interviewerRating' && !reverse" class="fa fa-sort"></span>
+                                        <span ng-show="predicate == 'interviewerRating' && !reverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="predicate == 'interviewerRating' && reverse" class="fa fa-caret-up"></span>
+                                    </div>
+                                </th>
+                                <th style="min-width:160px">
+                                    <div style="text-align:center;" ng-click="sort('candidateRating')">
+                                        Candidate Rating
+                                        <span style="opacity:0.5" ng-hide="predicate == 'candidateRating' && reverse || predicate == 'candidateRating' && !reverse" class="fa fa-sort"></span>
+                                        <span ng-show="predicate == 'candidateRating' && !reverse" class="fa fa-caret-down"></span>
+                                        <span ng-show="predicate == 'interviewStartDate' && reverse" class="fa fa-caret-up"></span>
+                                    </div>
+                                </th>
                                 <th style="min-width:160px">
                                     <div style="text-align:center;" ng-click="sort('status')">
-                                        Status
+                                       Status
                                         <span style="opacity:0.5" ng-hide="predicate == 'status' && reverse || predicate == 'status' && !reverse" class="fa fa-sort"></span>
                                         <span ng-show="predicate == 'status' && !reverse" class="fa fa-caret-down"></span>
                                         <span ng-show="predicate == 'status' && reverse" class="fa fa-caret-up"></span>
                                     </div>
                                 </th>
                                 <th style="min-width:160px">
-                                    <div style="text-align:center;" ng-click="sort('revaluation')">
-                                        Revaluation
-                                        <span style="opacity:0.5" ng-hide="predicate == 'revaluation' && reverse || predicate == 'revaluation' && !reverse" class="fa fa-sort"></span>
-                                        <span ng-show="predicate == 'revaluation' && !reverse" class="fa fa-caret-down"></span>
-                                        <span ng-show="predicate == 'revaluation' && reverse" class="fa fa-caret-up"></span>
+                                    <div style="text-align:center;" >
+                                       Video charts
                                     </div>
                                 </th>
 
@@ -107,36 +130,46 @@
                                 <td>
                                     <img ng-src="{{data.candidateProfilePicURL || 'app/img/noimg.png'}}" class="tableImage">
                                 </td>
-
                                 <td><b>Name</b> - {{data.candidateName}} <br>
                                     <b>Email</b> - {{data.candidateEmail}}<br>
                                     <b>Contact</b> - {{data.candidatePhoneNo}}
                                 </td>
+
                                 <td><b>Start</b> - {{data.interviewStartDate}} {{data.interviewStartTime}} <br>
-                                    <b> End &nbsp </b> - {{data.interviewEndDate}} {{data.interviewEndTime}}  <br>
+                                    <b> End &nbsp </b> - {{data.interviewEndDate}} {{data.actualInterviewEndTime}}  <br>
                                 </td>
-                                <!--<td><b style="text-decoration: underline">Qualitative</b> - {{data.totalQualitativeGiven}}/{{data.totalQualitativeScore}} <br>-->
-                                    <!--<b >Background </b> - {{data.backgroundScore}} <br>-->
-                                    <!--<b>Communication </b> - {{data.communicationScore}} <br>-->
-                                    <!--<b>Leadership </b> - {{data.leadershipScore}} <br>-->
-                                    <!--<b>Social Skill</b> - {{data.socialSkillScore}} <br>-->
-                                <!--</td>-->
-                                <!--<td style="  text-align: center;"><span ng-show="data.interviewerFeedback.length!=0">{{data.interviewerFeedback}}</span>-->
-                                    <!--<span ng-show="data.interviewerFeedback.length==0"> No Feedback </span>-->
+                                <td><b style="text-decoration: underline">Qualitative</b> - {{data.totalQualitativeGiven}}/{{data.totalQualitativeScore}} <br>
+                                    <b >Background </b> - {{data.backgroundScore}} <br>
+                                    <b>Communication </b> - {{data.communicationScore}} <br>
+                                    <b>Leadership </b> - {{data.leadershipScore}} <br>
+                                    <b>Social Skill</b> - {{data.socialSkillScore}} <br>
+                                </td>
+                                <td style="  text-align: center;"><span ng-show="data.interviewerFeedback.length!=0">{{data.interviewerFeedback}}</span>
+                                    <span ng-show="data.interviewerFeedback.length==0"> No Feedback </span>
 
-                                <!--</td>-->
-                                <!--<td style="  text-align: center;"><span ng-show="data.candidateFeedback.length!=0">{{data.candidateFeedback}}</span>-->
-                                    <!--<span ng-show="data.candidateFeedback.length==0"> No Feedback </span>-->
-                                <!--</td>-->
+                                </td>
+                                <td style="  text-align: center;"><span ng-show="data.candidateFeedback.length!=0">{{data.candidateFeedback}}</span>
+                                    <span ng-show="data.candidateFeedback.length==0"> No Feedback </span>
+                                </td>
 
-                                <!--<td style="  text-align: center;"><span ng-show="ratingByInterviewer">-->
-                                    <!--<rating ng-model="data.interviewerRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>-->
-                                    <!--<span ng-hide="ratingByInterviewer">No Rating </span>-->
-                                <!--</td>-->
-                                <!--<td style="  text-align: center;"><span ng-show="ratingByCandidate"><rating ng-model="data.candidateRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>-->
-                                    <!--<span ng-hide="ratingByCandidate">No Rating </span>-->
-                                <!--</td>-->
+                                <td style="  text-align: center;"><span ng-show="ratingByInterviewer">
+                                    <rating ng-model="data.interviewerRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>
+                                    <span ng-hide="ratingByInterviewer">No Rating </span>
+                                </td>
+                                <td style="  text-align: center;"><span ng-show="ratingByCandidate"><rating ng-model="data.candidateRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>
+                                    <span ng-hide="ratingByCandidate">No Rating </span>
+                                </td>
                                 <td style="text-align: center">{{data.status}}</td>
+                                <td style="text-align: center">
+                                        <span ng-show="data.video_url">
+                                            <a ng-href="{{data.video_url}}" target="_blank" >Video chat</a>
+                                        </span>
+                                        <br>
+                                        <span ng-show="data.status=='COMPLETED' ">
+                                            <input type="button" ng-click="viewChat(data.id,'downlaod')" value="Text Chat" >
+                                        </span>
+                                            
+                                </td>
 
                             </tr>
                             </tbody>

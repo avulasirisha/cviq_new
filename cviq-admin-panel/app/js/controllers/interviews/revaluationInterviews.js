@@ -1,5 +1,5 @@
 
-App.controller('pendingInterviewsController', function ($scope, $http, $cookies,$state, $cookieStore, MY_CONSTANT, $timeout,ngDialog,responseCode, filterFilter) {
+App.controller('revInterviewsController', function ($scope, $http, $cookies,$state, $cookieStore, MY_CONSTANT, $timeout,ngDialog,responseCode, filterFilter) {
 
 
     console.log("Past interviewer ctrl");
@@ -60,7 +60,7 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
         $scope.showloader = true;
         $http({
             method: 'GET',
-            url: MY_CONSTANT.url_cviq + '/api/admin/getPendingInterviews',
+            url: MY_CONSTANT.url_cviq + '/api/admin/getPastInterviews',
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,
                 'Content-type': 'application/x-www-form-urlencoded'
@@ -106,21 +106,37 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
 
 
                     d.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
-                    d.interviewerEmail = column.interviewerID._id;
-                    d.interviewerId = column.interviewerID.email;
+                    d.interviewerEmail = column.interviewerID.email;
+                    d.interviewerId = column.interviewerID._id;
                     d.interviewerName = column.interviewerID.firstName + ' ' + column.interviewerID.lastName;
                     d.interviewerPhoneNo = column.interviewerID.countryCode + '-' + column.interviewerID.phoneNo;
 
-                    // d.interviewerFeedback = column.interviewerFeedback;
-                    // d.candidateFeedback = column.candidateFeedback;
-
+                    d.interviewerFeedback = column.interviewerFeedback;
+                    d.candidateFeedback = column.candidateFeedback;
+                    d.video_url = column.video_url
 
                     d.interviewStartDate = moment(column.interviewStartDate).format('MMM Do YYYY');//date
                     d.interviewStartTime = column.interviewStartTime;
 
                     d.interviewEndDate = moment(column.interviewEndDate).format('MMM Do YYYY');//date
-                    d.interviewEndTime =column.interviewEndTime ;
-                    d.revaluation =column.revaluation ;
+                    d.actualInterviewEndTime =moment(column.actualInterviewEndTime).format('h:mm a');//date
+                  //  d.interviewEndTime = column.interviewEndTime;
+
+
+
+
+
+                    d.candidateRating = column.candidateRating;
+                    d.interviewerRating = column.interviewerRating;
+                    d.ratingByCandidate = column.ratingByCandidate;
+                    d.ratingByInterviewer = column.ratingByInterviewer;
+
+                    d.backgroundScore = column.backgroundScore;
+                    d.communicationScore = column.communicationScore;
+                    d.leadershipScore = column.leadershipScore;
+                    d.socialSkillScore = column.socialSkillScore;
+                    d.totalQualitativeGiven = column.totalQualitativeGiven;
+                    d.totalQualitativeScore = column.totalQualitativeScore;
 
 
 
@@ -271,7 +287,7 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
     $scope.exportData = function(){
         $http({
             method: 'GET',
-            url: MY_CONSTANT.url_cviq + '/api/admin/getPendingInterviews',
+            url: MY_CONSTANT.url_cviq + '/api/admin/getPastInterviews',
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,
                 'Content-type': 'application/x-www-form-urlencoded'
@@ -302,40 +318,39 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
 
                     e.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
 
-                    e.interviewerEmail = column.interviewerID._id;
+                    e.interviewerEmail = column.interviewerID.email;
                     // e.interviewerId = column.interviewerID.email;
                     e.interviewerName = column.interviewerID.firstName + ' ' + column.interviewerID.lastName;
                     e.interviewerPhoneNo = column.interviewerID.countryCode + '-' + column.interviewerID.phoneNo;
 
-                    // e.interviewerFeedback = column.interviewerFeedback;
-                    // e.candidateFeedback = column.candidateFeedback;
+                    e.interviewerFeedback = column.interviewerFeedback;
+                    e.candidateFeedback = column.candidateFeedback;
+                    e.payment = column.payment ;
 
 
                     e.interviewStartDate = moment(column.interviewStartDate).format('MMM Do YYYY');//date
                     e.interviewStartTime = column.interviewStartTime;
 
                     e.interviewEndDate = moment(column.interviewEndDate).format('MMM Do YYYY');//date
-                    e.interviewEndTime =column.interviewEndTime;//date
-                    e.revaluation =column.revaluation ;
+                    e.actualInterviewEndTime =moment(column.actualInterviewEndTime).format('h:mm a');//date
+                    //  e.interviewEndTime = column.interviewEndTime;
 
 
 
 
 
-                    // e.candidateRating = column.candidateRating;
-                    // e.interviewerRating = column.interviewerRating;
-                    // // e.ratingByCandidate = column.ratingByCandidate;
-                    // // e.ratingByInterviewer = column.ratingByInterviewer;
-                    //
-                    // e.backgroundScore = column.backgroundScore;
-                    // e.communicationScore = column.communicationScore;
-                    // e.leadershipScore = column.leadershipScore;
-                    // e.socialSkillScore = column.socialSkillScore;
-                    // e.totalQualitativeGiven = column.totalQualitativeGiven;
-                    // e.totalQualitativeScore = column.totalQualitativeScore;
+                    e.candidateRating = column.candidateRating;
+                    e.interviewerRating = column.interviewerRating;
+                    // e.ratingByCandidate = column.ratingByCandidate;
+                    // e.ratingByInterviewer = column.ratingByInterviewer;
 
-
-
+                    e.backgroundScore = column.backgroundScore;
+                    e.communicationScore = column.communicationScore;
+                    e.leadershipScore = column.leadershipScore;
+                    e.socialSkillScore = column.socialSkillScore;
+                    e.totalQualitativeGiven = column.totalQualitativeGiven;
+                    e.totalQualitativeScore = column.totalQualitativeScore;
+                    
                     var statusArray = ['','PENDING','ONGOING','','CONFIRMED','COMPLETED','EXPIRED','REJECTED','CANCELLED'];
                     e.status = statusArray[column.status];
                     // e.timeOffset = column.timeOffset;
@@ -346,7 +361,7 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
                 });
                 $scope.exportList = dataArray1;
                 console.log($scope.exportList);
-                alasql('SELECT * INTO CSV("PendingInterviewsList.csv",{headers:true}) FROM ?',[$scope.exportList]);
+                alasql('SELECT * INTO CSV("PastInterviewsList.csv",{headers:true}) FROM ?',[$scope.exportList]);
             })
             .error(function(response,error){
                 console.log(response);
@@ -380,5 +395,86 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
             scope: $scope
         });
     };
+    
+    
+     $scope.viewChat = function (interviewId, status) {
+        console.log( "interview id :"+ interviewId );
+        $http({
+            method: 'GET',
+            url: MY_CONSTANT.url_cviq + '/api/common/getAllChatMessages',
+            params:{
+                interviewID: interviewId
+            }
+        })
+            .success(function(response){
+                console.log('Chat Messages Success', response);
+                var allChatMesssages = response.data;
+
+                var docDefinition, textData1, textData2;
+                var contentArray = [];
+
+                if(allChatMesssages.length > 0){
+                    
+                    angular.forEach(allChatMesssages, function (value) {
+
+                        if(value.messageTo == 'INTERVIEWER'){
+                            textData1 = {text: 'Interviewer', style: 'title'};
+                            textData2 = {text: value.message, style: 'myStyle'};
+                            contentArray.push(textData1, textData2);
+                        } else {
+                            textData1 = {text: 'Candidate', style: ['title', 'anotherStyle']};
+                            textData2 = {text: value.message, style: ['myStyle', 'anotherStyle']};
+                            contentArray.push(textData1, textData2);
+                        }
+                    })
+
+                    docDefinition = {
+
+                        header: {
+                            text: 'CVIQ',
+                            style: 'mainHead'
+                        },
+
+                        content: contentArray,
+
+                        styles: {
+                            title: {
+                                fontSize: 14,
+                                bold: true,
+                                color: '#337ab7'
+                            },
+                            anotherStyle: {
+                                italic: true,
+                                alignment: 'right'
+                            },
+                            myStyle:{
+                                fontSize: 11,
+                                marginBottom: 10
+                            },
+                            mainHead: {
+                                alignment: 'center',
+                                marginTop:20,
+                                bold: true
+                            }
+                        }
+                    }
+                    if(!status){
+                        pdfMake.createPdf(docDefinition).open();
+                    }
+                    else{
+                        pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
+                    }
+                }
+
+                else{
+                    bootbox.alert('No messages available.');
+                }
+
+            })
+            .error(function(response){
+                console.log('Chat Messages Error', response);
+            })
+        
+    }
 
 });
