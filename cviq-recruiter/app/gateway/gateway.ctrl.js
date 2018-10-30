@@ -286,8 +286,8 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
                         "intent": "sale",
                         "redirect_urls":
                         {
-                            "return_url": "http://52.24.206.96/cviq-recruiter/#/home/redirectUrl?promo=true&promoId="+$scope.promoId,
-                            "cancel_url": "http://52.24.206.96/cviq-recruiter/#/home/gateway"
+                            "return_url": "http://test.cviq360.com/cviq-recruiter/#/home/redirectUrl?promo=true&promoId="+$scope.promoId,
+                            "cancel_url": "http://test.cviq360.com/cviq-recruiter/#/home/gateway"
                         },
                         "payer":
                         {
@@ -418,6 +418,8 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
 
                     $scope.newCost = response.data.amount;
                     $scope.promoId = response.data.promoID;
+                    $scope.package.planRate = response.data.amount;
+                    $cookieStore.put("package", $scope.package );
                     console.log(response);
 
                     bootbox.alert("Promo Applied Successfully");

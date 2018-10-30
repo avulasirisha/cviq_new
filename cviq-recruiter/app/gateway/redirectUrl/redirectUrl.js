@@ -24,29 +24,27 @@ console.log("innnn");
         var promoTemp =  urlarray[2];
         var promoArray =  promoTemp.split('&');
         var promoId =  promoArray[0];
-
+        
         console.log('Promo Applied ',promoApplied , "Promo ID",promoId);
 
         var payTemp = urlarray[3];
         var payTempArray = payTemp.split('&');
         var pay = payTempArray[0];
         var payerId = urlarray[5];
+        var paymentid = urlarray[3].split('&')[0];
 
 
-        
-
-        var promodata = {
-            "membershipPlanID": $scope.package._id,
-            "paymentID": pay
-        };
-
-        if( promoApplied){
-            promodata.promoID =promoId;
-        }
-        else{
-
-        }
-
+      var promodata = {
+          "membershipPlanID": $scope.package._id,
+          "paymentID":paymentid ,
+          "amount":  $scope.package.planRate,
+          "Pauth" : btoa(   $cookieStore.get('payPalAccessToken' ) )
+      }
+      
+      if( $scope.promoApplied){
+          promodata.promoID =$scope.promoId;
+      }
+    
 
         $scope.accessTokenPayPal = $cookieStore.get('payPalAccessToken');
             $http({
@@ -66,6 +64,11 @@ console.log("innnn");
                         $state.go('home.package');
                     }
                     else{
+                        var UserDetails = $cookieStore.get('UserDetails');
+                        UserDetails.membershipPlanType = $scope.package.planType;
+                        UserDetails.membershipTaken =true;
+                        $cookieStore.put('UserDetails',UserDetails);
+
                         bootbox.alert("Membership taken successfully");
                         $state.go("home.dashboard.recentlyPostedJobs", {}, {reload: true});
                     }
