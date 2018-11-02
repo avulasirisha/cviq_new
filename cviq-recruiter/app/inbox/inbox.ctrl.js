@@ -8,29 +8,6 @@ angular.module('Cviq').controller('inboxCtrl', ['$scope','$rootScope','ngDialog'
     $rootScope.loading = true;
 
 
-
-    // $scope.selection = function (id) {
-    //     if(id==1){
-    //         if($scope.inbox == false){
-    //             $scope.inbox = true;
-    //             $('#inboxbutton1').toggleClass('inbox-button inbox-button-selected');
-    //             $('#inboxbutton2').toggleClass('inbox-button inbox-button-selected');
-    //         }
-    //     }
-    //     else{
-    //         if( $scope.inbox == true){
-    //             $scope.inbox = false;
-    //             $('#inboxbutton2').toggleClass('inbox-button inbox-button-selected');
-    //             $('#inboxbutton1').toggleClass('inbox-button inbox-button-selected');
-    //         }
-    //     }
-    // }
-
-   
-
-
-
-
     $http({
         method: 'GET',
         url: CONSTANT.apiUrl + '/api/recruiter/fetchInboxMessages',

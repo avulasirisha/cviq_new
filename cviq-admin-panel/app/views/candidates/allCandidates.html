@@ -82,7 +82,7 @@
                                     </div>
                                 </th>
 
-
+                                <th style="min-width: 100px;">Revaluation</th>
                                 <th style="min-width: 100px;">Status</th>
                                 <th style="min-width:100px">Actions</th>
 
@@ -112,6 +112,7 @@
                                     <b>Quantitative</b> - {{data.quantitativeScore}}<br>
                                     <b>Aggregated</b> - {{data.aggregatedScore}}
                                 </td>
+                                <td style="min-width: 100px;"> <input type="button" value="revaluation" ng-click="request_rev(data.Id)"> </td>
                                 <td>
                                     <b>Blocked</b> - <span ng-show="data.isBlocked">Yes</span><span ng-hide="data.isBlocked">No</span>
                                 </td>

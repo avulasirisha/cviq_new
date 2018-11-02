@@ -17,6 +17,7 @@ angular.module('Cviq').controller('upcomingInterviewCtrl', ['$scope','$rootScope
 
                 if(response.data.length >= 1){
                     $scope.interviewerSkills = response.data[0].interviewerID.technicalSkills;
+                    $scope.inbox = response.data[0].inboxId;
                 }
             })
             .error(function(response){
@@ -99,8 +100,13 @@ angular.module('Cviq').controller('upcomingInterviewCtrl', ['$scope','$rootScope
     }
     
     $scope.start_chat = function () {
-        $scope.message = {};
-        $("#message").modal();
+        if( $scope.inbox ){
+            $cookieStore.put('ChatHistory', $scope.inbox );
+            $state.go('home.inbox.inboxTab.chat');           
+        }else{
+            $scope.message = {};
+            $("#message").modal();
+        }
     };
 
     $('#messagefile').change(function () {

@@ -169,7 +169,7 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
            $rootScope.loading = false;
 
             $scope.resumearray = response.data.resume;
-
+            $scope.inboxid = response.data.inboxId;
             $scope.isresume = false;
          //   console.log("resume",resumearray.length);
 
@@ -269,23 +269,14 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
 
 
     $scope.messageCandidate = function () {
+        if( $scope.inboxid ){
 
-        $scope.message = {};
-
-        $("#message").modal();
-
-
-        // ngDialog.open({
-        //     template: 'message',
-        //     className: 'ngdialog-theme-default',
-        //     scope: $scope,
-        //     closeByEscape:false,
-        //     closeByDocument:false
-        // });
-
-
-
-
+            $state.go('home.inboxMessages', { id: "+"+$scope.inboxid } );          
+ 
+        }else{                                                 
+            $scope.message = {};
+            $("#message").modal();
+         }
     };
 
     $('#messagefile').change(function () {

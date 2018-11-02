@@ -328,8 +328,8 @@ angular.module('Cviq').controller('gatewayCtrl', ['$scope','$rootScope','ngDialo
                         "intent": "sale",
                         "redirect_urls":
                         {
-                            "return_url": "http://52.24.206.96/cviq-recruiter/#/home/redirectUrl?promo=false&promoId=None",
-                            "cancel_url": "http://52.24.206.96/cviq-recruiter/#/home/gateway"
+                            "return_url": "http://test.cviq360.com/cviq-recruiter/#/home/redirectUrl?promo=false&promoId=none',
+                            "cancel_url": "http://test.cviq360.com/cviq-recruiter/#/home/gateway"
                         },
                         "payer":
                         {

@@ -273,6 +273,25 @@ App.controller('allCandidateController', function ($scope, $http, $cookies,$stat
 //============================================================ pagination ends ====================================
 //==========================================================================================================================
 
+    $scope.request_rev = function( id ){
+             $http({
+            method: 'PUT',
+            url: MY_CONSTANT.url_cviq + '/api/admin/RevaluationRequest',
+            headers:{
+                'authorization':$cookieStore.get("obj").accessToken,
+                'Content-type': 'application/x-www-form-urlencoded'
+            },
+            data: {
+                candidateID: id
+            }
+        }).success(function(response){
+                    bootbox.alert(response.message);  
+            
+        }).error(function(response){
+                bootbox.alert(response.message);
+        })
+    }
+
     //==========================================================================================================================
 //====================================================export api for get all candidates ====================================
 //==========================================================================================================================
