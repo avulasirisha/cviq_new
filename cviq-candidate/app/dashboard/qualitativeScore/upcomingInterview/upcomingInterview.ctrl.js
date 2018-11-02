@@ -100,7 +100,7 @@ angular.module('Cviq').controller('upcomingInterviewCtrl', ['$scope','$rootScope
     }
     
     $scope.start_chat = function () {
-        if( $scope.inbox ){
+        if( $scope.inbox != '' ){
             $cookieStore.put('ChatHistory', $scope.inbox );
             $state.go('home.inbox.inboxTab.chat');           
         }else{

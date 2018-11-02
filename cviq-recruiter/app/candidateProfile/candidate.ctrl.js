@@ -269,7 +269,7 @@ angular.module('Cviq').controller('candidateCtrl', ['$scope','$rootScope','$cook
 
 
     $scope.messageCandidate = function () {
-        if( $scope.inboxid ){
+        if( $scope.inboxid != '' ){
 
             $state.go('home.inboxMessages', { id: "+"+$scope.inboxid } );          
  
