@@ -21,9 +21,8 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
 
     $scope.candidateDetails = JSON.parse(localStorage.getItem('CandidateDetails'));
     
-    console.log('$scope.candidateDetails', $scope.candidateDetails);
-
-    if($scope.candidateDetails.candidateQualitativeScore > 1){
+    console.log('$scope.candidateDetails', $scope.candidateDetails); 
+    if($scope.candidateDetails.candidateQualitativeScore > 1){   
         $scope.score = {
             backgroundPoints:$scope.candidateDetails.candidateBackgroundPoints,
             communicationPoints:$scope.candidateDetails.candidateCommunicationPoints,
@@ -51,7 +50,14 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
 
     $scope.submitScore = function (data) {
         console.log('submitScore', data);
-
+        var interviewId;
+        console.log( "interviewid",  $scope.candidateDetails.interviewID  );
+        if(  $scope.startInterviewDetails == undefined ){
+                interviewId = $scope.candidateDetails.interviewID ;
+        }else{
+             interviewId = $scope.startInterviewDetails._id;
+        }
+ 
         $http({
             method: 'POST',
             url: CONSTANT.apiUrl + '/api/interviewer/rateQualScoreByInterviewer',
@@ -60,7 +66,7 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
             },
             data: {
                 "candidateID": $scope.candidateDetails._id,
-                "interviewID": $scope.startInterviewDetails._id,
+                "interviewID": interviewId,
                 "candidateRating": $scope.rateToCandidate,
                 "rateLater": false,
                 "backgroundScore": data.backgroundPoints,

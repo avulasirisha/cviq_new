@@ -22,6 +22,7 @@ angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cook
         })
         .success(function(response){
             console.log('loginViaAccessToken', response);
+            response.data.InterviewsTaken = response.data.InterviewsTaken == undefined ? 0 : response.data.InterviewsTaken;
             localStorage.setItem('UserDetails', JSON.stringify(response.data));
             $scope.userData = JSON.parse(localStorage.getItem('UserDetails'));
         })
