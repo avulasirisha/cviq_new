@@ -112,7 +112,7 @@
                                     <b>Quantitative</b> - {{data.quantitativeScore}}<br>
                                     <b>Aggregated</b> - {{data.aggregatedScore}}
                                 </td>
-                                <td style="min-width: 100px;"> <input type="button" value="revaluation" ng-click="request_rev(data.Id)"> </td>
+                                <td style="min-width: 100px;" > <input type="button" value="revaluation" ng-click="request_rev(data.Id)"  ng-show="data.InterviewsTaken>0"> <span ng-show="data.InterviewsTaken==0"> 0 interviews </span </td>
                                 <td>
                                     <b>Blocked</b> - <span ng-show="data.isBlocked">Yes</span><span ng-hide="data.isBlocked">No</span>
                                 </td>

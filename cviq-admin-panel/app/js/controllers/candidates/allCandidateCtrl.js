@@ -111,7 +111,7 @@ App.controller('allCandidateController', function ($scope, $http, $cookies,$stat
                     d.isBlocked = column.isBlocked;
                     d.profilePicURL = column.profilePicURL.original;
                     d.nationality = column.nationality;
-
+                    d.InterviewsTaken = column.InterviewsTaken;
 
                     d.lastLogin = column.lastLogin;
                     d.phoneVerified = column.phoneVerified;

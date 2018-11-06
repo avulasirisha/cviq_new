@@ -110,10 +110,11 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                     d.interviewerId = column.interviewerID._id;
                     d.interviewerName = column.interviewerID.firstName + ' ' + column.interviewerID.lastName;
                     d.interviewerPhoneNo = column.interviewerID.countryCode + '-' + column.interviewerID.phoneNo;
-
                     d.interviewerFeedback = column.interviewerFeedback;
                     d.candidateFeedback = column.candidateFeedback;
-                    d.video_url = column.video_url
+                    d.video_url = column.video_url;
+                
+                    d.revaluation = column.revaluation;
 
                     d.interviewStartDate = moment(column.interviewStartDate).format('MMM Do YYYY');//date
                     d.interviewStartTime = column.interviewStartTime;
@@ -334,7 +335,7 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                     e.interviewEndDate = moment(column.interviewEndDate).format('MMM Do YYYY');//date
                     e.actualInterviewEndTime =moment(column.actualInterviewEndTime).format('h:mm a');//date
                     //  e.interviewEndTime = column.interviewEndTime;
-
+                    e.revaluation = column.revaluation;
 
 
 

@@ -159,7 +159,7 @@
                                 <td style="  text-align: center;"><span ng-show="ratingByCandidate"><rating ng-model="data.candidateRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>
                                     <span ng-hide="ratingByCandidate">No Rating </span>
                                 </td>
-                                <td style="text-align: center">{{data.status}}</td>
+                                <td style="text-align: center">{{data.status}}<br><span ng-show="data.revaluation">(Revaluation) </td>
                                 <td style="text-align: center">
                                         <span ng-show="data.video_url">
                                             <a ng-href="{{data.video_url}}" target="_blank" >Video chat</a>
