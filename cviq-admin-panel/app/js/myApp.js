@@ -238,6 +238,12 @@ myApp.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', 'Rout
                 templateUrl: helper.basepath('interviews/pendingInterviews.html'),
                 resolve: helper.resolveFor('datatables', 'datatables-pugins', 'ngDialog', 'inputmask' ,'parsley','whirl')
             })
+             .state('app.revaluationInterviews', {
+                url: '/revaluationInterviews',
+                title: 'Revaluation Interviews',
+                templateUrl: helper.basepath('interviews/revaluationInterviews.html'),
+                resolve: helper.resolveFor('datatables', 'datatables-pugins', 'ngDialog', 'inputmask' ,'parsley','whirl')
+            })
             .state('app.upcomingInterviews', {
                 url: '/upcomingInterviews',
                 title: 'Upcoming Interviews',

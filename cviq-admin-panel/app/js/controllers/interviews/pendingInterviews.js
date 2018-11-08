@@ -110,7 +110,7 @@ App.controller('pendingInterviewsController', function ($scope, $http, $cookies,
                     d.interviewerId = column.interviewerID.email;
                     d.interviewerName = column.interviewerID.firstName + ' ' + column.interviewerID.lastName;
                     d.interviewerPhoneNo = column.interviewerID.countryCode + '-' + column.interviewerID.phoneNo;
-
+                    d.revaluation = column.revaluation;
                     // d.interviewerFeedback = column.interviewerFeedback;
                     // d.candidateFeedback = column.candidateFeedback;
 

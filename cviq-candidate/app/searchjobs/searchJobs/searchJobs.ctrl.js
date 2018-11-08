@@ -47,8 +47,6 @@ angular.module('Cviq').controller('searchJobsCtrl', ['$scope','$rootScope','ngDi
     $scope.searching = function(){
 
         $state.go('home.search.searchJobs');
-        
-        console.log( "serchingfrom" );
 
         if(sessionStorage.getItem('SearchedParameter') !== null){
 
@@ -164,6 +162,6 @@ angular.module('Cviq').controller('searchJobsCtrl', ['$scope','$rootScope','ngDi
 
     /*=============================End: Searching Jobs ================================*/
 
-    $scope.period = ['Daily','Weekly','Monthly'];
+    $scope.period = ['Asc','Desc'];
 
 }]);

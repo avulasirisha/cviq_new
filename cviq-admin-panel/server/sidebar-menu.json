@@ -145,6 +145,10 @@
        {
         "text": "Payments",
         "sref": "app.paymentInterviews"
+      },
+      {
+        "text": "Revaluation",
+        "sref": "app.revaluationInterviews"
       }
     ]
   },

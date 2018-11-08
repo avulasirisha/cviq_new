@@ -6,10 +6,10 @@
     }
 </style>
 <h3>
-    Past Interviews
-    <small>Displaying list of Past Interviews in the system</small>
+    Revaluation Interviews
+    <small>Displaying list of Revaluation Interviews in the system</small>
 </h3>
-<div ng-controller="pastInterviewsController" class="container-fluid">
+<div ng-controller="revInterviewsController" class="container-fluid">
     <!--<div id="driverLocationMap" style="height:400px;width:100%;"></div>-->
 
     <!-- START DATATABLE 2 -->
@@ -34,7 +34,7 @@
                         </div>
                     </div>
                     <div class="table-responsive" ng-switch="(list | filter:search).length">
-                        <div ng-switch-when="0" class="noSearch"><span>No Past Interview found</span></div>
+                        <div ng-switch-when="0" class="noSearch"><span>No  Interview found</span></div>
                         <table id="datatable2" class="table table-hover" ng-switch-default>
                             <thead>
                             <tr>
@@ -166,7 +166,7 @@
                                         </span>
                                         <br>
                                         <span ng-show="data.status=='COMPLETED' ">
-                                            <input type="button" ng-click="viewChat(data.id,'downlaod')" value="Text Chat" >
+                                            <input type="button" ng-click="viewChat(data,'downlaod')" value="Text Chat" >
                                         </span>
                                             
                                 </td>

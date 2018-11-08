@@ -2,7 +2,7 @@
 App.controller('revInterviewsController', function ($scope, $http, $cookies,$state, $cookieStore, MY_CONSTANT, $timeout,ngDialog,responseCode, filterFilter) {
 
 
-    console.log("Past interviewer ctrl");
+    console.log("revaluation interviewer ctrl");
 
     'use strict';
     if($cookieStore.get("obj") == undefined){
@@ -52,7 +52,7 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
         var offsetTime = new Date(targetTime.getTime() + tzDifference * 60 * 1000);
         return(new Date(offsetTime));
     };
-    //==========================================================================================================================
+//==========================================================================================================================
 //============================================================ api for get Interviewer ====================================
 //==========================================================================================================================
     $scope.getInterviewers = function(skip,limit){
@@ -60,7 +60,7 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
         $scope.showloader = true;
         $http({
             method: 'GET',
-            url: MY_CONSTANT.url_cviq + '/api/admin/getPastInterviews',
+            url: MY_CONSTANT.url_cviq + '/api/admin/getrevaluationInterviews',
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,
                 'Content-type': 'application/x-www-form-urlencoded'
@@ -281,13 +281,10 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
 //============================================================ pagination ends ====================================
 //==========================================================================================================================
 
-    //==========================================================================================================================
-//====================================================export api for get interviewer ====================================
-//==========================================================================================================================
     $scope.exportData = function(){
         $http({
             method: 'GET',
-            url: MY_CONSTANT.url_cviq + '/api/admin/getPastInterviews',
+            url: MY_CONSTANT.url_cviq + '/api/admin/getrevaluationInterviews',
             headers:{
                 'authorization':$cookieStore.get("obj").accessToken,
                 'Content-type': 'application/x-www-form-urlencoded'
@@ -361,7 +358,7 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
                 });
                 $scope.exportList = dataArray1;
                 console.log($scope.exportList);
-                alasql('SELECT * INTO CSV("PastInterviewsList.csv",{headers:true}) FROM ?',[$scope.exportList]);
+                alasql('SELECT * INTO CSV("RevaluationInterviews.csv",{headers:true}) FROM ?',[$scope.exportList]);
             })
             .error(function(response,error){
                 console.log(response);
@@ -397,13 +394,13 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
     };
     
     
-     $scope.viewChat = function (interviewId, status) {
-        console.log( "interview id :"+ interviewId );
+     $scope.viewChat = function (interview, status) {
+        console.log( "interview id :"+ interview.id );
         $http({
             method: 'GET',
             url: MY_CONSTANT.url_cviq + '/api/common/getAllChatMessages',
             params:{
-                interviewID: interviewId
+                interviewID: interview.id
             }
         })
             .success(function(response){
@@ -418,11 +415,11 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
                     angular.forEach(allChatMesssages, function (value) {
 
                         if(value.messageTo == 'INTERVIEWER'){
-                            textData1 = {text: 'Interviewer', style: 'title'};
+                            textData1 = {text: 'Candidate', style: 'title'};
                             textData2 = {text: value.message, style: 'myStyle'};
                             contentArray.push(textData1, textData2);
                         } else {
-                            textData1 = {text: 'Candidate', style: ['title', 'anotherStyle']};
+                            textData1 = {text: 'Interviewer', style: ['title', 'anotherStyle']};
                             textData2 = {text: value.message, style: ['myStyle', 'anotherStyle']};
                             contentArray.push(textData1, textData2);
                         }
@@ -462,7 +459,8 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
                         pdfMake.createPdf(docDefinition).open();
                     }
                     else{
-                        pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
+                       var date = interview.interviewStartDate.replace(" ", "_");
+                        pdfMake.createPdf(docDefinition).download( interview.candidateName.replace(" ", "") + "_"+date +'_Chat.pdf');
                     }
                 }
 

@@ -116,27 +116,8 @@
                                     <b> End &nbsp </b> - {{data.interviewEndDate}} {{data.interviewEndTime}}  <br>
                                 </td>
                                 <!--<td><b style="text-decoration: underline">Qualitative</b> - {{data.totalQualitativeGiven}}/{{data.totalQualitativeScore}} <br>-->
-                                    <!--<b >Background </b> - {{data.backgroundScore}} <br>-->
-                                    <!--<b>Communication </b> - {{data.communicationScore}} <br>-->
-                                    <!--<b>Leadership </b> - {{data.leadershipScore}} <br>-->
-                                    <!--<b>Social Skill</b> - {{data.socialSkillScore}} <br>-->
                                 <!--</td>-->
-                                <!--<td style="  text-align: center;"><span ng-show="data.interviewerFeedback.length!=0">{{data.interviewerFeedback}}</span>-->
-                                    <!--<span ng-show="data.interviewerFeedback.length==0"> No Feedback </span>-->
-
-                                <!--</td>-->
-                                <!--<td style="  text-align: center;"><span ng-show="data.candidateFeedback.length!=0">{{data.candidateFeedback}}</span>-->
-                                    <!--<span ng-show="data.candidateFeedback.length==0"> No Feedback </span>-->
-                                <!--</td>-->
-
-                                <!--<td style="  text-align: center;"><span ng-show="ratingByInterviewer">-->
-                                    <!--<rating ng-model="data.interviewerRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>-->
-                                    <!--<span ng-hide="ratingByInterviewer">No Rating </span>-->
-                                <!--</td>-->
-                                <!--<td style="  text-align: center;"><span ng-show="ratingByCandidate"><rating ng-model="data.candidateRating" max="5" readonly="true" state-on="'fa fa-star'" state-off="'fa fa-star-o'"></rating> </span>-->
-                                    <!--<span ng-hide="ratingByCandidate">No Rating </span>-->
-                                <!--</td>-->
-                                <td style="text-align: center">{{data.status}}</td>
+                                <td style="text-align: center">{{data.status}} <br> <span ng-show="data.revaluation==true"> ( Revaluation ) </span> </td>
 
                             </tr>
                             </tbody>

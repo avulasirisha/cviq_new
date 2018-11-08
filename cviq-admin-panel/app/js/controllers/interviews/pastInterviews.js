@@ -398,13 +398,13 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
     };
     
     
-     $scope.viewChat = function (interviewId, status) {
-        console.log( "interview id :"+ interviewId );
+     $scope.viewChat = function (interview, status) {
+        console.log( "interview id :"+ interview.id );
         $http({
             method: 'GET',
             url: MY_CONSTANT.url_cviq + '/api/common/getAllChatMessages',
             params:{
-                interviewID: interviewId
+                interviewID: interview.id
             }
         })
             .success(function(response){
@@ -419,11 +419,11 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                     angular.forEach(allChatMesssages, function (value) {
 
                         if(value.messageTo == 'INTERVIEWER'){
-                            textData1 = {text: 'Interviewer', style: 'title'};
+                            textData1 = {text: 'Candidate', style: 'title'};
                             textData2 = {text: value.message, style: 'myStyle'};
                             contentArray.push(textData1, textData2);
                         } else {
-                            textData1 = {text: 'Candidate', style: ['title', 'anotherStyle']};
+                            textData1 = {text: 'Interviewer', style: ['title', 'anotherStyle']};
                             textData2 = {text: value.message, style: ['myStyle', 'anotherStyle']};
                             contentArray.push(textData1, textData2);
                         }
@@ -463,7 +463,8 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                         pdfMake.createPdf(docDefinition).open();
                     }
                     else{
-                        pdfMake.createPdf(docDefinition).download('Interview_Chat.pdf');
+                        var date = interview.interviewStartDate.replace(" ", "_");
+                        pdfMake.createPdf(docDefinition).download( interview.candidateName.replace(" ", "") + "_"+date +'_Chat.pdf');
                     }
                 }
 
