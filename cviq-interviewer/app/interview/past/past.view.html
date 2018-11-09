@@ -16,6 +16,14 @@
                                                 </ul>
                                         <div ng-if="inter.ratingByCandidate">
                                             Response : {{inter.candidateFeedback}}
+                                           
+                                         <br>  
+                                          Rating :  
+                                          <ul class="rating" ng-if="inter.status == 5">
+                                              <li ng-repeat="i in getNumber(number) track by $index">
+                                                  <span class="unrated-star" ng-class="{'rated-star':$index < inter.candidateRating}"></span>
+                                              </li>
+                                          </ul>
                                         </div>
                                     </div>
                                    

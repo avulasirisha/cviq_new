@@ -140,6 +140,14 @@
                                     <input type="checkbox" ng-model="filters.quantitative[n]">{{ n }}
                         </div>
                     </div>
+                      <p> <input type="checkbox" name="date" ng-model="filter.datesort" id="test1">
+                        <label for="test1">Date</label></p>
+                      
+                    <div ng-show="filter.industry">   
+                        <div ng-repeat="n in slideDatesort track by $index" class="filterclass">
+                                    <input type="checkbox"  ng-model="filters.datesort[n]" ng-click="checkDatesort($event, $index)"  ng-attr-id="{{ 'sort_date_' + $index }}"  > {{ n }}    
+                        </div>    
+                    </div>
 
                     <button class=" text-center filtersearchjob-btn1 " ng-click="applyFilter(filters)">Apply Filter</button>
                     <ul>
@@ -197,6 +205,7 @@ var options = {
 };
 
 $("#NewKeywordSearch").easyAutocomplete(options);
+
 
 
 var options = {

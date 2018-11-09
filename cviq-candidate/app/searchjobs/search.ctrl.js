@@ -29,7 +29,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
         $scope.slideCountrylist = [];
         $scope.slideStatelist = [];
         $scope.slideQuantitative = [];
-          
+        $scope.slideDatesort = [ 'Old', 'Latest'];
 
     /*=============================End: Get all jobs count ================================*/
 
@@ -51,6 +51,18 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
         }
 
     },0);
+
+
+   $scope.checkDatesort = function( obj, id ){
+           if( obj.currentTarget.checked == true ){
+
+                      document.getElementById("sort_date_"+1).checked = false;   
+                      document.getElementById("sort_date_"+0).checked = false;
+
+                obj.currentTarget.checked = true ;
+           }  
+   }
+
 
     /*=============================End: Toggle Navigation Menu ================================*/
 
@@ -343,28 +355,6 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
      
     /*=============================End: Searching Jobs ================================ */
 
-    ///*=============================Start: Custom Factory Function ================================*/
-    //
-    //$scope.FirsText = function($event){
-    //    characterService.characterFunction($event);
-    //};
-    //
-    //$scope.isNumberKey = function($event){
-    //    characterService.numberFunction($event);
-    //};
-    //
-    //$scope.isCodeKey = function($event){
-    //    characterService.codeFunction($event);
-    //};
-    //
-    //$scope.isAlphaKey = function($event){
-    //    characterService.alphaFunction($event);
-    //};
-    //$scope.isSpecialKey = function($event){
-    //    characterService.specialFunction($event);
-    //};
-    //
-    ///*=============================End: Custom Factory Function ================================*/
 
     /*=============================Start: Show Basic + Advance Search ================================*/
 
@@ -562,6 +552,10 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
      $scope.applyFilter = function(response){
      console.log( response );
 
+            // here we are checking two scenarios :
+            // 1. matched jobs scenario 
+            // 2. searched jobs of candidate
+
         if ( ($scope.filters.industry  ||  $scope.filters.experience   || $scope.filters.quantitative   
             || $scope.filters.country ||  $scope.filters.company ) ){
             
@@ -573,8 +567,10 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
 
             if(response != undefined ) {
             
-                            $scope.data = {};
+                $scope.data = {};
+    
                if(  $scope.candidateSearch  ){
+                  // we are checking if the candidate already searched for any jobs or not 
                       $scope.paramersForSearched = JSON.parse(sessionStorage.getItem('SearchedParameter'));
                       if( $scope.paramersForSearched.industry != null || $scope.paramersForSearched.industry != undefined){
                           $scope.data.industry = $scope.paramersForSearched.industry.industryName;
@@ -608,8 +604,14 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
               }else{
                 $scope.data.matchedjobs = true;
               }
-
-
+              if( response.datesort  ){
+                    if( document.getElementById("sort_date_0").checked == true  ){
+                        $scope.data.datesort = 'ASC';
+                     }
+                     if( document.getElementById("sort_date_1").checked == true ){
+                        $scope.data.datesort = 'DESC';
+                     }
+              }
 
               if (response.experience != undefined) {
                     $scope.filter.experience = true;
@@ -717,12 +719,9 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                     }
                     $rootScope.loading = false;
                 })
-
         }
-
-
-
     };
 
 }]);
+
 

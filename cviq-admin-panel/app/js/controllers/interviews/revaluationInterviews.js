@@ -322,8 +322,6 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
 
                     e.interviewerFeedback = column.interviewerFeedback;
                     e.candidateFeedback = column.candidateFeedback;
-                    e.payment = column.payment ;
-
 
                     e.interviewStartDate = moment(column.interviewStartDate).format('MMM Do YYYY');//date
                     e.interviewStartTime = column.interviewStartTime;
@@ -331,10 +329,6 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
                     e.interviewEndDate = moment(column.interviewEndDate).format('MMM Do YYYY');//date
                     e.actualInterviewEndTime =moment(column.actualInterviewEndTime).format('h:mm a');//date
                     //  e.interviewEndTime = column.interviewEndTime;
-
-
-
-
 
                     e.candidateRating = column.candidateRating;
                     e.interviewerRating = column.interviewerRating;
