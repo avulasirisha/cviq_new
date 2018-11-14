@@ -29,7 +29,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
         $scope.slideCountrylist = [];
         $scope.slideStatelist = [];
         $scope.slideQuantitative = [];
-        $scope.slideDatesort = [ 'Old', 'Latest'];
+        $scope.slideDatesort = [ 'date', 'relevance'];
 
     /*=============================End: Get all jobs count ================================*/
 
@@ -314,6 +314,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 $timeout(function () {
                     $state.reload('home.search.searchJobs');
                 },100);
+                document.getElementById("sort_date_1").checked = true ;
 
             })
             .error(function(response){
@@ -445,8 +446,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
 
     }
 
-    /*=============================End: Apply for job ================================*/
-    
+    /*=============================End: Apply for job ================================*/    
     
     $scope.submit_newsletter = function(){
     
@@ -535,6 +535,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 $timeout(function () {
                     $state.reload('home.search.searchJobs');
                 },100);
+                document.getElementById("sort_date_1").checked = true ;
             })
             .error(function(response){
                 console.log(response);
@@ -557,7 +558,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
             // 2. searched jobs of candidate
 
         if ( ($scope.filters.industry  ||  $scope.filters.experience   || $scope.filters.quantitative   
-            || $scope.filters.country ||  $scope.filters.company ) ){
+            || $scope.filters.country ||  $scope.filters.company || $scope.filters.datesort ) ){
             
             console.log("response",response);
 
@@ -606,10 +607,10 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
               }
               if( response.datesort  ){
                     if( document.getElementById("sort_date_0").checked == true  ){
-                        $scope.data.datesort = 'ASC';
+                        $scope.data.datesort = 'DESC';
                      }
                      if( document.getElementById("sort_date_1").checked == true ){
-                        $scope.data.datesort = 'DESC';
+                        $scope.data.datesort = 'NOsort';
                      }
               }
 

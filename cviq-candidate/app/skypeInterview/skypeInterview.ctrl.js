@@ -21,7 +21,9 @@ angular.module('Cviq').controller('skypeInterviewCtrl', ['$scope','$rootScope','
         publishAudio:true,
         height: 175,
         top:10,
-        showControls:false
+        showControls:false,
+        name : "Candidate",
+        style: { nameDisplayMode: "on" }
     };
 
 

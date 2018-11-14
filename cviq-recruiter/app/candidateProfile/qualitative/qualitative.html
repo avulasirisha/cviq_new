@@ -268,7 +268,7 @@
             </div>
         </ul>
         <div ng-if="!candidateScore" style="min-height: 280px;" class="clearfix">
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!membershipTaken&&!alreadyAlertSent">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!candidateQualScore &&!alreadyAlertSent">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
                 </div>
@@ -282,7 +282,7 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="membershipTaken&&!alreadyAlertSent  && candidateQualitative.candidateQualitativeScore == 0">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="candidateQualScore &&!alreadyAlertSent">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
                 </div>
@@ -296,7 +296,7 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="membershipTaken&&alreadyAlertSent">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="candidateQualScore &&alreadyAlertSent">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Ask him to get his score.<br><br></h4>
                 </div>
@@ -310,7 +310,7 @@
                     </div>
                 </div>
             </div>
-            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!membershipTaken&&alreadyAlertSent">
+            <div class="progress-wrapper text-center aggregatedmaindiv" ng-if="!candidateQualScore&&alreadyAlertSent">
                 <div class="text-center">
                     <h4><br><br><br><br>Are you interested in {{profile.firstName}} {{profile.lastName}}'s profile? Want to pay for {{profile.firstName}} {{profile.lastName}}.<br><br></h4>
                 </div>
