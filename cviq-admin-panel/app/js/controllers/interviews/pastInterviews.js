@@ -104,7 +104,11 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                     d.candidateName = column.candidateID.firstName + ' ' + column.candidateID.lastName;
                     d.candidatePhoneNo = column.candidateID.countryCode + '-' + column.candidateID.phoneNo;
 
-
+                    if( column.paidBy ){
+                        d.paymentDoneby =  column.paidBy.userType ;
+                        d.paymentID =  column.paidBy.paymentId ;
+                    }
+                    
                     d.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
                     d.interviewerEmail = column.interviewerID.email;
                     d.interviewerId = column.interviewerID._id;
@@ -316,7 +320,11 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                     e.candidatePhoneNo = column.candidateID.countryCode + '-' + column.candidateID.phoneNo;
                     e.candidateProfilePicURL = column.candidateID.profilePicURL.original;
 
-
+                    if( column.paidBy ){ 
+                        e.paymentDoneby = column.paidBy.userType ;
+                        e.paymentID =  column.paidBy.paymentId ;
+                    }
+                    
                     e.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
 
                     e.interviewerEmail = column.interviewerID.email;
@@ -326,8 +334,6 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
 
                     e.interviewerFeedback = column.interviewerFeedback;
                     e.candidateFeedback = column.candidateFeedback;
-                    e.payment = column.payment ;
-
 
                     e.interviewStartDate = moment(column.interviewStartDate).format('MMM Do YYYY');//date
                     e.interviewStartTime = column.interviewStartTime;
@@ -336,10 +342,7 @@ App.controller('pastInterviewsController', function ($scope, $http, $cookies,$st
                     e.actualInterviewEndTime =moment(column.actualInterviewEndTime).format('h:mm a');//date
                     //  e.interviewEndTime = column.interviewEndTime;
                     e.revaluation = column.revaluation;
-
-
-
-
+                    
                     e.candidateRating = column.candidateRating;
                     e.interviewerRating = column.interviewerRating;
                     // e.ratingByCandidate = column.ratingByCandidate;

@@ -104,6 +104,10 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
                     d.candidateName = column.candidateID.firstName + ' ' + column.candidateID.lastName;
                     d.candidatePhoneNo = column.candidateID.countryCode + '-' + column.candidateID.phoneNo;
 
+                    if( column.paidBy ){
+                        d.paymentDoneby = column.paidBy.userType ;
+                        d.paymentID =  column.paidBy.paymentId ;
+                    }
 
                     d.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
                     d.interviewerEmail = column.interviewerID.email;
@@ -311,7 +315,11 @@ App.controller('revInterviewsController', function ($scope, $http, $cookies,$sta
                     e.candidateName = column.candidateID.firstName + ' ' + column.candidateID.lastName;
                     e.candidatePhoneNo = column.candidateID.countryCode + '-' + column.candidateID.phoneNo;
                     e.candidateProfilePicURL = column.candidateID.profilePicURL.original;
-
+                    
+                    if( column.paidBy ){
+                        e.paymentDoneby = column.paidBy.userType ;
+                        e.paymentID =  column.paidBy.paymentId ;
+                    }
 
                     e.interviewerProfilePicURL = column.interviewerID.profilePicURL.original;
 

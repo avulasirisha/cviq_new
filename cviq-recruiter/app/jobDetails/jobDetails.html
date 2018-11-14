@@ -27,12 +27,12 @@
                 <br>
                 <div ng-if="jobData.activeFrom" >
                     <h5 >Active From</h5>
-                    <p>{{jobData.activeFrom | date: 'MMMM dd, yyyy'}}</p>
+                    <p>{{jobData.activeFrom | date: 'yyyy MMMM dd, HH:mm'}}</p>
                 </div>
                 <br>
                 <div ng-if="jobData.activeTo" >
                     <h5 >Active To</h5>
-                    <p>{{jobData.activeTo | date: 'MMMM dd, yyyy'}}</p>
+                    <p>{{jobData.activeTo | date: 'MMMM dd, yyyy, HH:mm'}}</p>
                 </div>
                 <br>
                 <div >

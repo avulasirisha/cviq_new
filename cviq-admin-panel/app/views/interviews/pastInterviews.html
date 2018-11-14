@@ -72,6 +72,7 @@
                                         <span ng-show="predicate == 'interviewStartDate' && reverse" class="fa fa-caret-up"></span>
                                     </div>
                                 </th>
+                                <th style="text-align: center">PaymentDetails</th>
                                 <th style="min-width:180px">
                                     <div style="text-align:center;" ng-click="sort('totalQualitativeGiven')">
                                         Scores
@@ -138,6 +139,9 @@
                                 <td><b>Start</b> - {{data.interviewStartDate}} {{data.interviewStartTime}} <br>
                                     <b> End &nbsp </b> - {{data.interviewEndDate}} {{data.actualInterviewEndTime}}  <br>
                                 </td>
+                                <td><b>Doneby </b>- {{data.paymentDoneby }} <br>
+                                <b> Id </b> - {{data.paymentID }}</td>
+                                
                                 <td><b style="text-decoration: underline">Qualitative</b> - {{data.totalQualitativeGiven}}/{{data.totalQualitativeScore}} <br>
                                     <b >Background </b> - {{data.backgroundScore}} <br>
                                     <b>Communication </b> - {{data.communicationScore}} <br>
