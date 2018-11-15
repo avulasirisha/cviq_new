@@ -21,6 +21,10 @@
                         <ul>
                             <li class="place">{{res.country}}</li>
                             <li class="experience">{{res.workExperience.min}} Yrs</li>
+                            <li>
+                                 <span ><i style="cursor: pointer" ng-hide="res.favouriteJob" ng-click="markFavourite($index,res._id)" class="fa fa-star-o">&nbsp</i> </span>
+                                 <span > <i style="cursor: pointer;color: #0297cf" ng-show="res.favouriteJob" ng-click="unFavourite($index,res._id,res.firstName)" class="fa fa-star">&nbsp</i></span>
+                             </li>
                         </ul>
                     </div>
                 </div>
@@ -36,3 +40,15 @@
         </ul>
     </div>
 </section>
+
+<script type="text/ng-template" id="favourite" class="ngdialog-theme-default">
+
+    <p>Are you sure you want to Remove from your favourite list</p>
+
+    <p style="display: flex">
+        <button ng-click="confirmUnFavourite()" class="confirmation" type="submit">YES</button>
+        <button ng-click="denyUnFavourite()" class="confirmation" type="submit">NO</button>
+    </p>
+
+
+</script>

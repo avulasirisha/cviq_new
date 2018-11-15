@@ -163,5 +163,85 @@ angular.module('Cviq').controller('searchJobsCtrl', ['$scope','$rootScope','ngDi
     /*=============================End: Searching Jobs ================================*/
 
     $scope.period = ['Asc','Desc'];
+    
+       /*============================= Start : Favourite candidate API=================================*/
+    
+    $scope.markFavourite = function (index,id) {
+        $scope.loading = true;
+        
+        console.log("job ",index,"id ",id);
+        var data = { "jobID":id};
+   
+        $http({
+            method:'POST',
+            url: CONSTANT.apiUrl + '/api/candidate/saveFavouriteList',
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            },
+            data:data
+        })
+            .success(function(response){
+                console.log(response);
+                $scope.searchJobResult[index].favouriteJob = true;
+                $scope.loading = false;
+            })
+            .error(function(response){
+                console.log(response);
+                $scope.loading = false;
+                if(response.statusCode == 401){
+                    $scope.confirmLogOut();
+                }
+            })
+    };
+    
+    $scope.unFavourite = function (index,id,name) {
+        console.log("index ",index,"id ",id);
+        $scope.indexofunfav = index;
+        $scope.unfavdata = {};
+        $scope.unfavdata.jobID = id;
+        
+        ngDialog.open({
+            template: 'favourite',
+            className: 'ngdialog-theme-default',
+            scope: $scope,
+            closeByEscape:false,
+            closeByDocument:false
+        });
+        
+       
+
+    };
+
+    $scope.denyUnFavourite = function () {
+        ngDialog.close();
+    };
+    
+    
+    $scope.confirmUnFavourite = function () {
+        ngDialog.close();
+        $http({
+            method:'POST',
+            url: CONSTANT.apiUrl + '/api/candidate/deleteFavouriteList',
+            headers:{
+                authorization: $cookieStore.get('AccessToken')
+            },
+            data:$scope.unfavdata
+        })
+            .success(function(response){
+                console.log(response);
+
+                $scope.searchJobResult[$scope.indexofunfav].favouriteJob =false;
+            })
+            .error(function(response){
+                console.log(response);
+                if(response.statusCode == 401){
+                    $scope.confirmLogOut();
+                }
+            })
+        
+    };
+    
+    
+    /*============================= End : Favourite candidate API=================================*/
 
 }]);
