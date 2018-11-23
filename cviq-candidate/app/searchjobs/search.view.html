@@ -145,7 +145,7 @@
                       
                     <div ng-show="filter.industry">   
                         <div ng-repeat="n in slideDatesort track by $index" class="filterclass">
-                                    <input type="checkbox"  ng-model="filters.datesort[n]" ng-click="checkDatesort($event, n)"  ng-attr-id="{{ 'sort_date_' + $index }}"  > {{ n }}    
+                                    <input type="checkbox"  ng-model="filters.datesort[n]" ng-click="checkDatesort($event, n)" ng-checked="n==relevance"  ng-attr-id="{{ 'sort_date_' + $index }}"  > {{ n }}    
                         </div>                                                                                                                                                                        
                     </div>
 

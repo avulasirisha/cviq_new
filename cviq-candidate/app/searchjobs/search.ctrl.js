@@ -60,11 +60,8 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 for( f in $scope.filters.datesort ){
                         $scope.filters.datesort[ f ] = false;
                 }
+                console.log(  $scope.filters.datesort );
                 $scope.filters.datesort[id] = true ;
-                 /*     document.getElementById("sort_date_"+1).checked = false;   
-                      document.getElementById("sort_date_"+0).checked = false;
-
-                obj.currentTarget.checked = true ; */
            }  
    }
 
@@ -95,8 +92,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
         })
 
     /*=============================End: Get DropDown ================================*/
-
-
+    
     /*=============================Start: Get Functional area ID ================================*/
 
     $scope.selectedIndustry = function(response){
@@ -189,7 +185,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                     $rootScope.sessionExpired();
                 }
             })
-    }
+    }   
 
     /*=============================End: Get Zip Code ================================*/
 
@@ -330,8 +326,6 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 $timeout(function () {
                     $state.reload('home.search.searchJobs');
                 },100);
-                document.getElementById("sort_date_1").checked = true ;
-
             })
             .error(function(response){
                 console.log(response);
