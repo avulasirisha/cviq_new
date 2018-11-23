@@ -132,7 +132,7 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
                                 bold: true
                             }
                         }
-                    }
+                    }     
                     if(!status){
                         pdfMake.createPdf(docDefinition).open();
                     }

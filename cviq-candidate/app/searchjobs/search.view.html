@@ -104,7 +104,7 @@
                       
                     <div ng-show="filter.industry">   
                         <div ng-repeat="n in slideIndustrylist track by $index" class="filterclass">
-                                    <input type="checkbox" ng-model="filters.industry[n]"  > {{ n }}
+                                    <input type="checkbox" ng-model="filters.industry[n]"  ng-checked="n==searcSselected.industry" > {{ n }}
                         </div>    
                     </div>
                    
@@ -112,7 +112,7 @@
                     <label for="test2">Function</label></p>
                     <div ng-show="filter.functionalarea">      
                      <div ng-repeat="n in slideFunctionlist track by $index" class="filterclass" >
-                                    <input type="checkbox" ng-model="filters.functionalarea[n]"  > {{ n }}
+                                    <input type="checkbox" ng-model="filters.functionalarea[n]" ng-checked="n==searcSselected.functionalArea" > {{ n }}
                         </div>    
                     </div>
                    
@@ -129,7 +129,7 @@
                         <label for="test3">Work Experience (in Years)</label></p>
                     <div ng-show="filter.experience">
                      <div ng-repeat="n in slideWorkexperience track by $index" class="filterclass">
-                                    <input type="checkbox" ng-model="filters.experience[n]">{{ n }}
+                                    <input type="checkbox" ng-model="filters.experience[n]" ng-checked="n==searcSselected.experience" >{{ n }}
                         </div>
                     </div>
 
@@ -145,7 +145,7 @@
                       
                     <div ng-show="filter.industry">   
                         <div ng-repeat="n in slideDatesort track by $index" class="filterclass">
-                                    <input type="checkbox"  ng-model="filters.datesort[n]" ng-click="checkDatesort($event, $index)"  ng-attr-id="{{ 'sort_date_' + $index }}"  > {{ n }}    
+                                    <input type="checkbox"  ng-model="filters.datesort[n]" ng-click="checkDatesort($event, n)"  ng-attr-id="{{ 'sort_date_' + $index }}"  > {{ n }}    
                         </div>                                                                                                                                                                        
                     </div>
 

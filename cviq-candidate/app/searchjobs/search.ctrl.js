@@ -17,6 +17,8 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
           $state.go('home.login');
     }
     
+    $scope.searcSselected = { industry : null , functional : null, experience :null };
+    
     $timeout(function(){
         $('.selectpicker').selectpicker();
     },0);
@@ -55,11 +57,14 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
 
    $scope.checkDatesort = function( obj, id ){
            if( obj.currentTarget.checked == true ){
-
-                      document.getElementById("sort_date_"+1).checked = false;   
+                for( f in $scope.filters.datesort ){
+                        $scope.filters.datesort[ f ] = false;
+                }
+                $scope.filters.datesort[id] = true ;
+                 /*     document.getElementById("sort_date_"+1).checked = false;   
                       document.getElementById("sort_date_"+0).checked = false;
 
-                obj.currentTarget.checked = true ;
+                obj.currentTarget.checked = true ; */
            }  
    }
 
@@ -311,6 +316,17 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
                 $scope.searchJobResult = response.data;
                 $scope.doFilters();
                 $scope.candidateSearch = true;
+                
+                if( $scope.searchParam.industry != undefined &&  $scope.searchParam.industry != '' ){
+                      $scope.searcSselected.industry = $scope.searchParam.industry;
+                }
+                if( $scope.searchParam.functionalArea != undefined && $scope.searchParam.functionalArea != '' ){
+                      $scope.searcSselected.functionalArea = $scope.searchParam.functionalArea   ;
+                }
+                if( $scope.searchParam.minExperience != undefined || $scope.searchParam.maxExperience == ''){
+                      $scope.searcSselected.experience = $scope.searchParam.minExperience +'-'+ $scope.searchParam.maxExperience ;  
+                }
+                console.log( $scope.searcSselected ) ;
                 $timeout(function () {
                     $state.reload('home.search.searchJobs');
                 },100);
@@ -352,6 +368,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
        $scope.filter = {};
       $scope.filter.industry = true;
       $scope.filter.company = true;
+    
     }
      
     /*=============================End: Searching Jobs ================================ */
