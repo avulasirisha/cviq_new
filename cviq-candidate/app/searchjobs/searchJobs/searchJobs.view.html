@@ -19,7 +19,7 @@
                         <h4 ng-click="jobDetails(res._id)">{{res.jobTitle}}</h4>
                         <p>{{res.companyName}}</p>
                         <ul>
-                            <li class="place">{{res.state}},{{res.city}}</li>
+                            <li class="place">{{res.city}},{{res.state}}</li>
                             <li class="experience">{{res.workExperience.min}} Yrs</li>
                             <li>
                                  <span ><i style="cursor: pointer" ng-hide="res.favouriteJob" ng-click="markFavourite($index,res._id)" class="fa fa-star-o">&nbsp</i> </span>
