@@ -10,6 +10,7 @@
                 <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10">
                     <h4>{{i.interviewerID.firstName + ' '+ i.interviewerID.lastName}} {{'('+i.interviewerID.totalExperience}} {{i.interviewerID.totalExperience > 1 ? 'Yrs' : 'Yr'}})</h4>
                     <p>{{i.interviewStartDate | date: 'MMM d, y'}}, {{i.interviewStartTime}}  <span ng-if="i.revaluation == true" ><b>( revaluated )</b></span> </span>  </p>
+                    <p ng-if="i.status==5">  <p>
                 </div>
             </a>
         </li>
@@ -33,6 +34,12 @@
                     <li>
                         <a ng-click="viewChat(i, 0)"><img src="images/view-chat.png" alt="" /></a><br />
                         <a ng-click="viewChat(i, 1)">Download Chat</a>
+                    </li>
+                    <li ng-if="i.status==5">
+                      leadershipScore: {{ i.leadershipScore }},
+                      socialSkillScore: {{ i.socialSkillScore }},
+                      communicationScore: {{ i.communicationScore }},
+                      backgroundScore : {{ i.backgroundScore }}
                     </li>
                 </ul>
                 <div ng-if="i.status==7 && i.interviewerFeedback">
