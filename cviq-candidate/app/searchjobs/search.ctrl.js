@@ -248,7 +248,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
       
         $scope.fullDate = $scope.year+'-'+$scope.month+'-'+$scope.date;
 
-        if( response.functionalArea == null || response.functionalArea == undefined ){
+        if( response.functionalArea == null || response.functionalArea == undefined || response.functionalArea.functionalAreaName == '' ){
             response.functionalArea = {};
         }
 
@@ -281,6 +281,9 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
             }
         }
    
+        if( response.industry == undefined || response.industry.industryName == '' ){
+            response.industry = {};
+        }
         $scope.searchParam = {
             industry:response.industry.industryName,
             functionalArea:response.functionalArea.functionalAreaName,
@@ -719,7 +722,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
 
                 $scope.numberOFJobs = response.data.length;
                 $scope.searchJobResult = response.data;
-                $scope.doFilters();
+                //$scope.doFilters();
                     $scope.show = true;
                     $rootScope.loading = false;
                 })

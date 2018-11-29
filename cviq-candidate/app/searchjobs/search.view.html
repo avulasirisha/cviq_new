@@ -43,7 +43,7 @@
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>INDUSTRY</label>
                             <select id="sel-industry" ng-init="search.industry=''" name="selIndustry" ng-model="search.industry" ng-change="selectedIndustry(search.industry)" class="selectpicker" data-live-search="true" ng-options="indus.industryName for indus in searchDropDownData.industryList track by indus.industryName " >
-                                <option value="" disabled hidden>Select Industry</option>
+                                <option value="" >Select Industry</option>
                             </select>
                         </div>
                     </div>
@@ -52,7 +52,7 @@
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>FUNCTIONAL AREA</label>
                             <select ng-init="search.functionalArea=''" name="location" ng-model="search.functionalArea" class="selectpicker" data-live-search="true" ng-options="area.functionalAreaName for area in functionAreaList">
-                                <option value="" disabled hidden>Select Functional Area</option>
+                                <option value="" >Select Functional Area</option>
                             </select>
                         </div>
                     </div>
@@ -61,7 +61,7 @@
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>EXPERIENCE</label>
                             <select name="location" ng-model="search.experience" class="selectpicker" data-live-search="true" ng-options="exp for exp in searchDropDownData.ExperienceList">
-                                <option value="" disabled hidden>Select Experience</option>
+                                <option value="">Select Experience</option>
                             </select>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>HIGHEST QUALIFICATION</label>
                             <select name="qual" ng-model="search.qual" ng-change="getQualID(search.qual)" class="selectpicker" data-live-search="true" ng-options="quals for quals in searchDropDownData.highestQualification">
-                                <option value="" disabled hidden>Select Highest Qualification</option>
+                                <option value="" >Select Highest Qualification</option>
                             </select>
                         </div>
                     </div>
