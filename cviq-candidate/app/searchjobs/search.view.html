@@ -24,7 +24,7 @@
                    <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-5 col-xs-12">
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>LOCATION</label>
-                            <input class="search-input" id="LocationSearch"  name="location" type="text" ng-model="search.location" placeholder="Enter location" required>
+                            <input class="search-input" id="LocationSearch"  name="location" autocomplete="off" type="text" ng-model="search.location" placeholder="Enter location" required>
                         </div>
                         <div ng-show="searchJob.$submitted || searchJob.location.$valid && searchJob.location.$invalid">
                                 <div class="error-message" ng-show="searchJob.location.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
@@ -51,7 +51,7 @@
                     <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>FUNCTIONAL AREA</label>
-                            <select ng-init="search.functionalArea=''" name="location" ng-model="search.functionalArea" class="selectpicker" data-live-search="true" ng-options="area.functionalAreaName for area in functionAreaList">
+                            <select ng-init="search.functionalArea=''" name="functionalArea" ng-model="search.functionalArea" class="selectpicker" data-live-search="true" ng-options="area.functionalAreaName for area in functionAreaList">
                                 <option value="" >Select Functional Area</option>
                             </select>
                         </div>
@@ -60,7 +60,7 @@
                     <div class="ProfileFormElements clearfix form-elements col-lg-3 col-md-3 col-sm-3 col-xs-12">
                         <div class="custom-select-box main-dropdown advance-search">
                             <label>EXPERIENCE</label>
-                            <select name="location" ng-model="search.experience" class="selectpicker" data-live-search="true" ng-options="exp for exp in searchDropDownData.ExperienceList">
+                            <select name="experience" ng-model="search.experience" class="selectpicker" data-live-search="true" ng-options="exp for exp in searchDropDownData.ExperienceList">
                                 <option value="">Select Experience</option>
                             </select>
                         </div>

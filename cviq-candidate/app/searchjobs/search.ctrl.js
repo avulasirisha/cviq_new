@@ -5,7 +5,7 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
     
     $scope.candidateSearch = false; 
     $scope.filters ={};
-    $scope.keywords = '';
+    $scope.keywords = '';  
 
     if($cookieStore.get('AccessToken') == undefined){
         $state.go('home.login');
@@ -222,9 +222,9 @@ angular.module('Cviq').controller('searchCtrl', ['$scope','$rootScope','ngDialog
     /*=============================End: Get Specialization ================================*/
 
 
-    /*=============================Start: Searching Jobs ================================*/
+    /*=============================Start: Searching Jobs ================================*/  
  
-    $scope.searching = function(response){
+    $scope.searching = function(response){         
         response.zipcode = document.getElementById("zipcode").value;
         $scope.appliedJobArray = [];
         $state.go('home.search.searchJobs');
