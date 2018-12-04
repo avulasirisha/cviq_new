@@ -171,7 +171,7 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
         $scope.searchParam = {
             minExperience:$scope.minExperience,
             maxExperience:$scope.maxExperience,
-            keywords: response.keywords,
+            keywords: document.getElementById('Keyword').value,
             searchDate :$scope.fullDate,
             zipcode :  response.zipcode,
             searchCriteria:1
@@ -180,17 +180,19 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
         if( OptimizeVlaue('CandidateOpt') != '' ){
             options.headers = {authorization: OptimizeVlaue('CandidateOpt')  };
         }                            
+            
         $http.get(CONSTANT_apiUrl+"/api/candidate/searchJobs" , options )
         .then(function(response, error) {
             if( error ){
                 console.log( response );
             }else{
-
                 $scope.numberOFJobs = response.data.data.length;
                 if( $scope.numberOFJobs > 0 ){
+                    document.getElementById("tab4").click();
                     $scope.searchresults =true;
                     $scope.searchJobResult = response.data.data;
                     console.log( $scope.searchJobResult );
+                
                     document.getElementById("dynamic_tab").click();
                 }else{
                      alert( "Sory.. No Data Found" );
