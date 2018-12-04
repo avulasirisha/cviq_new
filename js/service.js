@@ -188,12 +188,15 @@ app.controller('Cviq_Head_Cntrl',['$scope', '$http', '$cookieStore', '$location'
             }else{
                 $scope.numberOFJobs = response.data.data.length;
                 if( $scope.numberOFJobs > 0 ){
-                    document.getElementById("tab4").click();
+                    
                     $scope.searchresults =true;
                     $scope.searchJobResult = response.data.data;
                     console.log( $scope.searchJobResult );
                 
                     document.getElementById("dynamic_tab").click();
+                    
+                    window.scroll( 0, 1400);
+
                 }else{
                      alert( "Sory.. No Data Found" );
                 }
