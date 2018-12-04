@@ -50,7 +50,8 @@
         </div>
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
             <button class="sbmt-btn" style="padding: 10px 30px" ng-click="cancelInterviewPopup()" ng-if="upcomingInterviewDetails.status == 1">CANCEL INTERVIEW</button>
-            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4 || upcomingInterviewDetails.status == 2">START INTERVIEW</button>
+            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4">START INTERVIEW</button>
+            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 2">RESUME INTERVIEW</button>
             <button class="sbmt-btn" style="padding: 10px 30px" ng-click="start_chat(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4 || upcomingInterviewDetails.status == 2">START CHAT</button>
             <p>Note: You cannot cancel 24 hours before interview schedule otherwise 50% fee is lost</p>
         </div>

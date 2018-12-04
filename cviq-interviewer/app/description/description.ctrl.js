@@ -124,7 +124,7 @@ angular.module('Cviq').controller('descriptionCtrl', ['$scope','$rootScope','$co
     $scope.rateLaterForRating = function (feed) {
 
         var rateLaterData = {
-            "candidateID": $scope.startInterviewDetails.candidateID._id,
+            "candidateID": $scope.candidateDetails._id,
             "interviewID": $scope.startInterviewDetails._id,
             "candidateRating": $scope.rateToCandidate,
             "rateLater": true

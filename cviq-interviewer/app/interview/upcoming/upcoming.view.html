@@ -16,7 +16,10 @@
                             </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 pull-right text-right status-rating">
-                        <label>Status :<span style="cursor: auto" class="status-complete">Confirmed</span><span style="cursor: pointer" ng-click="startInterview(inter._id)" class="status-cancel">Start</span></label>
+                        <label>Status :<span style="cursor: auto" class="status-complete">Confirmed</span>
+                                <span ng-if="inter.status==2"  style="cursor: pointer" ng-click="startInterview(inter._id)" class="status-cancel">Resume</span>
+                                <span ng-if="inter.status!=2"  style="cursor: pointer" ng-click="startInterview(inter._id)" class="status-cancel">Start</span>
+                        </label>
                         <label><span class="date">{{inter.interviewDate | date:"dd MMM, y"}}{{" - "+inter.interviewStartTime}}</span></label>
                     </div>
                 </li>
