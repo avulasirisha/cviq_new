@@ -98,7 +98,7 @@ app.factory('socket', function ($rootScope, $cookieStore) {
      if( window.location.hostname == "localhost"  ){
         api_url = 'http://localhost:8000' ;
     }else{
-        api_url = 'http://34.207.125.7:3005' ;
+        api_url = 'http://54.89.248.100:3005' ;
     }
     var socket = io.connect( api_url );
     $cookieStore.put('SocketID', socket.disconnected);
