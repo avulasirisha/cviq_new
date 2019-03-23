@@ -1,4 +1,4 @@
-<div class="past-interview-container" ng-init="pastInterview(1)">
+<div class="past-interview-container" ng-init="pastInterview(1)" style="position: relative" >
     <div class="noData fullWidth" ng-if="numberOFInterviews == 0">
         <h5>No Data Found.</h5>
     </div>
@@ -70,6 +70,11 @@
                 max-size="maxSize"
                 boundary-links="true" ng-click="pastInterview(currentPage)">
         </pagination>
+    </div>
+    <div id="pdfBlock" style="display:none;width: 65%;position: absolute;top: 80px;left: 140px;" >
+        <div ng-click="closeIframe()" style="cursor: pointer;font-size: 21px;border: 1px solid black;width: 23px;margin: -4px;padding: 4px;border-radius: 50%;float: right;">X</div>
+        <iframe id="pdfframe" style="height:600px;width:100%;border: 1px solid black;box-shadow: 0px 4px 3px 11px grey;">
+        </iframe>
     </div>
 
 </div>

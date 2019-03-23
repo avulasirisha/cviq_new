@@ -96,7 +96,7 @@ app.factory('characterService', function(){
 
 app.factory('socket', function ($rootScope, $cookieStore) {
      if( window.location.hostname == "localhost"  ){
-        api_url = 'http://localhost:8000' ;
+        api_url = 'http://54.89.248.10:3005' ;
     }else{
         api_url = 'http://54.89.248.100:3005' ;
     }

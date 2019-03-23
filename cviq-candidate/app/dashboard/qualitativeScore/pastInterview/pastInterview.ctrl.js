@@ -134,7 +134,10 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
                         }
                     }     
                     if(!status){
-                        pdfMake.createPdf(docDefinition).open();
+                        pdfMake.createPdf(docDefinition).getDataUrl(function (outDoc) {
+                            document.getElementById('pdfframe').src = outDoc;
+                            document.getElementById('pdfBlock').style.display =  'block';
+                        });
                     }
                     else{
                         var date = interview.interviewDate.split("T")[0];
@@ -193,6 +196,11 @@ angular.module('Cviq').controller('pastInterviewCtrl', ['$scope','$rootScope','$
         });
      
      }
+  }
+
+  $scope.closeIframe = function(){
+    document.getElementById('pdfframe').src = '';
+    document.getElementById('pdfBlock').style.display =  'none';
   }
 
 }]);

@@ -3,7 +3,7 @@ var app = angular.module('Cviq',['chart.js','ngImgCrop','isteven-omni-bar','angu
 
 
  if( window.location.hostname == "localhost"  ){
-        api_url = 'http://localhost:8000' ;
+        api_url = 'http://54.89.248.100:3005' ;
 }else{
         api_url = 'http://54.89.248.100:3005' ;
 }
