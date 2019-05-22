@@ -245,8 +245,8 @@ angular.module('Cviq').controller('candidateGateway', ['$scope','$rootScope','ng
                     "intent": "sale",
                     "redirect_urls":
                     {
-                        "return_url": "http://52.24.206.96/cviq-recruiter/#/home/candidateRedirectUrl?candidate="+$scope.candidateId,
-                        "cancel_url": "http://52.24.206.96/cviq-recruiter/#/home/dashboard/recentlyPostedJobs"
+                        "return_url": "http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-recruiter/#/home/candidateRedirectUrl?candidate="+$scope.candidateId,
+                        "cancel_url": "http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-recruiter/#/home/dashboard/recentlyPostedJobs"
                     },
                     "payer":
                     {
