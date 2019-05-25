@@ -20,6 +20,24 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
     }
     
     
+    $scope.linkedinlogin = function () {
+
+        $http({
+            method: 'POST',
+            url: 'https://www.linkedin.com/oauth/v2/accessToken',
+            data: {
+               "grant_type":"client_credentials",
+               "client_id": '77t8dsm7xpnm33' ,
+                "client_secret": 'Hc43cDPfSGSjjvOD'
+            }
+        })
+        .success(function(response){
+            console.log( 'result' , response );
+        })
+        .error(function(response){
+            console.log( 'eror' , response );
+        });
+      }
     
     /*=============================Start: Login Recruiter Function ================================*/
 
