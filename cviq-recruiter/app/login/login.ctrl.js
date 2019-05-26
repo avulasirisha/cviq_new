@@ -18,26 +18,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
         }
 
     }
-    
-    
-    $scope.linkedinlogin = function () {
 
-        $http({
-            method: 'POST',
-            url: 'https://www.linkedin.com/oauth/v2/accessToken',
-            data: {
-               "grant_type":"client_credentials",
-               "client_id": '77t8dsm7xpnm33' ,
-                "client_secret": 'Hc43cDPfSGSjjvOD'
-            }
-        })
-        .success(function(response){
-            console.log( 'result' , response );
-        })
-        .error(function(response){
-            console.log( 'eror' , response );
-        });
-      }
     
     /*=============================Start: Login Recruiter Function ================================*/
 
@@ -90,33 +71,21 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
     /*=============================End: Login Interviewer Function ================================*/
 
     $scope.forgotPassword = function(){
+    
         $state.go('home.forgotPassword');
         $rootScope.scrollToTop();
     };
 
     /*=============================Start: Login Via LinkedIn Function ================================*/
+    $scope.linkedinlogin = function () {        
+        OAuth.initialize('pJyDX12EHBYOcRDLuKOQUHpO_XA')
+        OAuth.popup('linkedin2').done(function(result) {
+        // OAuth provider url
+        result.get('/v1/people/~:(id,first-name,last-name,headline,picture-url,email-address,public-profile-url)?format=json').then(onSuccess)
+        })
+        
+    }
 
-    $scope.liAuth = function(){
-        $rootScope.loading = true;
-        $timeout(function(){
-            $rootScope.loading = false;
-        },1000);
-        IN.User.authorize(function(){
-            console.log("Inside");
-            $scope.onLinkedInLoad();
-        });
-    };
-
-    $scope.onLinkedInLoad = function() {
-        console.log("inside onlinkedinload");
-        IN.Event.on(IN, "auth", $scope.getProfileData());
-    };
-
-    $scope.getProfileData = function () {
-
-        console.log("insidegetprofiledata");
-        IN.API.Raw("/people/~:(id,first-name,last-name,email-address,location,phone-numbers,num-connections,picture-url)?format=json").result(onSuccess).error(onError);
-    };
 
     function onSuccess(data){
         console.log("Success", data);

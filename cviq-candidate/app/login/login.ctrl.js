@@ -76,22 +76,14 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
     /*=============================Start: Login Via LinkedIn Function ================================*/
 
     $scope.liAuth = function(){
-        IN.User.authorize(function(){
-            console.log("Inside");
-            $scope.onLinkedInLoad();
-        });
-    };
+        OAuth.initialize('pJyDX12EHBYOcRDLuKOQUHpO_XA')
+        OAuth.popup('linkedin2').done(function(result) {
+            // do some stuff with result
 
-    $scope.onLinkedInLoad = function() {
-        console.log("inside onlinkedinload");
-        IN.Event.on(IN, "auth", $scope.getProfileData());
-    };
-
-    $scope.getProfileData = function () {
-
-        console.log("insidegetprofiledata");
-        IN.API.Raw("/people/~:(id,first-name,last-name,email-address,location,phone-numbers,num-connections,picture-url)?format=json").result(onSuccess).error(onError);
-    };
+        result.get('/v1/people/~:(id,first-name,last-name,headline,picture-url,email-address,public-profile-url)?format=json').then(onSuccess)
+        })
+        
+    }
 
     function onSuccess(data){
         console.log("Success", data);
