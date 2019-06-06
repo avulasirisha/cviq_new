@@ -61,34 +61,34 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
             })
     };
 
-    var client_key = '81wlchw1xsxvdy' ;
-    var client_sec  = 'MDHwmpjb511HgBv7';
-    window.onload = function() {
-        var url = new URL(  window.location.href );
-        var c = url.searchParams.get("code");
-        if( c ){
-            $http({
-                method:'POST',
-                url:'https://www.linkedin.com/oauth/v2/accessToken',
-                data:{
-                    "grant_type":'authorization_code',
-                    "code":c ,
-                    "redirect_uri": 'http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-candidate/',
-                    "client_id":client_key,
-                    "client_secret":client_sec
-                },
-                headers:{
-                    'Host': 'www.linkedin.com',
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                }
-            })
-                .success(function (response) {
-                    console.log('response', response );
-                }).error(function (error){
-                    console.log('error', error );
-                })
-        }
-   };
+//     var client_key = '81wlchw1xsxvdy' ;
+//     var client_sec  = 'MDHwmpjb511HgBv7';
+//     window.onload = function() {
+//         var url = new URL(  window.location.href );
+//         var c = url.searchParams.get("code");
+//         if( c ){
+//             $http({
+//                 method:'POST',
+//                 url:'https://www.linkedin.com/oauth/v2/accessToken',
+//                 data:{
+//                     "grant_type":'authorization_code',
+//                     "code":c ,
+//                     "redirect_uri": 'http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-candidate/',
+//                     "client_id":client_key,
+//                     "client_secret":client_sec
+//                 },
+//                 headers:{
+//                     'Host': 'www.linkedin.com',
+//                     'Content-Type': 'application/x-www-form-urlencoded'
+//                 }
+//             })
+//                 .success(function (response) {
+//                     console.log('response', response );
+//                 }).error(function (error){
+//                     console.log('error', error );
+//                 })
+//         }
+//    };
 
 
     /*=============================End: Login Interviewer Function ================================*/
@@ -105,7 +105,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
 
     /*=============================Start: Login Via LinkedIn Function ================================*/
 
-   /* $scope.liAuth = function(){
+    $scope.liAuth = function(){
         OAuth.initialize('pJyDX12EHBYOcRDLuKOQUHpO_XA')
         OAuth.popup('linkedin2').done(function(result) {
             // do some stuff with result
@@ -113,11 +113,11 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
         result.get('/v1/people/~:(id,first-name,last-name,headline,picture-url,email-address,public-profile-url)?format=json').then(onSuccess)
         })
         
-    }*/
- 
-    $scope.liAuth = function(){
-        window.location = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+client_key+"&redirect_uri=http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-candidate/&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
     }
+ 
+    // $scope.liAuth = function(){
+    //     window.location = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+client_key+"&redirect_uri=http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-candidate/&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+    // }
 
     function onSuccess(data){
         console.log("Success", data);
