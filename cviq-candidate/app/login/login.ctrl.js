@@ -73,7 +73,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
                 data:{
                     "grant_type":'authorization_code',
                     "code":c ,
-                    "redirect_uri": 'http://localhost/site/CVIQ---Web/cviq-candidate/',
+                    "redirect_uri": 'http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-candidate/',
                     "client_id":client_key,
                     "client_secret":client_sec
                 },
@@ -116,7 +116,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
     }*/
  
     $scope.liAuth = function(){
-        window.location = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+client_key+"&redirect_uri=http://localhost/site/CVIQ---Web/cviq-candidate/&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
+        window.location = "https://www.linkedin.com/oauth/v2/authorization?response_type=code&client_id="+client_key+"&redirect_uri=http://ec2-54-89-248-100.compute-1.amazonaws.com/cviq-candidate/&state=fooobar&scope=r_liteprofile%20r_emailaddress%20w_member_social"
     }
 
     function onSuccess(data){
