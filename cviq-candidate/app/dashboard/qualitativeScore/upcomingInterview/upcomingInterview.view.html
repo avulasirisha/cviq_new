@@ -28,32 +28,66 @@
         <h5>No Data Found.</h5>
     </div>
     <div class="upcoming-interview clearfix" ng-show="upcomingInterviewDetails._id != undefined">
-        <div class="upcoming-interview-left col-lg-8 col-md-7 col-sm-12 col-xs-12">
-            <h4>Details of Interviewer</h4>
-            <label>Status</label><span class="stat" ng-show="upcomingInterviewDetails.status == 4">Confirm</span><span class="stat" ng-show="upcomingInterviewDetails.status == 2">On going</span><span class="stat" ng-show="upcomingInterviewDetails.status == 1">Pending</span>
-            <br><label><b>Name : </b></label><span  >{{ upcomingInterviewDetails.interviewerID.firstName }}</span>
-            <ul>
-                <li><span>Experience</span><br />{{upcomingInterviewDetails.interviewerID.totalExperience}} Yrs</li>
-                <li><span>Skills</span><br /><span style="color: #000" ng-repeat="s in interviewerSkills track by $index">{{s}}{{$last ? '' : ($index==interviewerSkills.length-1) ? ', and ' : ',&nbsp;'}}</span></li>
-                <li><span>Industry</span><br />{{upcomingInterviewDetails.interviewerID.industry}}</li>
+        <div class="alert alert-danger" role="alert" style="text-align: center;">
+                                                Note: You cannot cancel 24hrs before interview schedule otherwise 50% fee is lost
+                                              </div>
+                                              <div class="row">
+                                                <div class="col-md-3"><h5><b>Details of Interviewer</b></h5></div>
+                                                <div class="col-md-5">
+                                                    <h6><b>Status:</b><span class="stat" ng-show="upcomingInterviewDetails.status == 4">Confirm</span><span class="stat" ng-show="upcomingInterviewDetails.status == 2">On going</span><span class="stat" ng-show="upcomingInterviewDetails.status == 1">Pending</span></h6>
+                                                     <!-- <b>3 Years</b> -->
+                                                </div>
+                                                
+                                                
+                                            
+                                        </div><br><br>
+                                    <div class="row">
+                                        
+                                            <div class="col-6 col-md-3">
+                                                <div class="interivew-tumb pull-left">
+                                                <img src="{{upcomingInterviewDetails.interviewerID.profilePicURL.thumbnail}}" class="img-fluid" alt=""></div>
+<!--                                         </div>
+                                        
+                                        <div class="col-6 col-md-2">     -->
+                                                <h6>Interviewer name</h6>
+                                                <div class="info"><span class="details">{{ upcomingInterviewDetails.interviewerID.firstName }}</span></div></div>
 
-            </ul>
-            <a ui-sref="home.instructions">View Instruction for interview</a>
-        </div>
-        <div class="upcoming-interview-left col-lg-4 col-md-5 col-sm-12 col-xs-12 text-right">
-            <h4>Interview Date & Time</h4>
-            <div class="cal-mname col-lg-4 col-md-4 col-sm-12 col-xs-12 pull-right text-center">
-               <p>{{upcomingInterviewDetails.interviewDate | date: 'MMMM'}}</p>
-                <h2>{{upcomingInterviewDetails.interviewDate | date: 'dd'}}</h2>
-                <span>{{upcomingInterviewDetails.interviewStartTime}}</span>
-            </div>
-        </div>
+                                        <div class="col-6 col-md-1">
+                                                <h6>Experience</h6>
+                                                <div class="info"><span class="details">{{upcomingInterviewDetails.interviewerID.totalExperience}}</span></div>
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                                <h6>Skills</h6>
+                                                <div class="info"><!-- <span class="details">Php, HTML, Javascript, NodeJS, Angular 8, MongoDB</span> -->
+                                                    <span class="details" ng-repeat="s in interviewerSkills track by $index">{{s}}{{$last ? '' : ($index==interviewerSkills.length-1) ? ', and ' : ',&nbsp;'}}</span>
+                                                </div>
+
+                                        </div>
+                                        <div class="col-6 col-md-3">
+                                            <h6>Industry</h6>
+                                        <div class="info"><span class="details">{{upcomingInterviewDetails.interviewerID.industry}}</span></div></div>
+
+                                        <div class="col-6 col-md-2">
+                                            <h6>Date &amp; Time</h6>
+                                        <div class="date-height datepicker-current">
+                                            <p class="current-day">{{upcomingInterviewDetails.interviewDate | date: 'MMMM'}}</p>
+                                            <h3 class="current-date">{{upcomingInterviewDetails.interviewDate | date: 'dd'}}</h3>
+                                            <div class="month-info"><span class="current-month">{{upcomingInterviewDetails.interviewStartTime}}</span>
+        
+                                            </div></div></div>
+                                      </div>
+        <!-- <div class="date-height datepicker-current">
+                                            <p class="current-day">Wednesday</p>
+                                            <h3 class="current-date">13</h3>
+                                            <div class="month-info"><span class="current-month">10:00</span>
+                                                <span class="current-year">AM</span>
+                                            </div></div> -->
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="cancelInterviewPopup()" ng-if="upcomingInterviewDetails.status == 1">CANCEL INTERVIEW</button>
-            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4">START INTERVIEW</button>
-            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 2">RESUME INTERVIEW</button>
-            <button class="sbmt-btn" style="padding: 10px 30px" ng-click="start_chat(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4 || upcomingInterviewDetails.status == 2">START CHAT</button>
-            <p>Note: You cannot cancel 24 hours before interview schedule otherwise 50% fee is lost</p>
+            <button class="btn btn-five big" style="padding: 10px 30px" ng-click="cancelInterviewPopup()" ng-if="upcomingInterviewDetails.status == 1">CANCEL INTERVIEW</button>
+            <button class="btn btn-five big" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4">START INTERVIEW</button>
+            <button class="btn btn-five big" style="padding: 10px 30px" ng-click="startInterview(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 2">RESUME INTERVIEW</button>
+            <button class="btn btn-five big" style="padding: 10px 30px" ng-click="start_chat(upcomingInterviewDetails._id)" ng-if="upcomingInterviewDetails.status == 4 || upcomingInterviewDetails.status == 2">START CHAT</button>
+            
         </div>
     </div>
 </div>

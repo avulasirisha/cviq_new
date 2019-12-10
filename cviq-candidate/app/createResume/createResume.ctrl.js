@@ -271,6 +271,69 @@ angular.module('Cviq').controller('createResumeCtrl', ['$scope','$rootScope','ng
         $scope.educations.push(eduVar);
     }
 
+
+    /************************ start highest qualifications dropdowns **************/
+    $scope.graduation;
+    $scope.postGraduation;
+    $scope.qualSpecialization = [];
+
+    $http({
+        method:'GET',
+        url: CONSTANT.apiUrl + '/api/common/getDropDownData'
+    })
+        .success(function(response){
+            console.log(response);
+            $scope.countryLists = response.data.countryList;
+            $scope.industriesList = response.data.industryList;
+            $scope.qualify = response.data.highestQualification;
+            $scope.graduation = response.data.Graduation;
+            $scope.postGraduation = response.data.PostGraduation;
+            $scope.patentLimit = response.data.maxPatentLimit;
+            $timeout(function(){
+                $('.selectpicker').selectpicker('refresh');
+            },0);
+        })
+        .error(function(response){
+            console.log(response);
+            if(response.statusCode == 401){
+                $rootScope.sessionExpired();
+            }
+        })
+
+    $scope.selectedQualification = function(data,index){
+
+        console.log(data);
+        $scope.selHighQual = data.split(" ").join("");
+
+        if($scope.selHighQual == 'Graduation'){
+
+
+            $scope.specialization = [];
+
+            $scope.qualSpecialization = [];
+            _.forEach($scope.graduation, function(value){
+                $scope.qualSpecialization.push(value.courseName);
+                $timeout(function(){
+                    $('.selectpicker').selectpicker('refresh');
+                },0);
+
+                $scope.graduation[index].spec = $scope.qualSpecialization;
+            })
+
+        }
+        else if($scope.selHighQual == 'PostGraduation'){
+
+            $scope.qualSpecialization = [];
+            _.forEach($scope.postGraduation, function(value){
+                $scope.qualSpecialization.push(value.courseName);
+                $timeout(function(){
+                    $('.selectpicker').selectpicker('refresh');
+                },0);
+                $scope.graduation[index].spec = $scope.qualSpecialization;
+            })
+        }
+    }
+
     /*============================= End: Add More Clone ================================*/
 
 
@@ -279,7 +342,7 @@ angular.module('Cviq').controller('createResumeCtrl', ['$scope','$rootScope','ng
 
         $scope.experienceArray = [];
         $scope.educationArray = [];
-
+console.log(data);
 
         _.forEach($scope.items, function (value) {
             console.log(value);

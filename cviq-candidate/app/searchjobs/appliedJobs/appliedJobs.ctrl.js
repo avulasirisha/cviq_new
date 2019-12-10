@@ -7,7 +7,8 @@ angular.module('Cviq').controller('appliedJobsCtrl', ['$scope','$rootScope','ngD
     /*=============================Start: Get candidate applied Jobs ================================*/
 
 $scope.numberOFJobs =0;
-
+var D_data = JSON.parse(localStorage.getItem('UserDetails'));
+    $scope.Recommended = D_data.searchAgent;
     $scope.pageFunction = function (data) {
 
         $scope.paginationData = {
@@ -52,7 +53,16 @@ $scope.numberOFJobs =0;
             })
         
     }
-
+$scope.jobDetails = function(response){
+        var member = JSON.parse( localStorage.getItem("UserDetails") )['membershipTaken'] ;
+        console.log( "member + " + member );
+        if( member == true ){
+            $cookieStore.put('JobID', response);
+            $state.go('home.search.jobDetails');
+        }else{
+                bootbox.alert('please take membership to see all details');
+        }
+    }
 
     /*=============================End: Get candidate applied Jobs ================================*/
 

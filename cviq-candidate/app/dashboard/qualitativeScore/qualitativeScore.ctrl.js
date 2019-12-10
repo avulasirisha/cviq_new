@@ -115,12 +115,12 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
     $scope.selectedInterviewTime;
     $scope.activeDate = moment(new Date()).format('MMMM DD, YYYY');
 
-    $(".datetimepicker").datetimepicker({
+    /*$(".datetimepicker").datetimepicker({
         viewMode: 'months',
         format: 'MMMM DD, YYYY',
         maxDate: new Date(new Date().setDate(new Date().getDate() + 29)),
         minDate: moment().subtract(1,'d')
-    });
+    });*/
 
     $(".datetimepicker").on("dp.change", function (e) {
         console.log(e);
@@ -164,18 +164,23 @@ angular.module('Cviq').controller('qualitativeScoreCtrl', ['$scope','$rootScope'
                 interviewStartTime: $scope.selectedInterviewTime,
                 timeOffset: +330
             }
+           
         })
+         
             .success(function(response){
-                console.log(response);
+               // console.log(response);
                 if(response.statusCode == 200){
                     bootbox.alert('Your request of an interview is submitted successfully.');
                 }
                 $state.reload('home.dashboard.qualitativeScore');
             })
             .error(function(response){
-                console.log(response);
+            //console.log('resp');
+               //console.log(response);
                 if(response.statusCode == 400){
                     bootbox.alert('Please select interview start time');
+                   // bootbox.alert('Your request of an interview is submitted successfully.');
+                    // $state.reload('home.dashboard.qualitativeScore');
                 }
                 if(response.statusCode == 401){
                     $rootScope.sessionExpired();

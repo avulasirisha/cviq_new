@@ -34,7 +34,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
                 now.setTime(now.getTime() + ( 60 * 60 * 1000));
                 if( window.location.hostname == "localhost"  ){
                 
-                    document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/site";
+                    document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/site_new";
                     document.cookie = "CandidateOpt="+response.data.accessToken+";expires=" + now.toUTCString() + "; path=/site";
                 }else{
                 
@@ -106,11 +106,12 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
     /*=============================Start: Login Via LinkedIn Function ================================*/
 
     $scope.liAuth = function(){
-        OAuth.initialize('pJyDX12EHBYOcRDLuKOQUHpO_XA')
+        OAuth.initialize('pdEW0KZAwYR6980sTiC7vCn_vNg')
         OAuth.popup('linkedin2').done(function(result) {
             // do some stuff with result
 
-        result.get('/v1/people/~:(id,first-name,last-name,headline,picture-url,email-address,public-profile-url)?format=json').then(onSuccess)
+     //   result.get('/v2/people/~:(id,first-name,last-name,headline,picture-url,email-address,public-profile-url)?format=json').then(onSuccess)
+          result.me().done( onSuccess );
         })
         
     }
@@ -129,7 +130,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
             url: CONSTANT.apiUrl + '/api/candidate/loginViaLinkedIn',
             data: {
                 "linkedInId": $scope.linkedinID,
-                "email": data.emailAddress,
+                "email": data.email,
                 "deviceType": "WEB",
                 "deviceToken": "string"
             }
@@ -146,17 +147,17 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
                         $state.reload();
                     },100);
 
-                    IN.User.logout(function () {
+                    /*IN.User.logout(function () {
                     console.log("User logged out of LinkedIn");
-                    })
+                    })*/
 
                 })
                 .error(function(response){
                     $scope.loading = false;
                     console.log("Errorin", response);
-                    IN.User.logout(function () {
-                        console.log("User logged out of LinkedIn");
-                    })
+                    // IN.User.logout(function () {
+                    //     console.log("User logged out of LinkedIn");
+                    // })
                     if(response.statusCode == 400){
                         bootbox.alert('LinkedIn id not found. Please signup first');
                         $state.go('home.signup');

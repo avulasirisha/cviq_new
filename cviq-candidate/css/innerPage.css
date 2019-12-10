@@ -60,10 +60,10 @@ p.exp{ color: #000; text-align: left;  font-size: 13px;}
 .newsletter-section-right .newsletter{ background: #e9ecee; padding: 15px 0 0 0;  }
 .newsletter-section-right #newsLetterForm{ background: #eff2f5; padding: 30px 10px;}
 .newsletter-section-right #newsLetterForm input{ border-radius: 3px; background-color: #ffffff; border: solid 1px #dedede; height: 40px; width: 100%; padding: 10px;}
-.inboxMenu ul.inboxMenu-inner li{ display: inline-block; border-radius: 3px 3px 0 0; background: #e9ecee; cursor: pointer; }
+.inboxMenu ul.inboxMenu-inner li{ display: inline-block; border-radius: 13px 13px 0 0; background: #e9ecee; cursor: pointer; }
 .inboxMenu ul.inboxMenu-inner li a{ display: block; color: #4f5f72; padding: 12px 40px; }
 .commonBackground{ background: #eff2f5; border: solid 3px #efefef; }
-.inboxMenu ul.inboxMenu-inner li.act{ background: #0297cd; }
+.inboxMenu ul.inboxMenu-inner li.act{ background:#246df8; }
 .inboxMenu ul.inboxMenu-inner li.act a{ color: #fff; font-weight: bold; }
 .company-Details{ padding: 20px;}
 .company-Details h3{ border-bottom: solid 1px #d9d9d9; font-size: 14px; padding: 10px 0; }
@@ -239,7 +239,7 @@ p.exp{ color: #000; text-align: left;  font-size: 13px;}
     font-size: 20px;
 }
 .score-container{
-    background: #eff2f5;
+    background: rgb(255, 255, 255);
     text-align: center;
     padding: 50px;
     min-height: 300px;
@@ -835,7 +835,7 @@ img.acc{
     margin-top: 30px;
 }
 .score-progress strong{
-    position: absolute;
+    /*position: absolute;
     top: 50%;
     margin-top: -20px;
     font-size: 24px;
@@ -843,7 +843,17 @@ img.acc{
     width: 50px;
     line-height: 40px;
     left: 50%;
-    margin-left: -25px;
+    margin-left: -25px;*/
+
+        position: absolute;
+    top: 50%;
+    margin-top: -33px;
+    font-size: 24px;
+    display: block;
+    width: 50px;
+    line-height: 40px;
+    left: 50%;
+    margin-left: -11px;
 }
 .dollar{
     background: url("../images/dollar.png") no-repeat 3%;
@@ -1201,7 +1211,7 @@ ul.pagination li:first-child, ul.pagination li:last-child{
     line-height: 30px;
 }
 .upcoming-interview{
-    background: #eff2f5;
+    background: rgb(250,250,250);
     padding: 15px;
 }
 .upcoming-interview h4{
@@ -1241,7 +1251,7 @@ ul.pagination li:first-child, ul.pagination li:last-child{
     font-size: 12px;
 }
 .upcoming-interview p{
-    color: #6c6c6c;
+    color: #f7f9fc;
     font-size: 12px;
     margin: 20px 0;
 }

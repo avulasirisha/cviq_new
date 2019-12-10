@@ -152,4 +152,9 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
                 var1: 'UPCOMING'
             }
         })
+        .state('home.upcoming',{
+            url:'/upcomingPage',
+            templateUrl:'app/upcoming.view.html',
+            controller:'soonCtrl'
+        })
 });

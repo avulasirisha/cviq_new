@@ -63,15 +63,15 @@
 </header>
 </div>
 <div ui-view=""></div>
-<footer class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-hide="$state.includes('home.homeScreen')">
+<!-- <footer class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-hide="$state.includes('home.homeScreen')">
     <div class="container">
         <div class="row clearfix">
             <div class="footer-menu pull-left">
                 <img src="images/footer-logo.png" alt="" />
                 <ul>
                     <li><a ui-sref="home.login">Home</a></li>
-                    <li><a>Career</a></li>
-                    <li><a>Support</a></li>
+                    <li><a ui-sref="home.upcoming">Career</a></li>
+                    <li><a ui-sref="home.upcoming">Support</a></li>
                 </ul>
             </div>
             <div class="copyright pull-right">
@@ -80,7 +80,107 @@
         </div>
     </div>
 </footer>
-<script type="text/ng-template" id="logout" class="ngDialog-theme-default">
+ -->
+<footer class="footer">
+            <div class="container">
+                
+                <!-- Row Start -->
+                <div class="row">
+                
+                    <div class="col-md-8 col-sm-8">
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <h4>For Candidate </h4>
+                                <ul>
+
+                                    <li><a href="#">Add a Resume</a></li>
+                                    <li><a href="#">Candidate Dashboard</a></li>
+                                    <li><a href="#">Past Applications</a></li>
+                                    <li><a href="#">Job Alerts</a></li>
+                                    <li><a href="#">Bookmarks</a></li>
+                                    <li><a href="#">My Account</a></li>
+                                    <li><a href="#">Your Jobs</a></li>
+
+
+
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h4>For Employers</h4>
+                                <ul>
+                                    <li><a href="#">Browse Candidates</a></li>
+                                    <li><a href="#">Employer Dashboard</a></li>
+                                    <li><a href="#">Add Job</a></li>
+                                    <li><a href="#">Job Page</a></li>
+                                    <li><a href="#">Job Packages</a></li>
+                                    <li><a href="#">Work Process</a></li>
+                                    <li><a href="#">My Account</a></li>                             
+                                    
+                                    
+                                </ul>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h4>Information</h4>
+                                <ul>
+                                     <li><a href="#">About Us</a></li>
+                                     <li><a href="#">Terms & Conditions</a></li>
+                                     <li><a href="#">Privacy Policy</a></li>
+                                     <li><a href="#">Careers with Us</a></li>
+                                     <li><a href="#">Sitemap</a></li>
+                                     <li><a href="#">Contact Us</a></li>
+                                     <li><a href="#">FAQs</a></li>
+                                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-4 col-sm-4">
+                        <h4>Subscribe For Job Alerts</h4>
+                        <!-- Newsletter -->
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter Email">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"><i class="fa fa-location-arrow font-20"></i></button>
+                            </span>
+                        </div>
+                        
+                        <!-- Social Box -->
+                        <div class="f-social-box">
+                            <ul>
+                                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                <li><a href="#"><i class="fab fa-google google-plus-cl"></i></a></li>
+                                <li><a href="#"><i class="fab fa-twitter twitter-cl"></i></a></li>
+                                <li><a href="#"><i class="fab fa-pinterest pinterest-cl"></i></a></li>
+                                <li><a href="#"><i class="fab fa-instagram instagram-cl"></i></a></li>
+                            </ul>
+                        </div>
+                        
+                        <!-- App Links -->
+                        <div class="f-app-box">
+                            <ul>
+                                <li class="appbtns-fullsize"><a href="#"><i class="fab fa-apple"></i>App Store</a></li>
+                                <li class="appbtns-fullsize"><a href="#"><i class="fab fa-android"></i>Play Store</a></li>
+                            </ul>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                
+                <!-- Row Start -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="copyright text-center">
+                            <p>&copy; Copyright 2019 CVIQ 360 By  <a href="http://www.appmasoninc.com">Appmason Inc</a></p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </footer>
+    
+ <script type="text/ng-template" id="logout" class="ngDialog-theme-default">
     <h1>LOGOUT CONFIRMATION</h1>
     <p>Do you really want to Logout ?</p>
     <div class="clearfix">

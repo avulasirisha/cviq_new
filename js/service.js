@@ -1,6 +1,6 @@
 if( window.location.hostname == "localhost"  ){
     var CONSTANT_apiUrl = "http://localhost:8000";
-    var CVIQ_URL  = "http://localhost/site" ;
+    var CVIQ_URL  = "http://localhost/site_new" ;
 }else{
     var CONSTANT_apiUrl = "http://54.89.248.100:3005";
     var CVIQ_URL  = "" ;

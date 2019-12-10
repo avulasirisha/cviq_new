@@ -1,30 +1,95 @@
 <loading></loading>
 <form name="dashboardForm">
-    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 candidate-dashboard">
-        <div class="container">
-            <div class="profile-pic text-center">
-                <div class="change-photo">
-                    <img class="dp" ng-src="{{userData.profilePicURL.original}}" alt="" />
-                    <input style="display: none" type="file" ng-model="myfile" id="dp" class="file2" name="profilePicture" onchange="angular.element(this).scope().profilePic(this.files)"data-button-text="Single" uploader="uploader" accept="image/*" />
+    <div class="row">
+    <button type="button" class="buybutton-responsive buy-membersip-btn btn btn-success btn-lg waves-effect waves-light" ui-sref="home.membership" ng-if="userData.membershipTaken == false">BUY MEMBERSHIP</button>
+
+    <button type="button" class="buybutton-responsive buy-membersip-btn btn btn-danger btn-lg waves-effect waves-light" ng-click="cancelMembershipPopup()" ng-if="userData.membershipTaken == true">CANCEL MEMBERSHIP</button>
+
+    <button type="button" class="buybutton-responsive buy-membersip-btn btn btn-success btn-lg waves-effect waves-light" ng-click="Gotomembership()" ng-if="userData.membershipTaken == true && userData.interviewshiptaken == false && userData.access == true">BUY INTERVIEW FEES</button>
+  </div>
+
+  <!-- <div class="memberShip" ng-class="{'afterInterview': emittedData.graphCoordinates.length > 0}">
+                <div class="text-right">
+                <button class="sbmt-btn" ui-sref="home.membership" ng-if="userData.membershipTaken == false">BUY MEMBERSHIP</button>
+                <button class="sbmt-btn" ng-click="cancelMembershipPopup()" ng-if="userData.membershipTaken == true">CANCEL MEMBERSHIP</button>
+                <button class="sbmt-btn" ng-click="Gotomembership()" ng-if="userData.membershipTaken == true && userData.interviewshiptaken == false && userData.access == true">BUY INTERVIEW FEES</button>
+                </div>
+               
+            </div> -->
+    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 candidate-dashboard ">
+        <div class="container space-top">
+           
+           
+            <div class="row  ">
+<div class="col-lg-3  col-md-5 box-r-line">
+                           
+
+                           <!-- <img class="dp" ng-src="{{userData.profilePicURL.original}}" alt="" />
+                    <input style="display: none" type="file" ng-model="myfile" id="dp" class="file2" name="profilePicture" onchange="angular.element(this).scope().profilePic(this.files)"data-button-text="Single" uploader="uploader" accept="image/*" /> -->
 
                     <!--<a ng-if="userData.profilePicURL.original != ''" class="upload-file2">Change Photo</a>-->
                     <!--<a ng-if="userData.profilePicURL.original == ''" class="upload-file2">Upload Photo</a>-->
 
-                    <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original != ''" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Change Photo</a>
-                    <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original == '' || userData.profilePicURL.original == null" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Upload Photo</a>
+                    <!-- <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original != ''" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Change Photo</a>
+                    <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original == '' || userData.profilePicURL.original == null" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Upload Photo</a> -->
 
-                </div>
-                <h5>{{userData.firstName}} {{userData.lastName}}</h5>
-                <p>{{userData.profileTitle}}</p>
-            </div>
-            <div class="score-chart col-lg-3 col-md-3 col-sm-12 col-xs-12" ng-if="emittedData.graphCoordinates.length > 0">
-                <div class="score-progress">
+
+                    <div class="dashboard-section upload-profile-photo">
+                        <div class="update-photo">
+                        <img  ng-src="{{userData.profilePicURL.original}}" alt="" />
+                        <input style="display: none" type="file" ng-model="myfile" id="dp" class="file2" name="profilePicture" onchange="angular.element(this).scope().profilePic(this.files)"data-button-text="Single" uploader="uploader" accept="image/*" />
+                        </div>
+                        <div class="file-upload">            
+                          <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original != ''" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Change Avatar</a>
+                          <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original == '' || userData.profilePicURL.original == null" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Upload Photo</a>
+                        </div>                          
+                    </div>
+                  
+                    <div class="row seprateline">
+                        <div class=" col-md-8 no-space no-gutters">
+                            <h5>{{userData.firstName}} {{userData.lastName}}</h5>
+
+                            <span class="t-small">{{userData.profileTitle}}</span>
+                            </div>
+                        
+                            
+                            <div class="col-sm-1 pull-right">
+                                
+                                <!-- <button type="button" class="btn btn-primary edit-resume " data-toggle="modal" data-target="#modal-education">
+                                    <i class="fal fa-pencil-alt"></i>
+                                    
+                                  </button> -->
+                                </div>
+                        
+                    
+                        
+                        
+                        
+                      </div>
+                      <div class="row " ng-if="emittedData.graphCoordinates.length > 0">
+                          <div class="offset-4">
+                          <h5 class="tpcolor tpadding">Aggregated Score</h5>
+                        </div>
+                      </div>
+                    <!-- <div class="row"> -->
+                        <!-- score counter start -->
+                      <!-- <div class="col-md-4">
+                        <div class="progress blue al-1">
+                <span class="progress-left">
+                    <span class="progress-bar"></span>
+                </span>
+                <span class="progress-right">
+                    <span class="progress-bar"></span>
+                </span>
+                <div class="progress-value">{{emittedData.candidateAggScore}}</div>
+                          </div></div> -->
+                          <div class="score-progress" ng-if="emittedData.graphCoordinates.length > 0">
                     <round-progress
                             max="emittedData.totalAggScore"
                             current="emittedData.candidateAggScore"
-                            color="#02a5db"
+                            color="#02699d"
                             bgcolor="#e4e4e4"
-                            radius="75"
+                            radius="56"
                             stroke="8"
                             semi="false"
                             rounded="false"
@@ -33,17 +98,98 @@
                             duration="800"
                             animation="easeInOutQuart"
                             on-render=""
-                            animation-delay="0">
-                    </round-progress>
-                    <strong><span>Aggregated Score</span><span class="strong-text">{{emittedData.candidateAggScore}}</span></strong>
+                            animation-delay="0"></round-progress>
+                    <strong>{{emittedData.candidateAggScore}}</strong>
                 </div>
-            </div>
-            <div class="score-chart-main col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right" style="min-height: 250px;" ng-if="emittedData.graphCoordinates.length > 0">
+                           <!--  </div> -->
+                        <!-- end -->
+                  </div>
+                  <div class="col-lg-5 col-md-7 basic-info-input box-r-line">
+                 
+                   
+                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>Description</h4>
+                        <div class="row">
+                            <div class="col-md-3">
+                                <h6>Status</h6>
+                            </div>                          
+                            <div class="col-md-9 float-right">
+                            <form action="#" class="dashboard-form job-post-form">
+                                <div class="form-group">
+                                  <select class="form-control" ng-model="profileStatus" ng-change="changeProfileStatus(profileStatus)" ng-options="s.val as (s.desc) for s in pstatus">
+                                    <!-- <option>Select Status</option>
+                                    <option>Not looking</option>
+                                    <option>Looking for change</option>
+                                    <option>Freelance</option>
+                                    <option>Full Time</option>
+                                    <option>Part Time</option> -->
+                                  </select>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                        
+                      
+                      <div class="row">
+                      <div class="col-md-3">
+                          <h6>Skills</h6>
+                          </div>
+                          <div class="col-md-9">
+                        <span class="badge badge-soft-secondary badge-pill" ng-repeat="s in userData.keySkills track by $index">{{s}}{{$last ? '' : ($index==userData.keySkills.length-1) ? ', and ' : '&nbsp;'}}</span>
+                          </div>
+                      </div>
+                      <div class="row space-t-10">
+                      <div class="col-md-3">
+                          <h6>Email</h6>
+                          </div>
+                          <div class="col-md-9">
+                         <span class="usermail">{{userData.email}}</span>
+                          </div>
+                      </div>
+
+                      <div class="row space-t-10">
+                      <div class="col-md-3">
+                          <h6>Phone No</h6>
+                          </div>
+                          <div class="col-md-9">
+                         <span>{{userData.countryCode+' '+userData.phoneNo}}</span>
+                          </div>
+                      </div>
+                      
+                      <div class="row space-t-20">
+                      
+                      <div class="col-md-6">
+    <a ui-sref="home.inbox.profile" class="btn btn-fullsize btn-three editprofile-btn">
+        <!-- <i class="fal fa-pencil-alt"></i> --> Edit Profile
+    </a>                          </div>
+                          
+                          <div class="col-md-6">  
+                              <a ng-if="userData.linkedInProfileLink != null" target="_blank" href="{{userData.linkedInProfileLink}}" class="btn btn-fullsize btn-four editprofile-btn" ng-click="openLinkedProfilePopup()">
+        <i class="fab fa-linkedin-in"></i> {{userData.linkedInProfileLink==null ? 'Add' : 'Edit'}} Linked in Profile
+    </a>
+   
+    </div>
+
+   <!--  <li><a ng-if="userData.linkedInProfileLink != null" target="_blank" href="{{userData.linkedInProfileLink}}"><img src="images/linkedin-profile.png" alt="" /></a><a ng-click="openLinkedProfilePopup()">{{userData.linkedInProfileLink==null ? 'Add' : 'Edit'}} Linked in Profile</a></li> -->
+                          
+                      </div>
+                      
+                   
+                  </div>
+                   <div class="col-lg-4 col-md-6 ">
+                   <div class="score-chart-main " style="min-height: 350px;" ng-if="emittedData.graphCoordinates.length > 0">
                 <canvas id="line" class="chart chart-line" chart-data="data"
                         chart-labels="labels" chart-series="series" chart-options="options"
                         chart-dataset-override="datasetOverride" chart-click="onClick">
                 </canvas>
             </div>
+        </div>
+                  <!-- <div class="col-lg-4 col-md-6 ">
+                     <div class="dashboard-section dashboard-view-chart"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
+                  <canvas id="view-chart" width="339" height="339" style="display: block; width: 339px; height: 339px;"></canvas>
+                </div>
+                  </div> -->
+                </div>
+
             <!--<div class="memberShip afterInterview">-->
                 <!--<section class="commonBackground interview-details">-->
                     <!--<div class="candidate-desc clearfix">-->
@@ -62,45 +208,19 @@
                     <!--</div>-->
                 <!--</section>-->
             <!--</div>-->
-            <div class="memberShip" ng-class="{'afterInterview': emittedData.graphCoordinates.length > 0}">
-                <div class="text-right"><button class="sbmt-btn" ui-sref="home.membership" ng-if="userData.membershipTaken == false">BUY MEMBERSHIP</button>
-                <button class="sbmt-btn" ng-click="Gotomembership()" ng-if="userData.membershipTaken == true && userData.interviewshiptaken == false && userData.access == true">BUY INTERVIEW FEES</button>
-                </div>
-                <section class="commonBackground interview-details">
-                    <div class="candidate-desc clearfix">
-                        <div class="descriptionHead">
-                            <span>Description</span>
-                            <select ng-model="profileStatus" ng-change="changeProfileStatus(profileStatus)" class="pull-right" ng-options="s.val as (s.desc) for s in pstatus">
-                            </select>
-                            <span class="stat">Status :</span>
-                        </div>
-                        <div class="candidate-edit-profile candidate-edit-profile2 clearfix">
-                            <!--<p>Email: {{userData.email}}, Phone No.: {{userData.phoneNo}}</p>-->
-                            <div class="social-bar">
-                                <!--<label>Maximum 250 words</label>-->
-                                <p ng-if="userData.keySkills.length > 0"><strong style="color: #000">Skills</strong><span ng-repeat="s in userData.keySkills track by $index">{{s}}{{$last ? '' : ($index==userData.keySkills.length-1) ? ', and ' : ',&nbsp;'}}</span></p>
-                                <p><strong style="color: #000">Email</strong><span>{{userData.email}}</span></p>
-                                <p><strong style="color: #000">Phone No.</strong><span>{{userData.countryCode+' '+userData.phoneNo}}</span></p>
-                                <ul class="text-right">
-                                    <li><a ui-sref="home.inbox.profile">Edit Profile</a></li>
-                                    <li><a ng-if="userData.linkedInProfileLink != null" target="_blank" href="{{userData.linkedInProfileLink}}"><img src="images/linkedin-profile.png" alt="" /></a><a ng-click="openLinkedProfilePopup()">{{userData.linkedInProfileLink==null ? 'Add' : 'Edit'}} Linked in Profile</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <div class="scores-obtained">
+            
+            <!-- <div class="scores-obtained">
                 <h3>CVIQ SCORES</h3>
                 <div class="borderAsLine"></div>
                 <div class="borderAsLine"></div>
-            </div>
+            </div> -->
             <section class="inboxMenu" style="width: 100%; float: left">
-                <ul class="inboxMenu-inner">
-                    <li ng-click="variable='AGGREGATE'" ng-class="{'act': variable == 'AGGREGATE'}"><a ui-sref="home.dashboard.aggregatedScore">Aggregated Score</a></li>
+                 <ul class="inboxMenu-inner">
+                    <li class="nav-item" ng-click="variable='AGGREGATE'" ng-class="{'act': variable == 'AGGREGATE'}" ><a ui-sref="home.dashboard.aggregatedScore" class="nav-link" id="latest-tab" data-toggle="tab">Aggregated Score</a></li>
                     <li ng-click="variable='QUANTITATIVE'" ng-class="{'act': variable == 'QUANTITATIVE'}"><a ui-sref="home.dashboard.quantitativeScore">Quantitative Score</a></li>
                     <li ng-click="variable='QUALITATIVE'" ng-class="{'act': variable == 'QUALITATIVE'}"><a ui-sref="home.dashboard.qualitativeScore.pastInterview">Qualitative Score</a></li>
-                </ul>
+                </ul>  
+
                 <div ui-view=""></div>
             </section>
         </div>
@@ -145,4 +265,13 @@
         </div>
         <div class="text-center"><button type="submit">SAVE</button></div>
     </form>
+</script>
+
+<script type="text/ng-template" id="cancelMembership" class="ngDialog-theme-default">
+    <h1>MEMBERSHIP CANCELLATION</h1>
+    <p>Do you really want to cancel Membership ?</p>
+    <div class="clearfix">
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button ng-click="confirmCancelmembership()" type="submit">YES</button></div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><button ng-click="denyCancelmembership()" type="submit">NO</button></div>
+    </div>
 </script>

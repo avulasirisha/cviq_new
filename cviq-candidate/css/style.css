@@ -41,6 +41,7 @@ a:hover{
 }
 ul{
     list-style: none;
+        margin-top: 18px;
 }
 h1{
     color: #2c2c2c;
@@ -327,7 +328,7 @@ footer{
     font-size: 13px;
 }
 .copyright{
-    color: #fff;
+    color: #171515;
     font-size: 13px;
     margin-top: 60px;
     font-weight: bold;

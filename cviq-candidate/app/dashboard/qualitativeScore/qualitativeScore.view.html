@@ -13,33 +13,61 @@
 <section class="score-container qualitative-score" ng-show="QualitativeScoreData.interviewshiptaken == false && QualitativeScoreData.candidateQualitativeScore == 0">
     <h3>Benefits of Qualitative Score</h3>
     <div class="qualitative-score-inner col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <ul>
-            <li class="bag">
-                <div class="circle-on-border"></div>
-                <h4>Apply for Jobs</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </li>
-            <li class="badge-new">
-                <h4>Profile Badge</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </li>
-            <li class="search-icon">
-                <h4>Get featured in Recruiters search</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </li>
-            <li class="archery">
-                <h4>More Preference</h4>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-            </li>
-        </ul>
+        <div class="row">
+
+                                <div class="col-lg-6 col-md-6 col-xs-12">
+                                <div class="alert-box item-boxes services-item wow fadeInDown animated anmited-box" data-wow-delay="0.2s" "="">
+                                <div class="icon color-1">
+                                    <i class="fa fa-briefcase icon-blue-color"></i>
+                                </div>
+                                <h4 class="text-blue">Apply for Jobs</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+                                </div>
+                                </div>
+                                
+                                <div class="col-lg-6 col-md-6 col-xs-12">
+                                        <div class="alert-box item-boxes services-item wow fadeInDown animated anmited-box" data-wow-delay="0.2s" "="">
+                                        <div class="icon color-1">
+                                            <i class="fa fa-certificate icon-blue-color"></i>
+                                        </div>
+                                        <h4 class="text-blue">Profile Badge</h4>
+                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+                                        </div>
+                                        </div>
+                                        
+                                        <div class="col-lg-6 col-md-6 col-xs-12">
+                                                <div class="alert-box item-boxes services-item wow fadeInDown animated anmited-box" data-wow-delay="0.2s" "="">
+                                                <div class="icon color-1">
+                                                        <i class="fa fa-search icon-blue-color"></i>
+                                                </div>
+                                                <h4 class="text-blue">Get Featured in Recruiters Search</h4>
+                                                <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+                                                </div>
+                                                </div>
+                                                
+                                                <div class="col-lg-6 col-md-6 col-xs-12">
+                                                        <div class="alert-box item-boxes services-item wow fadeInDown animated anmited-box" data-wow-delay="0.2s" ="">
+                                                        <div class="icon color-1">
+                                                            <i class="fa fa-crosshairs icon-blue-color"></i>
+                                                        </div>
+                                                        <h4 class="text-blue">More Preference</h4>
+                                                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut.</p>
+                                                        </div>
+                                                        </div>
+                            
+                                
+                                                
+                                </div>
     </div>
     <div class="score-container-inner col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <button style="float: none;" class="col-lg-3 sbmt-btn" ng-click="setMembershipTrue()">GET YOUR SCORE</button>
+        <button style="float: none;" class="btn btn-five big" ng-click="setMembershipTrue()">GET YOUR SCORE</button>
     </div>
 </section>
 <!--<div class="fullWidth" ng-show="QualitativeScoreData.membershipTaken == true && QualitativeScoreData.interviewScheduled == false">-->
-<div class="fullWidth"  style="text-align:center">
-   {{ interview_found_details.interview_text }}
+<div class="row justify-content-md-center">
+        <div class="alert alert-warning" role="alert" style="margin-top: 10px;">
+            {{ interview_found_details.interview_text }}
+        </div>
 </div>
 
 <div class="fullWidth" ng-show="QualitativeScoreData.interviewshiptaken == true && QualitativeScoreData.interviewScheduled == false">
@@ -85,12 +113,18 @@
 </div>
 
 
-<section class="score-container quantitative-score" ng-if="QualitativeScoreData.candidateQualitativeScore > 1" style="margin-top: 30px; float: left">
+<section class="score-container quantitative-score" ng-if="QualitativeScoreData.candidateQualitativeScore > 1" style="margin-top: -68px; float: left">
     <p><span class="pull-right">Total Score: <strong>{{QualitativeScoreData.totalQualitativeScore}}</strong></span></p>
     <div class="quantitative-score-inner col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <ul>
-            <li>
-                <div class="score-progress">
+        <div class="row  l-bottom">
+                                      <div class="col-md-4 box-r-line space-b-10 space-t-10">
+                                          <div class=" l-bottom">
+                                          <h6>Total Quantitative Score</h6>
+                                          </div>
+                                          
+                                          <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="score-progress">
                     <round-progress
                             max="QualitativeScoreData.totalQualitativeScore"
                             current="QualitativeScoreData.candidateQualitativeScore"
@@ -109,19 +143,32 @@
                     </round-progress>
                     <strong>{{QualitativeScoreData.candidateQualitativeScore}}</strong>
                 </div>
-                <h5>Total Qualitative Score</h5>
-                <div class="progress-bar-quantitative clearfix">
-                    <label>Your Score</label>
+                                            </div>  
+                                              <div class="col-md-9 space-t-10">
+                                                  <div class="row">
+                                                    <div class="progress-bar-quantitative clearfix">
+                                             <label>Your Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.candidateQualitativeScore" max-value="QualitativeScoreData.totalQualitativeScore" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.candidateQualitativeScore}}</div>
                 </div>
+               
                 <div class="progress-bar-quantitative clearfix">
                     <label>Total Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.totalQualitativeScore" max-value="QualitativeScoreData.totalQualitativeScore" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.totalQualitativeScore}}</div>
                 </div>
-            </li>
-            <li>
-                <div class="circle-on-border"></div>
-                <div class="score-progress">
+                                                      </div>
+                                              </div>
+                                          
+                                          </div>
+                                          
+                                          </div>
+                                         <div class="col-md-4 box-r-line space-b-10 space-t-10">
+                                          <div class=" l-bottom">
+                                          <h6>SME &amp; Background</h6>
+                                          </div>
+                                          
+                                          <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="score-progress">
                     <round-progress
                             max="QualitativeScoreData.totalBackgroundPoints"
                             current="QualitativeScoreData.candidateBackgroundPoints"
@@ -140,8 +187,10 @@
                     </round-progress>
                     <strong>{{QualitativeScoreData.candidateBackgroundPoints}}</strong>
                 </div>
-                <h5>SME & Background</h5>
-                <div class="progress-bar-quantitative clearfix">
+                                            </div>  
+                                              <div class="col-md-9 space-t-10">
+                                              <div class="row">
+                                                <div class="progress-bar-quantitative clearfix">
                     <label>Your Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.candidateBackgroundPoints" max-value="QualitativeScoreData.totalBackgroundPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.candidateBackgroundPoints}}</div>
                 </div>
@@ -149,10 +198,20 @@
                     <label>Total Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.totalBackgroundPoints" max-value="QualitativeScoreData.totalBackgroundPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.totalBackgroundPoints}}</div>
                 </div>
-            </li>
-            <li>
-                <div class="circle-on-border"></div>
-                <div class="score-progress">
+                                                </div>
+                                              </div>
+                                          
+                                          </div>
+                                          
+                                          </div>
+                                          <div class="col-md-4  space-b-10 space-t-10">
+                                          <div class=" l-bottom">
+                                          <h6>Communication</h6>
+                                          </div>
+                                          
+                                          <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="score-progress">
                     <round-progress
                             max="QualitativeScoreData.totalCommunicationPoints"
                             current="QualitativeScoreData.candidateCommunicationPoints"
@@ -171,8 +230,10 @@
                     </round-progress>
                     <strong>{{QualitativeScoreData.candidateCommunicationPoints}}</strong>
                 </div>
-                <h5>Communication</h5>
-                <div class="progress-bar-quantitative clearfix">
+                                            </div>  
+                                              <div class="col-md-9 space-t-10">
+                                              <div class="row">
+                                             <div class="progress-bar-quantitative clearfix">
                     <label>Your Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.candidateCommunicationPoints" max-value="QualitativeScoreData.totalCommunicationPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.candidateCommunicationPoints}}</div>
                 </div>
@@ -180,9 +241,23 @@
                     <label>Total Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.totalCommunicationPoints" max-value="QualitativeScoreData.totalCommunicationPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.totalCommunicationPoints}}</div>
                 </div>
-            </li>
-            <li>
-                <div class="score-progress">
+                                                </div>
+                                              </div>
+                                              
+                                        
+                                          </div>
+                                          
+                                          </div>
+                                      </div>
+                                <div class="row space-bottom">
+                                      <div class="col-md-4 box-r-line space-b-10 space-t-10">
+                                          <div class=" l-bottom">
+                                          <h6>Leadership &amp; Management</h6>
+                                          </div>
+                                          
+                                          <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="score-progress">
                     <round-progress
                             max="QualitativeScoreData.totalLeadershipPoints"
                             current="QualitativeScoreData.candidateLeadershipPoints"
@@ -201,8 +276,10 @@
                     </round-progress>
                     <strong>{{QualitativeScoreData.candidateLeadershipPoints}}</strong>
                 </div>
-                <h5>Leadership & Management</h5>
-                <div class="progress-bar-quantitative clearfix">
+                                            </div>  
+                                              <div class="col-md-9 space-t-10">
+                                                  <div class="row">
+                                              <div class="progress-bar-quantitative clearfix">
                     <label>Your Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.candidateLeadershipPoints" max-value="QualitativeScoreData.totalLeadershipPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.candidateLeadershipPoints}}</div>
                 </div>
@@ -210,9 +287,20 @@
                     <label>Total Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.totalLeadershipPoints" max-value="QualitativeScoreData.totalLeadershipPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.totalLeadershipPoints}}</div>
                 </div>
-            </li>
-            <li>
-                <div class="score-progress">
+                                                    </div>
+                                              </div>
+                                          
+                                          </div>
+                                          
+                                          </div>
+                                         <div class="col-md-4 box-r-line space-b-10 space-t-10">
+                                          <div class=" l-bottom">
+                                          <h6>Social Skills &amp; Situational Empathy</h6>
+                                          </div>
+                                          
+                                          <div class="row">
+                                            <div class="col-md-3">
+                                                <div class="score-progress">
                     <round-progress
                             max="QualitativeScoreData.totalSocialSkillPoints"
                             current="QualitativeScoreData.candidateSocialSkillPoints"
@@ -231,8 +319,10 @@
                     </round-progress>
                     <strong>{{QualitativeScoreData.candidateSocialSkillPoints}}</strong>
                 </div>
-                <h5>Social Skills & Situational Empathy</h5>
-                <div class="progress-bar-quantitative clearfix">
+                                            </div>  
+                                              <div class="col-md-9 space-t-10">
+                                              <div class="row">
+                                            <div class="progress-bar-quantitative clearfix">
                     <label>Your Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.candidateSocialSkillPoints" max-value="QualitativeScoreData.totalSocialSkillPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.candidateSocialSkillPoints}}</div>
                 </div>
@@ -240,13 +330,17 @@
                     <label>Total Score</label>
                     <div isteven-omni-bar current-value="QualitativeScoreData.totalSocialSkillPoints" max-value="QualitativeScoreData.totalSocialSkillPoints" current-style="loadingCurrent1" container-style="loadingBarStyle1">{{QualitativeScoreData.totalSocialSkillPoints}}</div>
                 </div>
-            </li>
-            <li style="min-height: 290px"></li>
-           
-        </ul>
+                                                      </div>
+                                              </div>
+                                          
+                                          </div>
+                                          
+                                          </div>
+                                          
+                                      </div>
     </div>
     <div class="score-container-inner col-lg-12 col-md-12 col-sm-12 col-xs-12"  ng-if="QualitativeScoreData.interviewshiptaken == false && QualitativeScoreData.InterviewsTaken == 1">
-        <button style="float: none;" class="col-lg-3 col-md-3 col-sm-3 col-xs-12 sbmt-btn" ng-click="setMembershipTrue( 'revaluation' )" ng-if="QualitativeScoreData.membershipTaken == true">REQUEST RE-EVALUATION</button>
+        <button style="float: none;" class="btn btn-five big" ng-click="setMembershipTrue( 'revaluation' )" ng-if="QualitativeScoreData.membershipTaken == true">REQUEST RE-EVALUATION</button>
     </div>
 </section>
 

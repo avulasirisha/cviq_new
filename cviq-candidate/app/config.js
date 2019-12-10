@@ -434,4 +434,9 @@ angular.module('Cviq').config(function($stateProvider, $urlRouterProvider){
             templateUrl:'app/interview/upcoming/upcoming.view.html',
             controller:'upcomingCtrl'
         })
+        .state('home.upcoming',{
+            url:'/upcomingPage',
+            templateUrl:'app/upcoming.view.html',
+            controller:'soonCtrl'
+        })
 });

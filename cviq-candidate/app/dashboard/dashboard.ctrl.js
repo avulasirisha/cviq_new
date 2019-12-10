@@ -1,10 +1,12 @@
 angular.module('Cviq').controller('dashboardCtrl', ['$scope','$rootScope','$cookieStore','$http','CONSTANT','$timeout','$state','$window','ngDialog', function($scope, $rootScope, $cookieStore, $http, CONSTANT, $timeout, $state, $window, ngDialog){
-
+console.log($cookieStore.get('AccessToken'));
         if($cookieStore.get('AccessToken') == undefined){
             $state.go('home.login');
         }
          var loggedInVar = $cookieStore.get('loggedIn');
+         console.log("hiii"+$cookieStore.get('loggedIn'));
       if(loggedInVar == undefined || loggedInVar == false){
+        //console.log('hiiii');
             $cookieStore.remove('AccessToken'); 
             $state.go('home.login');
       }
