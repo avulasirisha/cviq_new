@@ -69,14 +69,14 @@
             {{ interview_found_details.interview_text }}
         </div>
 </div>
-
+<div class="row" style="background-color: rgba(255,255,255,0.87);">
 <div class="fullWidth" ng-show="QualitativeScoreData.interviewshiptaken == true && QualitativeScoreData.interviewScheduled == false">
 <div class="scores-obtained">
-    <h3>INTERVIEW DETAIL</h3>
+    <h3 style="margin-left: 40px;">INTERVIEW DETAIL</h3>
     <div class="borderAsLine"></div>
     <div class="borderAsLine"></div>
 </div>
-<div class="time-box time-box-candidate">
+<div class="time-box time-box-candidate" style="margin-left: 29px;">
     <div style="position: relative; width: 100%; float: left;">
         <h4>Schedule Interview</h4>
         <!--<span class="spanAsButton" ng-click="confirmInterview()">DONE</span>-->
@@ -110,6 +110,8 @@
 </div>
 
 <!--<p class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" style="margin: 20px 0;">Your request of an interview is accepted. We will send you a confimation mail shortly. </p>-->
+</div>
+<br>.    
 </div>
 
 
@@ -350,11 +352,13 @@
         <div class="borderAsLine"></div>
         <div class="borderAsLine"></div>
     </div>
-    <section class="inboxMenu" style="width: 100%; float: left">
+    <div class="row" style="background-color: rgba(255,255,255,0.87);">
+    <section class="inboxMenu" style="width: 97%; float: left;margin-left: 15px;">
         <ul class="inboxMenu-inner">
             <li ng-click="inter='PAST'" ng-class="{'act': inter == 'PAST'}"><a ui-sref="home.dashboard.qualitativeScore.pastInterview">Past Interviews</a></li>
             <li ng-click="inter='UPCOMING'" ng-class="{'act': inter == 'UPCOMING'}"><a ui-sref="home.dashboard.qualitativeScore.upcomingInterview">Upcoming Interview</a></li>
         </ul>
         <div ui-view=""></div>
     </section>
+</div>
 </div>

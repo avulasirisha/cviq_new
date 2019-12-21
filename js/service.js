@@ -1,8 +1,8 @@
 if( window.location.hostname == "localhost"  ){
     var CONSTANT_apiUrl = "http://localhost:8000";
-    var CVIQ_URL  = "http://localhost/site_new" ;
+    var CVIQ_URL  = "http://localhost/cviq_new" ;
 }else{
-    var CONSTANT_apiUrl = "http://54.89.248.100:3005";
+    var CONSTANT_apiUrl = "http://34.207.125.7:3005";
     var CVIQ_URL  = "" ;
 }
 var app = angular.module('myApp', ['ngRoute','ngCookies']);  

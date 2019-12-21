@@ -1,6 +1,6 @@
 <loading></loading>
 <form name="dashboardForm">
-    <div class="row">
+    <div class="row" >
     <button type="button" class="buybutton-responsive buy-membersip-btn btn btn-success btn-lg waves-effect waves-light" ui-sref="home.membership" ng-if="userData.membershipTaken == false">BUY MEMBERSHIP</button>
 
     <button type="button" class="buybutton-responsive buy-membersip-btn btn btn-danger btn-lg waves-effect waves-light" ng-click="cancelMembershipPopup()" ng-if="userData.membershipTaken == true">CANCEL MEMBERSHIP</button>
@@ -16,11 +16,11 @@
                 </div>
                
             </div> -->
-    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 candidate-dashboard ">
+    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 candidate-dashboard" style="background-color: #f7f9fc;">
         <div class="container space-top">
            
            
-            <div class="row  ">
+            <div class="row" style="background-color: rgba(255,255,255,0.87);">
 <div class="col-lg-3  col-md-5 box-r-line">
                            
 
@@ -33,7 +33,7 @@
                     <!-- <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original != ''" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Change Photo</a>
                     <a ng-click="croppedImagePopup()" ng-if="userData.profilePicURL.original == '' || userData.profilePicURL.original == null" class="upload-file2" data-toggle="modal" data-target="#myModal" data-backdrop="static" data-keyboard="false">Upload Photo</a> -->
 
-
+                    <br>
                     <div class="dashboard-section upload-profile-photo">
                         <div class="update-photo">
                         <img  ng-src="{{userData.profilePicURL.original}}" alt="" />
@@ -68,8 +68,9 @@
                       </div>
                       <div class="row " ng-if="emittedData.graphCoordinates.length > 0">
                           <div class="offset-4">
-                          <h5 class="tpcolor tpadding">Aggregated Score</h5>
+                          <h5 class="tpcolor tpadding">Aggregated Score</h5><br>
                         </div>
+
                       </div>
                     <!-- <div class="row"> -->
                         <!-- score counter start -->
@@ -98,7 +99,8 @@
                             duration="800"
                             animation="easeInOutQuart"
                             on-render=""
-                            animation-delay="0"></round-progress>
+                            animation-delay="0"
+                            style="margin-left: 89px;"></round-progress>
                     <strong>{{emittedData.candidateAggScore}}</strong>
                 </div>
                            <!--  </div> -->
@@ -107,7 +109,7 @@
                   <div class="col-lg-5 col-md-7 basic-info-input box-r-line">
                  
                    
-                    <h4><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>Description</h4>
+                    <br><h4><svg  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check" ><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>Description</h4>
                         <div class="row">
                             <div class="col-md-3">
                                 <h6>Status</h6>
@@ -169,20 +171,25 @@
    
     </div>
 
+
    <!--  <li><a ng-if="userData.linkedInProfileLink != null" target="_blank" href="{{userData.linkedInProfileLink}}"><img src="images/linkedin-profile.png" alt="" /></a><a ng-click="openLinkedProfilePopup()">{{userData.linkedInProfileLink==null ? 'Add' : 'Edit'}} Linked in Profile</a></li> -->
                           
                       </div>
+                       <br>
                       
                    
                   </div>
                    <div class="col-lg-4 col-md-6 ">
+                    <br>
                    <div class="score-chart-main " style="min-height: 350px;" ng-if="emittedData.graphCoordinates.length > 0">
                 <canvas id="line" class="chart chart-line" chart-data="data"
                         chart-labels="labels" chart-series="series" chart-options="options"
                         chart-dataset-override="datasetOverride" chart-click="onClick">
                 </canvas>
             </div>
+            <br>
         </div>
+
                   <!-- <div class="col-lg-4 col-md-6 ">
                      <div class="dashboard-section dashboard-view-chart"><iframe class="chartjs-hidden-iframe" tabindex="-1" style="display: block; overflow: hidden; border: 0px; margin: 0px; top: 0px; left: 0px; bottom: 0px; right: 0px; height: 100%; width: 100%; position: absolute; pointer-events: none; z-index: -1;"></iframe>
                   <canvas id="view-chart" width="339" height="339" style="display: block; width: 339px; height: 339px;"></canvas>

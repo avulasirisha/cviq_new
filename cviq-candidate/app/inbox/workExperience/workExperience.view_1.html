@@ -150,81 +150,51 @@
 
 <script type="text/ng-template" id="addWorkExperience" class="ngDialog-theme-default">
     <form name="workExperienceForm" ng-submit="workExperienceForm.$valid&&addNewWorkExperience(addWorkData)" novalidate>
-     
         <h1>Add Employment Details</h1>
         <p>Fill up the form below to add details.</p>
-        
-            <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <label><p>Company Name</p></label>
-            </div>
-            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <p>
+            <label>Company Name</label>
             <input name="company" ng-keypress='isAlphaKey($event)' ng-model="addWorkData.companyName" type="text" required>
-             </div>
-             </div>
+        </p>
         <div ng-show="workExperienceForm.$submitted" class="text-center">
             <div class="error-message" ng-show="workExperienceForm.company.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <label><p>Job Title</p></label>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <p>
+            <label>Job Title</label>
             <input ng-model="addWorkData.designation" ng-keypress='isAlphaKey($event)' name="designation" type="text" required>
-        </div>
-    </div>
+        </p>
         <div ng-show="workExperienceForm.$submitted" class="text-center">
             <div class="error-message" ng-show="workExperienceForm.designation.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <label class=""><p>Industry</p></label>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="addWorkData.industry" ng-keypress='FirsText($event)' name="industry" class=" inp" type="text" required>
-        </div>
-    </div>
+        <p>
+            <label class="row col-lg-4 col-md-4 col-sm-4 col-xs-12">Industry</label>
+            <input ng-model="addWorkData.industry" ng-keypress='FirsText($event)' name="industry" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp" type="text" required>
+        </p>
         <div ng-show="workExperienceForm.$submitted" class="text-center">
             <div class="error-message" ng-show="workExperienceForm.industry.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <label class=""><p>Work From</p></label>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="addWorkData.durationFrom" onkeydown="return false" name="workFrom" class=" inp" id="datetimepickerfromwork" type="text" required>
-        </div>
-    </div>
+        <p>
+            <label class="row col-lg-4 col-md-4 col-sm-4 col-xs-12">Work From</label>
+            <input ng-model="addWorkData.durationFrom" onkeydown="return false" name="workFrom" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp" id="datetimepickerfromwork" type="text" required>
+        </p>
         <div ng-show="workExperienceForm.$submitted" class="text-center">
             <div class="error-message" ng-show="workExperienceForm.workFrom.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <label class=""><p>Work To</p></label>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <input ng-model="addWorkData.durationTo" onkeydown="return false" name="workTo" id="datetimepickertowork" class=" inp" type="text" ng-disabled="addWorkData.currentEmployer" ng-required="!addWorkData.currentEmployer">
-        </div>
-    </div>
+        <p>
+            <label class="row col-lg-4 col-md-4 col-sm-4 col-xs-12">Work To</label>
+            <input ng-model="addWorkData.durationTo" onkeydown="return false" name="workTo" id="datetimepickertowork" class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp" type="text" ng-disabled="addWorkData.currentEmployer" ng-required="!addWorkData.currentEmployer">
+        </p>
         <div ng-show="workExperienceForm.$submitted" class="text-center">
             <div class="error-message" ng-show="workExperienceForm.workTo.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
         </div>
-        <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
-            <label class=""><p>Annual Salary</p></label>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
-            <input style="width:74%"  ng-model="addWorkData.annualSalary" maxlength="10" name="salary" ng-keypress='isNumberKey($event)' class=" inp dollar padd" type="text">
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+        <p>
+            <label class="row col-lg-4 col-md-4 col-sm-4 col-xs-12">Annual Salary</label>
+            <input ng-model="addWorkData.annualSalary" maxlength="10" name="salary" ng-keypress='isNumberKey($event)' class="col-lg-5 col-md-5 col-sm-5 col-xs-12 inp dollar padd" type="text">
+        </p>
+        <p>
             <input ng-init="addWorkData.currentEmployer = false" id="employer1" type="checkbox" class="currentEmp" name="currentEmp" ng-change="addWorkData.durationTo = addWorkData.currentEmployer ? '' : addWorkData.durationTo" ng-checked="addWorkData.currentEmployer" ng-model="addWorkData.currentEmployer">
-            <label for="employer1" class=" conditions checkbox-label">Current Employer</label>
-        </div>
-        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+            <label for="employer1" class="row col-lg-4 col-md-4 col-sm-4 col-xs-12 conditions checkbox-label">Current Employer</label>
+        </p>
         <div class="text-center"><button type="submit" ng-disabled="addBtn">ADD</button></div>
-    </div>
-</div>
     </form>
 </script>

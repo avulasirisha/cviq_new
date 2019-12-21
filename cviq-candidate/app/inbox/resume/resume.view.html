@@ -1,3 +1,11 @@
+<style>
+a:not([href]):not([tabindex]) {
+    color: #fff !important;
+    text-decoration: none;
+    border-radius: 28px;
+    padding: 15px 0;
+}
+</style>
 <form name="profileForm" ng-submit="profileForm.$valid&&uploadResumeFile()" novalidate>
     <section class="commonBackground interview-details clearfix">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 name-desc clearfix">
@@ -13,7 +21,7 @@
                 <div ng-show="profileForm.$submitted">
                     <div class="error-message" ng-show="profileForm.res.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> Please upload file.</div>
                 </div>
-                <button class="sbmt-btn" type="submit">Upload Resume</button>
+                <button class="sbmt-btn12" type="submit">Upload Resume</button>
             </div>
             <div class="or"><span style="background: #eff2f5;">OR</span></div>
             <div class="text-center col-lg-12 col-md-12 col-sm-12 col-xs-12 create-resume-template" ng-click="goToResume()"><a>CREATE USING TEMPLATE</a></div>

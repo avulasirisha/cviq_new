@@ -60,20 +60,29 @@ h1{
     min-height: 650px;
 }
 header{
-    padding: 20px 0;
+    padding: 0px 0;
     background: #fff;
 }
 header img{
-    width: 120px;
+    width: 170px;
     cursor: pointer;
     float: left;
 }
-/*header img.logUnauth{*/
-    /*margin-left: 30px;*/
-/*}*/
-header ul{
-    float: right;
-}
+.newpage{padding: 10px;border-bottom:1px solid #e2e2e2 ;}
+.newpage:hover{background: #e0eaf7;}
+.drop-box{    background-color: #ffffff;
+    box-shadow: 3px 3px 10px rgba(218, 218, 218, 0.38);
+    padding: 10px;}
+.bgr{   
+     background: #EFF2F5 url(../images/rbg.png) no-repeat center top;
+    background-size: contain;
+    min-height: 650px;}
+    .bgr1{   
+        background: url(../images/rbg1.png) no-repeat center top;
+    background-size: cover;
+    min-height: 650px;
+    width: 100%;}
+       .pd-20{padding-bottom: 20px;;}
 header ul li{
     display: inline-block;
     margin-left: 40px;
@@ -96,23 +105,24 @@ header ul.unauth-menu li a{
     font-size: 14px;
     cursor: pointer;
     font-weight: bold;
-    padding: 5px 30px;
+    padding: 5px 0px;
     display: block;
-    text-decoration: underline;
+    /*text-decoration: underline;*/
 }
 header ul.unauth-menu li.active a{
     color: #fff;
     text-decoration: none;
+    color: #246df8;
 }
 header ul.auth-menu li a{
     color: #4f5f72;
 }
-header ul li.active{
+/*header ul li.active{
     border-radius: 3px;
     background-color: #0297cf;
     border: solid 1px #02a3d9;
 }
-header ul.auth-menu li.selected a{
+*/header ul.auth-menu li.selected a{
     color: #000;
     text-decoration: underline;
     font-weight: bold;
@@ -132,9 +142,9 @@ header ul li.user-name img{
     border-radius: 50%;
 }
 header img.bell{
-    width: 20px;
+    width: 13px;
     float: right;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .user-name{
     border-radius: 30px;
@@ -157,15 +167,16 @@ header img.bell{
     background: url("../images/title-dp.png") no-repeat center;
 }
 .main-section{
-    border-radius: 15px 0 15px 0;
+    border-radius: 15px 0 15px 0 !important;
     background-color: #ffffff;
-    border: solid 5px #f2f2f2;
+    border: solid 2px #f2f2f2;
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 30px;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
 }
 .linkedin-btn{
-    border-radius: 3px;
+    border-radius: 28px;
     background-color: #0297cf;
     color: #fff;
     font-family: 'Graphik-Medium';
@@ -176,6 +187,7 @@ header img.bell{
     font-size: 15px;
     border: none;
     cursor: pointer;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
 }
 .linkedin-btn:hover{
     text-decoration: none;
@@ -202,14 +214,15 @@ header img.bell{
     margin-left: -17px;
 }
 .form input{
-    border-radius: 3px;
+    border-radius: 30px;
     border: solid 1px #dedede;
-    padding: 25px 10px 10px 10px;
+    padding: 25px 10px 10px 20px;
     font-size: 13px;
     margin-bottom: 10px;
     width: 100%;
     color: #000;
     letter-spacing: 1px;
+    box-shadow: 0px 1px 4px rgba(45, 37, 41, 0.14);
 }
 .form-elements{
     position: relative;
@@ -219,7 +232,7 @@ header img.bell{
     top: 10px;
     font-size: 11px;
     font-weight: bold;
-    left: 10px;
+    left: 20px;
     color: #727272;
 }
 input[type="checkbox"]{
@@ -272,8 +285,19 @@ input[type="checkbox"]:checked + label.checkbox-label:before{
     cursor: pointer;
     text-decoration: underline;
 }
+
+.main-img{
+    border-radius: 0px 15px 0px 15px;
+    background-color: #0297cf;
+    border: solid 2px #f2f2f2;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 0px;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
+    overflow: hidden;
+}
 .form button{
-    border-radius: 3px;
+    border-radius: 30px;
     background-color: #0297cf;
     color: #fff;
     font-family: 'Graphik-Medium';
@@ -283,6 +307,20 @@ input[type="checkbox"]:checked + label.checkbox-label:before{
     margin-top: 10px;
     font-size: 15px;
     border: none;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
+}
+.form .main-dropdown button{
+    border-radius: 30px !important;
+   
+    color: #fff;
+    font-family: 'Graphik-Medium';
+    display: inline-block;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 10px;
+    font-size: 15px;
+    border: none;
+    box-shadow: 0px 1px 4px rgba(45, 37, 41, 0.14);
 }
 .forgot-password{
     margin: 25px 0 0 0;
@@ -303,6 +341,7 @@ input[type="checkbox"]:checked + label.checkbox-label:before{
     background-color: #056285;
     color: #fff;
     padding: 10px 35px;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
 }
 footer{
     background-color: #4f5f72;
@@ -334,14 +373,34 @@ footer{
     font-weight: bold;
 }
 .sbmt-btn{
+    border-radius: 30px;
     background-color: #0297cf;
-    border-radius: 3px;
     color: #fff;
-    padding: 10px;
-    border: none;
     font-family: 'Graphik-Medium';
-    margin: 15px 0 0 0;
+    display: inline-block;
+    text-align: center;
+    padding: 15px 0;
+    margin-top: 10px;
+    font-size: 15px;
+    border: none;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
 }
+.mt-20{margin-top: 20px;}
+.mt-10{margin-top: 10px;}
+.sbmt-btn12{
+    border-radius: 15px;
+    background-color: #0297cf;
+    color: #fff;
+    font-family: 'Graphik-Medium';
+    display: inline-block;
+    text-align: center;
+    padding: 15px 15px;
+    margin-top: 10px;
+    font-size: 12px;
+    border: none;
+    box-shadow: 3px 3px 10px rgba(45,37,41,.38);
+}
+.header-logo {padding: 10px 0;}
 .sbmt-btn:hover{
     color: #fff;
     text-decoration: none;
@@ -507,7 +566,7 @@ p.home-address{
 }
 .main-section-profile .ProfileFormElements input{
     background: #fff;
-    border: none;
+    /*border: none;*/
     font-size: 13px;
     padding: 10px;
     width: 100%;
@@ -609,6 +668,15 @@ p.home-address{
     font-size: 14px;
     color: #000;
     padding: 5px 10px;
+    width: 100%;
+}
+.candidate-edit-profile input {
+    border: none;
+    background: none;
+    font-size: 14px;
+    color: #000;
+    padding: 5px 10px;
+    width: 100%;
 }
 .cap{
     text-transform: capitalize;
@@ -1237,6 +1305,18 @@ input.designation{ background: none; border: none; text-align: center; font-size
     header.unauth-header{padding: 20px;}
 }
 @media (max-width:768px){
+    .cviq-sign{display: none;}
+    .main-img {
+        border-radius: 0px 15px 0px 15px;
+        background-color: #ffffff00;
+        border: solid 2px #f2f2f200;
+        margin-top: 50px;
+        margin-bottom: -47px;
+        padding: 0px;
+        box-shadow: 3px 3px 10px rgba(45,37,41,.38);
+        overflow: hidden;
+    }
+    
     header.auth-header{ padding:20px;}
     header.auth-header{text-align: left;}
     .menu-sec{ display: none; width: 100%; }

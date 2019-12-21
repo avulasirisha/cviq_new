@@ -1,24 +1,84 @@
-<div class="past-interview-container" ng-init="pastInterview(1)" style="position: relative" >
+<div class="past-interview-container" ng-init="pastInterview(1)">
     <div class="noData fullWidth" ng-if="numberOFInterviews == 0">
         <h5>No Data Found.</h5>
     </div>
     <div class="past-inter" ng-repeat="i in interviewLIsts">
-    <ul>
-        <li class="clearfix">
-            <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" data-target="#collapse-{{$index}}">
-                <img ng-src="{{i.interviewerID.profilePicURL.thumbnail}}" class="pull-left interviewer-pic" alt="" />
-                <div class="col-lg-11 col-md-11 col-sm-10 col-xs-10">
-                    <h4>{{i.interviewerID.firstName + ' '+ i.interviewerID.lastName}} {{'('+i.interviewerID.totalExperience}} {{i.interviewerID.totalExperience > 1 ? 'Yrs' : 'Yr'}})</h4>
-                    <p>{{i.interviewStartDate | date: 'MMM d, y'}}, {{i.interviewStartTime}}  <span ng-if="i.revaluation == true" ><b>( revaluated )</b></span> </span>  </p>
-                    <p ng-if="i.status==5">  <p>
-                </div>
-            </a>
-        </li>
-    </ul>
+   <button style="width: 100%;" class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse-{{$index}}" aria-expanded="false" aria-controls="collapseTwo">
+
+       <div class="newpage">  
+    <table width="100%" border="0" >
+      <tr>
+        <td width="10%">
+          <div class="interivew-tumb">
+            <img src="{{i.interviewerID.profilePicURL.thumbnail}}" class="img-fluid" alt="">
+          </div>
+        </td>
+        <td width="10%">	
+          <h6>{{i.interviewerID.firstName + ' '+ i.interviewerID.lastName}}</h6>
+        </td>
+        <td width="10%">	
+          <div>
+          <h6>Experience</h6></div>
+          <div class="info"><span class="details">{{'('+i.interviewerID.totalExperience}} {{i.interviewerID.totalExperience > 1 ? 'Yrs' : 'Yr'}})</span></div>
+        </td>
+        <td width="15%">	
+          <div  ng-if="i.status == 5">
+            <div>
+              <a ng-click="viewChat(i, 0)"><i class="fa fa-comments"></i>View</a>
+            </div>
+              <div class="info"><span class="details"><a ng-click="viewChat(i, 1)" class="sm-text-link">Download Chat</a></span></div>
+            </div>
+        </td>
+        <td width="15%">	
+          <div  ng-if="i.status == 5">
+
+            
+
+
+            <div>
+              <a target="_blank" href="{{i.video_url}}"><i class="fa fa-video"></i>View</a></div>
+              <div class="info"><span class="details"><a href="{{i.video_url}}" download>Download Video</a></span></div>
+            </div>
+        </td>
+        <td width="10%">
+          <div>
+            <div>
+              <h6>Score</h6></div>
+              <div class="info"><span class="score">{{i.totalQualitativeGiven}}</span></div>
+            </div>
+        </td>
+        <td width="10%">	
+          <div>
+            <div>
+             <h6>Status</h6></div>
+             <div class="info"><span class="details"><span class="status-btn-info" ng-if="i.status == 6">Expired</span></span>
+             <span class="details"><span class="status-btn-danger" ng-if="i.status == 7">Rejected</span></span>
+               <span class="details"><span class="status-btn-danger" ng-if="i.status == 8">Cancelled</span></span>
+               <span class="details"><span class="status-btn-green" ng-if="i.status == 5">Completed</span></span></div>
+             
+           </div>
+        </td>
+        <td width="20%">
+          <div>
+            <div>
+             <h6>Date/Time</h6></div>
+             <div class="info"><span class="details">{{i.interviewStartDate | date: 'MMM d, y'}}, {{i.interviewStartTime}}</span>
+              <br>
+              <span ng-if="i.revaluation == true" ><b>( revaluated )</b></span></div>
+           </div>
+        </td>
+      </tr>
+    </table>
+  </div>   
+                    
+                    
+                  </button>
+
+                  <!-- <div class="clearfix"></div> -->
+                  <!-- <hr> -->
    
-    <div id="collapse-{{$index}}" class="panel-collapse collapse collapseDetails">
+    <!-- <div id="collapse-{{$index}}" class="panel-collapse collapse collapseDetails">
         <div class="panel-body">
-            <!--<h3>Profile Details</h3>-->
             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12 row">
                     <span>STATUS :</span>
                     <p ng-if="i.status == 6">Expired</p>
@@ -60,21 +120,68 @@
             <input type="submit"  ng-click="submit_reviews(i)">
     </div>
         </div>
-    </div>
+    </div> 
+ -->
+     <div id="collapse-{{$index}}" class="panel-collapse collapse collapseDetails" aria-labelledby="headingTwo" style="background: rgba(255,255,255,0.87);">
+                <div class="card-body">
+                  <div class="drop-box">
+                 <div class="row" ng-if="i.status==5">
+                  <div class="col-md-3">
+                    <h6>Leadership &amp; Management</h6>
+                    <div class="info"><span class="score">{{ i.leadershipScore }}</span></div>
+                  </div>
+                  <div class="col-md-2">
+                    <h6>Communication</h6>
+                    <div class="info"><span class="score">{{ i.communicationScore }}</span></div>
+                  </div>
+                  <div class="col-md-2">
+                    <h6>SME &amp; Background</h6>
+                    <div class="info"><span class="score">{{ i.backgroundScore }}</span></div>
+                  </div>
+                  <div class="col-md-3">
+                    <h6>Social Skills &amp; Situational Empthy</h6>
+                    <div class="info"><span class="score">{{ i.socialSkillScore }}</span></div>
+                  </div>
+                  
+                  <div class="col-md-1" ng-if="i.status==7 && i.interviewerFeedback">
+                <span>REASON :</span> {{ i.interviewerFeedback }}
+                </div>
+                
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                      
+                  <div ng-if="!i.ratingByCandidate && i.status == 5">
+                          <textarea  ng-model="i.description"></textarea>
+                              <div class="rate-candidate-interview text-left">
+                                  <span ng-repeat="rating in ratings">Rate Interviewer
+                                      <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating,i)"></div>
+                                  </span>
+                              </div>
+                          <input type="submit" class="btn btn-five big"  ng-click="submit_reviews(i)">
+                  </div>
+                </div>
+             
+               </div> 
+                <div class="row">
+                  <div class="pagination-container clearfix">
+                    <pagination ng-if="numberOFInterviews > 10"
+                            ng-model="currentPage"
+                            total-items="numberOFInterviews"
+                            max-size="maxSize"
+                            boundary-links="true" ng-click="pastInterview(currentPage)">
+                    </pagination>
+                </div>
+                </div>
+              </div>
+              </div>
+
+            </div>
     </div>
     
-    <div class="pagination-container clearfix">
-        <pagination ng-if="numberOFInterviews > 10"
-                ng-model="currentPage"
-                total-items="numberOFInterviews"
-                max-size="maxSize"
-                boundary-links="true" ng-click="pastInterview(currentPage)">
-        </pagination>
-    </div>
-    <div id="pdfBlock" style="display:none;width:80%;position: absolute;top: 80px;left: 140px;" >
-        <div ng-click="closeIframe()" style="cursor: pointer;font-size: 21px;border: 1px solid black;width: 23px;margin: -4px;padding: 4px;border-radius: 50%;float: right;">X</div>
-        <iframe id="pdfframe" style="height:600px;width:100%;border: 1px solid black;box-shadow: 0px 4px 3px 11px grey;">
-        </iframe>
-    </div>
+    
 
 </div>
+
+
+

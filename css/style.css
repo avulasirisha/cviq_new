@@ -1884,6 +1884,9 @@ footer .footer-bg-block img {
 
 @media
   (max-width : 768px) {
+    .navbar-nav {
+      float: left !important;
+  }
   header::after {
     left : -230px;
   }
@@ -2158,8 +2161,10 @@ footer .footer-bg-block img {
   }
 }
 
+
 @media
   (max-width : 767px) {
+   
   .navbar-nav {
     display : inline;
   }
@@ -2236,3 +2241,4 @@ footer .footer-bg-block img {
     border-radius : 0 0 5px 5px;
   }
 }
+

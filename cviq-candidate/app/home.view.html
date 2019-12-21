@@ -11,56 +11,81 @@
 <div ng-switch="loggedIn">
 <header class="clearfix header unauth-header" ng-hide="$state.includes('home.homeScreen')" ng-switch-default>
     <div class="container">
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
+<div class="header-logo">
+    <a href="/" > <img class="logUnauth" ng-click="var='SIGN IN'" ui-sref="home.homeScreen.search" src="images/logo.png" alt="" /> </a>
+</div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-lg-6 col-xs-6">
         <div class="clearfix">
-            <a href="/" > <img class="logUnauth" ng-click="var='SIGN IN'" ui-sref="home.homeScreen.search" src="images/logo.png" alt="" /> </a>
-            <ul class="unauth-menu">
+           
+            <ul class="unauth-menu pull-right">
                 <li ng-click="var='SIGN UP'" ng-class="{'active': var == 'SIGN UP'}"><a ui-sref="home.signup">SIGN UP</a></li>
                 <li ng-click="var='SIGN IN'" ng-class="{'active': var == 'SIGN IN'}"><a ui-sref="home.login">SIGN IN</a></li>
             </ul>
         </div>
     </div>
+    </div>
 </header>
-<header class="clearfix header auth-header" ng-switch-when="true">
-    <div class="container">
-                 <a href="/" > <img ng-click="var = 'HOME'" class="loggedLogo" ui-sref="home.dashboard.aggregatedScore" src="images/logo.png" alt="" /></a>
-            <div ng-click="toggle()" class="burger-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <div class="menu-sec">
-                 <span class="notificationOuter">
+
+
+<header class="header-2" ng-switch-when="true">
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <div class="header-top">
+              <!-- <div class="logo-area">
+                <a href="#"><img src="images/logo-2.png" alt=""></a>
+              </div> -->
+              <div class="header-top-toggler">
+                <div class="header-top-toggler-button"></div>
+              </div>
+              <div class="top-nav">
+                 <div class="dropdown header-top-notification">
+                   <span class="notificationOuter">
                     <img class="bell" ng-init="imgSRC='images/notify.png'; imgSRC1='images/notify_red.png'" ng-click="imgSRC1='images/notify.png';call_notification()" ng-src="{{notification.length > 0 ? imgSRC1 : imgSRC}}" />
-                     <i class="notificationCounter" ng-if="imgSRC1=='images/notify_red.png' && notification.length > 0">{{notification.length}}</i>
+                     <i class="notificationCounter" ng-if="imgSRC1=='images/notify_red.png' && notification.length > 0">{{notification.length}}</i><!-- <span class="user-name" style="margin: 0 -28px 0 0;">Notifications</span> -->
                 </span>
                 <div class="notification" ng-if="notification.length > 0">
                     <ul>
                         <li ng-repeat="n in notification track by $index">{{n.message}}<span ng-if="n.notificationType == 3" ng-click="goToUpcomingInterview($index)">Click to view details</span><span ng-if="n.notificationType == 5" ng-click="goToAggregaredScore($index)">Click to view details</span><span ng-if="n.notificationType == 6" ng-click="goToRecruiterMessage($index)">Click to view details</span></li>
                     </ul>
                 </div>
-                <div class="user-name">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" ng-src="{{userData.profilePicURL.original}}" alt="" />
+                </div> 
+               <div class="user-name">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" ng-src="{{userData.profilePicURL.original}}" alt="" />
                     <ul class="registered-user-menu">
                         <li><a ui-sref="home.changePassword">Change Password</a></li>
                         <li><a ui-sref="home.faq">Faq</a></li>
                         <li><a ng-click="logout()">Logout</a></li>
                     </ul>
                 </div>
-                <ul class="auth-menu myDirective">
-                    <li ng-click="var = 'HOME'" ng-class="{'selected': var == 'HOME'}"><a ui-sref="home.dashboard.aggregatedScore">HOME</a></li>
-                    <li ng-click="var = 'JOBS'" ng-class="{'selected': var == 'JOBS'}"><a ui-sref="home.search">JOBS</a></li>
-                    <li ng-click="var = 'INBOX'" ng-class="{'selected': var == 'INBOX'}"><a ui-sref="home.inbox.inboxTab.alerts">INBOX</a></li>
-                    <!--<li class="user-name inDropDown">{{userData.firstName}}<img onclick="$('.registered-user-menu').toggleClass('displayDropDown');" src="images/placeholder.png" alt="" />-->
-                        <!--<ul class="registered-user-menu">-->
-                            <!--<li><a ui-sref="home.changePassword">Change Password</a></li>-->
-                            <!--<li><a ui-sref="home.faq">Faq</a></li>-->
-                            <!--<li><a ng-click="logout()">Logout</a></li>-->
-                        <!--</ul>-->
-                    <!--</li>-->
-                    <!--<li><img class="bell" src="images/notify.png" alt="" /></li>-->
-                </ul>
+                
+              </div>
             </div>
-    </div>
-</header>
+            <nav class="navbar navbar-expand-lg cp-nav-2">
+        <div class="logo-area logo-t">
+                <a href="landing-page.html"><img src="design/images/logo.png" class="img-respo" alt=""></a>
+              </div>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                  <!-- <li class="menu-item active"><a title="Home" class="navlink" href="home.html">Home</a></li>
+                  <li class="menu-item "><a  href="job-list.html" >Jobs</a></li>
+                  <li class="menu-item"><a href="dashboard.html">Dashboard</a></li> -->
+                  <li ng-click="var = 'HOME'" ng-class="{'selected': var == 'HOME'}" class="menu-item active"><a ui-sref="home.dashboard.aggregatedScore">HOME</a></li>
+                    <li ng-click="var = 'JOBS'" ng-class="{'selected': var == 'JOBS'}" class="menu-item"><a ui-sref="home.search">JOBS</a></li>
+                    <li ng-click="var = 'INBOX'" ng-class="{'selected': var == 'INBOX'}" class="menu-item"><a ui-sref="home.inbox.inboxTab.alerts">INBOX</a></li>
+                 
+                </ul>
+         
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
 </div>
 <div ui-view=""></div>
 <!-- <footer class="footer col-lg-12 col-md-12 col-sm-12 col-xs-12" ng-hide="$state.includes('home.homeScreen')">
@@ -81,14 +106,15 @@
     </div>
 </footer>
  -->
+
 <footer class="footer">
             <div class="container">
                 
                 <!-- Row Start -->
-                <div class="row">
+                <div class="row" >
                 
                     <div class="col-md-8 col-sm-8">
-                        <div class="row">
+                        <div class="row" style="margin-top: 15px;">
                             <div class="col-md-4 col-sm-4">
                                 <h4>For Candidate </h4>
                                 <ul>
@@ -135,7 +161,7 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-4 col-sm-4">
+                    <div class="col-md-4 col-sm-4" style="margin-top: 15px;">
                         <h4>Subscribe For Job Alerts</h4>
                         <!-- Newsletter -->
                         <div class="input-group">

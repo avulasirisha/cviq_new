@@ -1,7 +1,7 @@
  if( window.location.hostname == "localhost"  ){
-    api_url = 'http://54.89.248.100:3005' ;
+    api_url = 'http://35.170.203.128:3005' ;
  }else{
-    api_url = 'http://54.89.248.100:3005' ;
+    api_url = 'http://35.170.203.128:3005' ;
  }                        
 angular.module('Cviq').constant('CONSTANT',{
     apiUrl: api_url,

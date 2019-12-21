@@ -7,7 +7,10 @@ angular.module('Cviq').controller('desiredJobCtrl', ['$scope','$rootScope','ngDi
     
     $scope.editDesiredJobData = function () {
         $scope.read = false;
-        $('.candidate-edit-profile input.inp').css("background", "#e9ecee");
+        //$('.candidate-edit-profile input.inp').css("background", "#e9ecee");
+        $('.candidate-edit-profile input.inp').css("box-shadow", "0px 1px 4px rgba(45, 37, 41, 0.14)");
+        $('.candidate-edit-profile input.inp').css("font-size", "13px");
+        $('.candidate-edit-profile input.inp').css("border-radius", "30px");
     }
     
     $scope.cancelDetails = function () {

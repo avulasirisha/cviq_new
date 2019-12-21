@@ -34,7 +34,7 @@ angular.module('Cviq').controller('loginCtrl', ['$scope','$rootScope','$cookieSt
                 now.setTime(now.getTime() + ( 60 * 60 * 1000));
                 if( window.location.hostname == "localhost"  ){
                 
-                    document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/site_new";
+                    document.cookie = "loggedIn=true; expires=" + now.toUTCString() + "; path=/cviq_new";
                     document.cookie = "CandidateOpt="+response.data.accessToken+";expires=" + now.toUTCString() + "; path=/site";
                 }else{
                 

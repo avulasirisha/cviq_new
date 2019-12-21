@@ -1,6 +1,6 @@
 <loading></loading>
 <form name="contactForm" ng-submit="contactForm.$valid&&contactusSubmit(contact)" novalidate>
-    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 banner">
+    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 banner" style="padding-top: 130px;">
         <div class="container">
             <div class="main-section col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 candidate-profile-section clearfix">
 
@@ -10,10 +10,10 @@
                 <div class="line"></div>
 
                 <div class="row complete-candidate-profile">
-                    <div class="search-wrapper">
+                    <div class="search-wrapper" style="width: 100%;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form">
 
-                            <div class="clearfix">
+                            <div class="clearfix mt-20">
                                 <div class="ProfileFormElements form-elements fullWidth pull-left">
                                     <label>Subject</label>
                                     <input type="text"  maxlength="50" placeholder="Enter Subject" name="subject" ng-model="contact.subject" required>
@@ -22,7 +22,7 @@
                                     </div>
                                 </div>
                             </div>
-                              <div class="clearfix">
+                              <div class="clearfix mt-10">
                                 <div class="ProfileFormElements form-elements fullWidth pull-left">
                                     <textarea  placeholder="Description"  class="form-control" rows="5" name="description" ng-model="contact.description" required></textarea>
                                     <div ng-show="contactForm.$submitted || contactForm.description.$touched">
@@ -31,7 +31,7 @@
                                 </div>
                             </div>
                             
-                             <div class="clearfix">
+                             <div class="clearfix mt-20">
                                 <div class="ProfileFormElements form-elements fullWidth pull-left">
                                     <label>Email</label>
                                     <input type="text"  maxlength="100" placeholder="Enter your Email" name="email" ng-model="contact.email" required disabled>

@@ -1,7 +1,19 @@
+<style>
+.bootstrap-select.btn-group .dropdown-toggle .filter-option {
+    padding-left: 10px;
+}
+.dropdown-toggle::after{opacity: 0;}
+.open>.dropdown-toggle.btn-default {
+    color: #333;
+    background-color: #c3e7f7;
+    border-color: #adadad;
+}
+</style>
+
 <form name="resumeForm" ng-submit="resumeForm.$valid&&saveResume(register)" novalidate>
-    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 candidate-dashboard">
+    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 candidate-dashboard" style="padding: 116px 0;">
         <div class="container">
-            <div class="row col-lg-7 col-md-7 col-sm-12 col-xs-12 candidate-dashboard-inner clearfix">
+            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 candidate-dashboard-inner clearfix">
                 <h1 class="text-left">CREATE RESUME</h1>
                 <div class="line"></div>
                 <div class="line"></div>

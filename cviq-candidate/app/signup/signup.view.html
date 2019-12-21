@@ -9,8 +9,28 @@
     <!--});-->
 <!--</script>-->
 <loading></loading>
-<form name="signupForm" ng-submit="signupForm.$valid&&signup(register)" novalidate>
-    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 banner">
+<style>
+    .dropdown-toggle::after {
+   
+    opacity: 0 !important;
+}
+.ProfileFormElements .main-dropdown button span {
+  
+    padding-left: 10px;
+}
+#experience{padding-left: 20px;}
+.new-user{    width: 90%;
+    margin: auto;}
+    .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+    color: #333;
+    background-color: #d5f4ff;
+    border-color: #8c8c8c;
+}
+</style>
+<form name="signupForm"  ng-submit="signupForm.$valid&&signup(register)" novalidate>
+
+    <section class="col-lg-12 col-md-12 col-sm-12 col-xs-12 bgr">
+ 
         <div class="container">
             <div class="main-section col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 col-sm-12 col-xs-12 candidate-profile-section clearfix">
                 <h1 class="text-left">CREATE YOUR PROFILE</h1>
@@ -19,7 +39,7 @@
                 <div class="line"></div>
                 <div class="line"></div>
                 <div class="row">
-                    <div class="search-wrapper">
+                    <div class="search-wrapper" style="margin: auto;">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 form">
                             <div class="clearfix">
                                 <div class="form-elements fifty-comb pull-left">
@@ -225,15 +245,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-elements">
-                                <div class="pass-outer">
-                                    <label>ADD REFERRAL CODE (optional)</label>
-                                    <input type="text" maxlength="6" name="referralCode" ng-model="register.referralCode" placeholder="Add Referral Code">
-                                    <div ng-show="signupForm.$submitted || signupForm.referralCode.$touched">
-                                        <div class="error-message" ng-show="signupForm.referralCode.$error.required"><i class="fa fa-exclamation-triangle err-icon" aria-hidden="true"></i> This Field is Required.</div>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="form-elements" ng-if="!PassField">
                                 <div class="pass-outer">
                                     <label>ENTER PASSCODE</label>
@@ -254,13 +266,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="new-user col-lg-12">
+                <div class="new-user">
                     <div class="row">
                         <button type="submit" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sbmt-btn">SUBMIT</button>
                     </div>
                 </div>
             </div>
-        </div>
+        
+    </div>
     </section>
 </form>
 <script type="text/ng-template" id="templateId" class="ngDialog-theme-default">

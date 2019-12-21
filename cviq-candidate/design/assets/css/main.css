@@ -247,7 +247,7 @@ h7{font-size: 14px; font-weight: 500}
 .t-small{font-size: 12px;}
 .small-h1{text-align: center !important; text-transform:none !important; font-weight: 500!important;}
 .no-space{line-height: normal!important;}
-.space-top{margin-top: -10px;
+.space-top{margin-top: 87px;
 }
 .margin-imp-b-36{margin-bottom: 36px!important;}
 .space-bottom{padding-bottom: 40px;}
@@ -303,7 +303,7 @@ left: 20px;}
     border-color: transparent;
     border-radius: 3px;
 	font-size: 14px;
-	width: 100%;
+	width: 70%;
 }
 .chatbutton1:hover{ background: #17af7d; color:#fff; }
 .sm-text-link{color: #246df8;}
